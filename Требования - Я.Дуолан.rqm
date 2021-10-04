@@ -1020,11 +1020,11 @@ Shadow=0</a:DisplayPreferences>
 </o:Requirement>
 <o:Requirement Id="o43">
 <a:ObjectID>1B0AE8F1-CB3A-441B-AE67-3B56E2648A08</a:ObjectID>
-<a:Requirement.Title>ID</a:Requirement.Title>
+<a:Requirement.Title>Инветраный номер</a:Requirement.Title>
 <a:Code>REQ_  62</a:Code>
 <a:CreationDate>1632720518</a:CreationDate>
 <a:Creator>ddldi</a:Creator>
-<a:ModificationDate>1632720531</a:ModificationDate>
+<a:ModificationDate>1633324328</a:ModificationDate>
 <a:Modifier>ddldi</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
@@ -1100,11 +1100,11 @@ Shadow=0</a:DisplayPreferences>
 </o:Requirement>
 <o:Requirement Id="o49">
 <a:ObjectID>A6FFD49C-8870-4B6F-A388-B282209875DB</a:ObjectID>
-<a:Requirement.Title>ID</a:Requirement.Title>
+<a:Requirement.Title>Инвентарный номер</a:Requirement.Title>
 <a:Code>REQ_  63</a:Code>
 <a:CreationDate>1632720531</a:CreationDate>
 <a:Creator>ddldi</a:Creator>
-<a:ModificationDate>1632720539</a:ModificationDate>
+<a:ModificationDate>1633324348</a:ModificationDate>
 <a:Modifier>ddldi</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
@@ -1167,11 +1167,11 @@ Shadow=0</a:DisplayPreferences>
 </o:Requirement>
 <o:Requirement Id="o54">
 <a:ObjectID>8EB66364-424B-4F11-AE8D-D0553CE97C47</a:ObjectID>
-<a:Requirement.Title>ID</a:Requirement.Title>
+<a:Requirement.Title>Инвентарный номер</a:Requirement.Title>
 <a:Code>REQ_  64</a:Code>
 <a:CreationDate>1632720539</a:CreationDate>
 <a:Creator>ddldi</a:Creator>
-<a:ModificationDate>1632720547</a:ModificationDate>
+<a:ModificationDate>1633324364</a:ModificationDate>
 <a:Modifier>ddldi</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
@@ -1221,11 +1221,11 @@ Shadow=0</a:DisplayPreferences>
 </o:Requirement>
 <o:Requirement Id="o58">
 <a:ObjectID>2F3A7CD9-C9DF-4928-8E40-1370ECF38FA8</a:ObjectID>
-<a:Requirement.Title>ID</a:Requirement.Title>
+<a:Requirement.Title>Инвентарный номер</a:Requirement.Title>
 <a:Code>REQ_  65</a:Code>
 <a:CreationDate>1632720547</a:CreationDate>
 <a:Creator>ddldi</a:Creator>
-<a:ModificationDate>1632720553</a:ModificationDate>
+<a:ModificationDate>1633324377</a:ModificationDate>
 <a:Modifier>ddldi</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
@@ -1288,11 +1288,11 @@ Shadow=0</a:DisplayPreferences>
 </o:Requirement>
 <o:Requirement Id="o63">
 <a:ObjectID>99E93CFC-97FF-4419-BBEE-EB621CD6570A</a:ObjectID>
-<a:Requirement.Title>ID</a:Requirement.Title>
+<a:Requirement.Title>Инвентарный номер</a:Requirement.Title>
 <a:Code>REQ_  66</a:Code>
 <a:CreationDate>1632720553</a:CreationDate>
 <a:Creator>ddldi</a:Creator>
-<a:ModificationDate>1632720557</a:ModificationDate>
+<a:ModificationDate>1633324386</a:ModificationDate>
 <a:Modifier>ddldi</a:Modifier>
 <a:Priority>0</a:Priority>
 <a:Status>0</a:Status>
