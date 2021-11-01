@@ -980,7 +980,7 @@ IndxFKName=%REFR%_FK
 IndxThreshold=
 ColnFKName=%.3:PARENT%_%COLUMN%
 ColnFKNameUse=No</a:ModelOptionsText>
-<a:RepositoryFilename>C:\Users\асус\ivt-19-2\ObjectOrientedModel_1.oom</a:RepositoryFilename>
+<a:RepositoryFilename>C:\Users\асус\ivt-19-2\ObjectOrientedModel_2.oom</a:RepositoryFilename>
 <c:ObjectLanguage>
 <o:Shortcut Id="o3">
 <a:ObjectID>7012AE8F-AEC7-44D8-9117-1804EAFB7FE3</a:ObjectID>
