@@ -4,8 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{2C0626D4-C294-42D3-B496-E9A7011565C2}" Name="Requirements" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="Requirements_Hoplits.rqm"/>
-		<Model Expanded="Yes" ID="{66C21CFE-2F6E-43C0-BAB6-3D923DB25A65}" Name="ObjectOrientedModel_1" Selected="Yes" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="ObjectOrientedModel_1.oom"/>
+		<Model Expanded="Yes" ID="{2C0626D4-C294-42D3-B496-E9A7011565C2}" Name="Requirements" Selected="Yes" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="Requirements_Hoplits.rqm"/>
+		<Model Expanded="Yes" ID="{66C21CFE-2F6E-43C0-BAB6-3D923DB25A65}" Name="ObjectOrientedModel_Hoplits" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="ObjectOrientedModel_Hoplits.oom"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
