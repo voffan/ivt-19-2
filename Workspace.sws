@@ -4,9 +4,10 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{774E39D5-9300-4C5E-BCC2-306C0F24A9E9}" Name="Model classes" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Model classes.oom"/>
-		<Model ID="{48EF071F-E062-40BE-9EA8-5C5187C37200}" Loaded="No" Name="Requirements" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="AA-project.rqm"/>
+		<Model Expanded="Yes" ID="{774E39D5-9300-4C5E-BCC2-306C0F24A9E9}" Loaded="No" Name="Model classes" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Model classes.oom"/>
+		<Model ID="{48EF071F-E062-40BE-9EA8-5C5187C37200}" Name="Requirements" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="AA-project.rqm"/>
 		<Model Expanded="Yes" ID="{9A7F6742-3CAF-41DC-953B-509935F747BA}" Name="State Model" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="State Model.oom"/>
+		<Model Expanded="Yes" ID="{95891D55-CA03-451C-9EDB-48723BA24793}" Name="EnterpriseArchitectureModel" Type="{5215C79E-A9A1-4738-A627-36DA432EFE29}" URL="EnterpriseArchitectureModel.eam"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
