@@ -6,10 +6,8 @@
 	<Local Expanded="Yes">
 		<Model ID="{2C0626D4-C294-42D3-B496-E9A7011565C2}" Name="Requirements" Type="{DABA1E0A-0922-4B05-B7F0-B0BD7A73FD33}" URL="Requirements_Hoplits.rqm"/>
 		<Model Expanded="Yes" ID="{66C21CFE-2F6E-43C0-BAB6-3D923DB25A65}" Loaded="No" Name="ObjectOrientedModel_Hoplits" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="ObjectOrientedModel_Hoplits.oom"/>
-		<Model Expanded="Yes" ID="{034BCFC0-8611-4064-9DA2-B63ACFA3D734}" Loaded="No" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="/ALEG/fiit-19/25.11.2021/Модель ALEGa.oom"/>
-		<Model Expanded="Yes" ID="{25D6D390-98B5-4F9C-B3AF-74A0904AF15D}" Loaded="No" Name="EnterpriseArchitectureModel_1" Type="{5215C79E-A9A1-4738-A627-36DA432EFE29}" URL="/ALEG/fiit-19/EnterpriseArchitectureModel_1.eam"/>
-		<Model Expanded="Yes" ID="{034BCFC0-8611-4064-9DA2-B63ACFA3D734}" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="/ALEG/fiit-19/Модель ALEGa.oom"/>
-		<Model ID="{25D6D390-98B5-4F9C-B3AF-74A0904AF15D}" Name="EnterpriseArchitectureModel_1" Type="{5215C79E-A9A1-4738-A627-36DA432EFE29}" URL="/ALEG/fiit-19/EnterpriseArchitectureModel_1.eam"/>
+		<Model Expanded="Yes" ID="{66C21CFE-2F6E-43C0-BAB6-3D923DB25A65}" Name="ObjectOrientedModel_Hoplits" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="ObjectOrientedModel_Hoplits.oom"/>
+		<Model Expanded="Yes" ID="{4AD5E217-990A-45E3-8036-7A6FE4ABB167}" Name="EnterpriseArchitectureModel_Hoplits" Type="{5215C79E-A9A1-4738-A627-36DA432EFE29}" URL="EnterpriseArchitectureModel_Hoplits.eam"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
