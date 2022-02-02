@@ -1,6 +1,6 @@
 # ivt-19-2
 ## Hoplits
-### Semen
+### Semyon
 ### Timur
 ### Aiaal
 ### Kirill
