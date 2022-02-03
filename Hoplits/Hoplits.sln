@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hoplits", "Hoplits.csproj", "{CFF76FD0-F2F3-43B6-BDFC-F052AD63C10F}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hoplits", "Hoplits.csproj", "{F1B8256A-06F9-4FE7-A9F9-7F3E23626E18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CFF76FD0-F2F3-43B6-BDFC-F052AD63C10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFF76FD0-F2F3-43B6-BDFC-F052AD63C10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFF76FD0-F2F3-43B6-BDFC-F052AD63C10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFF76FD0-F2F3-43B6-BDFC-F052AD63C10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B8256A-06F9-4FE7-A9F9-7F3E23626E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B8256A-06F9-4FE7-A9F9-7F3E23626E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B8256A-06F9-4FE7-A9F9-7F3E23626E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B8256A-06F9-4FE7-A9F9-7F3E23626E18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CC7B0A0-6096-432D-A248-2F3655AC5254}
 	EndGlobalSection
 EndGlobal
