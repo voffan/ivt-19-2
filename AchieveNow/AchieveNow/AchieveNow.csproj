@@ -78,12 +78,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Achievements.cs" />
+    <Compile Include="Classes\Category.cs" />
+    <Compile Include="Classes\Competition.cs" />
+    <Compile Include="Classes\Employee.cs" />
+    <Compile Include="Classes\Level.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\Position.cs" />
+    <Compile Include="Classes\SportKind.cs" />
+    <Compile Include="Classes\Sportsman.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\App.g.cs" />
+    <Compile Include="obj\Debug\App.g.i.cs" />
+    <Compile Include="obj\Debug\MainWindow.g.cs" />
+    <Compile Include="obj\Debug\MainWindow.g.i.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -97,10 +111,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="obj\Debug\AchieveNow.g.resources" />
+    <EmbeddedResource Include="obj\Debug\AchieveNow.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\AchieveNow.exe.config" />
+    <None Include="obj\Debug\AchieveNow.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\AchieveNow.csproj.CopyComplete" />
+    <None Include="obj\Debug\AchieveNow.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\AchieveNow.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\AchieveNow_MarkupCompile.cache" />
+    <None Include="obj\Debug\AchieveNow_MarkupCompile.i.cache" />
+    <None Include="obj\Debug\AchieveNow_MarkupCompile.lref" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -110,8 +136,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <Content Include="bin\Debug\AchieveNow.exe" />
+    <Content Include="bin\Debug\AchieveNow.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Resource Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Resource Include="bin\Debug\EntityFramework.xml" />
+    <Resource Include="obj\Debug\AchieveNow.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\AchieveNow.exe" />
+    <Content Include="obj\Debug\AchieveNow.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
