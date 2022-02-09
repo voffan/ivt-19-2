@@ -23,5 +23,6 @@ namespace AchieveNow.Classes
         public virtual Gender? Gender { get; set; }
         public int CategoryId { get; set; }
         public virtual Category? Category { get; set; }
+        public virtual List<Achievement_Sportsman> Achievement_Sportsmans { get; set; } = new();
     }
 }

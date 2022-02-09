@@ -22,5 +22,7 @@ namespace AchieveNow.Classes
         public int SportKindId { get; set; }
         public virtual SportKind? SportKind { get; set; }
         public DateTime DateOfExecution { get; set; }
+        public virtual List<Achievement> Achievements { get; set; } = new();
+        public virtual List<Employee_Competition> Employee_Competitions { get; set; } = new();
     }
 }

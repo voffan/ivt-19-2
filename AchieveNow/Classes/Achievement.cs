@@ -17,5 +17,6 @@ namespace AchieveNow.Classes
         public byte Results { get; set; }
         public int CompetitionId { get; set; }
         public virtual Competition? Competition { get; set; }
+        public virtual List<Achievement_Sportsman> Achievement_Sportsmans { get; set; } = new();
     }
 }
