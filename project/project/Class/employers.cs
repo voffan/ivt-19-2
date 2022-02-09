@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace project
+namespace project.Class
 {
-    internal class periferia
+    public class employers
     {
     }
 }

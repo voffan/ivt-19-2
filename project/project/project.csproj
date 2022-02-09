@@ -56,16 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="computers.cs" />
-    <Compile Include="components.cs" />
-    <Compile Include="employers.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="periferia.cs" />
+    <Compile Include="Class\computers.cs" />
+    <Compile Include="Class\components.cs" />
+    <Compile Include="Class\employers.cs" />
+    <Compile Include="Class\generate_report.cs" />
+    <Compile Include="Class\login.cs" />
+    <Compile Include="Class\periferia.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
