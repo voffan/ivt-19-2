@@ -12,8 +12,6 @@ namespace AchieveNow.Classes
     {
         public int Id { get; set; }
         [MaxLength(50)]
-        public string? Judge { get; set; }
-        [MaxLength(50)]
-        public string? User { get; set; }
+        public string? Name { get; set; }
     }
 }

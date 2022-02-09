@@ -15,9 +15,9 @@ namespace AchieveNow.Classes
         [MaxLength(50)]
         public string? Name { get; set; }
         public int LocationId { get; set; }
-        public Location? Location { get; set; }
+        public virtual Location? Location { get; set; }
         public int LevelId { get; set; }
-        public Level? Level { get; set; }
+        public virtual Level? Level { get; set; }
         public DateTime DateOfExecution { get; set; }
     }
 }
