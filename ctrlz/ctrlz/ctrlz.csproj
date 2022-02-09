@@ -53,6 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Author.cs" />
+    <Compile Include="Classes\Employee.cs" />
+    <Compile Include="Classes\Genre.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\Painting.cs" />
+    <Compile Include="Classes\Position.cs" />
+    <Compile Include="Classes\Status.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
