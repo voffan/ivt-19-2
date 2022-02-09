@@ -9,7 +9,8 @@ namespace AchieveNow.Classes
     public class Employee
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public Position Position { get; set; }
+        public string? Name { get; set; }
+        public int PositionId { get; set; }
+        public virtual Position? Position { get; set; }
     }
 }
