@@ -17,5 +17,6 @@ namespace AchieveNow.Classes
         {
             this.Name = Name;
         }
+        public virtual List<Competition> Competitions { get; set; } = new();
     }
 }

@@ -15,5 +15,6 @@ namespace AchieveNow.Classes
         public string? Name { get; set; }
         public int PositionId { get; set; }
         public virtual Position? Position { get; set; }
+        public virtual List<Employee_Competition> Employee_Competitions { get; set; } = new();
     }
 }
