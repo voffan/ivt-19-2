@@ -24,5 +24,6 @@ namespace AchieveNow.Classes
         public DateTime DateOfExecution { get; set; }
         public virtual List<Achievement> Achievements { get; set; } = new();
         public virtual List<Employee_Competition> Employee_Competitions { get; set; } = new();
+        // visual studio test
     }
 }
