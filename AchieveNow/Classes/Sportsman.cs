@@ -19,7 +19,8 @@ namespace AchieveNow.Classes
         [Range(0, 470)]
         public int Weight { get; set; }
         [MaxLength(50)]
-        public string? Gender { get; set; }
+        public int GenderId { get; set; }
+        public virtual Gender? Gender { get; set; }
         public int CategoryId { get; set; }
         public virtual Category? Category { get; set; }
     }
