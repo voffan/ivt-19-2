@@ -15,5 +15,7 @@ namespace AchieveNow.Classes
         public string? Name { get; set; }
         public DateTime DateOfIssue { get; set; }
         public byte Results { get; set; }
+        public int CompetitionId { get; set; }
+        public virtual Competition? Competition { get; set; }
     }
 }
