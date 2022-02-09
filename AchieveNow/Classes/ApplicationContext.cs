@@ -9,15 +9,15 @@ namespace AchieveNow.Classes
 {
     internal class ApplicationContext : DbContext
     {
-        public DbSet<Achievement> Achievements { get; set; }
-        public DbSet<SportKind> SportKinds { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Sportsman> Sportsmen { get; set; }
-        public DbSet<Competition> Competitions { get; set; }
-        public DbSet<Location> Locations { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Position> Positions { get; set; }
-        public DbSet<Level> Levels { get; set; }
+        public DbSet<Achievement> Achievements => Set<Achievement>();
+        public DbSet<SportKind> SportKinds => Set<SportKind>();
+        public DbSet<Category> Categories => Set<Category>();
+        public DbSet<Sportsman> Sportsmen => Set<Sportsman>();
+        public DbSet<Competition> Competitions => Set<Competition>();
+        public DbSet<Location> Locations => Set<Location>();
+        public DbSet<Employee> Employees => Set<Employee>();
+        public DbSet<Position> Positions => Set<Position>();
+        public DbSet<Level> Levels => Set<Level>();
         public ApplicationContext()
         {
             Database.EnsureCreated();
