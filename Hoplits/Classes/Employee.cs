@@ -26,6 +26,7 @@ namespace Hoplits.Classes
         //[Required(ErrorMessage = "Введите должность")]
         public string Post { get; set; }
 
-        public virtual Employer Employees { get; set; }
+        public int EmployerId { get; set; }
+        public virtual Employer Employer { get; set; }
     }
 }

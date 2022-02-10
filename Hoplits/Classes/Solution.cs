@@ -17,7 +17,9 @@ namespace Hoplits.Classes
         [Required(ErrorMessage = "Введите решение проблемы")]
         public string SolutionOfError { get; set; }
 
+        public int ErrorId { get; set; }
         public virtual Error Error { get; set; }
+        public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }
