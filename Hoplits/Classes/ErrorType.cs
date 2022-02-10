@@ -12,6 +12,6 @@ namespace Hoplits.Classes
         RunTime,
         Logical,
         ErrorInCompilation,
-        Ariphmetical,
+        Ariphmetical
     }
 }

@@ -13,5 +13,7 @@ namespace Hoplits.Classes
         [MaxLength(50)]
         //[Required(ErrorMessage = "Введите название")]
         public string name { get; set; }
+
+        public virtual List<Employee> Employees { get; set; }
     }
 }

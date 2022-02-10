@@ -7,6 +7,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hoplits.Classes
 {
+    public enum Post
+    {
+        Programmer,
+        Manager,
+        Designer
+    }
     public class Employee
     {
         public int id { get; set; }
@@ -22,11 +28,11 @@ namespace Hoplits.Classes
         [MaxLength(30)]
         //[Required(ErrorMessage = "Введите номер телефона")]
         public int PhoneNumber { get; set; }
-        [MaxLength(20)]
-        //[Required(ErrorMessage = "Введите должность")]
-        public string Post { get; set; }
 
         public int EmployerId { get; set; }
         public virtual Employer Employer { get; set; }
+
+        public virtual List<Error> Errors { get; set; }
+        public virtual List<Solution> Solutions { get; set; }
     }
 }
