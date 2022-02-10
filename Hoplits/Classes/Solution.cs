@@ -16,5 +16,8 @@ namespace Hoplits.Classes
         [MaxLength(500)]
         [Required(ErrorMessage = "Введите решение проблемы")]
         public string SolutionOfError { get; set; }
+
+        public virtual Error Error { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

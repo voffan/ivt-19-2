@@ -11,20 +11,21 @@ namespace Hoplits.Classes
     {
         public int id { get; set; }
         [MaxLength(20)]
-        [Required(ErrorMessage = "Введите логин")]
+        //[Required(ErrorMessage = "Введите логин")]
         public string Login { get; set; }
-        [Required(ErrorMessage = "Введите пароль")]
         [MaxLength(256)]
+        //[Required(ErrorMessage = "Введите пароль")]
         public string Password { get; set; }
         [MaxLength(50)]
-        [Required(ErrorMessage = "Введите ФИО")]
+        //[Required(ErrorMessage = "Введите ФИО")]
         public string FullName { get; set; }
         [MaxLength(30)]
-        [Required(ErrorMessage = "Введите номер телефона")]
+        //[Required(ErrorMessage = "Введите номер телефона")]
         public int PhoneNumber { get; set; }
         [MaxLength(20)]
-        [Required(ErrorMessage = "Введите должность")]
+        //[Required(ErrorMessage = "Введите должность")]
         public string Post { get; set; }
 
+        public virtual Employer Employees { get; set; }
     }
 }

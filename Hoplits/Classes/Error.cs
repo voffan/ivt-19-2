@@ -16,5 +16,8 @@ namespace Hoplits.Classes
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Введите дату")]
         public DateTime Date { get; set; }
+
+        public virtual Employee Employee { get; set; }
+        public virtual ErrorType ErrorType { get; set; }
     }
 }
