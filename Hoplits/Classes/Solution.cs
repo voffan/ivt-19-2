@@ -11,10 +11,10 @@ namespace Hoplits.Classes
     {
         public int id { get; set; }
         [MaxLength(500)]
-        [Required(ErrorMessage = "Введите описание решения")]
+        //[Required(ErrorMessage = "Введите описание решения")]
         public string Description { get; set; }
         [MaxLength(500)]
-        [Required(ErrorMessage = "Введите решение проблемы")]
+        //[Required(ErrorMessage = "Введите решение проблемы")]
         public string SolutionOfError { get; set; }
 
         public int ErrorId { get; set; }

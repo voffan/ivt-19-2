@@ -11,7 +11,7 @@ namespace Hoplits.Classes
     {
         public int id { get; set; }
         [MaxLength(50)]
-        [Required(ErrorMessage = "Введите название")]
+        //[Required(ErrorMessage = "Введите название")]
         public string name { get; set; }
     }
 }

@@ -11,10 +11,10 @@ namespace Hoplits.Classes
     {
         public int id { get; set; }
         [MaxLength(500)]
-        [Required(ErrorMessage = "Введите описание ошибки")]
+        //[Required(ErrorMessage = "Введите описание ошибки")]
         public string Description { get; set; }
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Введите дату")]
+        //[Required(ErrorMessage = "Введите дату")]
         public DateTime Date { get; set; }
 
         public int ErrorTypeId { get; set; }
