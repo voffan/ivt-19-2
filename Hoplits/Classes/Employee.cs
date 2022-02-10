@@ -28,5 +28,8 @@ namespace Hoplits.Classes
 
         public int EmployerId { get; set; }
         public virtual Employer Employer { get; set; }
+
+        public virtual List<Error> Errors { get; set; }
+        public virtual List<Solution> Solutions { get; set; }
     }
 }
