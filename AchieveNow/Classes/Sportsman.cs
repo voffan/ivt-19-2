@@ -12,7 +12,7 @@ namespace AchieveNow.Classes
     {
         public int Id { get; set; }
         [MaxLength(50)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         [Range(0,300)]
         public int Height { get; set; }
@@ -20,9 +20,9 @@ namespace AchieveNow.Classes
         public int Weight { get; set; }
         [MaxLength(50)]
         public int GenderId { get; set; }
-        public virtual Gender? Gender { get; set; }
+        public virtual Gender Gender { get; set; }
         public int CategoryId { get; set; }
-        public virtual Category? Category { get; set; }
-        public virtual List<Achievement_Sportsman> Achievement_Sportsmans { get; set; } = new();
+        public virtual Category Category { get; set; }
+        public virtual List<Achievement> Achievements { get; set; } = new();
     }
 }

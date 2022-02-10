@@ -12,9 +12,9 @@ namespace AchieveNow.Classes
     {
         public int Id { get; set; }
         [MaxLength(50)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
         public int PositionId { get; set; }
-        public virtual Position? Position { get; set; }
-        public virtual List<Employee_Competition> Employee_Competitions { get; set; } = new();
+        public virtual Position Position { get; set; }
+        public virtual List<Competition> Competitions { get; set; } = new();
     }
 }
