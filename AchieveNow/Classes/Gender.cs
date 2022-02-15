@@ -9,9 +9,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AchieveNow.Classes
 {
     public class Gender {
-        public int Id { get; set; }
+        /*public int Id { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
-        public virtual List<Sportsman> Sportsmen { get; set; } = new();
+        public virtual List<Sportsman> Sportsmen { get; set; } = new();*/
+
+        enum gender {
+            Male,
+            Female,
+            Genderqueer
+        }
     }
 }

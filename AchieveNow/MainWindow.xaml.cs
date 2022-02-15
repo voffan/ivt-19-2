@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AchieveNow.ProgramClasses;
+using AchieveNow.Classes;
 
 namespace AchieveNow
 {
@@ -24,6 +25,7 @@ namespace AchieveNow
         public MainWindow()
         {
             InitializeComponent();
+            MessageBox.Show("This is Message Box!");
 
             /*using (ApplicationContext db = new ApplicationContext())
             {
@@ -34,7 +36,7 @@ namespace AchieveNow
             {
                 var sportKinds = db.SportKinds.ToList();
                 Console.WriteLine("Список видов спорта:");
-                foreach ( var sportKind in sportKinds )
+                foreach (var sportKind in sportKinds)
                 {
                     Console.WriteLine($"{sportKind.Id}.{sportKind.Name}");
                 }
