@@ -57,6 +57,7 @@
     <Compile Include="Classes\Employee.cs" />
     <Compile Include="Classes\Genre.cs" />
     <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\LocationType.cs" />
     <Compile Include="Classes\Painting.cs" />
     <Compile Include="Classes\Position.cs" />
     <Compile Include="Classes\Status.cs" />

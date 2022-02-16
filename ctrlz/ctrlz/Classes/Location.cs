@@ -13,7 +13,8 @@ namespace ctrlz.Classes
         public int Id { get; set; }
         public string Name { get; set; }
         public string Adress { get; set; }
+        public string LocationType { get; set; }
 
-        public virtual List<Status> Statuses { get; set; }
+        public virtual List<Painting> Paintings { get; set; }
     }
 }
