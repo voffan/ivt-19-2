@@ -14,10 +14,11 @@ namespace AchieveNow.Classes
         public string Name { get; set; }
         public virtual List<Sportsman> Sportsmen { get; set; } = new();*/
 
-        enum gender {
-            Male,
-            Female,
-            Genderqueer
-        }
+        
+    }
+    enum gender {
+        Male,
+        Female,
+        Genderqueer
     }
 }
