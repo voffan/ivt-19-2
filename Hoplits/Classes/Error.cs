@@ -22,6 +22,5 @@ namespace Hoplits.Classes
         public virtual Employee Employee { get; set; }
 
         public virtual List<Solution> Solutions { get; set; }
-
     }
 }

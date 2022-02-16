@@ -21,7 +21,5 @@ namespace Hoplits.Classes
         public virtual Error Error { get; set; }
         public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
-
-        public virtual List<Solution> Solutions { get; set; }
     }
 }
