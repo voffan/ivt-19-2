@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AchieveNow.ProgramClasses
 {
-    public class Seethelistofjudges
+    public class SeeTheListOfJudges
     {
     }
 }
