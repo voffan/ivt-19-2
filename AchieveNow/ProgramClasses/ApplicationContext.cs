@@ -11,7 +11,6 @@ namespace AchieveNow.ProgramClasses
     internal class ApplicationContext : DbContext
     {
         public DbSet<Achievement> Achievements => Set<Achievement>();
-        public DbSet<Category> Categories => Set<Category>();
         public DbSet<Competition> Competitions => Set<Competition>();
         public DbSet<Employee> Employees => Set<Employee>();
         //public DbSet<Gender> Genders => Set<Gender>();
