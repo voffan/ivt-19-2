@@ -20,7 +20,7 @@ namespace AchieveNow.Classes
         public virtual Location Location { get; set; }
         public int SportKindId { get; set; }
         public virtual SportKind SportKind { get; set; }
-        public DateTime DateOfExecution { get; set; }
+        public DateOnly DateOfExecution { get; set; }
         public virtual List<Employee> Employees { get; set; } = new();
     }
 }

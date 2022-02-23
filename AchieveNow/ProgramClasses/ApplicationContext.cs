@@ -5,16 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.Classes;
-using Microsoft.Extensions.Configuration;
-using System.Text.Json;
-using System.IO;
 
 namespace AchieveNow.ProgramClasses
 {
     internal class ApplicationContext : DbContext
     {
         public DbSet<Achievement> Achievements => Set<Achievement>();
-        public DbSet<Category> Categories => Set<Category>();
         public DbSet<Competition> Competitions => Set<Competition>();
         public DbSet<Employee> Employees => Set<Employee>();
         //public DbSet<Gender> Genders => Set<Gender>();
