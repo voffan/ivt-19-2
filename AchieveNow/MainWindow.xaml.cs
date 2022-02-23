@@ -25,22 +25,21 @@ namespace AchieveNow
         public MainWindow()
         {
             InitializeComponent();
-            MessageBox.Show("This is Message Box!");
 
             /*using (ApplicationContext db = new ApplicationContext())
             {
                 SportKind sportKind = new SportKind(Name = "Полетино");
             }*/
 
-            using (ApplicationContext db = new ApplicationContext())
+            /*using (ApplicationContext db = new ApplicationContext())
             {
                 var sportKinds = db.SportKinds.ToList();
                 Console.WriteLine("Список видов спорта:");
                 foreach (var sportKind in sportKinds)
                 {
-                    Console.WriteLine($"{sportKind.Id}.{sportKind.Name}");
+                    MessageBox.Show($"{sportKind.Id}.{sportKind.Name}");
                 }
-            }
+            }*/
         }
     }
 }
