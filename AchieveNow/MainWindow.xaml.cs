@@ -26,20 +26,14 @@ namespace AchieveNow
         {
             InitializeComponent();
 
-            /*using (ApplicationContext db = new ApplicationContext())
-            {
-                SportKind sportKind = new SportKind(Name = "Полетино");
-            }*/
+            /*SeeTheListOfCompetitions competitions = new SeeTheListOfCompetitions();
+            competitions.ShowCompetitions();*/
 
-            /*using (ApplicationContext db = new ApplicationContext())
-            {
-                var sportKinds = db.SportKinds.ToList();
-                Console.WriteLine("Список видов спорта:");
-                foreach (var sportKind in sportKinds)
-                {
-                    MessageBox.Show($"{sportKind.Id}.{sportKind.Name}");
-                }
-            }*/
+            /*SeeTheListOfAchievements achievements = new SeeTheListOfAchievements();
+            achievements.ShowAchievements();*/
+
+            /*SeeTheListOfSportsmen sportsmen = new SeeTheListOfSportsmen();
+            sportsmen.ShowSportsmen();*/
         }
     }
 }
