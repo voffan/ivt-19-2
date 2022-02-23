@@ -10,8 +10,8 @@ namespace AchieveNow.Classes
 {
     public class Level
     {
-        /*public int Id { get; set; }
-        [MaxLength(50)]
+        //public int Id { get; set; }
+        /*[MaxLength(50)]
         public string Name { get; set; }
         public virtual List<Competition> Competitions { get; set; } = new();*/
 

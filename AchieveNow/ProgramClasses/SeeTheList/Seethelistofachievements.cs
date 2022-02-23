@@ -10,7 +10,7 @@ namespace AchieveNow.ProgramClasses
     public class Seethelistofachievements
     {
         ApplicationContext context = new ApplicationContext();
-       // var achievements = context.Achievements();
+       //var achievements = context.Achievements();
 
 
     }

@@ -1,0 +1,6 @@
+{
+  "Database": "database=AchieveNowDB;",
+  "Password": "password=ldIsSXJJoNtZww690VcW;",
+  "Server": "server=achievenow.crtrvtxtpali.ap-northeast-2.rds.amazonaws.com;",
+  "User": "user=admin;"
+}
