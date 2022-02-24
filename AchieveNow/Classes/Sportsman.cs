@@ -20,7 +20,7 @@ namespace AchieveNow.Classes
         public int Weight { get; set; }
         [MaxLength(50)]
         //public int GenderId { get; set; }
-        //public Gender Gender { get; set; }
+        public Gender Gender { get; set; }
         public int SportKindId { get; set; }
         public virtual SportKind SportKind { get; set; }
         public virtual List<Achievement> Achievements { get; set; } = new();
