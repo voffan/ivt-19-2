@@ -11,6 +11,7 @@ namespace ctrlz.Classes
     public class Painting
     {
         public int Id { get; set; }
+        [MaxLength(50)]
         public string Name { get; set; }
         public double Value { get; set; }
         public DateTime DateOfCreation { get; set; }
@@ -18,7 +19,6 @@ namespace ctrlz.Classes
         public virtual Author Author { get; set; }
         public int GenreId { get; set; }
         public virtual Genre Genre { get; set; }
-        public int StatusId { get; set; }
-        public virtual Status Status { get; set; }
+        public Status Status { get; set; }
     }
 }

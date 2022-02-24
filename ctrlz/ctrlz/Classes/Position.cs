@@ -11,6 +11,7 @@ namespace ctrlz.Classes
     public class Position
     {
         public int Id { get; set; }
+        [MaxLength(50)]
         public string Name { get; set; }
 
         public virtual List<Employee> Employees { get; set; }

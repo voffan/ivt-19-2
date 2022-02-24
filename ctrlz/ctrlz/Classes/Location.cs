@@ -11,9 +11,10 @@ namespace ctrlz.Classes
     public class Location
     {
         public int Id { get; set; }
+        [MaxLength(50)]
         public string Name { get; set; }
         public string Adress { get; set; }
-        public string LocationType { get; set; }
+        public LocationType LocationType { get; set; }
 
         public virtual List<Painting> Paintings { get; set; }
     }
