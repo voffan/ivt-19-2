@@ -7,10 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using AchieveNow.Classes;
 using Newtonsoft.Json;
 using System.IO;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace AchieveNow.ProgramClasses
 {
-    internal class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<Achievement> Achievements => Set<Achievement>();
         public DbSet<Competition> Competitions => Set<Competition>();
@@ -27,11 +28,30 @@ namespace AchieveNow.ProgramClasses
             Database.EnsureCreated();
         }
 
+        public ApplicationContext(DbContextOptions options) : base(options)
+        {
+
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var configuration = JsonConvert.DeserializeObject<ConfigurationDB>(File.ReadAllText("ConfigurationDB.json"));
             optionsBuilder.UseMySql(configuration.Server + configuration.User + configuration.Password + configuration.Database,
                 new MySqlServerVersion(new Version(8, 0, 27)));
+        }
+
+    }
+
+    public class BloggingContextFactory : IDesignTimeDbContextFactory<ApplicationContext>
+    {
+        public ApplicationContext CreateDbContext(string[] args)
+        {
+            //var configuration = JsonConvert.DeserializeObject<ConfigurationDB>(File.ReadAllText("ConfigurationDB.json"));
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseMySql("server=achievenow.crtrvtxtpali.ap-northeast-2.rds.amazonaws.com;user=admin;password=ldIsSXJJoNtZww690VcW;database=AchieveNowDB;",
+                new MySqlServerVersion(new Version(8, 0, 27)));
+
+            return new ApplicationContext(optionsBuilder.Options);
         }
     }
 }
