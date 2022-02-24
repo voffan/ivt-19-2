@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.Classes;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace AchieveNow.ProgramClasses
 {
@@ -24,9 +26,11 @@ namespace AchieveNow.ProgramClasses
         {
             Database.EnsureCreated();
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=achievenow.crtrvtxtpali.ap-northeast-2.rds.amazonaws.com;user=admin;password=ldIsSXJJoNtZww690VcW;database=AchieveNowDB;",
+            var configuration = JsonConvert.DeserializeObject<ConfigurationDB>(File.ReadAllText("ConfigurationDB.json"));
+            optionsBuilder.UseMySql(configuration.Server + configuration.User + configuration.Password + configuration.Database,
                 new MySqlServerVersion(new Version(8, 0, 27)));
         }
     }
