@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Yaxel.Classes
 {
-    internal class Status
+    enum Status
     {
-        enum status
-        {
-            Works,
-            InRepair,
-            WritterOff
-        }
+        Works,
+        InRepair,
+        WritterOff
     }
 }

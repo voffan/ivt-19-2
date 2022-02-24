@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace Yaxel.Classes
 {
-    internal class AttrType
+    enum AttrType
     {
-        enum attrType
-        {
-            Frequency,
-            CoreCount,
-            CacheSize,
-            Transistors,
-            PowerConsumption,
-            MemorySize,
-            Power
-        }
+        Frequency,
+        CoreCount,
+        CacheSize,
+        Transistors,
+        PowerConsumption,
+        MemorySize,
+        Power
     }
 }

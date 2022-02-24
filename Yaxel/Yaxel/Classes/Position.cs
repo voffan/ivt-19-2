@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Yaxel.Classes
 {
-    internal class Position
+    enum Position
     {
-        enum position
-        {
-            Sysadmin,
-            Other
-        }
+        Sysadmin,
+        Other
     }
 }

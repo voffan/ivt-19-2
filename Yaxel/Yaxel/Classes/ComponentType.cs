@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace Yaxel.Classes
 {
-    internal class ComponentType
+    enum ComponentType
     {
-        enum componentType
-        {
-            CPU,
-            Motherboard,
-            RAM,
-            Video,
-            HDD,
-            SSD,
-            Net
-        }
+        CPU,
+        Motherboard,
+        RAM,
+        Video,
+        HDD,
+        SSD,
+        Net
     }
 }

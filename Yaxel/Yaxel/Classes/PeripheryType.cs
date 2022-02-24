@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace Yaxel.Classes
 {
-    internal class PeripheryType
+    enum PeripheryType
     {
-        enum peripheryType
-        {
-            Monitor,
-            Keyboard,
-            Mouse,
-            GraphicTablet,
-            Microphone,
-            Camera,
-            Scanner,
-            Printer
-        }
+        Monitor,
+        Keyboard,
+        Mouse,
+        GraphicTablet,
+        Microphone,
+        Camera,
+        Scanner,
+        Printer
     }
 }
