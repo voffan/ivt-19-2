@@ -8,7 +8,6 @@ namespace Yaxel.Classes
 {
     internal class AttrType
     {
-        //модификатор доступа?
         enum attrType
         {
             Frequency,

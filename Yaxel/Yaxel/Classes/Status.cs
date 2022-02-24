@@ -8,7 +8,6 @@ namespace Yaxel.Classes
 {
     internal class Status
     {
-        //модификатор доступа?
         enum status
         {
             Works,

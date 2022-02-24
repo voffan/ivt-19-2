@@ -8,7 +8,6 @@ namespace Yaxel.Classes
 {
     internal class ComponentType
     {
-        //модификатор доступа?
         enum componentType
         {
             CPU,

@@ -16,5 +16,8 @@ namespace Yaxel.Classes
         public string Password { get; set; }
         public int PositionId { get; set; }
         public virtual Position Position { get; set; }
+
+        public virtual List<Computer> Computers { get; set; }
+        public virtual List<Periphery> peripheries { get; set; }
     }
 }

@@ -14,5 +14,8 @@ namespace Yaxel.Classes
         public string Name { get; set; }
         public int AttrTypeId { get; set; }
         public virtual AttrType AttrType { get; set; }
+
+        public int ComponentId { get; set; }
+        public virtual Component Component { get; set; }
     }
 }

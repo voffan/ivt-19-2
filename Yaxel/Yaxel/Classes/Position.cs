@@ -8,7 +8,6 @@ namespace Yaxel.Classes
 {
     internal class Position
     {
-        //модификатор доступа?
         enum position
         {
             Sysadmin,
