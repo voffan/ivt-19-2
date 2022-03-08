@@ -1,0 +1,16 @@
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\bin\Debug\Yaxel.exe.config
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\bin\Debug\Yaxel.exe
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\bin\Debug\Yaxel.pdb
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\bin\Debug\EntityFramework.dll
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\bin\Debug\EntityFramework.xml
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.AssemblyReference.cache
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.SuggestedBindingRedirects.cache
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Properties.Resources.resources
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.GenerateResource.cache
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.CoreCompileInputs.cache
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.CopyComplete
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.exe
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.pdb
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Form1.resources
