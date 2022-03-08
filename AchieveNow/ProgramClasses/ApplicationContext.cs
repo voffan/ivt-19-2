@@ -39,19 +39,5 @@ namespace AchieveNow.ProgramClasses
             optionsBuilder.UseMySql(configuration.Server + configuration.User + configuration.Password + configuration.Database,
                 new MySqlServerVersion(new Version(8, 0, 27)));
         }
-
-    }
-
-    public class BloggingContextFactory : IDesignTimeDbContextFactory<ApplicationContext>
-    {
-        public ApplicationContext CreateDbContext(string[] args)
-        {
-            //var configuration = JsonConvert.DeserializeObject<ConfigurationDB>(File.ReadAllText("ConfigurationDB.json"));
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
-            optionsBuilder.UseMySql("server=achievenow.crtrvtxtpali.ap-northeast-2.rds.amazonaws.com;user=admin;password=ldIsSXJJoNtZww690VcW;database=AchieveNowDB;",
-                new MySqlServerVersion(new Version(8, 0, 27)));
-
-            return new ApplicationContext(optionsBuilder.Options);
-        }
     }
 }
