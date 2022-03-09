@@ -28,11 +28,6 @@ namespace AchieveNow.ProgramClasses
             Database.EnsureCreated();
         }
 
-        public ApplicationContext(DbContextOptions options) : base(options)
-        {
-
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var configuration = JsonConvert.DeserializeObject<ConfigurationDB>(File.ReadAllText("ConfigurationDB.json"));

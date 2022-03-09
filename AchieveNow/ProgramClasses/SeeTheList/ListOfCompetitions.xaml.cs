@@ -32,8 +32,8 @@ namespace AchieveNow.ProgramClasses.SeeTheList
             using (ApplicationContext context = new ApplicationContext())
             {
                 var query = context.Competitions
-                    .Include(c => c.Location)
-                    .Include(c => c.SportKind)
+                    .Include("Location")
+                    .Include("SportKind")
                     .ToList();
 
                 competitionsGrid.ItemsSource = query;
