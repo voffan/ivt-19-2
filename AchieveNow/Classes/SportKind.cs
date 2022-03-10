@@ -19,5 +19,9 @@ namespace AchieveNow.Classes
         }
         public virtual List<Competition> Competitions { get; set; } = new();
         public virtual List<Sportsman> Sportsmen { get; set; } = new();
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

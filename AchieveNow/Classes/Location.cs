@@ -14,5 +14,9 @@ namespace AchieveNow.Classes
         [MaxLength(50)]
         public string Name { get; set; }
         public virtual List<Competition> Competitions { get; set; } = new();
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
