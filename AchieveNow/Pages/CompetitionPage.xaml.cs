@@ -12,17 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AchieveNow.Classes;
 using Microsoft.EntityFrameworkCore;
+using AchieveNow.ProgramClasses;
 
-namespace AchieveNow.ProgramClasses.SeeTheList
+namespace AchieveNow.Pages
 {
     /// <summary>
-    /// Interaction logic for ListOfCompetitions.xaml
+    /// Interaction logic for CompetitionPage.xaml
     /// </summary>
-    public partial class ListOfCompetitions : Page
+    public partial class CompetitionPage : Page
     {
-        public ListOfCompetitions()
+        public CompetitionPage()
         {
             InitializeComponent();
         }
@@ -37,18 +37,6 @@ namespace AchieveNow.ProgramClasses.SeeTheList
                     .ToList();
 
                 competitionsGrid.ItemsSource = query;
-
-                /*var competitions = context.Competitions
-                    .Include(c => c.Location)
-                    .Include(c => c.SportKind)
-                    .ToList();
-                List<Competition> competitionList = new List<Competition>();
-                foreach (Competition competition in competitions)
-                {
-                    new Competition { Id = competition.Id, Name = competition.Name, Location = competition.Location, SportKind = competition.SportKind, DateOfExecution = competition.DateOfExecution };
-                }
-
-                competitionsGrid.ItemsSource = competitionList;*/
             }
         }
 
