@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AchieveNow.ProgramClasses;
 using AchieveNow.Classes;
-using AchieveNow.Pages;
+using AchieveNow.Pages.Competition;
 
 namespace AchieveNow
 {
@@ -27,7 +27,11 @@ namespace AchieveNow
         {
             InitializeComponent();
 
-            MainFrame.Content = new CompetitionMainPage();
+            //MainFrame.Content = new CompetitionMainPage();
+
+            var competitionAddWindow = new CompetitionAddWindow();
+            //competitionAddWindow.Owner = this;
+            competitionAddWindow.ShowDialog();
 
             /*SeeTheListOfCompetitions competitions = new SeeTheListOfCompetitions();
             competitions.ShowCompetitions();*/

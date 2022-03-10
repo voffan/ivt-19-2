@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.ProgramClasses;
 
-namespace AchieveNow.Pages
+namespace AchieveNow.Pages.Competition
 {
     /// <summary>
     /// Interaction logic for CompetitionPage.xaml

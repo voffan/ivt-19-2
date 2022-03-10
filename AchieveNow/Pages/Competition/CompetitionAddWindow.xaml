@@ -1,0 +1,16 @@
+﻿<Window x:Class="AchieveNow.Pages.Competition.CompetitionAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AchieveNow.Pages.Competition"
+        mc:Ignorable="d"
+        Title="CompetitionAddWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Введите название соревнования" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите локацию соревнования" HorizontalAlignment="Center" Margin="0,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите вид соревнования" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top"/>
+        <Button Content="Добавить" HorizontalAlignment="Center" Margin="0,320,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,134,0,0"/>
+    </Grid>
+</Window>
