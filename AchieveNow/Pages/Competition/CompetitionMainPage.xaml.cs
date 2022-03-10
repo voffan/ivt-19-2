@@ -20,9 +20,9 @@ namespace AchieveNow.Pages
     /// <summary>
     /// Interaction logic for CompetitionPage.xaml
     /// </summary>
-    public partial class CompetitionPage : Page
+    public partial class CompetitionMainPage : Page
     {
-        public CompetitionPage()
+        public CompetitionMainPage()
         {
             InitializeComponent();
         }

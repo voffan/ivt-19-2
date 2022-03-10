@@ -27,7 +27,7 @@ namespace AchieveNow
         {
             InitializeComponent();
 
-            MainFrame.Content = new CompetitionPage();
+            MainFrame.Content = new CompetitionMainPage();
 
             /*SeeTheListOfCompetitions competitions = new SeeTheListOfCompetitions();
             competitions.ShowCompetitions();*/
