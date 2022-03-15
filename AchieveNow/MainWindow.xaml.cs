@@ -27,11 +27,7 @@ namespace AchieveNow
         {
             InitializeComponent();
 
-            //MainFrame.Content = new CompetitionMainPage();
-
-            var competitionAddWindow = new CompetitionAddWindow();
-            //competitionAddWindow.Owner = this;
-            competitionAddWindow.ShowDialog();
+            MainFrame.Content = new CompetitionMainPage();
 
             /*SeeTheListOfCompetitions competitions = new SeeTheListOfCompetitions();
             competitions.ShowCompetitions();*/
