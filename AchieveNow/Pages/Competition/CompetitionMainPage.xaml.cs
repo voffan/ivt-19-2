@@ -27,17 +27,32 @@ namespace AchieveNow.Pages.Competition
             InitializeComponent();
         }
 
+        private void ShowCompetitions() {
+            try
+            {
+                using (ApplicationContext context = new ApplicationContext())
+                {
+                    var query = context.Competitions
+                        .Include("Location")
+                        .Include("SportKind")
+                        .ToList();
+
+                    competitionsGrid.ItemsSource = query;
+                }
+            }
+            catch (Exception ex)
+            {
+                competitionsGrid.ItemsSource = null;
+                ShowCompetitionErrorWindow showCompetitionErrorWindow = new ShowCompetitionErrorWindow();
+                showCompetitionErrorWindow.ShowDialog();
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            using (ApplicationContext context = new ApplicationContext())
-            {
-                var query = context.Competitions
-                    .Include("Location")
-                    .Include("SportKind")
-                    .ToList();
-
-                competitionsGrid.ItemsSource = query;
-            }
+            ShowCompetitions();
         }
 
         private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
@@ -46,6 +61,60 @@ namespace AchieveNow.Pages.Competition
             {
                 context.Dispose();
             }
+        }
+
+        private void Button_Achievements(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new AchievementMainPage());
+        }
+
+        private void Button_Sportsmen(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new SportsmanMainPage());
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            ShowCompetitions();
+        }
+
+        private void AddCompetition_Click(object sender, RoutedEventArgs e)
+        {
+            var competitionAddWindow = new CompetitionAddWindow();
+            competitionAddWindow.ShowDialog();
+
+            // Обновить таблицу после закрытия окна
+            ShowCompetitions();
+        }
+
+        private void Name_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Name.Text = "";
+        }
+
+        private void Name_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Name.Text = "Название";
+        }
+
+        private void Location_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Location.Text = "";
+        }
+
+        private void Location_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Location.Text = "Локация";
+        }
+
+        private void SportKind_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SportKind.Text = "";
+        }
+
+        private void SportKind_LostFocus(object sender, RoutedEventArgs e)
+        {
+            SportKind.Text = "Вид спорта";
         }
     }
 }

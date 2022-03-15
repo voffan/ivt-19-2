@@ -4,25 +4,51 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AchieveNow.Pages.Competition"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="Список мероприятий"
       Loaded="Page_Loaded"
-      ContextMenuClosing="Page_ContextMenuClosing">
+      ContextMenuClosing="Page_ContextMenuClosing"
+      Background="LightGray">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="0.08*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="competitionsGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.14*"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="Соревнования" Margin="0, 0, 20, 0" Background="Gray"></Button>
+            <Button Content="Достижения" Margin="0, 0, 20, 0" Click="Button_Achievements"></Button>
+            <Button Content="Спортсмены" Margin="0, 0, 20, 0" Click="Button_Sportsmen"></Button>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
+            <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
+            <TextBox x:Name="Name" Text="Название" HorizontalContentAlignment="Center" GotFocus="Name_GotFocus" LostFocus="Name_LostFocus" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBox x:Name="Location" Text="Локация" HorizontalContentAlignment="Center" GotFocus="Location_GotFocus" LostFocus="Location_LostFocus" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBox x:Name="SportKind" Text="Вид спорта" HorizontalContentAlignment="Center" GotFocus="SportKind_GotFocus" LostFocus="SportKind_LostFocus" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
+            <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18"></Button>
+        </WrapPanel>
+
+        <DataGrid AutoGenerateColumns="False" x:Name="competitionsGrid" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="150"/>
-                <DataGridTextColumn Binding="{Binding Location}" Header="Локация" Width="120"/>
-                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="100"/>
-                <DataGridTextColumn Binding="{Binding DateOfExecution}" Header="Дата проведения" Width="110"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Location}" Header="Локация" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding DateOfExecution}" Header="Дата проведения" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Button x:Name="AddCompetition" Grid.Row="0" Grid.Column="0" Click="AddCompetition_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
+            <TextBlock TextAlignment="Center">Добавить<LineBreak/>Соревнование</TextBlock>
+        </Button>
+        <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
 </Page>

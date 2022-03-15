@@ -5,12 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Competition"
         mc:Ignorable="d"
-        Title="CompetitionAddWindow" Height="450" Width="800">
+        Title="Окно добавления соревнования" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Label Content="Введите название соревнования" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top"/>
-        <Label Content="Введите локацию соревнования" HorizontalAlignment="Center" Margin="0,72,0,0" VerticalAlignment="Top"/>
-        <Label Content="Введите вид соревнования" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top"/>
-        <Button Content="Добавить" HorizontalAlignment="Center" Margin="0,320,0,0" VerticalAlignment="Top"/>
-        <DatePicker HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,134,0,0"/>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Название</TextBlock>
+            <TextBox x:Name="Name" MinWidth="150"></TextBox>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Локация</TextBlock>
+            <TextBox x:Name="Location" MinWidth="150"></TextBox>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Вид спорта</TextBlock>
+            <TextBox x:Name="SportKind" MinWidth="150"></TextBox>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Дата проведения</TextBlock>
+            <DatePicker></DatePicker>
+        </WrapPanel>
+
+        <Button x:Name="AddButton" Content="Добавить" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" IsDefault="True" Click="AddButton_Click"></Button>
     </Grid>
 </Window>

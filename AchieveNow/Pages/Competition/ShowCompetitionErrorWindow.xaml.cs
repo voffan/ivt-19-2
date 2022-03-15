@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 namespace AchieveNow.Pages.Competition
 {
     /// <summary>
-    /// Interaction logic for CompetitionAddWindow.xaml
+    /// Interaction logic for ShowCompetitionErrorWindow.xaml
     /// </summary>
-    public partial class CompetitionAddWindow : Window
+    public partial class ShowCompetitionErrorWindow : Window
     {
-        public CompetitionAddWindow()
+        public ShowCompetitionErrorWindow()
         {
             InitializeComponent();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }
