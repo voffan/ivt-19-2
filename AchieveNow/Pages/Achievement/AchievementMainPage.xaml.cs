@@ -14,37 +14,35 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.ProgramClasses;
-using AchieveNow.Pages.Achievement;
-using AchieveNow.Pages.Sportsman;
 
-namespace AchieveNow.Pages.Competition
+namespace AchieveNow.Pages.Achievement
 {
     /// <summary>
-    /// Interaction logic for CompetitionPage.xaml
+    /// Interaction logic for AchievementPage.xaml
     /// </summary>
-    public partial class CompetitionMainPage : Page
+    public partial class AchievementMainPage : Page
     {
-        public CompetitionMainPage()
+        public AchievementMainPage()
         {
             InitializeComponent();
         }
 
-        private void ShowCompetitions() {
+        private void ShowAchievements() {
             try
             {
                 using (ApplicationContext context = new ApplicationContext())
                 {
-                    var query = context.Competitions
+                    var query = context.Achievements
                         .Include("Location")
                         .Include("SportKind")
                         .ToList();
 
-                    competitionsGrid.ItemsSource = query;
+                    AchievementsGrid.ItemsSource = query;
                 }
             }
             catch (Exception ex)
             {
-                competitionsGrid.ItemsSource = null;
+                AchievementsGrid.ItemsSource = null;
                 ShowErrorWindow showErrorWindow = new ShowErrorWindow();
                 showErrorWindow.ShowDialog();
 
@@ -54,7 +52,7 @@ namespace AchieveNow.Pages.Competition
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ShowCompetitions();
+            ShowAchievements();
         }
 
         private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
@@ -67,26 +65,26 @@ namespace AchieveNow.Pages.Competition
 
         private void Button_Achievements(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AchievementMainPage());
+            //NavigationService.Navigate(new AchievementMainPage());
         }
 
         private void Button_Sportsmen(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SportsmanMainPage());
+            //NavigationService.Navigate(new SportsmanMainPage());
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            ShowCompetitions();
+            ShowAchievements();
         }
 
-        private void AddCompetition_Click(object sender, RoutedEventArgs e)
+        private void AddAchievement_Click(object sender, RoutedEventArgs e)
         {
-            var competitionAddWindow = new CompetitionAddWindow();
-            competitionAddWindow.ShowDialog();
+            var AchievementAddWindow = new AchievementAddWindow();
+            AchievementAddWindow.ShowDialog();
 
             // Обновить таблицу после закрытия окна
-            ShowCompetitions();
+            ShowAchievements();
         }
 
         private void Name_GotFocus(object sender, RoutedEventArgs e)

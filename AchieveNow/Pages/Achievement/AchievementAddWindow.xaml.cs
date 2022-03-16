@@ -12,19 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AchieveNow.Pages.Competition
+namespace AchieveNow.Pages.Achievement
 {
     /// <summary>
-    /// Interaction logic for ShowCompetitionErrorWindow.xaml
+    /// Interaction logic for CompetitionAddWindow.xaml
     /// </summary>
-    public partial class ShowCompetitionErrorWindow : Window
+    public partial class AchievementAddWindow : Window
     {
-        public ShowCompetitionErrorWindow()
+        public AchievementAddWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }
