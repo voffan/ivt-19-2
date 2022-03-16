@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.ProgramClasses;
+using AchieveNow.Pages.Competition;
+using AchieveNow.Pages.Sportsman;
 
 namespace AchieveNow.Pages.Achievement
 {
@@ -63,14 +65,14 @@ namespace AchieveNow.Pages.Achievement
             }
         }
 
-        private void Button_Achievements(object sender, RoutedEventArgs e)
+        private void Button_Competitions(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new AchievementMainPage());
+            NavigationService.Navigate(new CompetitionMainPage());
         }
 
         private void Button_Sportsmen(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new SportsmanMainPage());
+            NavigationService.Navigate(new SportsmanMainPage());
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)

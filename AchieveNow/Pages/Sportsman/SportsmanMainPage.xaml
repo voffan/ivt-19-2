@@ -22,9 +22,9 @@
         </Grid.ColumnDefinitions>
 
         <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Соревнования" Margin="0, 0, 20, 0" Background="Gray"></Button>
+            <Button Content="Соревнования" Margin="0, 0, 20, 0" Click="Button_Competitions"></Button>
             <Button Content="Достижения" Margin="0, 0, 20, 0" Click="Button_Achievements"></Button>
-            <Button Content="Спортсмены" Margin="0, 0, 20, 0" Click="Button_Sportsmen"></Button>
+            <Button Content="Спортсмены" Margin="0, 0, 20, 0" Background="Gray"></Button>
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
@@ -47,7 +47,7 @@
         </DataGrid>
 
         <Button x:Name="AddSportsman" Grid.Row="0" Grid.Column="0" Click="AddSportsman_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
-            <TextBlock TextAlignment="Center">Добавить<LineBreak/>Соревнование</TextBlock>
+            <TextBlock TextAlignment="Center">Добавить<LineBreak/>спортсмена</TextBlock>
         </Button>
         <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
