@@ -1,7 +1,7 @@
 # ivt-19-2
 ## Hoplits
-### Semyon
+### Semen
 ### Timur
 ### Aiaal
 ### Kirill
-### Konstantin          
+### Konstantine
