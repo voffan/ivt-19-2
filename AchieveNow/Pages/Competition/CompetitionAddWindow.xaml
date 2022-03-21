@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Competition"
         mc:Ignorable="d"
-        Title="Окно добавления соревнования" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        
+        Title="Окно добавления соревнования" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -22,17 +23,17 @@
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Локация</TextBlock>
-            <TextBox x:Name="Location" MinWidth="150"></TextBox>
+            <ComboBox x:Name="Location_ComboBox" IsEditable="False" StaysOpenOnEdit="True" SelectionChanged="Location_SelectionChanged"></ComboBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Вид спорта</TextBlock>
-            <TextBox x:Name="SportKind" MinWidth="150"></TextBox>
+            <ComboBox x:Name="SportKind_ComboBox" IsEditable="False" StaysOpenOnEdit="True" SelectionChanged="SportKind_SelectionChanged"></ComboBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Дата проведения</TextBlock>
-            <DatePicker></DatePicker>
+            <DatePicker x:Name="DateOfExecution" SelectedDateChanged="DateOfExecution_SelectedDateChanged"></DatePicker>
         </WrapPanel>
 
         <Button x:Name="AddButton" Content="Добавить" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" IsDefault="True" Click="AddButton_Click"></Button>
