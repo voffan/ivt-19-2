@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.14*"/>
+            <ColumnDefinition Width="0.20*"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -29,9 +29,13 @@
 
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
-            <TextBox x:Name="Name" Text="Название" HorizontalContentAlignment="Center" GotFocus="Name_GotFocus" LostFocus="Name_LostFocus" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBox x:Name="Location" Text="Локация" HorizontalContentAlignment="Center" GotFocus="Location_GotFocus" LostFocus="Location_LostFocus" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBox x:Name="SportKind" Text="Вид спорта" HorizontalContentAlignment="Center" GotFocus="SportKind_GotFocus" LostFocus="SportKind_LostFocus" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBox x:Name="Name" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBlock Text="Локация" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBox x:Name="Location" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBlock Text="Вид спорта" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBox x:Name="SportKind" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBlock Text="Дата проведения" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
             <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18"></Button>
         </WrapPanel>

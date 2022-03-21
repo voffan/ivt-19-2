@@ -88,35 +88,5 @@ namespace AchieveNow.Pages.Competition
             // Обновить таблицу после закрытия окна
             ShowCompetitions();
         }
-
-        private void Name_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Name.Text = "";
-        }
-
-        private void Name_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Name.Text = "Название";
-        }
-
-        private void Location_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Location.Text = "";
-        }
-
-        private void Location_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Location.Text = "Локация";
-        }
-
-        private void SportKind_GotFocus(object sender, RoutedEventArgs e)
-        {
-            SportKind.Text = "";
-        }
-
-        private void SportKind_LostFocus(object sender, RoutedEventArgs e)
-        {
-            SportKind.Text = "Вид спорта";
-        }
     }
 }
