@@ -31,7 +31,7 @@
     <Page Update="Pages\Achievement\AchievementMainPage.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-    <Page Update="Pages\ShowCompetitionErrorWindow.xaml">
+    <Page Update="Pages\DatabaseConnectionErrorWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>
