@@ -15,12 +15,12 @@ namespace AchieveNow.Classes
 
     public enum Level
     {
-        Municipal,
-        District,
-        Regional,
-        Interregional,
-        Nationwide,
-        International,
-        Worldwide
+        Муниципальный,
+        Районный,
+        Региональный,
+        Межрегиональный,
+        Всенародный,
+        Международный,
+        Всемирный
     }
 }
