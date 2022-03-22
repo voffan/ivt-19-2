@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace AchieveNow.Classes
 {
     public class Competition
@@ -22,5 +21,14 @@ namespace AchieveNow.Classes
         public virtual SportKind SportKind { get; set; }
         public DateOnly DateOfExecution { get; set; }
         public virtual List<Employee> Employees { get; set; } = new();
+
+        public Competition(string name, Level level, int locationId, int sportKindId, DateOnly dateOfExecution)
+        {
+            Name = name;
+            Level = level;
+            LocationId = locationId;
+            SportKindId = sportKindId;
+            DateOfExecution = dateOfExecution;
+        }
     }
 }

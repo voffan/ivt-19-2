@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AchieveNow.Pages.Competition"
         mc:Ignorable="d"
         
-        Title="Окно добавления соревнования" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="Окно добавления соревнования" Height="380" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -14,28 +14,42 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
 
-        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Название</TextBlock>
-            <TextBox x:Name="Name" MinWidth="150"></TextBox>
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 15, 0, 0">
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 3">Название</TextBlock>
+            <TextBox x:Name="Name_TextBox" MinWidth="150"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Локация</TextBlock>
-            <ComboBox x:Name="Location_ComboBox" IsEditable="False" StaysOpenOnEdit="True" SelectionChanged="Location_SelectionChanged"></ComboBox>
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Уровень</TextBlock>
+            <ComboBox x:Name="Level_ComboBox" IsEditable="False" StaysOpenOnEdit="True"></ComboBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Вид спорта</TextBlock>
-            <ComboBox x:Name="SportKind_ComboBox" IsEditable="False" StaysOpenOnEdit="True" SelectionChanged="SportKind_SelectionChanged"></ComboBox>
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Локация</TextBlock>
+            <ComboBox x:Name="Location_ComboBox" IsEditable="False" StaysOpenOnEdit="True"></ComboBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Дата проведения</TextBlock>
-            <DatePicker x:Name="DateOfExecution" SelectedDateChanged="DateOfExecution_SelectedDateChanged"></DatePicker>
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Вид спорта</TextBlock>
+            <ComboBox x:Name="SportKind_ComboBox" IsEditable="False" StaysOpenOnEdit="True"></ComboBox>
         </WrapPanel>
 
-        <Button x:Name="AddButton" Content="Добавить" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" IsDefault="True" Click="AddButton_Click"></Button>
+        <WrapPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Дата проведения</TextBlock>
+            <DatePicker x:Name="DateOfExecution"></DatePicker>
+        </WrapPanel>
+
+        <Button x:Name="AddButton" Content="Добавить" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddButton_Click"></Button>
+        
+        <Menu VerticalAlignment="Top" Height="18" FontSize="14">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Обновить" Click="Refresh_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="Закрыть" Click="Exit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

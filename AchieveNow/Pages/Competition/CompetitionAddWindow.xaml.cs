@@ -29,96 +29,155 @@ namespace AchieveNow.Pages.Competition
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            using (ApplicationContext context = new ApplicationContext())
+            foreach (Level level in Enum.GetValues(typeof(Level)))
             {
-                var locations = context.Locations.ToList();
+                Level_ComboBox.Items.Add(level);
+            }
 
-                foreach (Location location in locations)
+            ListOfLocationsAndSporkinds();
+        }
+
+        //Вывести в Combobox данные из таблицы Locations и Sportkinds
+        private void ListOfLocationsAndSporkinds()
+        {
+            Location_ComboBox.Items.Clear();
+            SportKind_ComboBox.Items.Clear();
+
+            try
+            {
+                using (ApplicationContext context = new ApplicationContext())
                 {
-                    Location_ComboBox.Items.Add(location);
+                    var locations = context.Locations.ToList();
+                    foreach (Location location in locations)
+                    {
+                        Location_ComboBox.Items.Add(location);
+                    }
+
+                    Location_ComboBox.DisplayMemberPath = "Name";
+                    Location_ComboBox.SelectedValuePath = "Id";
+
+                    var sportKinds = context.SportKinds.ToList();
+                    foreach (SportKind sportKind in sportKinds)
+                    {
+                        SportKind_ComboBox.Items.Add(sportKind);
+                    }
+
+                    SportKind_ComboBox.DisplayMemberPath = "Name";
+                    SportKind_ComboBox.SelectedValuePath = "Id";
                 }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
+                showErrorWindow.ShowDialog();
 
-                Location_ComboBox.DisplayMemberPath = "Name";
-                Location_ComboBox.SelectedValuePath = "Id";
-
-                var sportKinds = context.SportKinds.ToList();
-
-                foreach (SportKind sportKind in sportKinds)
-                {
-                    SportKind_ComboBox.Items.Add(sportKind);
-                }
-
-                SportKind_ComboBox.DisplayMemberPath = "Name";
-                SportKind_ComboBox.SelectedValuePath = "Id";
+                Console.WriteLine(ex.Message);
             }
         }
 
-        private void Location_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(Location_ComboBox.SelectedValue.ToString());
+            ListOfLocationsAndSporkinds();
         }
 
-        private void SportKind_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(SportKind_ComboBox.SelectedValue.ToString());
-        }
-
-        private void DateOfExecution_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            /*DateTime? dateOfExecution = DateOfExecution.SelectedDate;
-            if (dateOfExecution >= DateTime.Today)
-            {
-                MessageBox.Show(dateOfExecution.Value.Date.ToShortDateString());
-            }
-            else
-            {
-                MessageBox.Show("Неправильно выбрана дата!");
-            }*/
+            Close();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Name.Text == "")
+            if (Name_TextBox.Text == "")
             {
                 MessageBox.Show("В названии пусто");
+                return;
             }
 
-            /*if (Location_ComboBox.SelectedValue != null && Int32.TryParse(Location_ComboBox.SelectedValue.ToString(), out int locationId))
+            if (Name_TextBox.Text.Length > 50)
             {
-                MessageBox.Show(locationId.ToString());
-            }
-            else
-            {
-                MessageBox.Show("Ничего не выбрано");
+                MessageBox.Show("Название не должно превышать 50 символов");
+                return;
             }
 
-            if (SportKind_ComboBox.SelectedValue != null && Int32.TryParse(SportKind_ComboBox.SelectedValue.ToString(), out int sportKindId))
-            {
-                MessageBox.Show(sportKindId.ToString());
-            }
-            else
-            {
-                MessageBox.Show("Ничего не выбрано");
-            }*/
 
-            if (DateOfExecution.SelectedDate.ToString() != "")
+            if (Level_ComboBox.SelectedValue == null)
             {
-                DateTime? dateOfExecution = DateOfExecution.SelectedDate;
-                if (dateOfExecution >= DateTime.Today)
+                MessageBox.Show("Выберите уровень");
+                return;
+            }
+
+
+            if (Location_ComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите локацию");
+                return;
+            }
+
+            int locationId;
+            try
+            {
+                Int32.TryParse(Location_ComboBox.SelectedValue.ToString(), out int locationIdParsed);
+                locationId = locationIdParsed;
+            }
+            catch
+            {
+                MessageBox.Show("Неизвестная ошибка при выборе локации");
+                return;
+            }
+
+
+            int sportKindId;
+            if (SportKind_ComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите вид спорта");
+                return;
+            }
+
+            try
+            {
+                Int32.TryParse(SportKind_ComboBox.SelectedValue.ToString(), out int sportKindIdParsed);
+                sportKindId = sportKindIdParsed;
+            }
+            catch
+            {
+                MessageBox.Show("Неизвестная ошибка при выборе вида спорта");
+                return;
+            }
+
+
+            if (DateOfExecution.SelectedDate.ToString() == "")
+            {
+                MessageBox.Show("Выберите дату проведения");
+                return;
+            }
+
+            DateOnly dateOfExecution = DateOnly.FromDateTime((DateTime)DateOfExecution.SelectedDate);
+            if (dateOfExecution < DateOnly.FromDateTime(DateTime.Now))
+            {
+                MessageBox.Show("Нельзя выбрать прошедшие даты");
+                return;
+            }
+
+
+            try
+            {
+                using (ApplicationContext context = new ApplicationContext())
                 {
-                    MessageBox.Show(dateOfExecution.Value.Date.ToShortDateString());
-                }
-                else
-                {
-                    MessageBox.Show("Нельзя выбрать прошлые даты");
-                }
-            } 
-            else
-            {
-                MessageBox.Show("Дата не выбрана");
-            }
+                    Classes.Competition competition = new Classes.Competition(Name_TextBox.Text, (Level)Level_ComboBox.SelectedIndex, locationId, sportKindId, dateOfExecution);
 
-            this.DialogResult = true;
+                    context.Competitions.Add(competition);
+                    context.SaveChanges();
+
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
+                showErrorWindow.ShowDialog();
+
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

@@ -44,6 +44,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Level}" Header="Уровень" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Location}" Header="Локация" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding DateOfExecution}" Header="Дата проведения" Width="auto"/>
