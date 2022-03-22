@@ -32,5 +32,32 @@ namespace Yaxel
         {
 
         }
+
+        private void listEmployeesButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listСomputersButton_Click(object sender, EventArgs e)
+        {
+            ListComputers.GetForm.Show();
+            MainMenu.GetForm.Hide();
+        }
+
+        private void listPeripheralsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listComponentsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Authorization.GetForm.Show();
+            MainMenu.GetForm.Hide();
+        }
     }
 }
