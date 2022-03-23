@@ -53,7 +53,9 @@ namespace Yaxel
 
         private void listComponentsButton_Click(object sender, EventArgs e)
         {
-
+            MainMenu.GetForm.Hide();
+            ListComponent.GetForm.ShowDialog();
+            MainMenu.GetForm.Show();
         }
 
         private void backButton_Click(object sender, EventArgs e)
