@@ -15,8 +15,8 @@ namespace AchieveNow.Classes
 
     public enum Gender
     {
-        Male,
-        Female,
-        Genderqueer
+        Мужской,
+        Женский,
+        Небинарный
     }
 }

@@ -30,5 +30,10 @@ namespace AchieveNow.Classes
             SportKindId = sportKindId;
             DateOfExecution = dateOfExecution;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

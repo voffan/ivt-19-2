@@ -35,8 +35,7 @@ namespace AchieveNow.Pages.Achievement
                 using (ApplicationContext context = new ApplicationContext())
                 {
                     var query = context.Achievements
-                        .Include("Location")
-                        .Include("SportKind")
+                        .Include("Competition")
                         .ToList();
 
                     AchievementsGrid.ItemsSource = query;
@@ -118,5 +117,6 @@ namespace AchieveNow.Pages.Achievement
         {
             SportKind.Text = "Вид спорта";
         }
+
     }
 }
