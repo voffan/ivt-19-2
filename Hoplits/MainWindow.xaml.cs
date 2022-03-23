@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hoplits.Components;
 
 namespace Hoplits
 {
@@ -23,6 +24,26 @@ namespace Hoplits
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var empl = EmployeeLogic.Login(login.Text, password.Text);
+                if (empl == null)
+                {
+                    MessageBox.Show("Fail to login");
+                    return;
+                }
+                //go to main menu 
+                MessageBox.Show("loged in!!");
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }
