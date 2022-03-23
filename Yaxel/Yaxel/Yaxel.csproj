@@ -91,6 +91,12 @@
     <Compile Include="ListComputers.Designer.cs">
       <DependentUpon>ListComputers.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListEmployee.Designer.cs">
+      <DependentUpon>ListEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListComputers.resx">
       <DependentUpon>ListComputers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListEmployee.resx">
+      <DependentUpon>ListEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

@@ -35,3 +35,24 @@ C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Authorization.resources
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.MainMenu.resources
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListComputers.resources
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\bin\Debug\Yaxel.exe.config
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\bin\Debug\Yaxel.exe
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\bin\Debug\Yaxel.pdb
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\bin\Debug\EntityFramework.dll
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\bin\Debug\EntityFramework.xml
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.AssemblyReference.cache
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.SuggestedBindingRedirects.cache
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.AddEm.resources
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Authorization.resources
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Form1.resources
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListComputers.resources
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.MainMenu.resources
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Properties.Resources.resources
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.GenerateResource.cache
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.CoreCompileInputs.cache
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.CopyComplete
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.exe
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.pdb
+C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListEmployee.resources

@@ -35,7 +35,9 @@ namespace Yaxel
 
         private void listEmployeesButton_Click(object sender, EventArgs e)
         {
-
+            MainMenu.GetForm.Hide();
+            ListEmployee.GetForm.ShowDialog();
+            MainMenu.GetForm.Show();
         }
 
         private void listСomputersButton_Click(object sender, EventArgs e)
