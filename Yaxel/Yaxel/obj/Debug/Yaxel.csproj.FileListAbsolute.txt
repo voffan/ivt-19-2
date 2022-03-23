@@ -81,3 +81,4 @@ C:\Users\Student\Documents\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.pdb
 C:\Users\Student\Documents\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListComponent.resources
 >>>>>>> 41841f3498c7517066abc937999d9ec08114e457
 C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListComponent.resources
+C:\Users\Student\Documents\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListEmployee.resources

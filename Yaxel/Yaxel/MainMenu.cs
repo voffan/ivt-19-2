@@ -42,8 +42,9 @@ namespace Yaxel
 
         private void listСomputersButton_Click(object sender, EventArgs e)
         {
-            ListComputers.GetForm.Show();
             MainMenu.GetForm.Hide();
+            ListComputers.GetForm.ShowDialog();
+            MainMenu.GetForm.Show();
         }
 
         private void listPeripheralsButton_Click(object sender, EventArgs e)

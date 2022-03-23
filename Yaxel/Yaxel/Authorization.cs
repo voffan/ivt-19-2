@@ -68,11 +68,9 @@ namespace Yaxel
                 {
                     //forms[1].Visible = true;
                     //forms[0].Visible = false;
-                    MessageBox.Show("Nurgun conflictniy");
                     Authorization.GetForm.Hide();
                     MainMenu.GetForm.ShowDialog();
                     Authorization.GetForm.Show();
-                    MessageBox.Show("Hello Wordl!");
                 }
                 else
                 {
