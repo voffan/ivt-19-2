@@ -71,6 +71,7 @@ namespace Yaxel
                     Authorization.GetForm.Hide();
                     MainMenu.GetForm.ShowDialog();
                     Authorization.GetForm.Show();
+                    MessageBox.Show("Hello Wordl!");
                 }
                 else
                 {
