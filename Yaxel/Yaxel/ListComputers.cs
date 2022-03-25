@@ -29,7 +29,7 @@ namespace Yaxel
             InitializeComponent();
         }
 
-        private void ListComputers_Load(object sender, EventArgs e)
+        private void UpdateGV()
         {
             using (var context = new YaxelContext())
             {
@@ -37,6 +37,17 @@ namespace Yaxel
             }
 
             //dataGridView1.Columns.AddRange(new DataGridViewColumn[] { new DataGridViewButtonColumn() });
+        }
+
+        private void ListComputers_Load(object sender, EventArgs e)
+        {
+            UpdateGV();
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            AddComputers.GetForm.ShowDialog();
+            UpdateGV();
         }
     }
 }

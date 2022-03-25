@@ -82,3 +82,7 @@ C:\Users\Student\Documents\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListCompo
 >>>>>>> 41841f3498c7517066abc937999d9ec08114e457
 C:\Users\Student\Desktop\Новая папка\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListComponent.resources
 C:\Users\Student\Documents\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListEmployee.resources
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.AddComputers.resources
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListComponent.resources
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.ListEmployee.resources
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.MultiList.resources

@@ -18,5 +18,6 @@ namespace Yaxel.Classes
         public virtual Employee Employee { get; set; }
         public virtual List<Component> Components { get; set; }
         public int ManufacturerId { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; }
     }
 }
