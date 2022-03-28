@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.Classes;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System.IO;
 using Microsoft.EntityFrameworkCore.Design;
 
@@ -30,9 +30,35 @@ namespace AchieveNow.ProgramClasses
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configuration = JsonConvert.DeserializeObject<ConfigurationDB>(File.ReadAllText("ConfigurationDB.json"));
-            optionsBuilder.UseMySql(configuration.Server + configuration.User + configuration.Password + configuration.Database,
-                new MySqlServerVersion(new Version(8, 0, 27)));
+            FileInfo configurationFile = new FileInfo("ConfigurationDB.json");
+
+            if (configurationFile.Exists)
+            {
+                var configurationDB = JsonSerializer.Deserialize<ConfigurationDB>(File.ReadAllText("ConfigurationDB.json"));
+
+                if (configurationDB.isRemote)
+                {
+                    optionsBuilder.UseMySql($"server={configurationDB?.Server}; user={configurationDB?.User}; password={configurationDB?.Password}; database={configurationDB?.Database};",
+                        new MySqlServerVersion(new Version(8, 0, 27)));
+                }
+                else
+                {
+                    optionsBuilder.UseSqlite("Data Source=AchieveNowDB.db");
+                }
+            }
+            else
+            {
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true // Добавить визуальную составляющую с пробелами и переносами строки в файле json
+                };
+
+                using (FileStream fs = new FileStream("ConfigurationDB.json", FileMode.OpenOrCreate))
+                {
+                    ConfigurationDB configurationDB = new ConfigurationDB(false);
+                    JsonSerializer.Serialize<ConfigurationDB>(fs, configurationDB, options);
+                }
+            }
         }
     }
 }
