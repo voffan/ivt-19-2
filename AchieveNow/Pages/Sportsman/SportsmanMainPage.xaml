@@ -13,11 +13,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.08*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.14*"/>
+            <ColumnDefinition Width="160"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
