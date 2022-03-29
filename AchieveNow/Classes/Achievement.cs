@@ -18,5 +18,13 @@ namespace AchieveNow.Classes
         public int CompetitionId { get; set; }
         public virtual Competition Competition { get; set; }
         public virtual List<Sportsman> Sportsmen { get; set; } = new();
+
+        public Achievement(string name, DateOnly dateOfIssue, byte results, int competitionId)
+        {
+            Name = name;
+            DateOfIssue = dateOfIssue;
+            Results = results;
+            CompetitionId = competitionId;
+        }
     }
 }

@@ -24,17 +24,18 @@ namespace AchieveNow.Pages.Achievement
         public AchievementAddWindow()
         {
             InitializeComponent();
+           
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            ListOfCompetitions();
+            Result_ComboBox.Items.Add(1);
+            Result_ComboBox.Items.Add(2);
+            Result_ComboBox.Items.Add(3);
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-        }
+      
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
@@ -68,6 +69,92 @@ namespace AchieveNow.Pages.Achievement
             }
         }
 
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Name_TextBox.Text == "")
+            {
+                MessageBox.Show("В названии пусто");
+                return;
+            }
+
+            if (Name_TextBox.Text.Length > 50)
+            {
+                MessageBox.Show("Название не должно превышать 50 символов");
+                return;
+            }
+
+
+            if (Competition_ComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите соревнование");
+                return;
+            }
+
+            if (Result_ComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите соревнование");
+                return;
+            }
+
+
+            int competitionId;
+            try
+            {
+                Int32.TryParse(Competition_ComboBox.SelectedValue.ToString(), out int competitionIdParsed);
+                competitionId = competitionIdParsed;
+            }
+            catch
+            {
+                MessageBox.Show("Неизвестная ошибка при выборе соревнования");
+                return;
+            }
+
+            byte resultId;
+            try
+            {
+                byte.TryParse(Result_ComboBox.SelectedValue.ToString(), out byte resultIdParsed);
+                resultId = resultIdParsed;
+            }
+            catch
+            {
+                MessageBox.Show("Неизвестная ошибка при выборе результата");
+                return;
+            }
+
+            if (DateOfIssue.SelectedDate.ToString() == "")
+            {
+                MessageBox.Show("Выберите дату выдчи");
+                return;
+            }
+
+            DateOnly dateOfIssue = DateOnly.FromDateTime((DateTime)DateOfIssue.SelectedDate);
+            if (dateOfIssue < DateOnly.FromDateTime(DateTime.Now))
+            {
+                MessageBox.Show("Нельзя выбрать прошедшие даты");
+                return;
+            }
+
+
+            try
+            {
+                using (ApplicationContext context = new ApplicationContext())
+                {
+                    Classes.Achievement achievement = new Classes.Achievement(Name_TextBox.Text, dateOfIssue, resultId, competitionId);
+
+                    context.Achievements.Add(achievement);
+                    context.SaveChanges();
+
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
+                showErrorWindow.ShowDialog();
+
+                Console.WriteLine(ex.Message);
+            }
+        }    
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
