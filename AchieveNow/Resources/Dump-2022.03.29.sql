@@ -227,7 +227,7 @@ CREATE TABLE `SportKinds` (
 
 LOCK TABLES `SportKinds` WRITE;
 /*!40000 ALTER TABLE `SportKinds` DISABLE KEYS */;
-INSERT INTO `SportKinds` VALUES (1,'Коньковой спорт'),(2,'Лыжный спорт'),(3,'Стрельба');
+INSERT INTO `SportKinds` VALUES (1,'Коньковой спорт'),(2,'Лыжный спорт'),(3,'Стрельба'),(4, 'Бокс'),(5, 'Футбол');
 /*!40000 ALTER TABLE `SportKinds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,6 +258,7 @@ CREATE TABLE `Sportsmen` (
 
 LOCK TABLES `Sportsmen` WRITE;
 /*!40000 ALTER TABLE `Sportsmen` DISABLE KEYS */;
+INSERT INTO `Sportsmen` VALUES (1, 'Хабиб Макрегор', '1989-06-26', 182, 90, 0, 4),(2, 'Дзюба Криштиану Роналду', '1987-07-21', 196, 86, 0, 5),(3, 'Непряева Наталья Михайловна', '1996-10-07', 169, 63, 1, 2),(4, 'Тимоти Ледюк', '1991-06-05', 185, 78, 2, 1);
 /*!40000 ALTER TABLE `Sportsmen` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
