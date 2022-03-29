@@ -5,41 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Achievement"
         mc:Ignorable="d"
-        Title="Окно добавления достижения" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Окно добавления достижения" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="233*"/>
-            <ColumnDefinition Width="17*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
 
-        <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical" Margin="175,0,0,0">
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 15, 0, 0">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Название достижения</TextBlock>
-            <TextBox x:Name="Name" MinWidth="150"></TextBox>
+            <TextBox x:Name="Name_TextBox" MinWidth="150"></TextBox>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical" Margin="175,0,0,0">
-            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Id соревнования</TextBlock>
-            <ComboBox x:Name="Competition_ComboBox" IsEditable="False" StaysOpenOnEdit="True" MinWidth="150"></ComboBox>
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Соревнование</TextBlock>
+            <ComboBox x:Name="Competition_ComboBox" IsEditable="False" MinWidth="150"></ComboBox>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical" Margin="175,0,0,0">
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Результат</TextBlock>
-            <TextBox x:Name="Results" MinWidth="150"></TextBox>
+            <ComboBox x:Name="Result_ComboBox" IsEditable="False" MinWidth="150"></ComboBox>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical" Margin="175,0,0,0">
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Дата выдачи</TextBlock>
             <DatePicker x:Name="DateOfIssue" MinWidth="150"></DatePicker>
         </WrapPanel>
 
-        <Button x:Name="AddButton" Content="Добавить" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True" Click="AddButton_Click" Margin="222,0,0,0"></Button>
+        <Button x:Name="AddButton" Content="Добавить" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" IsDefault="True" Click="AddButton_Click"></Button>
 
         <Menu VerticalAlignment="Top" Height="18" FontSize="14" Grid.ColumnSpan="2">
             <MenuItem Header="Файл">
