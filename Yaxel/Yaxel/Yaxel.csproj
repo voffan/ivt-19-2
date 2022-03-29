@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddComponent.Designer.cs">
+      <DependentUpon>AddComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddComputers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YaxelContext.cs" />
+    <EmbeddedResource Include="AddComponent.resx">
+      <DependentUpon>AddComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddComputers.resx">
       <DependentUpon>AddComputers.cs</DependentUpon>
     </EmbeddedResource>

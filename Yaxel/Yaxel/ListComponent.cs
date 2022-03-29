@@ -36,5 +36,10 @@ namespace Yaxel
                 grid.DataSource = context.Computers.ToList();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddComponent.GetForm.ShowDialog();
+        }
     }
 }
