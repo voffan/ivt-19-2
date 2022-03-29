@@ -13,11 +13,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.08*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.20*"/>
+            <ColumnDefinition Width="160"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -30,17 +30,21 @@
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
             <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Name" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
             <TextBlock Text="Локация" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Location" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBox x:Name="Location_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
             <TextBlock Text="Вид спорта" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="SportKind" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBlock Text="Дата проведения" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
-            <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18"></Button>
+            <TextBox x:Name="SportKind_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <StackPanel x:Name="Date_StackPanel" HorizontalAlignment="Center">
+                <TextBlock Text="Дата проведения" FontSize="16" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>
+                <CheckBox x:Name="isIntervalDate" FontSize="12" IsChecked="False" Content="Промежуток времени" Margin="0, 0, 0, 0" Checked="isIntervalDate_Checked" Unchecked="isIntervalDate_Unchecked"></CheckBox>
+                <TextBlock x:Name="FromDate_TextBlock" Text="От" FontSize="12" HorizontalAlignment="Center" Visibility="Hidden" Margin="0, 0, 0, 2"></TextBlock>
+                <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
+            </StackPanel>
+            <Button Content="Искать" Margin="0, 20, 0, 10" FontSize="18"></Button>
         </WrapPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="competitionsGrid" Grid.Row="1" Grid.Column="1">
+        <DataGrid AutoGenerateColumns="False" x:Name="CompetitionsGrid" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>

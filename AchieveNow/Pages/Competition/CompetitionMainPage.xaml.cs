@@ -39,12 +39,12 @@ namespace AchieveNow.Pages.Competition
                         .Include("SportKind")
                         .ToList();
 
-                    competitionsGrid.ItemsSource = query;
+                    CompetitionsGrid.ItemsSource = query;
                 }
             }
             catch (Exception ex)
             {
-                competitionsGrid.ItemsSource = null;
+                CompetitionsGrid.ItemsSource = null;
                 ShowErrorWindow showErrorWindow = new ShowErrorWindow();
                 showErrorWindow.ShowDialog();
 
@@ -87,6 +87,26 @@ namespace AchieveNow.Pages.Competition
 
             // Обновить таблицу после закрытия окна
             ShowCompetitions();
+        }
+
+        TextBlock? ToDate = null;
+        DatePicker? DateOfExecution2 = null;
+
+        private void isIntervalDate_Checked(object sender, RoutedEventArgs e)
+        {
+            FromDate_TextBlock.Visibility = Visibility.Visible;
+            ToDate = new TextBlock { Text = "До", FontSize = 12, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0, 0, 0, 2) };
+            DateOfExecution2 = new DatePicker { Margin = new Thickness(0, 0, 0, 10)};
+
+            Date_StackPanel.Children.Add(ToDate);
+            Date_StackPanel.Children.Add(DateOfExecution2);
+        }
+
+        private void isIntervalDate_Unchecked(object sender, RoutedEventArgs e)
+        {
+            FromDate_TextBlock.Visibility = Visibility.Hidden;
+            Date_StackPanel.Children.Remove(ToDate);
+            Date_StackPanel.Children.Remove(DateOfExecution2);
         }
     }
 }
