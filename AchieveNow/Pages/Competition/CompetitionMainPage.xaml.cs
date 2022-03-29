@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using AchieveNow.Classes;
 using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Sportsman;
@@ -29,6 +30,7 @@ namespace AchieveNow.Pages.Competition
             InitializeComponent();
         }
 
+        // Отобразить данные из таблицы Competitions в DataGrid
         private void ShowCompetitions() {
             try
             {
@@ -52,9 +54,58 @@ namespace AchieveNow.Pages.Competition
             }
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        // Вывести в ComboBox данные из таблицы Locations и Sportkinds
+        private void ListOfLocationsAndSportkinds()
+        {
+            Location_ComboBox.Items.Clear();
+            SportKind_ComboBox.Items.Clear();
+
+            try
+            {
+                using (ApplicationContext context = new ApplicationContext())
+                {
+                    var locations = context.Locations.ToList();
+                    foreach (Location location in locations)
+                    {
+                        Location_ComboBox.Items.Add(location);
+                    }
+
+                    Location_ComboBox.DisplayMemberPath = "Name";
+                    Location_ComboBox.SelectedValuePath = "Id";
+
+                    var sportKinds = context.SportKinds.ToList();
+                    foreach (SportKind sportKind in sportKinds)
+                    {
+                        SportKind_ComboBox.Items.Add(sportKind);
+                    }
+
+                    SportKind_ComboBox.DisplayMemberPath = "Name";
+                    SportKind_ComboBox.SelectedValuePath = "Id";
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
+                showErrorWindow.ShowDialog();
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void Update()
         {
             ShowCompetitions();
+            ListOfLocationsAndSportkinds();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Update();
+
+            foreach (Level level in Enum.GetValues(typeof(Level)))
+            {
+                Level_ComboBox.Items.Add(level);
+            }
         }
 
         private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
@@ -75,24 +126,24 @@ namespace AchieveNow.Pages.Competition
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
-            ShowCompetitions();
+            Update();
         }
 
-        private void AddCompetition_Click(object sender, RoutedEventArgs e)
+        private void AddCompetition_Button_Click(object sender, RoutedEventArgs e)
         {
             var competitionAddWindow = new CompetitionAddWindow();
             competitionAddWindow.ShowDialog();
 
             // Обновить таблицу после закрытия окна
-            ShowCompetitions();
+            Update();
         }
 
         TextBlock? ToDate = null;
         DatePicker? DateOfExecution2 = null;
 
-        private void isIntervalDate_Checked(object sender, RoutedEventArgs e)
+        private void isIntervalDate_CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             FromDate_TextBlock.Visibility = Visibility.Visible;
             ToDate = new TextBlock { Text = "До", FontSize = 12, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0, 0, 0, 2) };
@@ -102,11 +153,16 @@ namespace AchieveNow.Pages.Competition
             Date_StackPanel.Children.Add(DateOfExecution2);
         }
 
-        private void isIntervalDate_Unchecked(object sender, RoutedEventArgs e)
+        private void isIntervalDate_CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             FromDate_TextBlock.Visibility = Visibility.Hidden;
             Date_StackPanel.Children.Remove(ToDate);
             Date_StackPanel.Children.Remove(DateOfExecution2);
+        }
+
+        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
