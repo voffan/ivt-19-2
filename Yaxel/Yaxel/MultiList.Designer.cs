@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Name = "MultiList";
             this.Text = "MultiList";
+            this.Load += new System.EventHandler(this.MultiList_Load);
             this.ResumeLayout(false);
 
         }

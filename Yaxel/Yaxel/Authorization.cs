@@ -53,6 +53,15 @@ namespace Yaxel
                     context.Employees.Add(employee);
                     context.SaveChanges();
                 }
+
+                if (context.Manufacturers.ToList().Count == 0)
+                {
+                    Manufacturer manufacturer = new Manufacturer();
+                    manufacturer.Name = "Baikal";
+                    
+                    context.Manufacturers.Add(manufacturer);
+                    context.SaveChanges();
+                }
             }
 
         }

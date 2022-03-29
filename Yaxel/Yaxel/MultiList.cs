@@ -16,5 +16,10 @@ namespace Yaxel
         {
             InitializeComponent();
         }
+
+        private void MultiList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

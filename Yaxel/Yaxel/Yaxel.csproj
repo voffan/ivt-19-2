@@ -56,16 +56,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddComponent.cs">
+    <Compile Include="Component\AddComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddComponent.Designer.cs">
+    <Compile Include="Component\AddComponent.Designer.cs">
       <DependentUpon>AddComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddComputers.cs">
+    <Compile Include="Computer\AddComputers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddComputers.Designer.cs">
+    <Compile Include="Computer\AddComputers.Designer.cs">
       <DependentUpon>AddComputers.cs</DependentUpon>
     </Compile>
     <Compile Include="AddEm.cs">
@@ -97,22 +97,22 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListComponent.cs">
+    <Compile Include="Component\ListComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListComponent.Designer.cs">
+    <Compile Include="Component\ListComponent.Designer.cs">
       <DependentUpon>ListComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListComputers.cs">
+    <Compile Include="Computer\ListComputers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListComputers.Designer.cs">
+    <Compile Include="Computer\ListComputers.Designer.cs">
       <DependentUpon>ListComputers.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListEmployee.cs">
+    <Compile Include="Employee\ListEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListEmployee.Designer.cs">
+    <Compile Include="Employee\ListEmployee.Designer.cs">
       <DependentUpon>ListEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.cs">
@@ -130,10 +130,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YaxelContext.cs" />
-    <EmbeddedResource Include="AddComponent.resx">
+    <EmbeddedResource Include="Component\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddComputers.resx">
+    <EmbeddedResource Include="Computer\AddComputers.resx">
       <DependentUpon>AddComputers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddEm.resx">
@@ -145,13 +145,13 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListComponent.resx">
+    <EmbeddedResource Include="Component\ListComponent.resx">
       <DependentUpon>ListComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListComputers.resx">
+    <EmbeddedResource Include="Computer\ListComputers.resx">
       <DependentUpon>ListComputers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListEmployee.resx">
+    <EmbeddedResource Include="Employee\ListEmployee.resx">
       <DependentUpon>ListEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
@@ -182,6 +182,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Peripheria\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

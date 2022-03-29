@@ -37,7 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.manufacturerComboBox = new System.Windows.Forms.ComboBox();
             this.addButton = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // nameBox
@@ -126,20 +125,11 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(49, 50);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 10;
-            // 
             // AddComputers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.manufacturerComboBox);
@@ -168,6 +158,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox manufacturerComboBox;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.ListBox listBox1;
     }
 }
