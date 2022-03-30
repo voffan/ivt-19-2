@@ -24,7 +24,7 @@ namespace AchieveNow.Pages.Achievement
         public AchievementAddWindow()
         {
             InitializeComponent();
-           
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -34,8 +34,6 @@ namespace AchieveNow.Pages.Achievement
             Result_ComboBox.Items.Add(2);
             Result_ComboBox.Items.Add(3);
         }
-
-      
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
@@ -56,8 +54,11 @@ namespace AchieveNow.Pages.Achievement
                         Competition_ComboBox.Items.Add(competition);
                     }
 
+
+
+                    //Competition_ComboBox.DisplayMemberPath = "DateOfExecution";
                     Competition_ComboBox.DisplayMemberPath = "Name";
-                    Competition_ComboBox.SelectedValuePath = "Id";     
+                    Competition_ComboBox.SelectedValuePath = "Id";
                 }
             }
             catch (Exception ex)
@@ -123,14 +124,34 @@ namespace AchieveNow.Pages.Achievement
 
             if (DateOfIssue.SelectedDate.ToString() == "")
             {
-                MessageBox.Show("Выберите дату выдчи");
+                MessageBox.Show("Выберите дату выдачи");
                 return;
             }
 
-            DateOnly dateOfIssue = DateOnly.FromDateTime((DateTime)DateOfIssue.SelectedDate);
-            if (dateOfIssue < DateOnly.FromDateTime(DateTime.Now))
+            DateOnly dateOfExecCompetition;
+            try
             {
-                MessageBox.Show("Нельзя выбрать прошедшие даты");
+                using (ApplicationContext context = new ApplicationContext())
+                {
+                    Classes.Competition? competition = context.Competitions.Find(competitionId);
+
+                    if (competition != null)
+                    {
+                        dateOfExecCompetition = competition.DateOfExecution;
+                    }
+                }
+            } catch (Exception ex)
+            {
+                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
+                showErrorWindow.ShowDialog();
+
+                Console.WriteLine(ex.Message);
+            }
+
+            DateOnly dateOfIssue = DateOnly.FromDateTime((DateTime)DateOfIssue.SelectedDate);
+            if (dateOfIssue < dateOfExecCompetition)
+            {
+                MessageBox.Show("Дата выдачи не может быть раньше даты соревнования!");
                 return;
             }
 
