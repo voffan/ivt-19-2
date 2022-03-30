@@ -28,16 +28,7 @@ namespace AchieveNow
         {
             InitializeComponent();
 
-            MainFrame.Content = new SportsmanMainPage();
-
-            /*SeeTheListOfCompetitions competitions = new SeeTheListOfCompetitions();
-            competitions.ShowCompetitions();*/
-
-            /*SeeTheListOfAchievements achievements = new SeeTheListOfAchievements();
-            achievements.ShowAchievements();*/
-
-            /*SeeTheListOfSportsmen sportsmen = new SeeTheListOfSportsmen();
-            sportsmen.ShowSportsmen();*/
+            MainFrame.Content = new CompetitionMainPage();
         }
     }
 }

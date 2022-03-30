@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using AchieveNow.Classes;
 using System.Text.Json;
 using System.IO;
-using Microsoft.EntityFrameworkCore.Design;
 
 namespace AchieveNow.ProgramClasses
 {
@@ -16,8 +15,6 @@ namespace AchieveNow.ProgramClasses
         public DbSet<Achievement> Achievements => Set<Achievement>();
         public DbSet<Competition> Competitions => Set<Competition>();
         public DbSet<Employee> Employees => Set<Employee>();
-        //public DbSet<Gender> Genders => Set<Gender>();
-        //public DbSet<Level> Levels => Set<Level>();
         public DbSet<Location> Locations => Set<Location>();
         public DbSet<Position> Positions => Set<Position>();
         public DbSet<SportKind> SportKinds => Set<SportKind>();
@@ -34,16 +31,19 @@ namespace AchieveNow.ProgramClasses
 
             if (configurationFile.Exists)
             {
-                var configurationDB = JsonSerializer.Deserialize<ConfigurationDB>(File.ReadAllText("ConfigurationDB.json"));
+                var configurationDB = JsonSerializer.Deserialize<ConfigurationDB>(File.ReadAllText(configurationFile.ToString()));
 
-                if (configurationDB.isRemote)
+                if (configurationDB != null)
                 {
-                    optionsBuilder.UseMySql($"server={configurationDB?.Server}; user={configurationDB?.User}; password={configurationDB?.Password}; database={configurationDB?.Database};",
-                        new MySqlServerVersion(new Version(8, 0, 27)));
-                }
-                else
-                {
-                    optionsBuilder.UseSqlite("Data Source=AchieveNowDB.db");
+                    if (configurationDB.isRemote)
+                    {
+                        optionsBuilder.UseMySql($"server={configurationDB?.Server}; user={configurationDB?.User}; password={configurationDB?.Password}; database={configurationDB?.Database};",
+                            new MySqlServerVersion(new Version(8, 0, 27)));
+                    }
+                    else
+                    {
+                        optionsBuilder.UseSqlite("Data Source=AchieveNowDB.db");
+                    }
                 }
             }
             else
@@ -53,7 +53,7 @@ namespace AchieveNow.ProgramClasses
                     WriteIndented = true // Добавить визуальную составляющую с пробелами и переносами строки в файле json
                 };
 
-                using (FileStream fs = new FileStream("ConfigurationDB.json", FileMode.OpenOrCreate))
+                using (FileStream fs = new FileStream(configurationFile.ToString(), FileMode.OpenOrCreate))
                 {
                     ConfigurationDB configurationDB = new ConfigurationDB(false);
                     JsonSerializer.Serialize<ConfigurationDB>(fs, configurationDB, options);
