@@ -162,7 +162,19 @@ namespace AchieveNow.Pages.Competition
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Name_TextBox.Text != "")
+            {
+                using (ApplicationContext context = new ApplicationContext())
+                {
+                    var search = context.Competitions
+                        .Include("Location")
+                        .Include("SportKind")
+                        .Where(c => EF.Functions.Like(c.Name!, $"%{Name_TextBox.Text}%"))
+                        .ToList();
 
+                    CompetitionsGrid.ItemsSource = search;
+                }
+            }
         }
     }
 }
