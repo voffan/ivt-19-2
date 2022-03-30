@@ -20,7 +20,8 @@ namespace Hoplits.Classes
         //[Required(ErrorMessage = "Введите логин")]
         public string Login { get; set; }
         [MaxLength(256)]
-        //[Required(ErrorMessage = "Введите пароль")]
+        //[Required(ErrorMessage
+        //= "Введите пароль")]
         public string Password { get; set; }
         [MaxLength(50)]
         //[Required(ErrorMessage = "Введите ФИО")]

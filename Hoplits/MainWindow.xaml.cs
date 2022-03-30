@@ -10,40 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Hoplits.Components;
 
 namespace Hoplits
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var empl = EmployeeLogic.Login(login.Text, password.Text);
-                if (empl == null)
-                {
-                    MessageBox.Show("Fail to login");
-                    return;
-                }
-                //go to main menu 
-                MessageBox.Show("loged in!!");
-            }
-            catch(Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
         }
     }
 }
