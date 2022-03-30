@@ -143,21 +143,25 @@ namespace AchieveNow.Pages.Competition
                 MessageBox.Show("Неизвестная ошибка при выборе вида спорта");
                 return;
             }
+            
 
+            DateOnly dateOfExecution;
+            if (DateOfExecution.SelectedDate != null)
+            {
 
-            if (DateOfExecution.SelectedDate.ToString() == "")
+                dateOfExecution = DateOnly.FromDateTime((DateTime)DateOfExecution.SelectedDate);
+                if (dateOfExecution < DateOnly.FromDateTime(DateTime.Now))
+                {
+                    MessageBox.Show("Нельзя выбрать прошедшие даты");
+                    return;
+                }
+
+            }
+            else
             {
                 MessageBox.Show("Выберите дату проведения");
                 return;
             }
-
-            DateOnly dateOfExecution = DateOnly.FromDateTime((DateTime)DateOfExecution.SelectedDate);
-            if (dateOfExecution < DateOnly.FromDateTime(DateTime.Now))
-            {
-                MessageBox.Show("Нельзя выбрать прошедшие даты");
-                return;
-            }
-
 
             try
             {
