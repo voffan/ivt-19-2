@@ -19,6 +19,8 @@ namespace CoreDebug.Classes
         public virtual Author Author { get; set; }
         public int GenreId { get; set; }
         public virtual Genre Genre { get; set; }
+        public int LocationId { get; set; }
+        public virtual Location Location { get; set; }
         public Status Status { get; set; }
     }
 }

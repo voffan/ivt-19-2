@@ -18,6 +18,7 @@ namespace CoreDebug.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Painting> Paintings { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<Journal> Journals { get; set; }
 
     }
 }
