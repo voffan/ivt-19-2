@@ -28,13 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
             this.SuspendLayout();
+            // 
+            // yaxelForm1
+            // 
+            this.yaxelForm1.ThisForm = this;
             // 
             // MultiList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MultiList";
             this.Text = "MultiList";
             this.Load += new System.EventHandler(this.MultiList_Load);
@@ -43,5 +51,7 @@
         }
 
         #endregion
+
+        private YaxelStyle.YaxelForm yaxelForm1;
     }
 }

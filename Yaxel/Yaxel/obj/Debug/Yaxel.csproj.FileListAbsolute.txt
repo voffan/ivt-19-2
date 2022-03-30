@@ -111,3 +111,4 @@ C:\Users\baidu\Desktop\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.csproj.CopyCo
 C:\Users\baidu\Desktop\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.exe
 C:\Users\baidu\Desktop\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.pdb
 C:\Users\baidu\Desktop\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.AddComponent.resources
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.AddComponent.resources

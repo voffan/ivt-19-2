@@ -130,6 +130,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YaxelContext.cs" />
+    <Compile Include="YaxelStyle\YaxelForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="YaxelStyle\YaxelForm.Designer.cs">
+      <DependentUpon>YaxelForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Component\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>
     </EmbeddedResource>
