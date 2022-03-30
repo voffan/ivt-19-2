@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AchieveNow.ProgramClasses;
 using AchieveNow.Classes;
 using AchieveNow.Pages.Competition;
+using AchieveNow.Pages.Sportsman;
 
 namespace AchieveNow
 {
@@ -27,7 +28,7 @@ namespace AchieveNow
         {
             InitializeComponent();
 
-            MainFrame.Content = new CompetitionMainPage();
+            MainFrame.Content = new SportsmanMainPage();
 
             /*SeeTheListOfCompetitions competitions = new SeeTheListOfCompetitions();
             competitions.ShowCompetitions();*/
