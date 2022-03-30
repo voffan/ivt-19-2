@@ -33,15 +33,15 @@
             <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
             
             <TextBlock Text="Уровень" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <ComboBox x:Name="Level_ComboBox" IsEditable="True" StaysOpenOnEdit="True" Margin="0, 0, 0, 10"></ComboBox>
+            <ComboBox x:Name="Level_ComboBox" IsEditable="False" StaysOpenOnEdit="True" Margin="0, 0, 0, 10"></ComboBox>
             
             <TextBlock Text="Локация" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <!--<TextBox x:Name="Location_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>-->
-            <ComboBox x:Name="Location_ComboBox" IsEditable="True" StaysOpenOnEdit="True" Margin="0, 0, 0, 10"></ComboBox>
+            <ComboBox x:Name="Location_ComboBox" IsEditable="False" StaysOpenOnEdit="True" Margin="0, 0, 0, 10"></ComboBox>
             
             <TextBlock Text="Вид спорта" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <!--<TextBox x:Name="SportKind_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>-->
-            <ComboBox x:Name="SportKind_ComboBox" IsEditable="True" StaysOpenOnEdit="True"></ComboBox>
+            <ComboBox x:Name="SportKind_ComboBox" IsEditable="False" StaysOpenOnEdit="True"></ComboBox>
             
             <StackPanel x:Name="Date_StackPanel" HorizontalAlignment="Center">
                 <TextBlock Text="Дата проведения" FontSize="16" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>

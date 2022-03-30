@@ -162,18 +162,24 @@ namespace AchieveNow.Pages.Competition
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Name_TextBox.Text != "")
+            using (ApplicationContext context = new ApplicationContext())
             {
-                using (ApplicationContext context = new ApplicationContext())
+                /*int level;
+                if (Level_ComboBox.SelectedValue != null)
                 {
-                    var search = context.Competitions
-                        .Include("Location")
-                        .Include("SportKind")
-                        .Where(c => EF.Functions.Like(c.Name!, $"%{Name_TextBox.Text}%"))
-                        .ToList();
+                    level = Level_ComboBox.SelectedIndex;
+                }*/
 
-                    CompetitionsGrid.ItemsSource = search;
-                }
+                var search = context.Competitions
+                    .Include("Location")
+                    .Include("SportKind")
+                    .Where(c => EF.Functions.Like(c.Name!, $"%{Name_TextBox.Text}%"))
+                    //.Where(c => EF.Functions.Like(c.Level.ToString(), $"{Level_ComboBox.SelectedIndex}"))
+                    .Where(c => EF.Functions.Like(c.Location.Name, $"{Location_ComboBox.SelectedItem}%"))
+                    .Where(c => EF.Functions.Like(c.SportKind.Name, $"{SportKind_ComboBox.SelectedItem}%"))
+                    .ToList();
+
+                CompetitionsGrid.ItemsSource = search;
             }
         }
     }
