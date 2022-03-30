@@ -34,8 +34,7 @@ namespace AchieveNow.Pages.Sportsman
             {
                 using (ApplicationContext context = new ApplicationContext())
                 {
-                    var query = context.Competitions
-                        .Include("Location")
+                    var query = context.Sportsmen
                         .Include("SportKind")
                         .ToList();
 
