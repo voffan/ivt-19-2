@@ -43,10 +43,12 @@
         <DataGrid AutoGenerateColumns="False" x:Name="SportsmansGrid" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Location}" Header="Локация" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Дата рождения" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Height}" Header="Рост" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Weight}" Header="Вес" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Gender}" Header="Гендер" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding DateOfExecution}" Header="Дата проведения" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
 
