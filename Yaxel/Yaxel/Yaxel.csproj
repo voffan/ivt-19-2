@@ -130,6 +130,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YaxelContext.cs" />
+    <Compile Include="YaxelStyle\YaxelButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="YaxelStyle\YaxelForm.cs">
       <SubType>Component</SubType>
     </Compile>

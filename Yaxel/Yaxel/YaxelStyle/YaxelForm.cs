@@ -218,7 +218,7 @@ namespace Yaxel.YaxelStyle
             #endregion
         }
 
-        public static void SetDoubleBuffered(Control c)
+        private static void SetDoubleBuffered(Control c)
         {
             if (SystemInformation.TerminalServerSession)
                 return;

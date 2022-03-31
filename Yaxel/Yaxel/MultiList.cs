@@ -35,6 +35,8 @@ namespace Yaxel
         {
             oldText = this.Text;
 
+            SetDoubleBuffered(dataGridView1);
+
             cTable = CurrentTable.none;
         }
 
@@ -119,6 +121,19 @@ namespace Yaxel
 
                     break;
             }
+        }
+        private static void SetDoubleBuffered(Control c)
+        {
+            if (SystemInformation.TerminalServerSession)
+                return;
+
+            System.Reflection.PropertyInfo pDoubleBuffered =
+                  typeof(Control).GetProperty(
+                        "DoubleBuffered",
+                        System.Reflection.BindingFlags.NonPublic |
+                        System.Reflection.BindingFlags.Instance);
+
+            pDoubleBuffered.SetValue(c, true, null);
         }
     }
 }
