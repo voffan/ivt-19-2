@@ -128,6 +128,7 @@ namespace AchieveNow.Pages.Competition
 
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
+            Level_ComboBox.SelectedItem = null;
             Update();
         }
 
