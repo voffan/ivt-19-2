@@ -1,22 +1,57 @@
 # ИВТ-19-2
-## AAproject
+## AAproject - система учёта достижений спортсменов. Описание проекта:
+Программное обеспечение для автоматизации учёта достижений спортсменов. Система позволяет судьям соревнований вводить результаты, вводить новых спортсменов, добавлять достижения, а сотрудникам проводить анализ и распечатывать отчёты спортсменов с наибольшим количеством призовых мест по своему виду спорта, победителей соревнования по заданному виду спорта за выбранный период
 ------
 [miro mind map](https://miro.com/app/board/o9J_ly_HA3E=/)
 ------
 
-Требуемое ПО, инструменты, расширения для разработки:
-- Visual Studio 2022
-- GitHub
-- Figma
-- .NetCore 6.0
-- MySQL DBS
+### Требуемое ПО, инструменты, расширения для разработки:
+- [Git](https://git-scm.com/)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/ru/vs/)
+- [Figma](https://www.figma.com/file/hjKjceJW8k7CIGEPYxc1no/Common-Interface?node-id=70%3A9)
+- [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [MySQL Workbench](https://www.mysql.com/products/workbench/)
+- [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
+- NuGet пакеты Microsoft.EntityFrameworkCore.Sqlite & Microsoft.EntityFrameworkCore.Tools & Pomelo.EntityFrameworkCore.MySql
 
+### Требуемое ПО для запуска проекта:
+- [Git](https://git-scm.com/)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/ru/vs/)
+- [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-RoadMap:
-1. Создать SeeTheListOf - окно со всеми списками (achievements, competitions, judges, sportsmen, users)
-2. Создать Authorization - окно регистрации с возможностью разделении доступа (для judges, users)
-3. Создать AddJudge, AddCompetition, AddSportsman, AddUsers - окно с возможностью добавление тех или иных параметров (achievements, competitions, judges, sportsmen, users)
-4. Создать EditJudge, EditCompetition, EditSportsman, EditUser - окно с возможностью редактировать уже установленных параметров (achievements, competitions, judges, sportsmen, users)
-5. Создать RemoveJudge, RemoveCompetition, RemoveSportsman, RemoveUser - окно с возможностью удалить установленные параметры (achievements, competitions, judges, sportsmen, users)
-6. Создать SearchJudge, SearchCompetition, SearchSportsman, SearchUser - окно с возможностью поиска и фильтра по определенным параметрам
-7. Создать ReportOfWinnersForGivenKindOfSportForSelectedPeriod, ReportOnTheLargestNumberOfAchievementsInTheCurrentKindOfSport - окна, функционал для вывода отдельных отчётов по результатам, спортсменам, соревнованиям
+### Инструкция по запуску:
+- Открыть Git Bash в произвольной папке и ввести след. команды `git clone https://github.com/voffan/ivt-19-2.git`
+- `cd ivt-19-2`
+- `git checkout AAproject`
+- В загруженном проекте открыть папку `AchieveNow`
+- Запустить файл `AchieveNow.sln` через Visual Studio 2022
+- Нажать `Start Debugging` или нажать клавишу `F5`
+- Подождать, пока откроется программа (Visual Studio будет загружать необходимые пакеты)
+- Закрыть запущенную программу
+- Из папки `Resources` скопировать файл `AchieveNowDB.db`
+- Из корневой директории перейти по папкам `bin`->`Debug`->`net6.0-windows`
+- Заменить там скопированный файл
+- Перейти обратно в проект Visual Studio и нажать `F5`
+
+## RoadMap:
+### MVP
+- Главное окно приложения со страницами соревнований, достижений и спортсменов ✅
+- Соединение с базой данных (локально или удалённо) ✅
+- Возможность добавления записи соревнований, достижений и спортсменов(❌) ✅
+- Возможность поиска записи соревнований, достижений и спортсменов ❌
+- Возможность удаления записи соревнований, достижений и спортсменов ❌
+- Возможность редактирования записи соревнований, достижений и спортсменов ❌
+
+### Авторизация
+- Окно авторизации ❌
+- Возможность регистрации сотрудников для администратора ❌
+- Назначение соответствующих прав для сотрудников и судей ❌
+
+### Права и логика для сотрудников и судей
+- Окно для судей с редактированием достижений спортсменов ❌
+- Окно для администратора с регистрацией сотрудников и судей ❌
+- Окно для сотрудников с добавлением локаций, видов спорта ❌
+
+### Отчёты
+- Возможность вывода отчёта спортсменов с наибольшим количеством призовых мест по своему виду спорта ❌
+- Возможность вывода отчёта победителей соревнования по заданному виду спорта за выбранный период ❌
