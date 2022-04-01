@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Yaxel.YaxelStyle
 {
-    public class YaxelButton : Control
+    public class YaxelButton : Control, IButtonControl
     {
         private Color bgColor = ColorTranslator.FromHtml("#FFA755");
 
@@ -17,6 +17,9 @@ namespace Yaxel.YaxelStyle
 
         private bool mouseEntered = false;
         private bool mousePressed = false;
+
+        private DialogResult dialogResult;
+        public DialogResult DialogResult { get => dialogResult; set => dialogResult = value; }
 
         public YaxelButton()
         {
@@ -90,6 +93,14 @@ namespace Yaxel.YaxelStyle
 
             mousePressed = false;
             Invalidate();
+        }
+
+        public void NotifyDefault(bool value) { }
+
+        public void PerformClick() 
+        { 
+            EventArgs e = new EventArgs();
+            this.OnClick(e);
         }
     }
 }

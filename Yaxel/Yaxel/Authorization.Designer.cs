@@ -99,6 +99,7 @@
             // 
             // enterButton
             // 
+            this.enterButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.enterButton.Font = new System.Drawing.Font("Arial", 16F);
             this.enterButton.ForeColor = System.Drawing.Color.White;
             this.enterButton.Location = new System.Drawing.Point(515, 447);
@@ -114,6 +115,7 @@
             // 
             // Authorization
             // 
+            this.AcceptButton = this.enterButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
