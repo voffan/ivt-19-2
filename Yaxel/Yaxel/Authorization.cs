@@ -13,11 +13,6 @@ namespace Yaxel
 {
     public partial class Authorization : Form
     {
-        //public static Form[] forms = {
-        //        null,
-        //        new MainMenu()
-        //    };
-
         private static Authorization inst;
         public static Authorization GetForm
         {
@@ -38,7 +33,7 @@ namespace Yaxel
 
         private void Authorization_Load(object sender, EventArgs e)
         {
-            //forms[0] = this;
+            this.KeyUp += Authorization_KeyUp;
 
             using (var context = new YaxelContext())
             {
@@ -66,6 +61,12 @@ namespace Yaxel
 
         }
 
+        private void Authorization_KeyUp(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show("asd");
+            if (e.KeyCode == Keys.Enter) enterButton_Click(sender, e);
+        }
+
         private void enterButton_Click(object sender, EventArgs e)
         {            
             login = loginBox.Text;
@@ -75,10 +76,8 @@ namespace Yaxel
             {
                 if (context.Employees.Any(em => em.Login == login && em.Password == password && em.Position == Position.Sysadmin))
                 {
-                    //forms[1].Visible = true;
-                    //forms[0].Visible = false;
                     Authorization.GetForm.Hide();
-                    MainMenu.GetForm.ShowDialog();
+                    MultiList.GetForm.ShowDialog();
                     Authorization.GetForm.Show();
                 }
                 else

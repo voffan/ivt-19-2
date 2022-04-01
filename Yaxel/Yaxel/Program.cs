@@ -15,7 +15,6 @@ namespace Yaxel
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(Authorization.GetForm);
-            //Application.Run(new Form1());
         }
     }
 }

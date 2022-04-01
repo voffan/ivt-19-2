@@ -68,12 +68,6 @@
     <Compile Include="Computer\AddComputers.Designer.cs">
       <DependentUpon>AddComputers.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddEm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddEm.Designer.cs">
-      <DependentUpon>AddEm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,12 +85,6 @@
     <Compile Include="Classes\PeripheryType.cs" />
     <Compile Include="Classes\Position.cs" />
     <Compile Include="Classes\Status.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Component\ListComponent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,12 +103,6 @@
     <Compile Include="Employee\ListEmployee.Designer.cs">
       <DependentUpon>ListEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
-    </Compile>
     <Compile Include="MultiList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,20 +112,23 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YaxelContext.cs" />
+    <Compile Include="YaxelStyle\YaxelButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="YaxelStyle\YaxelForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="YaxelStyle\YaxelForm.Designer.cs">
+      <DependentUpon>YaxelForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Component\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Computer\AddComputers.resx">
       <DependentUpon>AddComputers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddEm.resx">
-      <DependentUpon>AddEm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Component\ListComponent.resx">
       <DependentUpon>ListComponent.cs</DependentUpon>
@@ -153,9 +138,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\ListEmployee.resx">
       <DependentUpon>ListEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MultiList.resx">
       <DependentUpon>MultiList.cs</DependentUpon>
