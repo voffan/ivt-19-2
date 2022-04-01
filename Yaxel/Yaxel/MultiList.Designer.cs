@@ -54,7 +54,7 @@
             // 
             this.btnComponents.Font = new System.Drawing.Font("Arial", 16F);
             this.btnComponents.ForeColor = System.Drawing.Color.White;
-            this.btnComponents.Location = new System.Drawing.Point(10, 276);
+            this.btnComponents.Location = new System.Drawing.Point(20, 276);
             this.btnComponents.Name = "btnComponents";
             this.btnComponents.Size = new System.Drawing.Size(250, 50);
             this.btnComponents.TabIndex = 15;
@@ -65,7 +65,7 @@
             // 
             this.btnPeripherals.Font = new System.Drawing.Font("Arial", 16F);
             this.btnPeripherals.ForeColor = System.Drawing.Color.White;
-            this.btnPeripherals.Location = new System.Drawing.Point(10, 206);
+            this.btnPeripherals.Location = new System.Drawing.Point(20, 206);
             this.btnPeripherals.Name = "btnPeripherals";
             this.btnPeripherals.Size = new System.Drawing.Size(250, 50);
             this.btnPeripherals.TabIndex = 14;
@@ -76,7 +76,7 @@
             // 
             this.btnComputers.Font = new System.Drawing.Font("Arial", 16F);
             this.btnComputers.ForeColor = System.Drawing.Color.White;
-            this.btnComputers.Location = new System.Drawing.Point(10, 136);
+            this.btnComputers.Location = new System.Drawing.Point(20, 136);
             this.btnComputers.Name = "btnComputers";
             this.btnComputers.Size = new System.Drawing.Size(250, 50);
             this.btnComputers.TabIndex = 13;
@@ -87,7 +87,7 @@
             // 
             this.btnEmployees.Font = new System.Drawing.Font("Arial", 16F);
             this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Location = new System.Drawing.Point(10, 66);
+            this.btnEmployees.Location = new System.Drawing.Point(20, 66);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(250, 50);
             this.btnEmployees.TabIndex = 12;
