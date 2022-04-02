@@ -57,6 +57,8 @@ namespace AchieveNow.ProgramClasses
                 {
                     ConfigurationDB configurationDB = new ConfigurationDB(false);
                     JsonSerializer.Serialize<ConfigurationDB>(fs, configurationDB, options);
+
+                    optionsBuilder.UseSqlite("Data Source=AchieveNowDB.db");
                 }
             }
         }
