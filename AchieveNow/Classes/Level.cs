@@ -8,11 +8,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AchieveNow.Classes
 {
-        //public int Id { get; set; }
-        /*[MaxLength(50)]
-        public string Name { get; set; }
-        public virtual List<Competition> Competitions { get; set; } = new();*/
-
     public enum Level
     {
         Муниципальный,
