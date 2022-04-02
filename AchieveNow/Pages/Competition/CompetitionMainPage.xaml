@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AchieveNow.Pages.Competition"
       mc:Ignorable="d"
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="900"
       Title="Список мероприятий"
       Loaded="Page_Loaded"
       ContextMenuClosing="Page_ContextMenuClosing"
@@ -27,7 +27,7 @@
             <Button Content="Спортсмены" Margin="0, 0, 20, 0" Click="Button_Sportsmen"></Button>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
+        <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 0">
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
             <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
@@ -50,17 +50,18 @@
                 <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
             </StackPanel>
             
-            <Button x:Name="Search_Button" Content="Искать" Margin="0, 20, 0, 10" FontSize="18" Click="Search_Button_Click"></Button>
+            <Button x:Name="Search_Button" Content="Искать" Margin="0, 20, 0, 0" FontSize="18" Click="Search_Button_Click"></Button>
         </WrapPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="CompetitionsGrid" Grid.Row="1" Grid.Column="1">
+        <DataGrid AutoGenerateColumns="False" x:Name="CompetitionsGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Level}" Header="Уровень" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Location}" Header="Локация" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding DateOfExecution}" Header="Дата проведения" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Название" MinWidth="220" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Level}" Header="Уровень" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Location}" Header="Локация" Width="*"/>
+                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="*"/>
+                <DataGridTextColumn Binding="{Binding DateOfExecution}" Header="Дата проведения" Width="*"/>
+                <DataGridHyperlinkColumn Header="❌" Binding="{Binding Id}"></DataGridHyperlinkColumn>
             </DataGrid.Columns>
         </DataGrid>
 
