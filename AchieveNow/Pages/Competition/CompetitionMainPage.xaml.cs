@@ -92,10 +92,20 @@ namespace AchieveNow.Pages.Competition
             }
         }
 
+        // Обновить информацию из БД
         private void Update()
         {
             ShowCompetitions();
             ListOfLocationsAndSportkinds();
+        }
+
+        // Очистить формы
+        private void ClearForms()
+        {
+            Name_TextBox.Text = "";
+            Level_ComboBox.SelectedItem = null;
+            DateOfExecution.SelectedDate = null;
+            isIntervalDate_CheckBox.IsChecked = false;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -108,6 +118,7 @@ namespace AchieveNow.Pages.Competition
             }
         }
 
+        // Утилизировать данные по закрытию страницы
         private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
@@ -128,7 +139,7 @@ namespace AchieveNow.Pages.Competition
 
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
-            Level_ComboBox.SelectedItem = null;
+            ClearForms();
             Update();
         }
 
@@ -142,7 +153,7 @@ namespace AchieveNow.Pages.Competition
         }
 
         TextBlock? ToDate = null;
-        DatePicker? DateOfExecution2 = null;
+        DatePicker? DateOfExecution2 = new DatePicker { SelectedDate = null };
 
         private void isIntervalDate_CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -159,26 +170,59 @@ namespace AchieveNow.Pages.Competition
             FromDate_TextBlock.Visibility = Visibility.Hidden;
             Date_StackPanel.Children.Remove(ToDate);
             Date_StackPanel.Children.Remove(DateOfExecution2);
+            DateOfExecution2 = new DatePicker { SelectedDate = null };
         }
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                /*int level;
-                if (Level_ComboBox.SelectedValue != null)
-                {
-                    level = Level_ComboBox.SelectedIndex;
-                }*/
-
-                var search = context.Competitions
+                IQueryable<Classes.Competition> competitionIQuer = context.Competitions
                     .Include("Location")
-                    .Include("SportKind")
-                    .Where(c => EF.Functions.Like(c.Name!, $"%{Name_TextBox.Text}%"))
-                    //.Where(c => EF.Functions.Like(c.Level.ToString(), $"{Level_ComboBox.SelectedIndex}"))
-                    .Where(c => EF.Functions.Like(c.Location.Name, $"{Location_ComboBox.SelectedItem}%"))
-                    .Where(c => EF.Functions.Like(c.SportKind.Name, $"{SportKind_ComboBox.SelectedItem}%"))
-                    .ToList();
+                    .Include("SportKind");
+
+                if (Name_TextBox.Text != "")
+                {
+                    competitionIQuer = competitionIQuer.Where(c => EF.Functions.Like(c.Name!, $"%{Name_TextBox.Text}%"));
+                }
+
+                if (Level_ComboBox.SelectedItem != null)
+                {
+                    competitionIQuer = competitionIQuer.Where(c => c.Level == (Level)Level_ComboBox.SelectedItem);
+                }
+
+                if (Location_ComboBox.SelectedItem != null)
+                {
+                    competitionIQuer = competitionIQuer.Where(c => c.LocationId == (int)Location_ComboBox.SelectedValue);
+                }
+
+                if (SportKind_ComboBox.SelectedItem != null)
+                {
+                    competitionIQuer = competitionIQuer.Where(c => c.SportKindId == (int)SportKind_ComboBox.SelectedValue);
+                }
+
+                if (isIntervalDate_CheckBox.IsChecked == false)
+                {
+                    if (DateOfExecution.SelectedDate != null) {
+                        DateOnly dateOfExecution = DateOnly.FromDateTime((DateTime)DateOfExecution.SelectedDate);
+
+                        competitionIQuer = competitionIQuer.Where(c => c.DateOfExecution == dateOfExecution);
+                    }
+                }
+                else
+                {
+                    if (DateOfExecution.SelectedDate != null && DateOfExecution2 != null && DateOfExecution2.SelectedDate != null)
+                    {
+                        DateOnly dateOfExecution = DateOnly.FromDateTime((DateTime)DateOfExecution.SelectedDate);
+                        DateOnly dateOfExecution2 = DateOnly.FromDateTime((DateTime)DateOfExecution2.SelectedDate);
+
+                        competitionIQuer = competitionIQuer
+                            .Where(c => c.DateOfExecution >= dateOfExecution)
+                            .Where(c => c.DateOfExecution <= dateOfExecution2);
+                    }
+                }
+
+                var search = competitionIQuer.ToList();
 
                 CompetitionsGrid.ItemsSource = search;
             }
