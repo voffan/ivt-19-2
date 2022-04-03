@@ -94,9 +94,11 @@ namespace Yaxel
                 switch (cTable)
                 {
                     case CurrentTable.Employee:
+                        dataGridView1.Columns.Clear();
                         dataGridView1.DataSource = context.Employees.ToList();
                         break;
                     case CurrentTable.Computer:
+                        dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
                         List<Computer> computersList = context.Computers.Include(e => e.Employee).Include(m => m.Manufacturer).ToList();
@@ -107,21 +109,36 @@ namespace Yaxel
                         dataGridView1.Columns.Add("Employee", "Сотрудник");
                         dataGridView1.Columns.Add("Manufacturer", "Производитель");
 
+                        dataGridView1.Columns[0].Width = 25;
+
+                        DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
+                        btnUpdate.Name = "Update";
+                        btnUpdate.HeaderText = "Редактирование";
+                        //dataGridView1.CellContentClick += DataGridView1_CellContentClick;
+                        dataGridView1.Columns.Add(btnUpdate);
+
                         foreach (Computer c in computersList)
                         {
                             dataGridView1.Rows.Add(c.Id, c.Name, c.Status, c.Employee.Name, c.Manufacturer.Name);
                         }
                         break;
                     case CurrentTable.Periphery:
+                        dataGridView1.Columns.Clear();
                         dataGridView1.DataSource = context.Peripheries.ToList();
                         break;
                     case CurrentTable.Component:
+                        dataGridView1.Columns.Clear();
                         dataGridView1.DataSource = context.Components.ToList();
                         break;
                     case CurrentTable.none:
                         break;
                 }
             }
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void btnAddEntry_Click(object sender, EventArgs e)
