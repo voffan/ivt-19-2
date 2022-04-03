@@ -6,17 +6,6 @@ namespace Yaxel.Tables.Component
 {
     public partial class AddComponents : Form
     {
-        private static AddComponents init;
-        public static AddComponents GetForm
-        {
-            get
-            {
-                if (init == null || init.IsDisposed)
-                    init = new AddComponents();
-                return init;
-            }
-        }
-
         public AddComponents()
         {
             InitializeComponent();

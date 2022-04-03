@@ -117,3 +117,4 @@ C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Component.AddComponents.resources
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.DeleteComputer.resources
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.DeleteComputers.resources
+C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.AddComputers.resources

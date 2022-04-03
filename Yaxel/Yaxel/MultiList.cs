@@ -102,7 +102,7 @@ namespace Yaxel
                         List<Computer> computersList = context.Computers.Include(e => e.Employee).Include(m => m.Manufacturer).ToList();
 
                         dataGridView1.Columns.Add("Id", "Id");
-                        dataGridView1.Columns.Add("Name", "Модель");
+                        dataGridView1.Columns.Add("Name", "Имя компьютера");
                         dataGridView1.Columns.Add("Status", "Статус");
                         dataGridView1.Columns.Add("Employee", "Сотрудник");
                         dataGridView1.Columns.Add("Manufacturer", "Производитель");
@@ -132,6 +132,8 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Computer:
+                    AddComputers form = new AddComputers();
+                    form.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
