@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel;
 using Yaxel.Classes;
+using System.Data.Entity;
 
 namespace Yaxel
 {
@@ -97,7 +99,18 @@ namespace Yaxel
                         dataGridView1.DataSource = context.Employees.ToList();
                         break;
                     case CurrentTable.Computer:
-                        dataGridView1.DataSource = context.Computers.ToList();
+                        List<Computer> computersList = context.Computers.Include(e => e.Employee).Include(m => m.Manufacturer).ToList();
+
+                        dataGridView1.Columns.Add("Id", "Id");
+                        dataGridView1.Columns.Add("Name", "Модель");
+                        dataGridView1.Columns.Add("Status", "Статус");
+                        dataGridView1.Columns.Add("Employee", "Сотрудник");
+                        dataGridView1.Columns.Add("Manufacturer", "Производитель");
+
+                        foreach (Computer c in computersList)
+                        {
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.Status, c.Employee.Name, c.Manufacturer.Name);
+                        }
                         break;
                     case CurrentTable.Periphery:
                         dataGridView1.DataSource = context.Peripheries.ToList();

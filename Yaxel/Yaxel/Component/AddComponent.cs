@@ -31,7 +31,7 @@ namespace Yaxel
 
         private void AddComponent_Load(object sender, EventArgs e)
         {
-            comboBox1.DataSource = new BindingSource(DescriptionAttributes<AttrType>.RetrieveAttributes(), null);
+            comboBox1.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<AttrType>.RetrieveAttributes(), null);
             comboBox1.DisplayMember = "Key";
             comboBox1.ValueMember = "Value";
         }

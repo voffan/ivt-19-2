@@ -32,7 +32,7 @@ namespace Yaxel
         private void AddComputers_Load(object sender, EventArgs e)
         {
             // Добавление enum (status) в comboBox
-            statusComboBox.DataSource = new BindingSource(DescriptionAttributes<Status>.RetrieveAttributes(), null);
+            statusComboBox.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<Status>.RetrieveAttributes(), null);
             statusComboBox.DisplayMember = "Key";
             statusComboBox.ValueMember = "Value";
                         
@@ -46,7 +46,7 @@ namespace Yaxel
                 // Вывод список производителей в comboBox
                 manufacturerComboBox.DataSource = context.Manufacturers.ToList();
                 manufacturerComboBox.DisplayMember = "Name";
-                manufacturerComboBox.ValueMember = "Id";
+                manufacturerComboBox.ValueMember= "Id";
             }
         }
 

@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new Yaxel.YaxelStyle.YaxelButton();
+            this.btnDeleteEntry = new Yaxel.YaxelStyle.YaxelButton();
+            this.btnAddEntry = new Yaxel.YaxelStyle.YaxelButton();
             this.btnComponents = new Yaxel.YaxelStyle.YaxelButton();
             this.btnPeripherals = new Yaxel.YaxelStyle.YaxelButton();
             this.btnComputers = new Yaxel.YaxelStyle.YaxelButton();
             this.btnEmployees = new Yaxel.YaxelStyle.YaxelButton();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
-            this.btnAddEntry = new Yaxel.YaxelStyle.YaxelButton();
-            this.btnDeleteEntry = new Yaxel.YaxelStyle.YaxelButton();
-            this.btnSearch = new Yaxel.YaxelStyle.YaxelButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,8 +51,53 @@
             this.dataGridView1.Size = new System.Drawing.Size(970, 564);
             this.dataGridView1.TabIndex = 8;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(35, 387);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 26);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "label1";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSearch.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(910, 66);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(250, 50);
+            this.btnSearch.TabIndex = 18;
+            this.btnSearch.Text = "Поиск";
+            // 
+            // btnDeleteEntry
+            // 
+            this.btnDeleteEntry.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDeleteEntry.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnDeleteEntry.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteEntry.Location = new System.Drawing.Point(650, 66);
+            this.btnDeleteEntry.Name = "btnDeleteEntry";
+            this.btnDeleteEntry.Size = new System.Drawing.Size(250, 50);
+            this.btnDeleteEntry.TabIndex = 17;
+            this.btnDeleteEntry.Text = "Удалить запись";
+            // 
+            // btnAddEntry
+            // 
+            this.btnAddEntry.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddEntry.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnAddEntry.ForeColor = System.Drawing.Color.White;
+            this.btnAddEntry.Location = new System.Drawing.Point(390, 66);
+            this.btnAddEntry.Name = "btnAddEntry";
+            this.btnAddEntry.Size = new System.Drawing.Size(250, 50);
+            this.btnAddEntry.TabIndex = 16;
+            this.btnAddEntry.Text = "Добавить запись";
+            this.btnAddEntry.Click += new System.EventHandler(this.btnAddEntry_Click);
+            // 
             // btnComponents
             // 
+            this.btnComponents.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnComponents.Font = new System.Drawing.Font("Arial", 16F);
             this.btnComponents.ForeColor = System.Drawing.Color.White;
             this.btnComponents.Location = new System.Drawing.Point(20, 276);
@@ -63,6 +109,7 @@
             // 
             // btnPeripherals
             // 
+            this.btnPeripherals.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnPeripherals.Font = new System.Drawing.Font("Arial", 16F);
             this.btnPeripherals.ForeColor = System.Drawing.Color.White;
             this.btnPeripherals.Location = new System.Drawing.Point(20, 206);
@@ -74,6 +121,7 @@
             // 
             // btnComputers
             // 
+            this.btnComputers.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnComputers.Font = new System.Drawing.Font("Arial", 16F);
             this.btnComputers.ForeColor = System.Drawing.Color.White;
             this.btnComputers.Location = new System.Drawing.Point(20, 136);
@@ -85,6 +133,7 @@
             // 
             // btnEmployees
             // 
+            this.btnEmployees.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnEmployees.Font = new System.Drawing.Font("Arial", 16F);
             this.btnEmployees.ForeColor = System.Drawing.Color.White;
             this.btnEmployees.Location = new System.Drawing.Point(20, 66);
@@ -98,42 +147,12 @@
             // 
             this.yaxelForm1.ThisForm = this;
             // 
-            // btnAddEntry
-            // 
-            this.btnAddEntry.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnAddEntry.ForeColor = System.Drawing.Color.White;
-            this.btnAddEntry.Location = new System.Drawing.Point(390, 66);
-            this.btnAddEntry.Name = "btnAddEntry";
-            this.btnAddEntry.Size = new System.Drawing.Size(250, 50);
-            this.btnAddEntry.TabIndex = 16;
-            this.btnAddEntry.Text = "Добавить запись";
-            this.btnAddEntry.Click += new System.EventHandler(this.btnAddEntry_Click);
-            // 
-            // btnDeleteEntry
-            // 
-            this.btnDeleteEntry.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnDeleteEntry.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteEntry.Location = new System.Drawing.Point(650, 66);
-            this.btnDeleteEntry.Name = "btnDeleteEntry";
-            this.btnDeleteEntry.Size = new System.Drawing.Size(250, 50);
-            this.btnDeleteEntry.TabIndex = 17;
-            this.btnDeleteEntry.Text = "Удалить запись";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(910, 66);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(250, 50);
-            this.btnSearch.TabIndex = 18;
-            this.btnSearch.Text = "Поиск";
-            // 
             // MultiList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDeleteEntry);
             this.Controls.Add(this.btnAddEntry);
@@ -150,6 +169,7 @@
             this.Load += new System.EventHandler(this.MultiList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -164,5 +184,6 @@
         private YaxelStyle.YaxelButton btnSearch;
         private YaxelStyle.YaxelButton btnDeleteEntry;
         private YaxelStyle.YaxelButton btnAddEntry;
+        private System.Windows.Forms.Label label1;
     }
 }
