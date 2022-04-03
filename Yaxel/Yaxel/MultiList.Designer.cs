@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new Yaxel.YaxelStyle.YaxelButton();
             this.btnDeleteEntry = new Yaxel.YaxelStyle.YaxelButton();
             this.btnAddEntry = new Yaxel.YaxelStyle.YaxelButton();
@@ -56,6 +57,17 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(970, 564);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(31, 359);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 26);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "label1";
             // 
             // btnSearch
             // 
@@ -149,6 +161,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDeleteEntry);
             this.Controls.Add(this.btnAddEntry);
@@ -165,6 +178,7 @@
             this.Load += new System.EventHandler(this.MultiList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -179,5 +193,6 @@
         private YaxelStyle.YaxelButton btnSearch;
         private YaxelStyle.YaxelButton btnDeleteEntry;
         private YaxelStyle.YaxelButton btnAddEntry;
+        private System.Windows.Forms.Label label1;
     }
 }

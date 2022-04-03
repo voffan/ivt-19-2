@@ -68,10 +68,11 @@ namespace Yaxel.YaxelStyle
         {                    
             if (Form != null)
             {
-                Form.Width = 1280;
-                Form.Height = 720;
                 Form.FormBorderStyle = FormBorderStyle.None;
                 Form.StartPosition = FormStartPosition.CenterScreen;
+
+                Form.Width = 1280;
+                Form.Height = 720;
 
                 SF.Alignment = StringAlignment.Center;
                 SF.LineAlignment = StringAlignment.Center;
