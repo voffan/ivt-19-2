@@ -1,6 +1,4 @@
-﻿using System;
-using Yaxel.Classes;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace Yaxel
 {
@@ -11,11 +9,11 @@ namespace Yaxel
 
         }
 
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Computer> Computers { get; set; }
-        public DbSet<Periphery> Peripheries { get; set; }
-        public DbSet<Component> Components { get; set; }
+        public DbSet<Classes.Employee> Employees { get; set; }
+        public DbSet<Classes.Computer> Computers { get; set; }
+        public DbSet<Classes.Periphery> Peripheries { get; set; }
+        public DbSet<Classes.Component> Components { get; set; }
         public DbSet<Classes.Attribute> Attributes { get; set; }
-        public DbSet<Manufacturer> Manufacturers { get; set; }
+        public DbSet<Classes.Manufacturer> Manufacturers { get; set; }
     }
 }

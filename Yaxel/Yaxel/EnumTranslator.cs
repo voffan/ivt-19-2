@@ -2,7 +2,7 @@
 using System.Linq;
 using System.ComponentModel;
 
-namespace Yaxel.Classes
+namespace Yaxel
 {
     internal class EnumTranslator
     {

@@ -56,19 +56,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tables\Component\AddComponents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\Component\AddComponents.Designer.cs">
+      <DependentUpon>AddComponents.cs</DependentUpon>
+    </Compile>
     <Compile Include="EnumTranslator.cs" />
-    <Compile Include="Component\AddComponent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Component\AddComponent.Designer.cs">
-      <DependentUpon>AddComponent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Computer\AddComputers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Computer\AddComputers.Designer.cs">
-      <DependentUpon>AddComputers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,24 +80,6 @@
     <Compile Include="Classes\PeripheryType.cs" />
     <Compile Include="Classes\Position.cs" />
     <Compile Include="Classes\Status.cs" />
-    <Compile Include="Component\ListComponent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Component\ListComponent.Designer.cs">
-      <DependentUpon>ListComponent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Computer\ListComputers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Computer\ListComputers.Designer.cs">
-      <DependentUpon>ListComputers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Employee\ListEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Employee\ListEmployee.Designer.cs">
-      <DependentUpon>ListEmployee.cs</DependentUpon>
-    </Compile>
     <Compile Include="MultiList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +88,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\Computer\DeleteComputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\Computer\DeleteComputer.Designer.cs">
+      <DependentUpon>DeleteComputer.cs</DependentUpon>
+    </Compile>
     <Compile Include="YaxelContext.cs" />
     <Compile Include="YaxelStyle\YaxelButton.cs">
       <SubType>Component</SubType>
@@ -122,23 +104,11 @@
     <Compile Include="YaxelStyle\YaxelForm.Designer.cs">
       <DependentUpon>YaxelForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Component\AddComponent.resx">
-      <DependentUpon>AddComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Computer\AddComputers.resx">
-      <DependentUpon>AddComputers.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\Component\AddComponents.resx">
+      <DependentUpon>AddComponents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Component\ListComponent.resx">
-      <DependentUpon>ListComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Computer\ListComputers.resx">
-      <DependentUpon>ListComputers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Employee\ListEmployee.resx">
-      <DependentUpon>ListEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MultiList.resx">
       <DependentUpon>MultiList.cs</DependentUpon>
@@ -152,6 +122,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tables\Computer\DeleteComputer.resx">
+      <DependentUpon>DeleteComputer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -167,7 +140,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Peripheria\" />
+    <Folder Include="Tables\Employee\" />
+    <Folder Include="Tables\Periphery\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

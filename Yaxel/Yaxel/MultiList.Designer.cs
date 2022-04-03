@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new Yaxel.YaxelStyle.YaxelButton();
             this.btnDeleteEntry = new Yaxel.YaxelStyle.YaxelButton();
             this.btnAddEntry = new Yaxel.YaxelStyle.YaxelButton();
@@ -44,22 +43,19 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(290, 136);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(970, 564);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(35, 387);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 26);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "label1";
             // 
             // btnSearch
             // 
@@ -82,6 +78,7 @@
             this.btnDeleteEntry.Size = new System.Drawing.Size(250, 50);
             this.btnDeleteEntry.TabIndex = 17;
             this.btnDeleteEntry.Text = "Удалить запись";
+            this.btnDeleteEntry.Click += new System.EventHandler(this.btnDeleteEntry_Click);
             // 
             // btnAddEntry
             // 
@@ -152,7 +149,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDeleteEntry);
             this.Controls.Add(this.btnAddEntry);
@@ -169,7 +165,6 @@
             this.Load += new System.EventHandler(this.MultiList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -184,6 +179,5 @@
         private YaxelStyle.YaxelButton btnSearch;
         private YaxelStyle.YaxelButton btnDeleteEntry;
         private YaxelStyle.YaxelButton btnAddEntry;
-        private System.Windows.Forms.Label label1;
     }
 }

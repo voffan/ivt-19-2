@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.ComponentModel;
-using Yaxel.Classes;
 using System.Data.Entity;
+using Yaxel.Classes;
 
 namespace Yaxel
 {
@@ -99,7 +93,9 @@ namespace Yaxel
                         dataGridView1.DataSource = context.Employees.ToList();
                         break;
                     case CurrentTable.Computer:
-                        List<Computer> computersList = context.Computers.Include(e => e.Employee).Include(m => m.Manufacturer).ToList();
+                        dataGridView1.Columns.Clear();
+
+                        List<Classes.Computer> computersList = context.Computers.Include(e => e.Employee).Include(m => m.Manufacturer).ToList();
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Модель");
@@ -107,7 +103,7 @@ namespace Yaxel
                         dataGridView1.Columns.Add("Employee", "Сотрудник");
                         dataGridView1.Columns.Add("Manufacturer", "Производитель");
 
-                        foreach (Computer c in computersList)
+                        foreach (Classes.Computer c in computersList)
                         {
                             dataGridView1.Rows.Add(c.Id, c.Name, c.Status, c.Employee.Name, c.Manufacturer.Name);
                         }
@@ -132,7 +128,6 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Computer:
-                    AddComputers.GetForm.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
@@ -146,6 +141,31 @@ namespace Yaxel
                     break;
             }
         }
+
+
+        private void btnDeleteEntry_Click(object sender, EventArgs e)
+        {
+            switch (cTable)
+            {
+                case CurrentTable.Employee:
+
+                    break;
+                case CurrentTable.Computer:
+                    //Yaxel.Computer.DeleteComputers form = new DeleteComputers(dataGridView1.SelectedRows);
+                    //form.ShowDialog();
+                    break;
+                case CurrentTable.Periphery:
+
+                    break;
+                case CurrentTable.Component:
+
+                    break;
+                case CurrentTable.none:
+
+                    break;
+            }
+        }
+
         private static void SetDoubleBuffered(Control c)
         {
             if (SystemInformation.TerminalServerSession)
