@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using Yaxel.Classes;
 using Yaxel.Tables.Computer;
 
@@ -49,6 +51,8 @@ namespace Yaxel
             SetDoubleBuffered(dataGridView1);
 
             cTable = CurrentTable.none;
+
+            dataGridView1.CellMouseUp += DataGridView1_CellMouseUp;
         }
 
         private void btnEmployees_Click(object sender, EventArgs e)
@@ -103,23 +107,35 @@ namespace Yaxel
 
                         List<Computer> computersList = context.Computers.Include(e => e.Employee).Include(m => m.Manufacturer).ToList();
 
+                        DataGridViewImageCell cell = new DataGridViewImageCell();
+
+                        Image srcImage = Image.FromFile("../../Resources/Update_Icon.png");
+
+                        Bitmap newImage = new Bitmap(25, 25);
+                        using (Graphics gr = Graphics.FromImage(newImage))
+                        {
+                            gr.SmoothingMode = SmoothingMode.HighQuality;
+                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                            gr.DrawImage(srcImage, new Rectangle(0, 0, 25, 25));
+                        }
+
+                        cell.Value = newImage;
+
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Имя компьютера");
                         dataGridView1.Columns.Add("Status", "Статус");
                         dataGridView1.Columns.Add("Employee", "Сотрудник");
                         dataGridView1.Columns.Add("Manufacturer", "Производитель");
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
 
                         dataGridView1.Columns[0].Width = 25;
-
-                        DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
-                        btnUpdate.Name = "Update";
-                        btnUpdate.HeaderText = "Редактирование";
-                        //dataGridView1.CellContentClick += DataGridView1_CellContentClick;
-                        dataGridView1.Columns.Add(btnUpdate);
+                        dataGridView1.Columns[5].Width = 28;
+                        dataGridView1.RowTemplate.Height = 28;
 
                         foreach (Computer c in computersList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Name, c.Status, c.Employee.Name, c.Manufacturer.Name);
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.Status, c.Employee.Name, c.Manufacturer.Name, cell.Value);
                         }
                         break;
                     case CurrentTable.Periphery:
@@ -136,9 +152,32 @@ namespace Yaxel
             }
         }
 
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            throw new NotImplementedException();
+            if (e.Button == MouseButtons.Left)
+                switch (cTable)
+                {
+                    case CurrentTable.Employee:
+
+                        break;
+                    case CurrentTable.Computer:
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
+                        {
+                            UpdateComputers form = new UpdateComputers((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                            fillDataGridView();
+                        }
+                        break;
+                    case CurrentTable.Periphery:
+
+                        break;
+                    case CurrentTable.Component:
+
+                        break;
+                    case CurrentTable.none:
+
+                        break;
+                }
         }
 
         private void btnAddEntry_Click(object sender, EventArgs e)

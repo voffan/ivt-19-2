@@ -67,6 +67,7 @@
             this.yaxelButton1.Size = new System.Drawing.Size(250, 50);
             this.yaxelButton1.TabIndex = 23;
             this.yaxelButton1.Text = "Обновить";
+            this.yaxelButton1.Click += new System.EventHandler(this.yaxelButton1_Click);
             // 
             // comboBoxManufacturer
             // 

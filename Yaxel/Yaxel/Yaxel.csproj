@@ -159,14 +159,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\" />
     <Folder Include="Tables\Employee\" />
     <Folder Include="Tables\Periphery\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Pen_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Pen_Icon1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
