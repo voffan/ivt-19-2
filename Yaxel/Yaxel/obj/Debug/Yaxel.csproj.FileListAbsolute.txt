@@ -119,3 +119,7 @@ C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.DeleteComputers.resources
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.AddComputers.resources
 C:\Users\ZeMonast\6 семестр\Программная инженерия\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.UpdateComputers.resources
+C:\Users\baidu\Desktop\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Component.AddComponents.resources
+C:\Users\baidu\Desktop\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.AddComputers.resources
+C:\Users\baidu\Desktop\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.DeleteComputers.resources
+C:\Users\baidu\Desktop\GitHub\ivt-19-2\Yaxel\Yaxel\obj\Debug\Yaxel.Tables.Computer.UpdateComputers.resources

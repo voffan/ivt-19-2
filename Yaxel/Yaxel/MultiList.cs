@@ -59,6 +59,7 @@ namespace Yaxel
         {
             listName = "Сотрудники";
             this.Text = oldText + " - " + listName;
+            Invalidate();
 
             cTable = CurrentTable.Employee;
             fillDataGridView();
@@ -68,6 +69,7 @@ namespace Yaxel
         {
             listName = "Компьютеры";
             this.Text = oldText + " - " + listName;
+            Invalidate();
 
             cTable = CurrentTable.Computer;
             fillDataGridView();
@@ -77,6 +79,7 @@ namespace Yaxel
         {
             listName = "Периферии";
             this.Text = oldText + " - " + listName;
+            Invalidate();
 
             cTable = CurrentTable.Periphery;
             fillDataGridView();
@@ -86,6 +89,7 @@ namespace Yaxel
         {
             listName = "Компоненты";
             this.Text = oldText + " - " + listName;
+            Invalidate();
 
             cTable = CurrentTable.Component;
             fillDataGridView();
