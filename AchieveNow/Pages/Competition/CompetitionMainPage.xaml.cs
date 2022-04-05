@@ -249,5 +249,20 @@ namespace AchieveNow.Pages.Competition
                 MessageBox.Show("Выберите соревнование");
             }
         }
+
+        private void Button_Locations(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_SportKinds(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Users(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
