@@ -5,48 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Sportsman"
         mc:Ignorable="d"
-        Title="Окно добавления соревнования" Height="380" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Окно добавления спортсмена" Height="400" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1.3*" />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
 
-        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 20, 0, 0">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Имя</TextBlock>
-            <TextBox x:Name="Name" MinWidth="150"></TextBox>
+            <TextBox x:Name="Name_TextBox" MinWidth="150" PreviewTextInput="NameValidationTextBox"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Дата рождения</TextBlock>
-            <DatePicker></DatePicker>
+            <DatePicker x:Name="DateOfBirth" MinWidth="150"></DatePicker>
         </WrapPanel>
 
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Рост</TextBlock>
-            <TextBox x:Name="Height" MinWidth="150"></TextBox>
+            <TextBox x:Name="Height_TextBox" MinWidth="150" PreviewTextInput="NumberValidationTextBox"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Вес</TextBlock>
-            <TextBox x:Name="Weight" MinWidth="150"></TextBox>
+            <TextBox x:Name="Weight_TextBox" MinWidth="150" PreviewTextInput="NumberValidationTextBox"></TextBox>
         </WrapPanel>
         
         <WrapPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Гендер</TextBlock>
-            <TextBox x:Name="Gender" MinWidth="150"></TextBox>
+            <ComboBox x:Name="Gender_ComboBox" IsEditable="False" StaysOpenOnEdit="True"></ComboBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Вид спорта</TextBlock>
-            <TextBox x:Name="SportKind" MinWidth="150"></TextBox>
+            <ComboBox x:Name="SportKind_ComboBox" IsEditable="False" StaysOpenOnEdit="True"></ComboBox>
         </WrapPanel>
 
         <Button x:Name="AddButton" Content="Добавить" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" IsDefault="True" Click="AddButton_Click"></Button>
+
+        <Menu VerticalAlignment="Top" Height="18" FontSize="14">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Обновить" Click="Refresh_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="Закрыть" Click="Exit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
