@@ -30,84 +30,6 @@ namespace AchieveNow.Pages.Competition
             InitializeComponent();
         }
 
-        // Отобразить данные из таблицы Competitions в DataGrid
-        private void ShowCompetitions() {
-            try
-            {
-                using (ApplicationContext context = new ApplicationContext())
-                {
-                    var query = context.Competitions
-                        .Include("Location")
-                        .Include("SportKind")
-                        .ToList();
-
-                    CompetitionsGrid.ItemsSource = query;
-                }
-            }
-            catch (Exception ex)
-            {
-                CompetitionsGrid.ItemsSource = null;
-                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
-                showErrorWindow.ShowDialog();
-
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        // Вывести в ComboBox данные из таблицы Locations и Sportkinds
-        private void ListOfLocationsAndSportkinds()
-        {
-            Location_ComboBox.Items.Clear();
-            SportKind_ComboBox.Items.Clear();
-
-            try
-            {
-                using (ApplicationContext context = new ApplicationContext())
-                {
-                    var locations = context.Locations.ToList();
-                    foreach (Location location in locations)
-                    {
-                        Location_ComboBox.Items.Add(location);
-                    }
-
-                    Location_ComboBox.DisplayMemberPath = "Name";
-                    Location_ComboBox.SelectedValuePath = "Id";
-
-                    var sportKinds = context.SportKinds.ToList();
-                    foreach (SportKind sportKind in sportKinds)
-                    {
-                        SportKind_ComboBox.Items.Add(sportKind);
-                    }
-
-                    SportKind_ComboBox.DisplayMemberPath = "Name";
-                    SportKind_ComboBox.SelectedValuePath = "Id";
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
-                showErrorWindow.ShowDialog();
-
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        // Обновить информацию из БД
-        private void Update()
-        {
-            ShowCompetitions();
-            ListOfLocationsAndSportkinds();
-        }
-
-        // Очистить формы
-        private void ClearForms()
-        {
-            Name_TextBox.Text = "";
-            Level_ComboBox.SelectedItem = null;
-            DateOfExecution.SelectedDate = null;
-            isIntervalDate_CheckBox.IsChecked = false;
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
@@ -118,13 +40,78 @@ namespace AchieveNow.Pages.Competition
             }
         }
 
-        // Утилизировать данные по закрытию страницы
-        private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        // Отобразить данные из таблицы Competitions в DataGrid
+        private void ShowCompetitions() {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var query = context.Competitions
+                    .Include("Location")
+                    .Include("SportKind")
+                    .ToList();
+
+                CompetitionsGrid.ItemsSource = query;
+            }
+        }
+
+        // Вывести в ComboBox данные из таблицы Locations и Sportkinds
+        private void ListOfLocationsAndSportkinds()
+        {
+            Location_ComboBox.Items.Clear();
+            SportKind_ComboBox.Items.Clear();
+
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var locations = context.Locations.ToList();
+                foreach (Location location in locations)
+                {
+                    Location_ComboBox.Items.Add(location);
+                }
+
+                Location_ComboBox.DisplayMemberPath = "Name";
+                Location_ComboBox.SelectedValuePath = "Id";
+
+                var sportKinds = context.SportKinds.ToList();
+                foreach (SportKind sportKind in sportKinds)
+                {
+                    SportKind_ComboBox.Items.Add(sportKind);
+                }
+
+                SportKind_ComboBox.DisplayMemberPath = "Name";
+                SportKind_ComboBox.SelectedValuePath = "Id";
+            }
+        }
+
+        // Обновить информацию из БД
+        private void Update()
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                context.Dispose();
+                if (!context.IsAvailable)
+                {
+                    CompetitionsGrid.ItemsSource = null;
+                    return;
+                }
+
+                ShowCompetitions();
+                ListOfLocationsAndSportkinds();
             }
+        }
+
+        // Очистить формы
+        private void ClearForms()
+        {
+            Name_TextBox.Text = "";
+            Level_ComboBox.SelectedItem = null;
+            Location_ComboBox.SelectedItem = null;
+            SportKind_ComboBox.SelectedItem = null;
+            DateOfExecution.SelectedDate = null;
+            isIntervalDate_CheckBox.IsChecked = false;
         }
 
         private void Button_Achievements(object sender, RoutedEventArgs e)
@@ -143,6 +130,7 @@ namespace AchieveNow.Pages.Competition
             Update();
         }
 
+        // Открыть диалоговое окно добавления соревнования
         private void AddCompetition_Button_Click(object sender, RoutedEventArgs e)
         {
             var competitionAddWindow = new CompetitionAddWindow();
@@ -155,6 +143,7 @@ namespace AchieveNow.Pages.Competition
         TextBlock? ToDate = null;
         DatePicker? DateOfExecution2 = new DatePicker { SelectedDate = null };
 
+        // По выбору isIntervalDate_CheckBox добавить второй DatePicker
         private void isIntervalDate_CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             FromDate_TextBlock.Visibility = Visibility.Visible;
@@ -165,6 +154,7 @@ namespace AchieveNow.Pages.Competition
             Date_StackPanel.Children.Add(DateOfExecution2);
         }
 
+        // По снятию выбора isIntervalDate_CheckBox убрать второй DatePicker
         private void isIntervalDate_CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             FromDate_TextBlock.Visibility = Visibility.Hidden;
@@ -177,6 +167,9 @@ namespace AchieveNow.Pages.Competition
         {
             using (ApplicationContext context = new ApplicationContext())
             {
+                if (!context.IsAvailable)
+                    return;
+
                 IQueryable<Classes.Competition> competitionIQuer = context.Competitions
                     .Include("Location")
                     .Include("SportKind");
@@ -203,7 +196,8 @@ namespace AchieveNow.Pages.Competition
 
                 if (isIntervalDate_CheckBox.IsChecked == false)
                 {
-                    if (DateOfExecution.SelectedDate != null) {
+                    if (DateOfExecution.SelectedDate != null)
+                    {
                         DateOnly dateOfExecution = DateOnly.FromDateTime((DateTime)DateOfExecution.SelectedDate);
 
                         competitionIQuer = competitionIQuer.Where(c => c.DateOfExecution == dateOfExecution);
@@ -225,6 +219,34 @@ namespace AchieveNow.Pages.Competition
                 var search = competitionIQuer.ToList();
 
                 CompetitionsGrid.ItemsSource = search;
+            }
+        }
+        
+        private void Delete_CompetitionsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (CompetitionsGrid.SelectedItem != null)
+            {
+                CompetitionsGrid.SelectedValuePath = "Id";
+                //MessageBox.Show(CompetitionsGrid.SelectedValue.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Выберите соревнование");
+            }
+        }
+
+        private void Edit_CompetitionsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (CompetitionsGrid.SelectedItem != null)
+            {
+                CompetitionsGrid.SelectedValuePath = "Id";
+                //MessageBox.Show(CompetitionsGrid.SelectedValue.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Выберите соревнование");
             }
         }
     }

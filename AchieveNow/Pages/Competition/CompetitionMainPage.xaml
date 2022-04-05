@@ -8,7 +8,6 @@
       d:DesignHeight="600" d:DesignWidth="900"
       Title="Список мероприятий"
       Loaded="Page_Loaded"
-      ContextMenuClosing="Page_ContextMenuClosing"
       Background="LightGray">
 
     <Grid>
@@ -31,25 +30,23 @@
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
             <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            
+
             <TextBlock Text="Уровень" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <ComboBox x:Name="Level_ComboBox" IsEditable="False" StaysOpenOnEdit="True" Margin="0, 0, 0, 10"></ComboBox>
-            
+
             <TextBlock Text="Локация" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <!--<TextBox x:Name="Location_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>-->
             <ComboBox x:Name="Location_ComboBox" IsEditable="False" StaysOpenOnEdit="True" Margin="0, 0, 0, 10"></ComboBox>
-            
+
             <TextBlock Text="Вид спорта" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <!--<TextBox x:Name="SportKind_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>-->
             <ComboBox x:Name="SportKind_ComboBox" IsEditable="False" StaysOpenOnEdit="True"></ComboBox>
-            
-            <StackPanel x:Name="Date_StackPanel" HorizontalAlignment="Center">
+
+            <StackPanel x:Name="Date_StackPanel" HorizontalAlignment="Center" Orientation="Vertical">
                 <TextBlock Text="Дата проведения" FontSize="16" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>
                 <CheckBox x:Name="isIntervalDate_CheckBox" FontSize="12" IsChecked="False" Content="Промежуток времени" Margin="0, 0, 0, 0" Checked="isIntervalDate_CheckBox_Checked" Unchecked="isIntervalDate_CheckBox_Unchecked"></CheckBox>
                 <TextBlock x:Name="FromDate_TextBlock" Text="От" FontSize="12" HorizontalAlignment="Center" Visibility="Hidden" Margin="0, 0, 0, 2"></TextBlock>
                 <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
             </StackPanel>
-            
+
             <Button x:Name="Search_Button" Content="Искать" Margin="0, 20, 0, 0" FontSize="18" Click="Search_Button_Click"></Button>
         </WrapPanel>
 
@@ -61,14 +58,20 @@
                 <DataGridTextColumn Binding="{Binding Location}" Header="Локация" Width="*"/>
                 <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="*"/>
                 <DataGridTextColumn Binding="{Binding DateOfExecution}" Header="Дата проведения" Width="*"/>
-                <DataGridHyperlinkColumn Header="❌" Binding="{Binding Id}"></DataGridHyperlinkColumn>
             </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="Edit_CompetitionsGrid_ContextMenu" Header="Редактировать" Click="Edit_CompetitionsGrid_ContextMenu_Click"></MenuItem>
+                    <MenuItem x:Name="Delete_CompetitionsGrid_ContextMenu" Header="Удалить" Click="Delete_CompetitionsGrid_ContextMenu_Click"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
 
         <Button x:Name="AddCompetition_Button" Grid.Row="0" Grid.Column="0" Click="AddCompetition_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>Соревнование</TextBlock>
         </Button>
-        
+
         <Button x:Name="Refresh_Button" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
 </Page>

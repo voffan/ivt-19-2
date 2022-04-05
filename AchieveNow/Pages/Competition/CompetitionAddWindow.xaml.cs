@@ -43,35 +43,28 @@ namespace AchieveNow.Pages.Competition
             Location_ComboBox.Items.Clear();
             SportKind_ComboBox.Items.Clear();
 
-            try
+            using (ApplicationContext context = new ApplicationContext())
             {
-                using (ApplicationContext context = new ApplicationContext())
+                if (!context.IsAvailable)
+                    return;
+
+                var locations = context.Locations.ToList();
+                foreach (Location location in locations)
                 {
-                    var locations = context.Locations.ToList();
-                    foreach (Location location in locations)
-                    {
-                        Location_ComboBox.Items.Add(location);
-                    }
-
-                    Location_ComboBox.DisplayMemberPath = "Name";
-                    Location_ComboBox.SelectedValuePath = "Id";
-
-                    var sportKinds = context.SportKinds.ToList();
-                    foreach (SportKind sportKind in sportKinds)
-                    {
-                        SportKind_ComboBox.Items.Add(sportKind);
-                    }
-
-                    SportKind_ComboBox.DisplayMemberPath = "Name";
-                    SportKind_ComboBox.SelectedValuePath = "Id";
+                    Location_ComboBox.Items.Add(location);
                 }
-            }
-            catch (Exception ex)
-            {
-                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
-                showErrorWindow.ShowDialog();
 
-                Console.WriteLine(ex.Message);
+                Location_ComboBox.DisplayMemberPath = "Name";
+                Location_ComboBox.SelectedValuePath = "Id";
+
+                var sportKinds = context.SportKinds.ToList();
+                foreach (SportKind sportKind in sportKinds)
+                {
+                    SportKind_ComboBox.Items.Add(sportKind);
+                }
+
+                SportKind_ComboBox.DisplayMemberPath = "Name";
+                SportKind_ComboBox.SelectedValuePath = "Id";
             }
         }
 
@@ -167,6 +160,9 @@ namespace AchieveNow.Pages.Competition
             {
                 using (ApplicationContext context = new ApplicationContext())
                 {
+                    if (!context.IsAvailable)
+                        return;
+
                     Classes.Competition competition = new Classes.Competition(Name_TextBox.Text, (Level)Level_ComboBox.SelectedIndex, locationId, sportKindId, dateOfExecution);
 
                     context.Competitions.Add(competition);
@@ -177,10 +173,7 @@ namespace AchieveNow.Pages.Competition
             }
             catch (Exception ex)
             {
-                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
-                showErrorWindow.ShowDialog();
-
-                Console.WriteLine(ex.Message);
+                MessageBox.Show("Произошла неизвестная ошибка: " + ex.Message);
             }
         }
     }
