@@ -18,7 +18,6 @@ namespace AchieveNow.ProgramClasses
         public DbSet<Competition> Competitions => Set<Competition>();
         public DbSet<Employee> Employees => Set<Employee>();
         public DbSet<Location> Locations => Set<Location>();
-        public DbSet<Position> Positions => Set<Position>();
         public DbSet<SportKind> SportKinds => Set<SportKind>();
         public DbSet<Sportsman> Sportsmen => Set<Sportsman>();
 

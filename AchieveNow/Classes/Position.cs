@@ -8,11 +8,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AchieveNow.Classes
 {
-    public class Position
+    public enum Position
     {
-        public int Id { get; set; }
-        [MaxLength(50)]
-        public string Name { get; set; }
-        public virtual List<Employee> Employees { get; set; } = new();
+        Администратор,
+        Сотрудник,
+        Судья
     }
 }

@@ -228,7 +228,8 @@ namespace AchieveNow.Pages.Competition
             if (CompetitionsGrid.SelectedItem != null)
             {
                 CompetitionsGrid.SelectedValuePath = "Id";
-                //MessageBox.Show(CompetitionsGrid.SelectedValue.ToString());
+                //MessageBox.Show(CompetitionsGrid.SelectedValuePath.ToString());
+                MessageBox.Show(CompetitionsGrid.SelectedItems.Count.ToString());
             }
             else
             {
@@ -248,6 +249,21 @@ namespace AchieveNow.Pages.Competition
             {
                 MessageBox.Show("Выберите соревнование");
             }
+        }
+
+        private void Button_Locations(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_SportKinds(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Users(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
