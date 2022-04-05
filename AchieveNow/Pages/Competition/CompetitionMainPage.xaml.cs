@@ -228,7 +228,8 @@ namespace AchieveNow.Pages.Competition
             if (CompetitionsGrid.SelectedItem != null)
             {
                 CompetitionsGrid.SelectedValuePath = "Id";
-                //MessageBox.Show(CompetitionsGrid.SelectedValue.ToString());
+                //MessageBox.Show(CompetitionsGrid.SelectedValuePath.ToString());
+                MessageBox.Show(CompetitionsGrid.SelectedItems.Count.ToString());
             }
             else
             {
