@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.Classes;
+using AchieveNow.Pages;
 using System.Text.Json;
 using System.IO;
+using System.Windows;
 
 namespace AchieveNow.ProgramClasses
 {
@@ -20,9 +22,25 @@ namespace AchieveNow.ProgramClasses
         public DbSet<SportKind> SportKinds => Set<SportKind>();
         public DbSet<Sportsman> Sportsmen => Set<Sportsman>();
 
+        public bool IsAvailable { get => isAvailable; }
+
+        private bool isAvailable = false;
+
         public ApplicationContext()
         {
-            Database.EnsureCreated();
+            if (Database.CanConnect())
+            {
+                isAvailable = true;
+            }
+
+            if (isAvailable)
+            {
+                Database.EnsureCreated();
+            }
+            else
+            {
+                ConnectionError();
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -61,6 +79,12 @@ namespace AchieveNow.ProgramClasses
                     optionsBuilder.UseSqlite("Data Source=AchieveNowDB.db");
                 }
             }
+        }
+
+        private void ConnectionError()
+        {
+            ShowErrorWindow showErrorWindow = new ShowErrorWindow();
+            showErrorWindow.ShowDialog();
         }
     }
 }
