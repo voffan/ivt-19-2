@@ -29,15 +29,23 @@
 
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
-            <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Name" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBlock Text="Локация" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Location" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBlock Text="Вид спорта" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="SportKind" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBlock Text="Дата проведения" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
-            <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18"></Button>
+            
+            <TextBlock Text="Имя" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            
+            <TextBlock Text="Дата рождения" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <DatePicker x:Name="DateOfBirth" Margin="0, 0, 0, 10"></DatePicker>
+            
+            <TextBlock Text="Рост" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBox x:Name="Height_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+
+            <TextBlock Text="Вес" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBox x:Name="Weight_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+
+            <TextBlock Text="Gender" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="Gender_ComboBox" IsEditable="False" StaysOpenOnEdit="True" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10"></ComboBox>
+
+            <Button x:Name="Search_Button" Content="Искать" Click="Search_Button_Click" Margin="0, 0, 0, 10" FontSize="18"></Button>
         </WrapPanel>
 
         <DataGrid AutoGenerateColumns="False" x:Name="SportsmansGrid" Grid.Row="1" Grid.Column="1">
