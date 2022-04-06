@@ -118,5 +118,19 @@ namespace AchieveNow.Pages.Achievement
             SportKind.Text = "Вид спорта";
         }
 
+        private void Button_Locations(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_SportKinds(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Users(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
