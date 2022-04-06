@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages"
         mc:Ignorable="d"
-        Title="Подтвердить удаление" Height="200" Width="400">
+        Title="Подтвердить удаление" MinHeight="300" MinWidth="500" Height="300" Width="600" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Вы действительно хотите удалите эти элементы?" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+
+        <DataGrid AutoGenerateColumns="False" x:Name="Delete_DataGrid" Grid.Row="1" IsReadOnly="True"></DataGrid>
+
+        <WrapPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="Confirm_Button" Content="Подтвердить" Margin="0, 0, 100, 0" Click="Confirm_Button_Click"></Button>
+            <Button x:Name="Cancel_Button" Content="Отменить" Click="Cancel_Button_Click"></Button>
+        </WrapPanel>
     </Grid>
 </Window>

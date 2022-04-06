@@ -124,6 +124,21 @@ namespace AchieveNow.Pages.Competition
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
+        private void Button_Locations(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_SportKinds(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Users(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
@@ -224,12 +239,20 @@ namespace AchieveNow.Pages.Competition
         
         private void Delete_CompetitionsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
-
             if (CompetitionsGrid.SelectedItem != null)
             {
-                CompetitionsGrid.SelectedValuePath = "Id";
-                //MessageBox.Show(CompetitionsGrid.SelectedValuePath.ToString());
-                MessageBox.Show(CompetitionsGrid.SelectedItems.Count.ToString());
+                List<Classes.Competition> competitions = new List<Classes.Competition>();
+
+                foreach (Classes.Competition competition in CompetitionsGrid.SelectedItems)
+                {
+                    competitions.Add(competition);
+                }
+
+                DeleteWindow deleteWindow = new DeleteWindow(competitions);
+                deleteWindow.ShowDialog();
+
+                // Обновить после закрытия диалогового окна удаления
+                Update();
             }
             else
             {
@@ -239,7 +262,6 @@ namespace AchieveNow.Pages.Competition
 
         private void Edit_CompetitionsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
-
             if (CompetitionsGrid.SelectedItem != null)
             {
                 CompetitionsGrid.SelectedValuePath = "Id";
@@ -249,21 +271,6 @@ namespace AchieveNow.Pages.Competition
             {
                 MessageBox.Show("Выберите соревнование");
             }
-        }
-
-        private void Button_Locations(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_SportKinds(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Users(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
