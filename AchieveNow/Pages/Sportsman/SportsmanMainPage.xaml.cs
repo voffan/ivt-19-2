@@ -63,17 +63,6 @@ namespace AchieveNow.Pages.Sportsman
                 context.Dispose();
             }
         }
-
-        private void Button_Achievements(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AchievementMainPage());
-        }
-
-        private void Button_Competitions(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CompetitionMainPage());
-        }
-
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ShowSportsmen();
@@ -89,6 +78,31 @@ namespace AchieveNow.Pages.Sportsman
         }
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Button_Competitions(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CompetitionMainPage());
+        }
+
+        private void Button_Achievements(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AchievementMainPage());
+        }
+
+        private void Button_Locations(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_SportKinds(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Users(object sender, RoutedEventArgs e)
         {
 
         }

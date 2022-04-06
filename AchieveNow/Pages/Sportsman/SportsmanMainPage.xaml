@@ -22,9 +22,12 @@
         </Grid.ColumnDefinitions>
 
         <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Соревнования" Margin="0, 0, 20, 0" Click="Button_Competitions"></Button>
-            <Button Content="Достижения" Margin="0, 0, 20, 0" Click="Button_Achievements"></Button>
-            <Button Content="Спортсмены" Margin="0, 0, 20, 0" Background="Gray"></Button>
+            <Button x:Name="Competition_Button"     Content="Соревнования"  Margin="0, 0, 10, 0" Click="Button_Competitions"></Button>
+            <Button x:Name="Achievement_Button"     Content="Достижения"    Margin="0, 0, 10, 0" Click="Button_Achievements"></Button>
+            <Button x:Name="Sportsman_Button"       Content="Спортсмены"    Margin="0, 0, 10, 0" Background="Gray"></Button>
+            <Button x:Name="Location_Button"        Content="Локации"       Margin="0, 0, 10, 0" Click="Button_Locations"></Button>
+            <Button x:Name="SportKind_Button"       Content="Виды спорта"   Margin="0, 0, 10, 0" Click="Button_SportKinds"></Button>
+            <Button x:Name="User_Button"            Content="Пользователи"  Margin="0, 0, 10, 0" Click="Button_Users"></Button>
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
@@ -51,12 +54,12 @@
         <DataGrid AutoGenerateColumns="False" x:Name="SportsmansGrid" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Дата рождения" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Height}" Header="Рост" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Weight}" Header="Вес" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Gender}" Header="Гендер" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" MinWidth="220" Width="*"/>
+                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Дата рождения" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Height}" Header="Рост" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Weight}" Header="Вес" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Gender}" Header="Гендер" Width="*"/>
+                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" MinWidth="130" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
