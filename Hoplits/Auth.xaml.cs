@@ -36,16 +36,20 @@ namespace Hoplits
                     return;
                 }
                 //go to main menu 
-                MessageBox.Show("Logged in!");
+                //MessageBox.Show("Logged in!");
                 this.Hide();
                 MainWindow mainWindow = new MainWindow(); 
                 mainWindow.ShowDialog();
+
+                
+
                 this.Close();
             }
             catch(Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
+            
         }
     }
 }
