@@ -34,11 +34,12 @@
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
             <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <TextBox x:Name="Name" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBlock Text="Локация" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Location" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBlock Text="Вид спорта" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Text="Дата выдачи" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <DatePicker x:Name="DateOfIssue" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></DatePicker>
+            <TextBlock Text="Результат" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <TextBox x:Name="SportKind" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBlock Text="Дата проведения" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Text="Соревнование" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <TextBox x:Name="Competition" Text="" HorizontalContentAlignment="Center"></TextBox>
             <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
             <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18"></Button>
         </WrapPanel>

@@ -88,36 +88,6 @@ namespace AchieveNow.Pages.Achievement
             ShowAchievements();
         }
 
-        private void Name_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Name.Text = "";
-        }
-
-        private void Name_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Name.Text = "Название";
-        }
-
-        private void Location_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Location.Text = "";
-        }
-
-        private void Location_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Location.Text = "Локация";
-        }
-
-        private void SportKind_GotFocus(object sender, RoutedEventArgs e)
-        {
-            SportKind.Text = "";
-        }
-
-        private void SportKind_LostFocus(object sender, RoutedEventArgs e)
-        {
-            SportKind.Text = "Вид спорта";
-        }
-
         private void Button_Locations(object sender, RoutedEventArgs e)
         {
 
