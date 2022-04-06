@@ -28,6 +28,31 @@ namespace CoreDebug.Controllers
             return View();
         }
 
+        public IActionResult Authors()
+        {
+            return View();
+        }
+
+        public IActionResult Genres()
+        {
+            return View();
+        }
+
+        public IActionResult Locations()
+        {
+            return View();
+        }
+
+        public IActionResult Paintings()
+        {
+            return View();
+        }
+
+        public IActionResult Users()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
