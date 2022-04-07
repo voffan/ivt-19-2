@@ -38,6 +38,7 @@ namespace AchieveNow.Pages.Sportsman
         private void ListOfSporkind()
         {
             SportKind_ComboBox.Items.Clear();
+            Country_ComboBox.Items.Clear();
 
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -52,16 +53,25 @@ namespace AchieveNow.Pages.Sportsman
 
                 SportKind_ComboBox.DisplayMemberPath = "Name";
                 SportKind_ComboBox.SelectedValuePath = "Id";
+
+                var countries = context.Countries.ToList();
+                foreach (Country country in countries)
+                {
+                    Country_ComboBox.Items.Add(country);
+                }
+
+                Country_ComboBox.DisplayMemberPath = "Name";
+                Country_ComboBox.SelectedValuePath = "Id";
             }
         }
         
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        public void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]");
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        public void NameValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"[A-Za-z\sа-яА-Я]");
             if (regex.IsMatch(e.Text))
@@ -168,6 +178,12 @@ namespace AchieveNow.Pages.Sportsman
                 return;
             }
 
+            if (Country_ComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите Японию");
+                return;
+            }
+
             int sportKindId;
             try
             {
@@ -199,6 +215,18 @@ namespace AchieveNow.Pages.Sportsman
                 return;
             }
 
+            int countryId;
+            try
+            {
+                Int32.TryParse(Country_ComboBox.SelectedValue.ToString(), out int countryIdParsed);
+                countryId = countryIdParsed;
+            }
+            catch
+            {
+                MessageBox.Show("Неизвестная ошибка при выборе страны");
+                return;
+            }
+
             try
             {
                 using (ApplicationContext context = new ApplicationContext())
@@ -213,7 +241,8 @@ namespace AchieveNow.Pages.Sportsman
                         height,
                         weight,
                         (Gender)gender,
-                        sportKindId
+                        sportKindId,
+                        countryId
                     );
 
                     context.Sportsmen.Add(sportsman);
