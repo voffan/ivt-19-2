@@ -22,6 +22,8 @@ namespace AchieveNow.Classes
         public Gender Gender { get; set; }
         public int SportKindId { get; set; }
         public virtual SportKind SportKind { get; set; }
+        public int CountryId { get; set; }
+        public virtual Country Country { get; set; }
         public virtual List<Achievement> Achievements { get; set; } = new();
 
         public Sportsman(string name, DateOnly dateOfBirth, int height, int weight, Gender gender, int sportKindId)

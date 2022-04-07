@@ -54,12 +54,13 @@
         <DataGrid AutoGenerateColumns="False" x:Name="SportsmansGrid" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" MinWidth="220" Width="*"/>
-                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Дата рождения" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Height}" Header="Рост" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Weight}" Header="Вес" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Gender}" Header="Гендер" Width="*"/>
-                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" MinWidth="130" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" MinWidth="220" Width="*" MaxWidth="250"/>
+                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Дата рождения" Width="70"/>
+                <DataGridTextColumn Binding="{Binding Height}" Header="Рост" Width="30"/>
+                <DataGridTextColumn Binding="{Binding Weight}" Header="Вес" Width="30"/>
+                <DataGridTextColumn Binding="{Binding Gender}" Header="Гендер" Width="70"/>
+                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" MinWidth="130" Width="*" MaxWidth="150"/>
+                <DataGridTextColumn Binding="{Binding Country}" Header="Страна" MinWidth="100" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 

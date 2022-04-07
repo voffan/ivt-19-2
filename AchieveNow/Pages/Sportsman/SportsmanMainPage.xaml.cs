@@ -36,6 +36,7 @@ namespace AchieveNow.Pages.Sportsman
                 {
                     var query = context.Sportsmen
                         .Include("SportKind")
+                        .Include("Country")
                         .ToList();
 
                     SportsmansGrid.ItemsSource = query;
