@@ -14,16 +14,16 @@ namespace AchieveNow.Classes
         [MaxLength(50)]
         public string Name { get; set; }
         public DateOnly DateOfIssue { get; set; }
-        public byte Results { get; set; }
+        public Result Result { get; set; }
         public int CompetitionId { get; set; }
         public virtual Competition Competition { get; set; }
         public virtual List<Sportsman> Sportsmen { get; set; } = new();
 
-        public Achievement(string name, DateOnly dateOfIssue, byte results, int competitionId)
+        public Achievement(string name, DateOnly dateOfIssue, Result result, int competitionId)
         {
             Name = name;
             DateOfIssue = dateOfIssue;
-            Results = results;
+            Result = result;
             CompetitionId = competitionId;
         }
     }

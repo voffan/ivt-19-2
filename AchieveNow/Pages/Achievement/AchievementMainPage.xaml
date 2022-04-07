@@ -44,12 +44,12 @@
             <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18"></Button>
         </WrapPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="AchievementsGrid" Grid.Row="1" Grid.Column="1">
+        <DataGrid AutoGenerateColumns="False" x:Name="AchievementsGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding DateOfIssue}" Header="Дата выдачи" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Results}" Header="Результат" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Result}" Header="Результат" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Competition}" Header="Соревнование" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>

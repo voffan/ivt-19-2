@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AchieveNow.Classes
 {
-    enum Result
+    public enum Result
     {
-        Первое_место,
-        Второе_место,
-        Третье_место
+        Первое_место = 1,
+        Второе_место = 2,
+        Третье_место = 3
     }
-}
+} 

@@ -30,9 +30,10 @@ namespace AchieveNow.Pages.Achievement
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ListOfCompetitions();
-            Result_ComboBox.Items.Add(1);
-            Result_ComboBox.Items.Add(2);
-            Result_ComboBox.Items.Add(3);
+            foreach (Result result in Enum.GetValues(typeof(Result)))
+            {
+                Result_ComboBox.Items.Add(result);
+            }
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
@@ -54,9 +55,6 @@ namespace AchieveNow.Pages.Achievement
                         Competition_ComboBox.Items.Add(competition);
                     }
 
-
-
-                    //Competition_ComboBox.DisplayMemberPath = "DateOfExecution";
                     Competition_ComboBox.DisplayMemberPath = "Name";
                     Competition_ComboBox.SelectedValuePath = "Id";
                 }
@@ -93,7 +91,7 @@ namespace AchieveNow.Pages.Achievement
 
             if (Result_ComboBox.SelectedValue == null)
             {
-                MessageBox.Show("Выберите соревнование");
+                MessageBox.Show("Выберите результат");
                 return;
             }
 
@@ -110,17 +108,6 @@ namespace AchieveNow.Pages.Achievement
                 return;
             }
 
-            byte resultId;
-            try
-            {
-                byte.TryParse(Result_ComboBox.SelectedValue.ToString(), out byte resultIdParsed);
-                resultId = resultIdParsed;
-            }
-            catch
-            {
-                MessageBox.Show("Неизвестная ошибка при выборе результата");
-                return;
-            }
 
             if (DateOfIssue.SelectedDate.ToString() == "")
             {
@@ -160,7 +147,7 @@ namespace AchieveNow.Pages.Achievement
             {
                 using (ApplicationContext context = new ApplicationContext())
                 {
-                    Classes.Achievement achievement = new Classes.Achievement(Name_TextBox.Text, dateOfIssue, resultId, competitionId);
+                    Classes.Achievement achievement = new Classes.Achievement(Name_TextBox.Text, dateOfIssue, (Result)Result_ComboBox.SelectedItem, competitionId);
 
                     context.Achievements.Add(achievement);
                     context.SaveChanges();
