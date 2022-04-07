@@ -200,7 +200,9 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Component:
-
+                    Yaxel.Tables.Component.AddComponents form1 = new Yaxel.Tables.Component.AddComponents();
+                    form1.ShowDialog();
+                    fillDataGridView();
                     break;
                 case CurrentTable.none:
 
