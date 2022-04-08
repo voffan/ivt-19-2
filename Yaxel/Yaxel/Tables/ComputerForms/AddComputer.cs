@@ -1,18 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Yaxel.Classes;
 
-namespace Yaxel.Tables.Computer
+namespace Yaxel.Tables.ComputerForms
 {
-    public partial class AddComputers : Form
+    public partial class AddComputer : Form
     {
-        public AddComputers()
+        public AddComputer()
         {
             InitializeComponent();
         }
 
-        private void AddComputers_Load(object sender, EventArgs e)
+        private void AddComputer_Load(object sender, EventArgs e)
         {
             // Добавление enum (status) в comboBox
             comboBoxStatus.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<Status>.RetrieveAttributes(), null);
@@ -27,13 +33,13 @@ namespace Yaxel.Tables.Computer
                 comboBoxEmployee.ValueMember = "Id";
 
                 // Вывод список производителей в comboBox
-                comboBoxManufacturer.DataSource = context.Manufacturers.ToList(); 
+                comboBoxManufacturer.DataSource = context.Manufacturers.ToList();
                 comboBoxManufacturer.DisplayMember = "Name";
                 comboBoxManufacturer.ValueMember = "Id";
             }
         }
 
-        private void yaxelButton1_Click(object sender, EventArgs e)
+        private void ApplyButton_Click(object sender, EventArgs e)
         {
             using (var context = new YaxelContext())
             {

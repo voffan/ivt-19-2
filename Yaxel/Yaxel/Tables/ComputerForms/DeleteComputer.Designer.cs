@@ -1,6 +1,6 @@
-﻿namespace Yaxel.Tables.Computer
+﻿namespace Yaxel.Tables.ComputerForms
 {
-    partial class DeleteComputers
+    partial class DeleteComputer
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,38 @@
         {
             this.components = new System.ComponentModel.Container();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
+            this.ApplyButton = new Yaxel.YaxelStyle.YaxelButton();
+            this.cancelButton = new Yaxel.YaxelStyle.YaxelButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.noButton = new Yaxel.YaxelStyle.YaxelButton();
-            this.yesButton = new Yaxel.YaxelStyle.YaxelButton();
             this.SuspendLayout();
             // 
             // yaxelForm1
             // 
             this.yaxelForm1.ThisForm = this;
+            // 
+            // ApplyButton
+            // 
+            this.ApplyButton.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.ApplyButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.ApplyButton.ForeColor = System.Drawing.Color.White;
+            this.ApplyButton.Location = new System.Drawing.Point(384, 120);
+            this.ApplyButton.Name = "ApplyButton";
+            this.ApplyButton.Size = new System.Drawing.Size(250, 50);
+            this.ApplyButton.TabIndex = 5;
+            this.ApplyButton.Text = "Да";
+            this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.cancelButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.cancelButton.ForeColor = System.Drawing.Color.White;
+            this.cancelButton.Location = new System.Drawing.Point(66, 120);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(250, 50);
+            this.cancelButton.TabIndex = 4;
+            this.cancelButton.Text = "Нет";
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // label1
             // 
@@ -46,47 +70,23 @@
             this.label1.Location = new System.Drawing.Point(31, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(638, 26);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Вы действительно хотите безвозвратно удалить эти записи?";
             // 
-            // noButton
-            // 
-            this.noButton.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.noButton.Font = new System.Drawing.Font("Arial", 16F);
-            this.noButton.ForeColor = System.Drawing.Color.White;
-            this.noButton.Location = new System.Drawing.Point(66, 120);
-            this.noButton.Name = "noButton";
-            this.noButton.Size = new System.Drawing.Size(250, 50);
-            this.noButton.TabIndex = 1;
-            this.noButton.Text = "Нет";
-            this.noButton.Click += new System.EventHandler(this.noButton_Click);
-            // 
-            // yesButton
-            // 
-            this.yesButton.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.yesButton.Font = new System.Drawing.Font("Arial", 16F);
-            this.yesButton.ForeColor = System.Drawing.Color.White;
-            this.yesButton.Location = new System.Drawing.Point(384, 120);
-            this.yesButton.Name = "yesButton";
-            this.yesButton.Size = new System.Drawing.Size(250, 50);
-            this.yesButton.TabIndex = 2;
-            this.yesButton.Text = "Да";
-            this.yesButton.Click += new System.EventHandler(this.yesButton_Click);
-            // 
-            // DeleteComputers
+            // DeleteComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 200);
-            this.Controls.Add(this.yesButton);
-            this.Controls.Add(this.noButton);
+            this.Controls.Add(this.ApplyButton);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "DeleteComputers";
+            this.Name = "DeleteComputer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DeleteComputers";
-            this.Load += new System.EventHandler(this.DeleteComputers_Load);
+            this.Text = "Удалить компьютер";
+            this.Load += new System.EventHandler(this.DeleteComputer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,8 +95,8 @@
         #endregion
 
         private YaxelStyle.YaxelForm yaxelForm1;
-        private YaxelStyle.YaxelButton yesButton;
-        private YaxelStyle.YaxelButton noButton;
+        private YaxelStyle.YaxelButton ApplyButton;
+        private YaxelStyle.YaxelButton cancelButton;
         private System.Windows.Forms.Label label1;
     }
 }

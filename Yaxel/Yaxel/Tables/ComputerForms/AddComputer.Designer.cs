@@ -1,6 +1,6 @@
-﻿namespace Yaxel.Tables.Computer
+﻿namespace Yaxel.Tables.ComputerForms
 {
-    partial class UpdateComputers
+    partial class AddComputer
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
             this.yaxelButton2 = new Yaxel.YaxelStyle.YaxelButton();
-            this.yaxelButton1 = new Yaxel.YaxelStyle.YaxelButton();
+            this.ApplyButton = new Yaxel.YaxelStyle.YaxelButton();
             this.comboBoxManufacturer = new System.Windows.Forms.ComboBox();
             this.comboBoxEmployee = new System.Windows.Forms.ComboBox();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
@@ -57,17 +57,17 @@
             this.yaxelButton2.TabIndex = 24;
             this.yaxelButton2.Text = "Выбрать комплектующие";
             // 
-            // yaxelButton1
+            // ApplyButton
             // 
-            this.yaxelButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.yaxelButton1.Font = new System.Drawing.Font("Arial", 16F);
-            this.yaxelButton1.ForeColor = System.Drawing.Color.White;
-            this.yaxelButton1.Location = new System.Drawing.Point(415, 497);
-            this.yaxelButton1.Name = "yaxelButton1";
-            this.yaxelButton1.Size = new System.Drawing.Size(250, 50);
-            this.yaxelButton1.TabIndex = 23;
-            this.yaxelButton1.Text = "Обновить";
-            this.yaxelButton1.Click += new System.EventHandler(this.yaxelButton1_Click);
+            this.ApplyButton.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.ApplyButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.ApplyButton.ForeColor = System.Drawing.Color.White;
+            this.ApplyButton.Location = new System.Drawing.Point(415, 497);
+            this.ApplyButton.Name = "ApplyButton";
+            this.ApplyButton.Size = new System.Drawing.Size(250, 50);
+            this.ApplyButton.TabIndex = 23;
+            this.ApplyButton.Text = "Добавить";
+            this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
             // comboBoxManufacturer
             // 
@@ -149,13 +149,13 @@
             this.textBoxName.Size = new System.Drawing.Size(210, 32);
             this.textBoxName.TabIndex = 15;
             // 
-            // UpdateComputers
+            // AddComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 577);
             this.Controls.Add(this.yaxelButton2);
-            this.Controls.Add(this.yaxelButton1);
+            this.Controls.Add(this.ApplyButton);
             this.Controls.Add(this.comboBoxManufacturer);
             this.Controls.Add(this.comboBoxEmployee);
             this.Controls.Add(this.comboBoxStatus);
@@ -166,10 +166,10 @@
             this.Controls.Add(this.textBoxName);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "UpdateComputers";
+            this.Name = "AddComputer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Обновить компьютер";
-            this.Load += new System.EventHandler(this.UpdateComputers_Load);
+            this.Text = "Добавить компьютер";
+            this.Load += new System.EventHandler(this.AddComputer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,7 +179,7 @@
 
         private YaxelStyle.YaxelForm yaxelForm1;
         private YaxelStyle.YaxelButton yaxelButton2;
-        private YaxelStyle.YaxelButton yaxelButton1;
+        private YaxelStyle.YaxelButton ApplyButton;
         private System.Windows.Forms.ComboBox comboBoxManufacturer;
         private System.Windows.Forms.ComboBox comboBoxEmployee;
         private System.Windows.Forms.ComboBox comboBoxStatus;

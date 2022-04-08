@@ -6,7 +6,8 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using Yaxel.Classes;
-using Yaxel.Tables.Computer;
+using Yaxel.Tables.ComputerForms;
+using Yaxel.Tables.ComponentForms;
 
 namespace Yaxel
 {
@@ -167,7 +168,7 @@ namespace Yaxel
                     case CurrentTable.Computer:
                         if (e.ColumnIndex == 5 && e.RowIndex > -1)
                         {
-                            UpdateComputers form = new UpdateComputers((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            UpdateComputer form = new UpdateComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                             fillDataGridView();
                         }
@@ -192,15 +193,15 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Computer:
-                    AddComputers form = new AddComputers();
-                    form.ShowDialog();
+                    AddComputer computerForm = new AddComputer();
+                    computerForm.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
 
                     break;
                 case CurrentTable.Component:
-                    Yaxel.Tables.Component.AddComponents form1 = new Yaxel.Tables.Component.AddComponents();
+                    AddComponent form1 = new AddComponent();
                     form1.ShowDialog();
                     fillDataGridView();
                     break;
@@ -224,8 +225,8 @@ namespace Yaxel
                     for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
                         delItems.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
 
-                    DeleteComputers form = new DeleteComputers(delItems);
-                    form.ShowDialog();
+                    DeleteComputer computerForm = new DeleteComputer(delItems);
+                    computerForm.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:

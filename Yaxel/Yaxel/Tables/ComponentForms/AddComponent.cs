@@ -1,18 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Yaxel.Classes;
 
-namespace Yaxel.Tables.Component
+namespace Yaxel.Tables.ComponentForms
 {
-    public partial class AddComponents : Form
+    public partial class AddComponent : Form
     {
-        public AddComponents()
+        public AddComponent()
         {
             InitializeComponent();
         }
 
-        private void AddComponents_Load(object sender, EventArgs e)
+        private void AddComponent_Load(object sender, EventArgs e)
         {
             comboBox2.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<ComponentType>.RetrieveAttributes(), null);
             comboBox2.DisplayMember = "Key";
@@ -27,14 +33,14 @@ namespace Yaxel.Tables.Component
             }
         }
 
-        private void yaxelButton1_Click(object sender, EventArgs e)
+        private void applyButton_Click(object sender, EventArgs e)
         {
-            using(var context = new YaxelContext())
+            using (var context = new YaxelContext())
             {
                 Yaxel.Classes.Component component = new Yaxel.Classes.Component();
                 component.Model = textBox1.Text;
                 component.ComponentType = (ComponentType)Enum.Parse(typeof(ComponentType), (string)comboBox2.SelectedValue);
-                component.ComputerId = (int) comboBox1.SelectedValue;
+                component.ComputerId = (int)comboBox1.SelectedValue;
 
                 context.Components.Add(component);
                 context.SaveChanges();

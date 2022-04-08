@@ -57,11 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tables\Component\AddComponents.cs">
+    <Compile Include="Tables\ComponentForms\AddComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\Component\AddComponents.Designer.cs">
-      <DependentUpon>AddComponents.cs</DependentUpon>
+    <Compile Include="Tables\ComponentForms\AddComponent.Designer.cs">
+      <DependentUpon>AddComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="EnumTranslator.cs" />
     <Compile Include="Authorization.cs">
@@ -89,23 +89,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables\Computer\AddComputers.cs">
+    <Compile Include="Tables\ComputerForms\AddComputer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\Computer\AddComputers.Designer.cs">
-      <DependentUpon>AddComputers.cs</DependentUpon>
+    <Compile Include="Tables\ComputerForms\AddComputer.Designer.cs">
+      <DependentUpon>AddComputer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\Computer\DeleteComputers.cs">
+    <Compile Include="Tables\ComputerForms\DeleteComputer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\Computer\DeleteComputers.Designer.cs">
-      <DependentUpon>DeleteComputers.cs</DependentUpon>
+    <Compile Include="Tables\ComputerForms\DeleteComputer.Designer.cs">
+      <DependentUpon>DeleteComputer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\Computer\UpdateComputers.cs">
+    <Compile Include="Tables\ComputerForms\UpdateComputer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\Computer\UpdateComputers.Designer.cs">
-      <DependentUpon>UpdateComputers.cs</DependentUpon>
+    <Compile Include="Tables\ComputerForms\UpdateComputer.Designer.cs">
+      <DependentUpon>UpdateComputer.cs</DependentUpon>
     </Compile>
     <Compile Include="YaxelContext.cs" />
     <Compile Include="YaxelStyle\YaxelButton.cs">
@@ -117,8 +117,8 @@
     <Compile Include="YaxelStyle\YaxelForm.Designer.cs">
       <DependentUpon>YaxelForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Tables\Component\AddComponents.resx">
-      <DependentUpon>AddComponents.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComponentForms\AddComponent.resx">
+      <DependentUpon>AddComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
@@ -136,14 +136,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tables\Computer\AddComputers.resx">
-      <DependentUpon>AddComputers.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComputerForms\AddComputer.resx">
+      <DependentUpon>AddComputer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Computer\DeleteComputers.resx">
-      <DependentUpon>DeleteComputers.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComputerForms\DeleteComputer.resx">
+      <DependentUpon>DeleteComputer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Computer\UpdateComputers.resx">
-      <DependentUpon>UpdateComputers.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComputerForms\UpdateComputer.resx">
+      <DependentUpon>UpdateComputer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -161,8 +161,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Tables\Employee\" />
-    <Folder Include="Tables\Periphery\" />
+    <Folder Include="Tables\EmployeeForms\" />
+    <Folder Include="Tables\PeripheryForms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
