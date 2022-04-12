@@ -19,17 +19,17 @@ using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Competition;
 using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Sportsman;
+using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Location;
-using AchieveNow.Pages.Country;
 
-namespace AchieveNow.Pages.SportKind
+namespace AchieveNow.Pages.Country
 {
     /// <summary>
-    /// Interaction logic for SportKindMainPage.xaml
+    /// Interaction logic for CountryMainPage.xaml
     /// </summary>
-    public partial class SportKindMainPage : Page
+    public partial class CountryMainPage : Page
     {
-        public SportKindMainPage()
+        public CountryMainPage()
         {
             InitializeComponent();
         }
@@ -38,17 +38,17 @@ namespace AchieveNow.Pages.SportKind
             Update();
         }
 
-        private void ShowSportKinds()
+        private void ShowCountries()
         {
             using (ApplicationContext context = new ApplicationContext())
             {
                 if (!context.IsAvailable)
                     return;
 
-                var query = context.SportKinds
+                var query = context.Countries
                     .ToList();
 
-                SportKindsGrid.ItemsSource = query;
+                CountriesGrid.ItemsSource = query;
             }
         }
 
@@ -59,16 +59,18 @@ namespace AchieveNow.Pages.SportKind
             {
                 if (!context.IsAvailable)
                 {
-                    SportKindsGrid.ItemsSource = null;
+                    CountriesGrid.ItemsSource = null;
                     return;
                 }
-                ShowSportKinds();
+                ShowCountries();
             }
         }
+
         private void ClearForms()
         {
             Name_TextBox.Text = "";
         }
+
         private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
@@ -76,18 +78,21 @@ namespace AchieveNow.Pages.SportKind
                 context.Dispose();
             }
         }
+
+        private void AddLocation_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Not working!");
+        }
+
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
-        private void AddSportKind_Button_Click(object sender, RoutedEventArgs e)
+
+        private void AddCountry_Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Not working!");
-            var sportKindAddWindow = new SportKindAddWindow();
-            sportKindAddWindow.ShowDialog();
-
-            Update();
         }
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
@@ -115,9 +120,9 @@ namespace AchieveNow.Pages.SportKind
             NavigationService.Navigate(new LocationMainPage());
         }
 
-        private void Button_Contries(object sender, RoutedEventArgs e)
+        private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CountryMainPage());
+            NavigationService.Navigate(new SportKindMainPage());
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)
@@ -125,12 +130,12 @@ namespace AchieveNow.Pages.SportKind
 
         }
 
-        private void Edit_SportKindGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Edit_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Delete_SportKindsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Delete_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }

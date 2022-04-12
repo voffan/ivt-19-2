@@ -18,6 +18,8 @@ using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Sportsman;
 using AchieveNow.Pages.SportKind;
+using AchieveNow.Pages.Location;
+using AchieveNow.Pages.Country;
 
 namespace AchieveNow.Pages.Competition
 {
@@ -127,12 +129,17 @@ namespace AchieveNow.Pages.Competition
 
         private void Button_Locations(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LocationMainPage());
         }
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SportKindMainPage());
+        }
+
+        private void Button_Countries(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CountryMainPage());
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)

@@ -17,6 +17,8 @@ using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Competition;
 using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Sportsman;
+using AchieveNow.Pages.Location;
+using AchieveNow.Pages.Country;
 
 namespace AchieveNow.Pages.Achievement
 {
@@ -28,6 +30,11 @@ namespace AchieveNow.Pages.Achievement
         public AchievementMainPage()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ShowAchievements();
         }
 
         private void ShowAchievements() {
@@ -51,8 +58,17 @@ namespace AchieveNow.Pages.Achievement
                 Console.WriteLine(ex.Message);
             }
         }
+       
+        private void AddAchievement_Click(object sender, RoutedEventArgs e)
+        {
+            var AchievementAddWindow = new AchievementAddWindow();
+            AchievementAddWindow.ShowDialog();
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+            // Обновить таблицу после закрытия окна
+            ShowAchievements();
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ShowAchievements();
         }
@@ -75,38 +91,23 @@ namespace AchieveNow.Pages.Achievement
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            ShowAchievements();
-        }
-
-        private void AddAchievement_Click(object sender, RoutedEventArgs e)
-        {
-            var AchievementAddWindow = new AchievementAddWindow();
-            AchievementAddWindow.ShowDialog();
-
-            // Обновить таблицу после закрытия окна
-            ShowAchievements();
-        }
-
         private void Button_Locations(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LocationMainPage());
         }
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SportKindMainPage());
         }
+        private void Button_Countries(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CountryMainPage());
+        }
 
         private void Button_Users(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void Button_Countries(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
     }
 }

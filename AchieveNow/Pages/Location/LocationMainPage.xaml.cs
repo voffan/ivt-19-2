@@ -19,36 +19,37 @@ using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Competition;
 using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Sportsman;
-using AchieveNow.Pages.Location;
+using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Country;
 
-namespace AchieveNow.Pages.SportKind
+namespace AchieveNow.Pages.Location
 {
     /// <summary>
-    /// Interaction logic for SportKindMainPage.xaml
+    /// Interaction logic for LocationMainPage.xaml
     /// </summary>
-    public partial class SportKindMainPage : Page
+    public partial class LocationMainPage : Page
     {
-        public SportKindMainPage()
+        public LocationMainPage()
         {
             InitializeComponent();
         }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
         }
 
-        private void ShowSportKinds()
+        private void ShowLocations()
         {
             using (ApplicationContext context = new ApplicationContext())
             {
                 if (!context.IsAvailable)
                     return;
 
-                var query = context.SportKinds
+                var query = context.Locations
                     .ToList();
 
-                SportKindsGrid.ItemsSource = query;
+                LocationsGrid.ItemsSource = query;
             }
         }
 
@@ -59,16 +60,18 @@ namespace AchieveNow.Pages.SportKind
             {
                 if (!context.IsAvailable)
                 {
-                    SportKindsGrid.ItemsSource = null;
+                    LocationsGrid.ItemsSource = null;
                     return;
                 }
-                ShowSportKinds();
+                ShowLocations();
             }
         }
+
         private void ClearForms()
         {
             Name_TextBox.Text = "";
         }
+
         private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
@@ -76,17 +79,15 @@ namespace AchieveNow.Pages.SportKind
                 context.Dispose();
             }
         }
+
+        private void AddLocation_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Only for $10!");
+        }
+
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
-            Update();
-        }
-        private void AddSportKind_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Not working!");
-            var sportKindAddWindow = new SportKindAddWindow();
-            sportKindAddWindow.ShowDialog();
-
             Update();
         }
 
@@ -110,9 +111,9 @@ namespace AchieveNow.Pages.SportKind
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
-        private void Button_Locations(object sender, RoutedEventArgs e)
+        private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new LocationMainPage());
+            NavigationService.Navigate(new SportKindMainPage());
         }
 
         private void Button_Contries(object sender, RoutedEventArgs e)
@@ -125,12 +126,12 @@ namespace AchieveNow.Pages.SportKind
 
         }
 
-        private void Edit_SportKindGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Edit_LocationGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Delete_SportKindsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Delete_LocationsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }

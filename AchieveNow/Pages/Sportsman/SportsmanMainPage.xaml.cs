@@ -13,12 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 using AchieveNow.Classes;
 using AchieveNow.ProgramClasses;
-using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Competition;
+using AchieveNow.Pages.Achievement;
+using AchieveNow.Pages.Location;
 using AchieveNow.Pages.SportKind;
-using System.Text.RegularExpressions;
+using AchieveNow.Pages.Country;
+
 
 namespace AchieveNow.Pages.Sportsman
 {
@@ -276,7 +279,7 @@ namespace AchieveNow.Pages.Sportsman
 
         private void Button_Locations(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LocationMainPage());
         }
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
@@ -284,15 +287,17 @@ namespace AchieveNow.Pages.Sportsman
             NavigationService.Navigate(new SportKindMainPage());
         }
 
+        private void Button_Countries(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CountryMainPage());
+        }
+
         private void Button_Users(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Countries(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void Delete_SportsmenGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
