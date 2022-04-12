@@ -17,6 +17,7 @@ using AchieveNow.Classes;
 using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Sportsman;
+using AchieveNow.Pages.SportKind;
 
 namespace AchieveNow.Pages.Competition
 {
@@ -131,7 +132,7 @@ namespace AchieveNow.Pages.Competition
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SportKindMainPage());
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)
