@@ -86,7 +86,7 @@ namespace AchieveNow.Pages.Sportsman
                 SportKind_ComboBox.SelectedValuePath = "Id";
 
                 var countries = context.Countries.ToList();
-                foreach (Country country in countries)
+                foreach (Classes.Country country in countries)
                 {
                     Country_ComboBox.Items.Add(country);
                 }
@@ -221,8 +221,6 @@ namespace AchieveNow.Pages.Sportsman
             }
         }
 
-        
-
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"[A-Za-z\sа-яА-Я]");
@@ -260,6 +258,12 @@ namespace AchieveNow.Pages.Sportsman
                 e.Handled = true;
             }
         }
+
+        private void PreviewKeyDown_Space(object sender, KeyEventArgs e)
+        {
+            e.Handled = e.Key != Key.Space ? false : true;
+        }
+
         private void Button_Competitions(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CompetitionMainPage());
@@ -309,9 +313,31 @@ namespace AchieveNow.Pages.Sportsman
             }
             else
             {
-                MessageBox.Show("Выберите соревнование");
+                MessageBox.Show("Выберите спортсмена");
             }
         }
-        private void Edit_SportsmenGrid_ContextMenu_Click(object sender, RoutedEventArgs e) { }
+        private void Edit_SportsmenGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (SportsmenGrid.SelectedItem != null)
+            {
+                if (SportsmenGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Sportsman sportsman = (Classes.Sportsman)SportsmenGrid.SelectedItem;
+
+                    SportsmanEditWindow editWindow = new SportsmanEditWindow(sportsman);
+                    editWindow.ShowDialog();
+
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите спортсмена");
+            }
+        }
     }
 }
