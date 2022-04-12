@@ -13,11 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using AchieveNow.Classes;
 using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Competition;
-using AchieveNow.Classes;
-using AchieveNow.Pages.Sportsman;
+using AchieveNow.Pages.SportKind;
 using System.Text.RegularExpressions;
 
 namespace AchieveNow.Pages.Sportsman
@@ -77,7 +77,7 @@ namespace AchieveNow.Pages.Sportsman
                 }
                 
                 var sportKinds = context.SportKinds.ToList();
-                foreach (SportKind sportKind in sportKinds)
+                foreach (Classes.SportKind sportKind in sportKinds)
                 {
                     SportKind_ComboBox.Items.Add(sportKind);
                 }
@@ -120,10 +120,10 @@ namespace AchieveNow.Pages.Sportsman
             Update();
         }
 
-        private void AddSportsman_Click(object sender, RoutedEventArgs e)
+        private void AddSportsman_Button_Click(object sender, RoutedEventArgs e)
         {
-            var SportsmanAddWindow = new SportsmanAddWindow();
-            SportsmanAddWindow.ShowDialog();
+            var sportsmanAddWindow = new SportsmanAddWindow();
+            sportsmanAddWindow.ShowDialog();
 
             // Обновить таблицу после закрытия окна
             ShowSportsmen();
@@ -277,7 +277,7 @@ namespace AchieveNow.Pages.Sportsman
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SportKindMainPage());
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)

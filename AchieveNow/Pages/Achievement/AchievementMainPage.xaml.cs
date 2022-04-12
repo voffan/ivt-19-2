@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Competition;
+using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Sportsman;
 
 namespace AchieveNow.Pages.Achievement
@@ -95,10 +96,15 @@ namespace AchieveNow.Pages.Achievement
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SportKindMainPage());
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Countries(object sender, RoutedEventArgs e)
         {
 
         }

@@ -85,7 +85,7 @@
             </DataGrid.ContextMenu>
         </DataGrid>
 
-        <Button x:Name="AddSportsman" Grid.Row="0" Grid.Column="0" Click="AddSportsman_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
+        <Button x:Name="AddSportsman_Button" Grid.Row="0" Grid.Column="0" Click="AddSportsman_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>спортсмена</TextBlock>
         </Button>
         <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>

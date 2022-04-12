@@ -46,7 +46,7 @@ namespace AchieveNow.Pages.Sportsman
                     return;
 
                 var sportKinds = context.SportKinds.ToList();
-                foreach (SportKind sportKind in sportKinds)
+                foreach (Classes.SportKind sportKind in sportKinds)
                 {
                     SportKind_ComboBox.Items.Add(sportKind);
                 }
