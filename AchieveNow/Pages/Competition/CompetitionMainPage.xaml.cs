@@ -264,8 +264,20 @@ namespace AchieveNow.Pages.Competition
         {
             if (CompetitionsGrid.SelectedItem != null)
             {
-                CompetitionsGrid.SelectedValuePath = "Id";
-                //MessageBox.Show(CompetitionsGrid.SelectedValue.ToString());
+                if (CompetitionsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Competition competition = (Classes.Competition)CompetitionsGrid.SelectedItem;
+
+                    CompetitionEditWindow editWindow = new CompetitionEditWindow(competition);
+                    editWindow.ShowDialog();
+
+                    // Обновить после закрытия диалогового окна редактирования
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
             }
             else
             {
