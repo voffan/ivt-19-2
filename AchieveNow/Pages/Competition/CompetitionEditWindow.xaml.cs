@@ -68,7 +68,7 @@ namespace AchieveNow.Pages.Competition
                     return;
 
                 var locations = context.Locations.ToList();
-                foreach (Location location in locations)
+                foreach (Classes.Location location in locations)
                 {
                     Location_ComboBox.Items.Add(location);
                 }
