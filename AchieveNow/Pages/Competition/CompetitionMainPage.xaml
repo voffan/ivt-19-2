@@ -26,7 +26,7 @@
             <Button x:Name="Sportsman_Button" Content="Спортсмены" Margin="0, 0, 10, 0" Click="Button_Sportsmen"></Button>
             <Button x:Name="Location_Button" Content="Локации" Margin="0, 0, 10, 0" Click="Button_Locations"></Button>
             <Button x:Name="SportKind_Button" Content="Виды спорта" Margin="0, 0, 10, 0" Click="Button_SportKinds"></Button>
-            <Button x:Name="Country_Button" Content="Страны" Margin="0, 0, 10, 0"></Button>
+            <Button x:Name="Country_Button" Content="Страны" Margin="0, 0, 10, 0" Click="Button_Countries"></Button>
             <Button x:Name="User_Button" Content="Пользователи" Margin="0, 0, 10, 0" Click="Button_Users"></Button>
         </StackPanel>
 

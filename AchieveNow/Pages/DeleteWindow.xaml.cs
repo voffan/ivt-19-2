@@ -21,6 +21,7 @@ namespace AchieveNow.Pages
     public partial class DeleteWindow : Window
     {
         List<Classes.Competition> competitionList;
+        List<Classes.Sportsman> sportsmanList;
 
         public DeleteWindow(List<Classes.Competition> competitions)
         {
@@ -38,6 +39,24 @@ namespace AchieveNow.Pages
             Delete_DataGrid.ItemsSource = competitions.ToList();
         }
 
+        public DeleteWindow(List<Classes.Sportsman> sportsmen)
+        {
+            InitializeComponent();
+
+            sportsmanList = sportsmen;
+
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Id"), Width = 30 });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Имя", Binding = new Binding("Name"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Рождение", Binding = new Binding("DateOfBirth"), Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Рост", Binding = new Binding("Height"), Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Вес", Binding = new Binding("Weight"), Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Гендер", Binding = new Binding("Gender"), Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Вид спорта", Binding = new Binding("SportKind"), Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Страна", Binding = new Binding("Country"), Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+
+            Delete_DataGrid.ItemsSource = sportsmen.ToList();
+        }
+
         private void Confirm_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
@@ -47,11 +66,14 @@ namespace AchieveNow.Pages
                     return;
                 }
 
-                if (competitionList != null)
+                if (competitionList != null || sportsmanList != null)
                 {
                     try
                     {
-                        context.RemoveRange(competitionList);
+                        if (competitionList != null)
+                            context.RemoveRange(competitionList);
+                        if (sportsmanList != null)
+                            context.RemoveRange(sportsmanList);
                         context.SaveChanges();
                     }
                     catch

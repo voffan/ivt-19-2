@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AchieveNow.Pages.Sportsman"
       mc:Ignorable="d"
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="900"
       Title="Список спортсменов"
       Loaded="Page_Loaded"
       ContextMenuClosing="Page_ContextMenuClosing"
@@ -27,46 +27,67 @@
             <Button x:Name="Sportsman_Button"       Content="Спортсмены"    Margin="0, 0, 10, 0" Background="Gray"></Button>
             <Button x:Name="Location_Button"        Content="Локации"       Margin="0, 0, 10, 0" Click="Button_Locations"></Button>
             <Button x:Name="SportKind_Button"       Content="Виды спорта"   Margin="0, 0, 10, 0" Click="Button_SportKinds"></Button>
+            <Button x:Name="Country_Button"         Content="Страны"        Margin="0, 0, 10, 0" Click="Button_Countries"></Button>
             <Button x:Name="User_Button"            Content="Пользователи"  Margin="0, 0, 10, 0" Click="Button_Users"></Button>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
-            <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
+        <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 0">
+            <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>
             
             <TextBlock Text="Имя" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            
-            <TextBlock Text="Дата рождения" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <DatePicker x:Name="DateOfBirth" Margin="0, 0, 0, 10"></DatePicker>
-            
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
+
             <TextBlock Text="Рост" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Height_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBox x:Name="Height_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="HeightValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
 
             <TextBlock Text="Вес" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Weight_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBox x:Name="Weight_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="WeightValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
 
-            <TextBlock Text="Gender" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <ComboBox x:Name="Gender_ComboBox" IsEditable="False" StaysOpenOnEdit="True" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10"></ComboBox>
+            <TextBlock Text="Джендер" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="Gender_ComboBox" IsEditable="False" StaysOpenOnEdit="True" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5"></ComboBox>
+
+            <TextBlock Text="Вид спорта" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="SportKind_ComboBox" IsEditable="False" StaysOpenOnEdit="True" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5"></ComboBox>
+
+            <TextBlock Text="Страна" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="Country_ComboBox" IsEditable="False" StaysOpenOnEdit="True" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5"></ComboBox>
+
+            <StackPanel x:Name="Date_StackPanel" HorizontalAlignment="Center" Orientation="Vertical">
+                <TextBlock Text="Дата рождения" FontSize="16" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>
+                <CheckBox x:Name="isIntervalDate_CheckBox" FontSize="12" IsChecked="False" Content="Промежуток времени" Margin="0, 0, 0, 0" Checked="isIntervalDate_CheckBox_Checked" Unchecked="isIntervalDate_CheckBox_Unchecked"></CheckBox>
+                <TextBlock x:Name="FromDate_TextBlock" Text="От" FontSize="12" HorizontalAlignment="Center" Visibility="Hidden" Margin="0, 0, 0, 2"></TextBlock>
+                <DatePicker x:Name="DateOfBirth" Margin="0, 0, 0, 10"></DatePicker>
+            </StackPanel>
+
 
             <Button x:Name="Search_Button" Content="Искать" Click="Search_Button_Click" Margin="0, 0, 0, 10" FontSize="18"></Button>
         </WrapPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="SportsmansGrid" Grid.Row="1" Grid.Column="1">
+        <DataGrid AutoGenerateColumns="False" x:Name="SportsmenGrid" Grid.Row="1" Grid.Column="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" MinWidth="220" Width="*" MaxWidth="250"/>
-                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Дата рождения" Width="70"/>
-                <DataGridTextColumn Binding="{Binding Height}" Header="Рост" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Weight}" Header="Вес" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Gender}" Header="Гендер" Width="70"/>
-                <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" MinWidth="130" Width="*" MaxWidth="150"/>
-                <DataGridTextColumn Binding="{Binding Country}" Header="Страна" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Id}"          Header="ID"             Width="22"  MinWidth="22" MaxWidth="50"/>
+                <DataGridTextColumn Binding="{Binding Name}"        Header="Имя"            Width="180" MinWidth="0"  MaxWidth="500"/>
+                
+                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Рождение"       Width="66"  MinWidth="66" MaxWidth="66"/>
+                <DataGridTextColumn Binding="{Binding Height}"      Header="Рост"           Width="34"  MinWidth="34" MaxWidth="34" />
+                <DataGridTextColumn Binding="{Binding Weight}"      Header="Вес"            Width="28"  MinWidth="28" MaxWidth="28"/>
+                <DataGridTextColumn Binding="{Binding Gender}"      Header="Гендер"         Width="78"  MinWidth="78"  MaxWidth="78"/>
+                
+                <DataGridTextColumn Binding="{Binding SportKind}"   Header="Вид спорта"     Width="110" MinWidth="0"  MaxWidth="2000"/>
+                <DataGridTextColumn Binding="{Binding Country}"     Header="Страна"         Width="*"   MinWidth="0"  MaxWidth="2000"/>
             </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="Edit_SportsmenGrid_ContextMenu" Header="Редактировать" Click="Edit_SportsmenGrid_ContextMenu_Click"></MenuItem>
+                    <MenuItem x:Name="Delete_SportsmenGrid_ContextMenu" Header="Удалить" Click="Delete_SportsmenGrid_ContextMenu_Click"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
 
-        <Button x:Name="AddSportsman" Grid.Row="0" Grid.Column="0" Click="AddSportsman_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
+        <Button x:Name="AddSportsman_Button" Grid.Row="0" Grid.Column="0" Click="AddSportsman_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>спортсмена</TextBlock>
         </Button>
-        <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
+        <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
 </Page>

@@ -17,6 +17,10 @@ using AchieveNow.Classes;
 using AchieveNow.ProgramClasses;
 using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Sportsman;
+using AchieveNow.Pages.SportKind;
+using AchieveNow.Pages.Location;
+using AchieveNow.Pages.Country;
+using AchieveNow.Pages.User;
 
 namespace AchieveNow.Pages.Competition
 {
@@ -68,7 +72,7 @@ namespace AchieveNow.Pages.Competition
                     return;
 
                 var locations = context.Locations.ToList();
-                foreach (Location location in locations)
+                foreach (Classes.Location location in locations)
                 {
                     Location_ComboBox.Items.Add(location);
                 }
@@ -77,7 +81,7 @@ namespace AchieveNow.Pages.Competition
                 Location_ComboBox.SelectedValuePath = "Id";
 
                 var sportKinds = context.SportKinds.ToList();
-                foreach (SportKind sportKind in sportKinds)
+                foreach (Classes.SportKind sportKind in sportKinds)
                 {
                     SportKind_ComboBox.Items.Add(sportKind);
                 }
@@ -126,17 +130,22 @@ namespace AchieveNow.Pages.Competition
 
         private void Button_Locations(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LocationMainPage());
         }
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new SportKindMainPage());
+        }
 
+        private void Button_Countries(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CountryMainPage());
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new UserMainPage());
         }
 
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
@@ -264,8 +273,20 @@ namespace AchieveNow.Pages.Competition
         {
             if (CompetitionsGrid.SelectedItem != null)
             {
-                CompetitionsGrid.SelectedValuePath = "Id";
-                //MessageBox.Show(CompetitionsGrid.SelectedValue.ToString());
+                if (CompetitionsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Competition competition = (Classes.Competition)CompetitionsGrid.SelectedItem;
+
+                    CompetitionEditWindow editWindow = new CompetitionEditWindow(competition);
+                    editWindow.ShowDialog();
+
+                    // Обновить после закрытия диалогового окна редактирования
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
             }
             else
             {
