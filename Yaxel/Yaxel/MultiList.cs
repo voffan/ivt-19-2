@@ -140,7 +140,7 @@ namespace Yaxel
 
                         foreach (Computer c in computersList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Name, c.Status, c.Employee.Name, c.Manufacturer.Name, cell.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, c.Manufacturer.Name, cell.Value);
                         }
                         break;
                     case CurrentTable.Periphery:
@@ -241,6 +241,29 @@ namespace Yaxel
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            switch (cTable)
+            {
+                case CurrentTable.Employee:
+
+                    break;
+                case CurrentTable.Computer:
+                    SearchComputer computerForm = new SearchComputer();
+                    computerForm.ShowDialog();
+                    fillDataGridView();
+                    break;
+                case CurrentTable.Periphery:
+
+                    break;
+                case CurrentTable.Component:
+
+                    break;
+                case CurrentTable.none:
+
+                    break;
+            }
+        }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {

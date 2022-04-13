@@ -42,7 +42,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -101,6 +103,12 @@
     <Compile Include="Tables\ComputerForms\DeleteComputer.Designer.cs">
       <DependentUpon>DeleteComputer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\ComputerForms\SearchComputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\SearchComputer.Designer.cs">
+      <DependentUpon>SearchComputer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\ComputerForms\UpdateComputer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\DeleteComputer.resx">
       <DependentUpon>DeleteComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComputerForms\SearchComputer.resx">
+      <DependentUpon>SearchComputer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\UpdateComputer.resx">
       <DependentUpon>UpdateComputer.cs</DependentUpon>
