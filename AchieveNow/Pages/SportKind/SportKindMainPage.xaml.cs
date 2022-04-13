@@ -83,8 +83,7 @@ namespace AchieveNow.Pages.SportKind
             Update();
         }
         private void AddSportKind_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Not working!");
+        {         
             var sportKindAddWindow = new SportKindAddWindow();
             sportKindAddWindow.ShowDialog();
 
