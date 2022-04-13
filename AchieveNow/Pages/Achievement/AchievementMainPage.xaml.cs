@@ -17,7 +17,10 @@ using AchieveNow.ProgramClasses;
 using AchieveNow.Classes;
 using AchieveNow.Pages.Competition;
 using AchieveNow.Pages.Sportsman;
-
+using AchieveNow.Pages.SportKind;
+using AchieveNow.Pages.Location;
+using AchieveNow.Pages.Country;
+using AchieveNow.Pages.User;
 
 namespace AchieveNow.Pages.Achievement
 {
@@ -77,6 +80,26 @@ namespace AchieveNow.Pages.Achievement
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
+        private void Button_Locations(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LocationMainPage());
+        }
+
+        private void Button_SportKinds(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SportKindMainPage());
+        }
+
+        private void Button_Countries(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CountryMainPage());
+        }
+
+        private void Button_Users(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new UserMainPage());
+        }
+
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ShowAchievements();
@@ -91,20 +114,7 @@ namespace AchieveNow.Pages.Achievement
             ShowAchievements();
         }
 
-        private void Button_Locations(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void Button_SportKinds(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Users(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         TextBlock? ToDate = null;
         DatePicker? DateOfIssue2 = new DatePicker { SelectedDate = null };
@@ -181,9 +191,6 @@ namespace AchieveNow.Pages.Achievement
 
         }
 
-        private void Button_Countries(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
