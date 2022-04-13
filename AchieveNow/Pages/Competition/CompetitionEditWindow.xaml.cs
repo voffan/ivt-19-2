@@ -13,18 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AchieveNow.Classes;
 using AchieveNow.ProgramClasses;
-using Microsoft.EntityFrameworkCore;
 
 namespace AchieveNow.Pages.Competition
 {
     /// <summary>
-    /// Interaction logic for CompetitionAddWindow.xaml
+    /// Interaction logic for CompetitionEditWindow.xaml
     /// </summary>
-    public partial class CompetitionAddWindow : Window
+    public partial class CompetitionEditWindow : Window
     {
-        public CompetitionAddWindow()
+        Classes.Competition competition;
+
+        public CompetitionEditWindow(Classes.Competition competition)
         {
             InitializeComponent();
+
+            this.competition = competition;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -34,7 +37,23 @@ namespace AchieveNow.Pages.Competition
                 Level_ComboBox.Items.Add(level);
             }
 
+            CompetitionInit();
+        }
+
+        private void CompetitionInit()
+        {
             ListOfLocationsAndSporkinds();
+
+            Name_TextBox.Text = competition.Name;
+
+            Level_ComboBox.SelectedIndex = (int)competition.Level;
+
+            Location_ComboBox.SelectedValue = competition.Location.Id;
+
+            SportKind_ComboBox.SelectedValue = competition.SportKind.Id;
+
+            DateOnly dateOnlyOfExecution = new DateOnly(competition.DateOfExecution.Year, competition.DateOfExecution.Month, competition.DateOfExecution.Day);
+            DateOfExecution.SelectedDate = dateOnlyOfExecution.ToDateTime(TimeOnly.MinValue);
         }
 
         //Вывести в Combobox данные из таблицы Locations и Sportkinds
@@ -70,15 +89,10 @@ namespace AchieveNow.Pages.Competition
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            ListOfLocationsAndSporkinds();
+            CompetitionInit();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -136,19 +150,12 @@ namespace AchieveNow.Pages.Competition
                 MessageBox.Show("Неизвестная ошибка при выборе вида спорта");
                 return;
             }
-            
+
 
             DateOnly dateOfExecution;
             if (DateOfExecution.SelectedDate != null)
             {
-
                 dateOfExecution = DateOnly.FromDateTime((DateTime)DateOfExecution.SelectedDate);
-                if (dateOfExecution < DateOnly.FromDateTime(DateTime.Now))
-                {
-                    MessageBox.Show("Нельзя выбрать прошедшие даты");
-                    return;
-                }
-
             }
             else
             {
@@ -163,10 +170,24 @@ namespace AchieveNow.Pages.Competition
                     if (!context.IsAvailable)
                         return;
 
-                    Classes.Competition competition = new Classes.Competition(Name_TextBox.Text, (Level)Level_ComboBox.SelectedIndex, locationId, sportKindId, dateOfExecution);
+                    Classes.Competition competitionUpdate;
+                    competitionUpdate = context.Competitions.Where(c => c.Id == competition.Id).First();
 
-                    context.Competitions.Add(competition);
-                    context.SaveChanges();
+                    if (competitionUpdate != null)
+                    {
+                        competitionUpdate.Name = Name_TextBox.Text;
+                        competitionUpdate.Level = (Level)Level_ComboBox.SelectedIndex;
+                        competitionUpdate.LocationId = locationId;
+                        competitionUpdate.SportKindId = sportKindId;
+                        competitionUpdate.DateOfExecution = dateOfExecution;
+
+                        // Сделать UPDATE
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не удалось обновить элемент. Возможно, он был удалён");
+                    }
 
                     Close();
                 }
@@ -175,6 +196,11 @@ namespace AchieveNow.Pages.Competition
             {
                 MessageBox.Show("Произошла неизвестная ошибка: " + ex.Message);
             }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

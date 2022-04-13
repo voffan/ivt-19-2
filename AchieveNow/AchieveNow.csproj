@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Pages\SportKind\SportKindAddWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="Pages\Sportsman\SportsmanAddWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

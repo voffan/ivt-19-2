@@ -35,13 +35,13 @@
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>
             
             <TextBlock Text="Имя" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="NameValidationTextBox"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
 
             <TextBlock Text="Рост" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Height_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="HeightValidationTextBox"></TextBox>
+            <TextBox x:Name="Height_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="HeightValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
 
             <TextBlock Text="Вес" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Weight_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="WeightValidationTextBox"></TextBox>
+            <TextBox x:Name="Weight_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="WeightValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
 
             <TextBlock Text="Джендер" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <ComboBox x:Name="Gender_ComboBox" IsEditable="False" StaysOpenOnEdit="True" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5"></ComboBox>
@@ -73,8 +73,8 @@
                 <DataGridTextColumn Binding="{Binding Weight}"      Header="Вес"            Width="28"  MinWidth="28" MaxWidth="28"/>
                 <DataGridTextColumn Binding="{Binding Gender}"      Header="Гендер"         Width="78"  MinWidth="78"  MaxWidth="78"/>
                 
-                <DataGridTextColumn Binding="{Binding SportKind}"   Header="Вид спорта"     Width="110" MinWidth="0"  MaxWidth="500"/>
-                <DataGridTextColumn Binding="{Binding Country}"     Header="Страна"         Width="*"   MinWidth="0"  MaxWidth="500"/>
+                <DataGridTextColumn Binding="{Binding SportKind}"   Header="Вид спорта"     Width="110" MinWidth="0"  MaxWidth="2000"/>
+                <DataGridTextColumn Binding="{Binding Country}"     Header="Страна"         Width="*"   MinWidth="0"  MaxWidth="2000"/>
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>
@@ -85,7 +85,7 @@
             </DataGrid.ContextMenu>
         </DataGrid>
 
-        <Button x:Name="AddSportsman" Grid.Row="0" Grid.Column="0" Click="AddSportsman_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
+        <Button x:Name="AddSportsman_Button" Grid.Row="0" Grid.Column="0" Click="AddSportsman_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>спортсмена</TextBlock>
         </Button>
         <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>

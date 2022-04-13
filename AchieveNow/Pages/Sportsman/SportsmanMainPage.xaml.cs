@@ -13,12 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
-using AchieveNow.ProgramClasses;
-using AchieveNow.Pages.Achievement;
-using AchieveNow.Pages.Competition;
-using AchieveNow.Classes;
-using AchieveNow.Pages.Sportsman;
 using System.Text.RegularExpressions;
+using AchieveNow.Classes;
+using AchieveNow.ProgramClasses;
+using AchieveNow.Pages.Competition;
+using AchieveNow.Pages.Achievement;
+using AchieveNow.Pages.Location;
+using AchieveNow.Pages.SportKind;
+using AchieveNow.Pages.Country;
+
 
 namespace AchieveNow.Pages.Sportsman
 {
@@ -77,7 +80,7 @@ namespace AchieveNow.Pages.Sportsman
                 }
                 
                 var sportKinds = context.SportKinds.ToList();
-                foreach (SportKind sportKind in sportKinds)
+                foreach (Classes.SportKind sportKind in sportKinds)
                 {
                     SportKind_ComboBox.Items.Add(sportKind);
                 }
@@ -86,7 +89,7 @@ namespace AchieveNow.Pages.Sportsman
                 SportKind_ComboBox.SelectedValuePath = "Id";
 
                 var countries = context.Countries.ToList();
-                foreach (Country country in countries)
+                foreach (Classes.Country country in countries)
                 {
                     Country_ComboBox.Items.Add(country);
                 }
@@ -120,10 +123,10 @@ namespace AchieveNow.Pages.Sportsman
             Update();
         }
 
-        private void AddSportsman_Click(object sender, RoutedEventArgs e)
+        private void AddSportsman_Button_Click(object sender, RoutedEventArgs e)
         {
-            var SportsmanAddWindow = new SportsmanAddWindow();
-            SportsmanAddWindow.ShowDialog();
+            var sportsmanAddWindow = new SportsmanAddWindow();
+            sportsmanAddWindow.ShowDialog();
 
             // Обновить таблицу после закрытия окна
             ShowSportsmen();
@@ -221,8 +224,6 @@ namespace AchieveNow.Pages.Sportsman
             }
         }
 
-        
-
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"[A-Za-z\sа-яА-Я]");
@@ -260,6 +261,12 @@ namespace AchieveNow.Pages.Sportsman
                 e.Handled = true;
             }
         }
+
+        private void PreviewKeyDown_Space(object sender, KeyEventArgs e)
+        {
+            e.Handled = e.Key != Key.Space ? false : true;
+        }
+
         private void Button_Competitions(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CompetitionMainPage());
@@ -272,12 +279,17 @@ namespace AchieveNow.Pages.Sportsman
 
         private void Button_Locations(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LocationMainPage());
         }
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new SportKindMainPage());
+        }
 
+        private void Button_Countries(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CountryMainPage());
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)
@@ -285,10 +297,7 @@ namespace AchieveNow.Pages.Sportsman
 
         }
 
-        private void Button_Countries(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void Delete_SportsmenGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -309,9 +318,31 @@ namespace AchieveNow.Pages.Sportsman
             }
             else
             {
-                MessageBox.Show("Выберите соревнование");
+                MessageBox.Show("Выберите спортсмена");
             }
         }
-        private void Edit_SportsmenGrid_ContextMenu_Click(object sender, RoutedEventArgs e) { }
+        private void Edit_SportsmenGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (SportsmenGrid.SelectedItem != null)
+            {
+                if (SportsmenGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Sportsman sportsman = (Classes.Sportsman)SportsmenGrid.SelectedItem;
+
+                    SportsmanEditWindow editWindow = new SportsmanEditWindow(sportsman);
+                    editWindow.ShowDialog();
+
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите спортсмена");
+            }
+        }
     }
 }

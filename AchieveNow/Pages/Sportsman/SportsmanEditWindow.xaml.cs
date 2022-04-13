@@ -18,16 +18,18 @@ using AchieveNow.ProgramClasses;
 namespace AchieveNow.Pages.Sportsman
 {
     /// <summary>
-    /// Interaction logic for SportsmanAddWindow.xaml
+    /// Interaction logic for SportsmanEditWindow.xaml
     /// </summary>
-    public partial class SportsmanAddWindow : Window
+    public partial class SportsmanEditWindow : Window
     {
         private const int MAX_NAME_LENGTH = 50;
         private const int MAX_HEIGHT_LENGTH = 3;
         private const int MAX_WEIGHT_LENGTH = 3;
-        public SportsmanAddWindow()
+        private Classes.Sportsman sportsman;
+        public SportsmanEditWindow(Classes.Sportsman sportsman)
         {
             InitializeComponent();
+            this.sportsman = sportsman;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -35,9 +37,27 @@ namespace AchieveNow.Pages.Sportsman
             {
                 Gender_ComboBox.Items.Add(gender);
             }
-            ListOfSporkind();
+            SportsmanInit();
         }
+        private void SportsmanInit()
+        {
+            ListOfSporkind();
 
+            Name_TextBox.Text = sportsman.Name;
+
+            DateOnly dateOnlyOfBirth = new DateOnly(sportsman.DateOfBirth.Year, sportsman.DateOfBirth.Month, sportsman.DateOfBirth.Day);
+            DateOfBirth.SelectedDate = dateOnlyOfBirth.ToDateTime(TimeOnly.MinValue);
+
+            Height_TextBox.Text = sportsman.Height.ToString();
+
+            Weight_TextBox.Text = sportsman.Weight.ToString();
+
+            Gender_ComboBox.SelectedIndex = (int)sportsman.Gender;
+
+            SportKind_ComboBox.SelectedValue = sportsman.SportKind.Id;
+
+            Country_ComboBox.SelectedValue = sportsman.CountryId;
+        }
         private void ListOfSporkind()
         {
             SportKind_ComboBox.Items.Clear();
@@ -114,7 +134,7 @@ namespace AchieveNow.Pages.Sportsman
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            ListOfSporkind();
+            SportsmanInit();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -184,7 +204,7 @@ namespace AchieveNow.Pages.Sportsman
                 return;
             }
 
-            
+
             if (Gender_ComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Выберите гендер");
@@ -237,19 +257,25 @@ namespace AchieveNow.Pages.Sportsman
                     if (!context.IsAvailable)
                         return;
 
-                    Classes.Sportsman sportsman = new Classes.Sportsman
-                    (
-                        Name_TextBox.Text,
-                        dateOfBirth,
-                        height,
-                        weight,
-                        (Gender)gender,
-                        sportKindId,
-                        countryId
-                    );
+                    Classes.Sportsman sportsmanUpdate;
+                    sportsmanUpdate = context.Sportsmen.Where(c => c.Id == sportsman.Id).First();
 
-                    context.Sportsmen.Add(sportsman);
-                    context.SaveChanges();
+                    if (sportsmanUpdate != null)
+                    {
+                        sportsmanUpdate.Name = Name_TextBox.Text;
+                        sportsmanUpdate.DateOfBirth = dateOfBirth;
+                        sportsmanUpdate.Height = height;
+                        sportsmanUpdate.Weight = weight;
+                        sportsmanUpdate.Gender = (Gender)Gender_ComboBox.SelectedIndex;
+                        sportsmanUpdate.SportKindId = sportKindId;
+                        sportsmanUpdate.CountryId = countryId;
+
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не удалось обновить элемент. Probably is was deleted");
+                    }
 
                     Close();
                 }

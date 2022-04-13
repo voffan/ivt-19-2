@@ -16,7 +16,10 @@ using Microsoft.EntityFrameworkCore;
 using AchieveNow.ProgramClasses;
 using AchieveNow.Classes;
 using AchieveNow.Pages.Competition;
+using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Sportsman;
+using AchieveNow.Pages.Location;
+using AchieveNow.Pages.Country;
 
 
 namespace AchieveNow.Pages.Achievement
@@ -31,8 +34,17 @@ namespace AchieveNow.Pages.Achievement
             InitializeComponent();
         }
 
+<<<<<<< HEAD
         private void ShowAchievements()
         {
+=======
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ShowAchievements();
+        }
+
+        private void ShowAchievements() {
+>>>>>>> b477263d2e2936752ccf8b40482fd252cb22bbff
             try
             {
                 using (ApplicationContext context = new ApplicationContext())
@@ -53,8 +65,17 @@ namespace AchieveNow.Pages.Achievement
                 Console.WriteLine(ex.Message);
             }
         }
+       
+        private void AddAchievement_Click(object sender, RoutedEventArgs e)
+        {
+            var AchievementAddWindow = new AchievementAddWindow();
+            AchievementAddWindow.ShowDialog();
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+            // Обновить таблицу после закрытия окна
+            ShowAchievements();
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ShowAchievements();
         }
@@ -77,6 +98,7 @@ namespace AchieveNow.Pages.Achievement
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
+<<<<<<< HEAD
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ShowAchievements();
@@ -91,19 +113,26 @@ namespace AchieveNow.Pages.Achievement
             ShowAchievements();
         }
 
+=======
+>>>>>>> b477263d2e2936752ccf8b40482fd252cb22bbff
         private void Button_Locations(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LocationMainPage());
         }
 
         private void Button_SportKinds(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SportKindMainPage());
+        }
+        private void Button_Countries(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CountryMainPage());
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)
         {
 
+<<<<<<< HEAD
         }
 
         TextBlock? ToDate = null;
@@ -180,5 +209,8 @@ namespace AchieveNow.Pages.Achievement
         {
 
         }
+=======
+        }        
+>>>>>>> b477263d2e2936752ccf8b40482fd252cb22bbff
     }
 }
