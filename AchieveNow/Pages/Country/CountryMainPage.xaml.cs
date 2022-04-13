@@ -21,6 +21,7 @@ using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Sportsman;
 using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Location;
+using AchieveNow.Pages.User;
 
 namespace AchieveNow.Pages.Country
 {
@@ -127,7 +128,7 @@ namespace AchieveNow.Pages.Country
 
         private void Button_Users(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new UserMainPage());
         }
 
         private void Edit_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)

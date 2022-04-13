@@ -21,7 +21,7 @@ using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Location;
 using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Country;
-
+using AchieveNow.Pages.User;
 
 namespace AchieveNow.Pages.Sportsman
 {
@@ -294,7 +294,7 @@ namespace AchieveNow.Pages.Sportsman
 
         private void Button_Users(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new UserMainPage());
         }
 
         

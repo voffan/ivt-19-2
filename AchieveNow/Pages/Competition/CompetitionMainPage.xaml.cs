@@ -20,6 +20,7 @@ using AchieveNow.Pages.Sportsman;
 using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Location;
 using AchieveNow.Pages.Country;
+using AchieveNow.Pages.User;
 
 namespace AchieveNow.Pages.Competition
 {
@@ -144,7 +145,7 @@ namespace AchieveNow.Pages.Competition
 
         private void Button_Users(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new UserMainPage());
         }
 
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)

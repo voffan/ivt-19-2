@@ -21,6 +21,7 @@ using AchieveNow.Pages.Achievement;
 using AchieveNow.Pages.Sportsman;
 using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Country;
+using AchieveNow.Pages.User;
 
 namespace AchieveNow.Pages.Location
 {
@@ -47,6 +48,7 @@ namespace AchieveNow.Pages.Location
                     return;
 
                 var query = context.Locations
+                    .Include(l => l.Country)
                     .ToList();
 
                 LocationsGrid.ItemsSource = query;
@@ -64,6 +66,15 @@ namespace AchieveNow.Pages.Location
                     return;
                 }
                 ShowLocations();
+
+                var countries = context.Countries.ToList();
+                foreach (Classes.Country country in countries)
+                {
+                    Country_ComboBox.Items.Add(country);
+                }
+
+                Country_ComboBox.DisplayMemberPath = "Name";
+                Country_ComboBox.SelectedValuePath = "Id";
             }
         }
 
@@ -123,7 +134,7 @@ namespace AchieveNow.Pages.Location
 
         private void Button_Users(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new UserMainPage());
         }
 
         private void Edit_LocationGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
