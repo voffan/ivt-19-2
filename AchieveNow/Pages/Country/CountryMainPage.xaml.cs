@@ -34,6 +34,7 @@ namespace AchieveNow.Pages.Country
         {
             InitializeComponent();
         }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
@@ -55,7 +56,6 @@ namespace AchieveNow.Pages.Country
 
         private void Update()
         {
-
             using (ApplicationContext context = new ApplicationContext())
             {
                 if (!context.IsAvailable)
@@ -63,6 +63,7 @@ namespace AchieveNow.Pages.Country
                     CountriesGrid.ItemsSource = null;
                     return;
                 }
+
                 ShowCountries();
             }
         }
@@ -80,11 +81,6 @@ namespace AchieveNow.Pages.Country
             }
         }
 
-        private void AddLocation_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Not working!");
-        }
-
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
@@ -93,7 +89,11 @@ namespace AchieveNow.Pages.Country
 
         private void AddCountry_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not working!");
+            CountryAddWindow addWindow = new CountryAddWindow();
+            addWindow.ShowDialog();
+
+            // Обновить таблицу после закрытия окна
+            Update();
         }
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)

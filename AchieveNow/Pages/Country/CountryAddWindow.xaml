@@ -1,0 +1,31 @@
+﻿<Window x:Class="AchieveNow.Pages.Country.CountryAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AchieveNow.Pages.Country"
+        mc:Ignorable="d"
+        Title="Окно добавления стран" Height="150" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+
+            <RowDefinition Height="0.6*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 15, 0, 0">
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 3">Название</TextBlock>
+            <TextBox x:Name="Name_TextBox" PreviewTextInput="NameValidationTextBox" MinWidth="150" Width="250"></TextBox>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 0, 0, 0">
+            <Button x:Name="AddButton" Content="Добавить" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddButton_Click"></Button>
+        </WrapPanel>
+
+        <Menu VerticalAlignment="Top" Height="18" FontSize="14">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Закрыть" Click="Exit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

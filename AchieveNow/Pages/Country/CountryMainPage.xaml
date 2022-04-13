@@ -54,7 +54,7 @@
         </DataGrid>
 
         <Button x:Name="AddCountry_Button" Grid.Row="0" Grid.Column="0" Click="AddCountry_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
-            <TextBlock TextAlignment="Center">Добавить<LineBreak/>Страну</TextBlock>
+            <TextBlock TextAlignment="Center">Добавить<LineBreak/>страну</TextBlock>
         </Button>
 
         <Button x:Name="Refresh_Button" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
