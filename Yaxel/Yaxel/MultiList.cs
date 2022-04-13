@@ -201,8 +201,8 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Component:
-                    AddComponent form1 = new AddComponent();
-                    form1.ShowDialog();
+                    AddComponent componentForm = new AddComponent();
+                    componentForm.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.none:
@@ -233,7 +233,14 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Component:
+                    List<int> delComponents = new List<int>();
 
+                    for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                        delComponents.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
+
+                    DeleteComponent componentForm = new DeleteComponent(delComponents);
+                    componentForm.ShowDialog();
+                    fillDataGridView();
                     break;
                 case CurrentTable.none:
 

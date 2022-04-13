@@ -42,7 +42,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -89,6 +91,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\ComponentForms\DeleteComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComponentForms\DeleteComponent.Designer.cs">
+      <DependentUpon>DeleteComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\ComponentForms\UpdateComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComponentForms\UpdateComponent.Designer.cs">
+      <DependentUpon>UpdateComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\ComputerForms\AddComputer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +150,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tables\ComponentForms\DeleteComponent.resx">
+      <DependentUpon>DeleteComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComponentForms\UpdateComponent.resx">
+      <DependentUpon>UpdateComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\AddComputer.resx">
       <DependentUpon>AddComputer.cs</DependentUpon>
     </EmbeddedResource>

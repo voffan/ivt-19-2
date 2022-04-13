@@ -29,19 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.applyButton = new Yaxel.YaxelStyle.YaxelButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.applyButton = new Yaxel.YaxelStyle.YaxelButton();
+            this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // yaxelForm1
-            // 
-            this.yaxelForm1.ThisForm = this;
             // 
             // label3
             // 
@@ -93,18 +90,6 @@
             this.textBox1.Size = new System.Drawing.Size(176, 32);
             this.textBox1.TabIndex = 22;
             // 
-            // applyButton
-            // 
-            this.applyButton.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.applyButton.Font = new System.Drawing.Font("Arial", 16F);
-            this.applyButton.ForeColor = System.Drawing.Color.White;
-            this.applyButton.Location = new System.Drawing.Point(398, 461);
-            this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(250, 50);
-            this.applyButton.TabIndex = 21;
-            this.applyButton.Text = "Добавить";
-            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
-            // 
             // comboBox1
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -114,11 +99,39 @@
             this.comboBox1.Size = new System.Drawing.Size(176, 33);
             this.comboBox1.TabIndex = 20;
             // 
+            // applyButton
+            // 
+            this.applyButton.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.applyButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.applyButton.ForeColor = System.Drawing.Color.White;
+            this.applyButton.Location = new System.Drawing.Point(420, 490);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(250, 50);
+            this.applyButton.TabIndex = 21;
+            this.applyButton.Text = "Добавить";
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
+            // 
+            // yaxelForm1
+            // 
+            this.yaxelForm1.ThisForm = this;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(379, 333);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(176, 26);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Характеристики";
+            this.label4.UseMnemonic = false;
+            // 
             // AddComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 577);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -147,5 +160,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private YaxelStyle.YaxelButton applyButton;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
     }
 }

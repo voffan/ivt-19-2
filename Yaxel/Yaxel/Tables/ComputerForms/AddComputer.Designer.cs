@@ -62,7 +62,7 @@
             this.ApplyButton.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ApplyButton.Font = new System.Drawing.Font("Arial", 16F);
             this.ApplyButton.ForeColor = System.Drawing.Color.White;
-            this.ApplyButton.Location = new System.Drawing.Point(415, 497);
+            this.ApplyButton.Location = new System.Drawing.Point(420, 490);
             this.ApplyButton.Name = "ApplyButton";
             this.ApplyButton.Size = new System.Drawing.Size(250, 50);
             this.ApplyButton.TabIndex = 23;
