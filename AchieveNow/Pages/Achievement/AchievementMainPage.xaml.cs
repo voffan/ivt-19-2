@@ -14,8 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using AchieveNow.ProgramClasses;
+using AchieveNow.Classes;
 using AchieveNow.Pages.Competition;
 using AchieveNow.Pages.Sportsman;
+
 
 namespace AchieveNow.Pages.Achievement
 {
@@ -29,7 +31,8 @@ namespace AchieveNow.Pages.Achievement
             InitializeComponent();
         }
 
-        private void ShowAchievements() {
+        private void ShowAchievements()
+        {
             try
             {
                 using (ApplicationContext context = new ApplicationContext())
@@ -74,7 +77,7 @@ namespace AchieveNow.Pages.Achievement
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ShowAchievements();
         }
@@ -99,6 +102,81 @@ namespace AchieveNow.Pages.Achievement
         }
 
         private void Button_Users(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        TextBlock? ToDate = null;
+        DatePicker? DateOfIssue2 = new DatePicker { SelectedDate = null };
+        private void isIntervalDate_CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            FromDate_TextBlock.Visibility = Visibility.Visible;
+            ToDate = new TextBlock { Text = "До", FontSize = 12, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0, 0, 0, 2) };
+            DateOfIssue2 = new DatePicker { Margin = new Thickness(0, 0, 0, 10) };
+
+            Date_StackPanel.Children.Add(ToDate);
+            Date_StackPanel.Children.Add(DateOfIssue2);
+        }
+
+        private void isIntervalDate_CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            FromDate_TextBlock.Visibility = Visibility.Hidden;
+            Date_StackPanel.Children.Remove(ToDate);
+            Date_StackPanel.Children.Remove(DateOfIssue2);
+            DateOfIssue2 = new DatePicker { SelectedDate = null};
+        }
+
+        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                IQueryable<Classes.Achievement> achievementIQuer = context.Achievements
+                    .Include("Competition")
+                    .Include("Result");
+
+                if (Name_TextBox.Text != "")
+                {
+                    achievementIQuer = achievementIQuer.Where(c => EF.Functions.Like(c.Name!, $"%{Name_TextBox.Text}%"));
+                }
+
+                if (Result_ComboBox.SelectedItem != null)
+                {
+                    achievementIQuer = achievementIQuer.Where(c => c.Result == (Result)Result_ComboBox.SelectedValue);
+                }
+
+                if (Competition_ComboBox.SelectedItem != null)
+                {
+                    achievementIQuer = achievementIQuer.Where(c => c.CompetitionId == (int)Competition_ComboBox.SelectedValue);
+                }
+
+                if (isIntervalDate_CheckBox.IsChecked == false)
+                {
+                    if (DateOfIssue.SelectedDate != null)
+                    {
+                        DateOnly dateOfIssue = DateOnly.FromDateTime((DateTime)DateOfIssue.SelectedDate);
+
+                        achievementIQuer = achievementIQuer.Where(c => c.DateOfIssue == dateOfIssue);
+                    }
+                }
+                else
+                {
+                    if (DateOfIssue.SelectedDate != null && DateOfIssue2 != null && DateOfIssue2.SelectedDate != null)
+                    {
+                        DateOnly dateOfIssue = DateOnly.FromDateTime((DateTime)DateOfIssue.SelectedDate);
+                        DateOnly dateOfIssue2 = DateOnly.FromDateTime((DateTime)DateOfIssue2.SelectedDate);
+
+                        achievementIQuer = achievementIQuer
+                            .Where(c => c.DateOfIssue >= dateOfIssue)
+                            .Where(c => c.DateOfIssue <= dateOfIssue2);
+                    }
+                }
+            }
+        }
+
+        private void Result_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

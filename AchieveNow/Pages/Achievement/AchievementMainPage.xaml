@@ -33,30 +33,34 @@
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
             <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Name" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
-            <TextBlock Text="Дата выдачи" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <DatePicker x:Name="DateOfIssue" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></DatePicker>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
             <TextBlock Text="Результат" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="SportKind" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <ComboBox x:Name="Result_ComboBox" IsEditable="False" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16" SelectionChanged="Result_ComboBox_SelectionChanged"></ComboBox>
             <TextBlock Text="Соревнование" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Competition" Text="" HorizontalContentAlignment="Center"></TextBox>
-            <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
-            <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18"></Button>
+            <ComboBox x:Name="Competition_ComboBox" Text="" HorizontalContentAlignment="Center"></ComboBox>
+            <StackPanel x:Name="Date_StackPanel" HorizontalAlignment="Center" Orientation="Vertical">
+                <TextBlock Text="Дата выдачи" FontSize="16" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>
+                <CheckBox x:Name="isIntervalDate_CheckBox" FontSize="12" IsChecked="False" Content="Промежуток времени" Margin="0, 0, 0, 0" Checked="isIntervalDate_CheckBox_Checked" Unchecked="isIntervalDate_CheckBox_Unchecked"></CheckBox>
+                <TextBlock x:Name="FromDate_TextBlock" Text="От" FontSize="12" HorizontalAlignment="Center" Visibility="Hidden" Margin="0, 0, 0, 2"></TextBlock>
+                <DatePicker x:Name="DateOfIssue" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></DatePicker>
+            </StackPanel>
+            <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18" Click="Search_Button_Click"></Button>
+            
         </WrapPanel>
 
         <DataGrid AutoGenerateColumns="False" x:Name="AchievementsGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding DateOfIssue}" Header="Дата выдачи" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Result}" Header="Результат" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Competition}" Header="Соревнование" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding DateOfIssue}" Header="Дата выдачи" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <Button x:Name="AddAchievement" Grid.Row="0" Grid.Column="0" Click="AddAchievement_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>достижение</TextBlock>
         </Button>
-        <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
+        <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
 </Page>
