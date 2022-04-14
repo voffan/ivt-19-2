@@ -164,7 +164,27 @@ namespace AchieveNow.Pages.Country
 
         private void Edit_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (CountriesGrid.SelectedItem != null)
+            {
+                if (CountriesGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Country country = (Classes.Country)CountriesGrid.SelectedItem;
 
+                    CountryEditWindow editWindow = new CountryEditWindow(country);
+                    editWindow.ShowDialog();
+                    
+                    // Обновить после закрытия диалогового окна редактирования
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите страну");
+            }
         }
     }
 }
