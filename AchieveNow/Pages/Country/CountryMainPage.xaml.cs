@@ -141,7 +141,25 @@ namespace AchieveNow.Pages.Country
 
         private void Delete_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (CountriesGrid.SelectedItem != null)
+            {
+                List<Classes.Country> countries = new List<Classes.Country>();
 
+                foreach (Classes.Country country in CountriesGrid.SelectedItems)
+                {
+                    countries.Add(country);
+                }
+
+                DeleteWindow deleteWindow = new DeleteWindow(countries);
+                deleteWindow.ShowDialog();
+
+                // Обновить после закрытия диалогового окна удаления
+                Update();
+            }
+            else
+            {
+                MessageBox.Show("Выберите страну");
+            }
         }
 
         private void Edit_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)

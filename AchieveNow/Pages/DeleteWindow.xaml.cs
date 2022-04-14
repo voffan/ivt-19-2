@@ -20,8 +20,9 @@ namespace AchieveNow.Pages
     /// </summary>
     public partial class DeleteWindow : Window
     {
-        List<Classes.Competition> competitionList;
-        List<Classes.Sportsman> sportsmanList;
+        List<Classes.Competition>? competitionList;
+        List<Classes.Sportsman>? sportsmanList;
+        List<Classes.Country>? countryList;
 
         public DeleteWindow(List<Classes.Competition> competitions)
         {
@@ -57,16 +58,26 @@ namespace AchieveNow.Pages
             Delete_DataGrid.ItemsSource = sportsmen.ToList();
         }
 
+        public DeleteWindow(List<Classes.Country> countries)
+        {
+            InitializeComponent();
+
+            countryList = countries;
+
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Id"), Width = 30 });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Имя", Binding = new Binding("Name"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+
+            Delete_DataGrid.ItemsSource = countries.ToList();
+        }
+
         private void Confirm_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
                 if (!context.IsAvailable)
-                {
                     return;
-                }
 
-                if (competitionList != null || sportsmanList != null)
+                if (competitionList != null || sportsmanList != null || countryList != null)
                 {
                     try
                     {
@@ -74,6 +85,9 @@ namespace AchieveNow.Pages
                             context.RemoveRange(competitionList);
                         if (sportsmanList != null)
                             context.RemoveRange(sportsmanList);
+                        if (countryList != null)
+                            context.RemoveRange(countryList);
+
                         context.SaveChanges();
                     }
                     catch
