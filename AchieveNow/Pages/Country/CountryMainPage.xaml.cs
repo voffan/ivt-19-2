@@ -96,11 +96,6 @@ namespace AchieveNow.Pages.Country
             Update();
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Soon");
-        }
-
         private void Button_Competitions(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CompetitionMainPage());
@@ -131,12 +126,25 @@ namespace AchieveNow.Pages.Country
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Edit_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var search = context.Countries.Where(c => EF.Functions.Like(c.Name!, $"%{Name_TextBox.Text}%"));
+
+                CountriesGrid.ItemsSource = search.ToList();
+            }
+        }
+
+        private void Delete_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Delete_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Edit_CountriesGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }
