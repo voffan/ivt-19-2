@@ -31,7 +31,7 @@ namespace AchieveNow.Pages.Country
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex(@"[A-Za-z\sа-яА-ЯёЁ]");
+            Regex regex = new Regex(@"[A-Za-z\sа-яА-ЯёЁ-]");
 
             if (regex.IsMatch(e.Text) && Name_TextBox.Text.Length < MAX_NAME_LENGTH)
             {
