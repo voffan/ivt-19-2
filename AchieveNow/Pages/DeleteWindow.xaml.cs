@@ -24,6 +24,7 @@ namespace AchieveNow.Pages
         List<Classes.Sportsman>? sportsmanList;
         List<Classes.SportKind>? sportKindList;
         List<Classes.Country>? countryList;
+        List<Classes.Achievement> achievementList;
 
         public DeleteWindow(List<Classes.Competition> competitions)
         {
@@ -83,6 +84,21 @@ namespace AchieveNow.Pages
             Delete_DataGrid.ItemsSource = countries.ToList();
         }
 
+        public DeleteWindow(List<Classes.Achievement> achievements)
+        {
+            InitializeComponent();
+
+            achievementList = achievements;
+
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding ("Id"), Width = 30 });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Название", Binding = new Binding("Name"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Результат", Binding = new Binding("Result"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Соревнование", Binding = new Binding("Competition"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Дата выдачи", Binding = new Binding("DateOfIssue"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+
+            Delete_DataGrid.ItemsSource = achievements.ToList();
+        }
+
         private void Confirm_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
@@ -90,7 +106,7 @@ namespace AchieveNow.Pages
                 if (!context.IsAvailable)
                     return;
 
-                if (competitionList != null || sportsmanList != null || sportKindList != null || countryList != null)
+                if (competitionList != null || sportsmanList != null || sportKindList != null || countryList != null || achievementList != null)
                 {
                     try
                     {
@@ -102,6 +118,8 @@ namespace AchieveNow.Pages
                             context.RemoveRange(countryList);
                         if (sportKindList != null)
                             context.RemoveRange(sportKindList);
+                        if (achievementList != null)
+                            context.RemoveRange(achievementList);
 
                         context.SaveChanges();
                     }

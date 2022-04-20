@@ -57,8 +57,18 @@
                 <DataGridTextColumn Binding="{Binding Competition}" Header="Соревнование" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding DateOfIssue}" Header="Дата выдачи" Width="auto"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                   <!-- <MenuItem x:Name="Edit_AchievementsGrid_ContextMenu" Header="Редактировать" Click="Edit_AchievementsGrid_ContextMenu_Click"></MenuItem>
+                    <MenuItem x:Name="Delete_AchievementsGrid_ContextMenu" Header="Удалить" Click="Delete_AchievementsGrid_ContextMenu_Click"></MenuItem>-->
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
         </DataGrid>
-<!-- -->
+        
+        
+
+
         <Button x:Name="AddAchievement" Grid.Row="0" Grid.Column="0" Click="AddAchievement_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>достижение</TextBlock>
         </Button>

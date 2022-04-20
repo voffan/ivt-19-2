@@ -242,6 +242,32 @@ namespace AchieveNow.Pages.Achievement
             }
         }
 
+        private void Delete_AchievementsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (AchievementsGrid.SelectedItem != null)
+            {
+
+
+                List<Classes.Achievement> achievements = new List<Classes.Achievement>();
+
+                foreach (Classes.Achievement achievement in AchievementsGrid.SelectedItems)
+                {
+                    achievements.Add(achievement);
+                }
+
+                DeleteWindow deleteWindow = new DeleteWindow(achievements);
+                deleteWindow.ShowDialog();
+
+                // Обновить после закрытия диалогового окна удаления
+                Update();
+            }
+            else
+            {
+                MessageBox.Show("Выберите соревнование");
+            }
+        }
+
         private void Result_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
