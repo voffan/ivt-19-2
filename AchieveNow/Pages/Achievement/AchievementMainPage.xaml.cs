@@ -59,7 +59,13 @@ namespace AchieveNow.Pages.Achievement
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Update();
             ShowAchievements();
+
+            foreach (Result result in Enum.GetValues(typeof(Result)))
+            {
+                Result_ComboBox.Items.Add(result);
+            }
         }
 
         private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
@@ -68,6 +74,51 @@ namespace AchieveNow.Pages.Achievement
             {
                 context.Dispose();
             }
+        }
+
+        private void ListOfCompetition()
+        {
+            Competition_ComboBox.Items.Clear();
+
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var competitions = context.Competitions.ToList();
+                foreach (Classes.Competition competition in competitions)
+                {
+                    Competition_ComboBox.Items.Add(competition);
+                }
+
+                Competition_ComboBox.DisplayMemberPath = "Name";
+                Competition_ComboBox.SelectedValuePath = "Id";
+            }
+        }
+
+        private void Update()
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                {
+                    AchievementsGrid.ItemsSource = null;
+                    return;
+                }
+
+                ShowAchievements();
+                ListOfCompetition();
+            }
+        }
+
+        // Очистить формы
+        private void ClearForms()
+        {
+            Name_TextBox.Text = "";
+            Result_ComboBox.SelectedItem = null;
+            Competition_ComboBox.SelectedItem = null;
+            DateOfIssue.SelectedDate = null;
+            isIntervalDate_CheckBox.IsChecked = false;
         }
 
         private void Button_Competitions(object sender, RoutedEventArgs e)
@@ -102,6 +153,8 @@ namespace AchieveNow.Pages.Achievement
 
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
+            ClearForms();
+            Update();
             ShowAchievements();
         }
 
@@ -144,8 +197,7 @@ namespace AchieveNow.Pages.Achievement
                     return;
 
                 IQueryable<Classes.Achievement> achievementIQuer = context.Achievements
-                    .Include("Competition")
-                    .Include("Result");
+                    .Include("Competition");
 
                 if (Name_TextBox.Text != "")
                 {
@@ -183,6 +235,10 @@ namespace AchieveNow.Pages.Achievement
                             .Where(c => c.DateOfIssue <= dateOfIssue2);
                     }
                 }
+
+                var search = achievementIQuer.ToList();
+
+                AchievementsGrid.ItemsSource = search;
             }
         }
 
@@ -190,7 +246,5 @@ namespace AchieveNow.Pages.Achievement
         {
 
         }
-
-        
     }
 }

@@ -58,7 +58,7 @@
                 <DataGridTextColumn Binding="{Binding DateOfIssue}" Header="Дата выдачи" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
-
+<!-- -->
         <Button x:Name="AddAchievement" Grid.Row="0" Grid.Column="0" Click="AddAchievement_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>достижение</TextBlock>
         </Button>
