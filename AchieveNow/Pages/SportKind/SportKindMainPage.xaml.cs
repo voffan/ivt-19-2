@@ -90,11 +90,6 @@ namespace AchieveNow.Pages.SportKind
             Update();
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Soon");
-        }
-
         private void Button_Competitions(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CompetitionMainPage());
@@ -125,12 +120,25 @@ namespace AchieveNow.Pages.SportKind
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Edit_SportKindGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var search = context.SportKinds.Where(s => EF.Functions.Like(s.Name!, $"%{Name_TextBox.Text}%"));
+
+                SportKindsGrid.ItemsSource = search.ToList();
+            }
+        }
+
+        private void Delete_SportKindsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Delete_SportKindsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Edit_SportKindGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }
