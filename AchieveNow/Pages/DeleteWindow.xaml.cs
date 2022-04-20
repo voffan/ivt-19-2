@@ -120,7 +120,7 @@ namespace AchieveNow.Pages
                 if (!context.IsAvailable)
                     return;
 
-                if (competitionList != null || sportsmanList != null || sportKindList != null || countryList != null || achievementList != null)
+                if (competitionList != null || sportsmanList != null || sportKindList != null || countryList != null || locationList != null || achievementList != null)
                 {
                     try
                     {
