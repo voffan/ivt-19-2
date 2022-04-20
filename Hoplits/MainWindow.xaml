@@ -12,15 +12,17 @@
             <ColumnDefinition Width="44*"/>
             <ColumnDefinition Width="299*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="385,374,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2" Click="Button_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="451,374,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="516,374,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="385,374,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2" Click="Add"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="451,374,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2" Click="Edit" Name="Button_Edit"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="516,374,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2" Click="Delete"/>
         <Menu VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="3" Height="22" Width="800">
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="exit"/>
             </MenuItem>
             <MenuItem Header="List">
                 <MenuItem Header="Bugs" Click="getBugs"/>
+                <MenuItem Header="Solutions" Click="getSolutions"/>
+                <MenuItem Header="Employees" Click="getEmployees"/>
             </MenuItem>
             <MenuItem Header="About" />
         </Menu>
