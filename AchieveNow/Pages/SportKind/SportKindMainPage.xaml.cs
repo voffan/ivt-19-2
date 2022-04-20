@@ -90,11 +90,6 @@ namespace AchieveNow.Pages.SportKind
             Update();
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Soon");
-        }
-
         private void Button_Competitions(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CompetitionMainPage());
@@ -125,14 +120,65 @@ namespace AchieveNow.Pages.SportKind
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Edit_SportKindGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
 
+                var search = context.SportKinds.Where(s => EF.Functions.Like(s.Name!, $"%{Name_TextBox.Text}%"));
+
+                SportKindsGrid.ItemsSource = search.ToList();
+            }
         }
 
         private void Delete_SportKindsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (SportKindsGrid.SelectedItem != null)
+            {
+                List<Classes.SportKind> sportKinds = new List<Classes.SportKind>();
 
+                foreach (Classes.SportKind sportKind in SportKindsGrid.SelectedItems)
+                {
+                    sportKinds.Add(sportKind);
+                }
+
+                DeleteWindow deleteWindow = new DeleteWindow(sportKinds);
+                deleteWindow.ShowDialog();
+
+                // Обновить после закрытия окна диалогового удаления
+                Update();
+            }
+            else
+            {
+                MessageBox.Show("Выберите вид спорта");
+            }
+        }
+
+        private void Edit_SportKindGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (SportKindsGrid.SelectedItem != null)
+            {
+                if (SportKindsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.SportKind sportKind = (Classes.SportKind)SportKindsGrid.SelectedItem;
+
+                    SportKindEditWindow editWindow = new SportKindEditWindow(sportKind);
+                    editWindow.ShowDialog();
+
+                    // Обновить после закрытия диалогового окна редактирования
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите вид спорта");
+            }
         }
     }
 }
