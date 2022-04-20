@@ -16,6 +16,11 @@ namespace AchieveNow.Classes
         public int CountryId { get; set; }
         public virtual Country Country { get; set; }
         public virtual List<Competition> Competitions { get; set; } = new();
+        public Location(string name, int countryId)
+        {
+            Name = name;
+            CountryId = countryId;
+        }
         public override string ToString()
         {
             return Name;

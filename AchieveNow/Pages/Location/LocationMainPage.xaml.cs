@@ -33,10 +33,6 @@ namespace AchieveNow.Pages.Location
         public LocationMainPage()
         {
             InitializeComponent();
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
             Update();
         }
 
@@ -57,7 +53,7 @@ namespace AchieveNow.Pages.Location
 
         private void Update()
         {
-
+            Country_ComboBox.Items.Clear();
             using (ApplicationContext context = new ApplicationContext())
             {
                 if (!context.IsAvailable)
@@ -81,6 +77,7 @@ namespace AchieveNow.Pages.Location
         private void ClearForms()
         {
             Name_TextBox.Text = "";
+            Country_ComboBox.SelectedItem = null;
         }
 
         private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
@@ -93,7 +90,12 @@ namespace AchieveNow.Pages.Location
 
         private void AddLocation_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Only for $10!");
+            var locationAddWindow = new LocationAddWindow();
+            locationAddWindow.ShowDialog();
+            // Искомое находится здесь
+            ShowLocations();
+            ClearForms();
+            Update();
         }
 
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
@@ -104,7 +106,34 @@ namespace AchieveNow.Pages.Location
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Soon");
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                IQueryable<Classes.Location> locationIQuer = context.Locations
+                    .Include("Country");
+
+                if (Name_TextBox.Text != "")
+                {
+                    locationIQuer = locationIQuer.Where(c => EF.Functions.Like(c.Name!, $"%{Name_TextBox.Text}%"));
+                }
+
+                if (Country_ComboBox.SelectedItem != null)
+                {
+                    locationIQuer = locationIQuer.Where(c => c.CountryId == (int)Country_ComboBox.SelectedValue);
+                }
+
+                try
+                {
+                    var search = locationIQuer.ToList();
+                    LocationsGrid.ItemsSource = search;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
 
         private void Button_Competitions(object sender, RoutedEventArgs e)
@@ -144,7 +173,25 @@ namespace AchieveNow.Pages.Location
 
         private void Delete_LocationsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (LocationsGrid.SelectedItem != null)
+            {
+                List<Classes.Location> locations = new List<Classes.Location>();
 
+                foreach (Classes.Location location in LocationsGrid.SelectedItems)
+                {
+                    locations.Add(location);
+                }
+
+                DeleteWindow deleteWindow = new DeleteWindow(locations);
+                deleteWindow.ShowDialog();
+
+                // Обновить после закрытия диалогового окна удаления
+                Update();
+            }
+            else
+            {
+                MessageBox.Show("Выберите спортсмена");
+            }
         }
     }
 }

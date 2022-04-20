@@ -24,6 +24,7 @@ namespace AchieveNow.Pages
         List<Classes.Sportsman>? sportsmanList;
         List<Classes.SportKind>? sportKindList;
         List<Classes.Country>? countryList;
+        List<Classes.Location>? locationList;
         List<Classes.Achievement> achievementList;
 
         public DeleteWindow(List<Classes.Competition> competitions)
@@ -84,6 +85,19 @@ namespace AchieveNow.Pages
             Delete_DataGrid.ItemsSource = countries.ToList();
         }
 
+        public DeleteWindow(List<Classes.Location> locations)
+        {
+            InitializeComponent();
+
+            locationList = locations;
+
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Id"), Width = 30 });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Имя", Binding = new Binding("Name"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Страна", Binding = new Binding("Country"), Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+
+            Delete_DataGrid.ItemsSource = locations.ToList();
+        }
+
         public DeleteWindow(List<Classes.Achievement> achievements)
         {
             InitializeComponent();
@@ -120,6 +134,8 @@ namespace AchieveNow.Pages
                             context.RemoveRange(sportKindList);
                         if (achievementList != null)
                             context.RemoveRange(achievementList);
+                        if (locationList != null)
+                            context.RemoveRange(locationList);
 
                         context.SaveChanges();
                     }
