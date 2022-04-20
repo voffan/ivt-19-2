@@ -158,7 +158,27 @@ namespace AchieveNow.Pages.SportKind
 
         private void Edit_SportKindGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (SportKindsGrid.SelectedItem != null)
+            {
+                if (SportKindsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.SportKind sportKind = (Classes.SportKind)SportKindsGrid.SelectedItem;
 
+                    SportKindEditWindow editWindow = new SportKindEditWindow(sportKind);
+                    editWindow.ShowDialog();
+
+                    // Обновить после закрытия диалогового окна редактирования
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите вид спорта");
+            }
         }
     }
 }
