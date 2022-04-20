@@ -142,7 +142,7 @@ namespace AchieveNow.Pages.Sportsman
             Close();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {

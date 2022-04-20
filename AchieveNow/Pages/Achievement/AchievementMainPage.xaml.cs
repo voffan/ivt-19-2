@@ -272,5 +272,29 @@ namespace AchieveNow.Pages.Achievement
         {
 
         }
+
+        private void Edit_AchievementsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (AchievementsGrid.SelectedItem != null)
+            {
+                if (AchievementsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Achievement achievement = (Classes.Achievement)AchievementsGrid.SelectedItem;
+
+                    AchievementEditWindow editWindow = new AchievementEditWindow(achievement);
+                    editWindow.ShowDialog();
+
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите достижение");
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Location"
         mc:Ignorable="d"
-        Title="LocationEditWindow" Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Окно редактирования локации" Height="170" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
