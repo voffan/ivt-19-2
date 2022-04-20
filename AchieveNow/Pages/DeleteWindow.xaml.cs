@@ -22,6 +22,7 @@ namespace AchieveNow.Pages
     {
         List<Classes.Competition>? competitionList;
         List<Classes.Sportsman>? sportsmanList;
+        List<Classes.SportKind>? sportKindList;
         List<Classes.Country>? countryList;
 
         public DeleteWindow(List<Classes.Competition> competitions)
@@ -58,6 +59,18 @@ namespace AchieveNow.Pages
             Delete_DataGrid.ItemsSource = sportsmen.ToList();
         }
 
+        public DeleteWindow(List<Classes.SportKind> sportKinds)
+        {
+            InitializeComponent();
+
+            sportKindList = sportKinds;
+
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Id"), Width = 30 });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Имя", Binding = new Binding("Name"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+
+            Delete_DataGrid.ItemsSource = sportKinds.ToList();
+        }
+
         public DeleteWindow(List<Classes.Country> countries)
         {
             InitializeComponent();
@@ -77,7 +90,7 @@ namespace AchieveNow.Pages
                 if (!context.IsAvailable)
                     return;
 
-                if (competitionList != null || sportsmanList != null || countryList != null)
+                if (competitionList != null || sportsmanList != null || sportKindList != null || countryList != null)
                 {
                     try
                     {
@@ -87,6 +100,8 @@ namespace AchieveNow.Pages
                             context.RemoveRange(sportsmanList);
                         if (countryList != null)
                             context.RemoveRange(countryList);
+                        if (sportKindList != null)
+                            context.RemoveRange(sportKindList);
 
                         context.SaveChanges();
                     }

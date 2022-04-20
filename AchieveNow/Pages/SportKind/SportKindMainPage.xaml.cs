@@ -135,7 +135,25 @@ namespace AchieveNow.Pages.SportKind
 
         private void Delete_SportKindsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (SportKindsGrid.SelectedItem != null)
+            {
+                List<Classes.SportKind> sportKinds = new List<Classes.SportKind>();
 
+                foreach (Classes.SportKind sportKind in SportKindsGrid.SelectedItems)
+                {
+                    sportKinds.Add(sportKind);
+                }
+
+                DeleteWindow deleteWindow = new DeleteWindow(sportKinds);
+                deleteWindow.ShowDialog();
+
+                // Обновить после закрытия окна диалогового удаления
+                Update();
+            }
+            else
+            {
+                MessageBox.Show("Выберите вид спорта");
+            }
         }
 
         private void Edit_SportKindGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
