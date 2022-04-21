@@ -6,8 +6,13 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using Yaxel.Classes;
+<<<<<<< HEAD
+using Yaxel.Tables.Computer;
+using Yaxel.Tables.Employee;
+=======
 using Yaxel.Tables.ComputerForms;
 using Yaxel.Tables.ComponentForms;
+>>>>>>> eba850a9b1a20bde1d0a9d9f496a1896f799d1a9
 
 namespace Yaxel
 {
@@ -190,7 +195,9 @@ namespace Yaxel
             switch (cTable)
             {
                 case CurrentTable.Employee:
-
+                    AddEmployees formEmployee = new AddEmployees();
+                    formEmployee.ShowDialog();
+                    fillDataGridView();
                     break;
                 case CurrentTable.Computer:
                     AddComputer computerForm = new AddComputer();
@@ -198,7 +205,6 @@ namespace Yaxel
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
-
                     break;
                 case CurrentTable.Component:
                     AddComponent componentForm = new AddComponent();
@@ -217,6 +223,13 @@ namespace Yaxel
             switch (cTable)
             {
                 case CurrentTable.Employee:
+                    List<int> delIEmployees = new List<int>();
+
+                    for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                        delIEmployees.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
+                    DeleteEmployees formDeleteEmployees = new DeleteEmployees(delIEmployees);
+                    formDeleteEmployees.ShowDialog();
+                    fillDataGridView();
 
                     break;
                 case CurrentTable.Computer:

@@ -47,7 +47,13 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+<<<<<<< HEAD
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.3\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+=======
     <Reference Include="System.DirectoryServices" />
+>>>>>>> eba850a9b1a20bde1d0a9d9f496a1896f799d1a9
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -136,6 +142,18 @@
     <Compile Include="Tables\ComputerForms\UpdateComputer.Designer.cs">
       <DependentUpon>UpdateComputer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\Employee\AddEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\Employee\AddEmployees.Designer.cs">
+      <DependentUpon>AddEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\Employee\DeleteEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\Employee\DeleteEmployees.Designer.cs">
+      <DependentUpon>DeleteEmployees.cs</DependentUpon>
+    </Compile>
     <Compile Include="YaxelContext.cs" />
     <Compile Include="YaxelStyle\YaxelButton.cs">
       <SubType>Component</SubType>
@@ -189,6 +207,12 @@
     <EmbeddedResource Include="Tables\ComputerForms\UpdateComputer.resx">
       <DependentUpon>UpdateComputer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Employee\AddEmployees.resx">
+      <DependentUpon>AddEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Employee\DeleteEmployees.resx">
+      <DependentUpon>DeleteEmployees.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -205,8 +229,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+<<<<<<< HEAD
+    <Folder Include="Tables\Periphery\" />
+=======
     <Folder Include="Tables\EmployeeForms\" />
     <Folder Include="Tables\PeripheryForms\" />
+>>>>>>> eba850a9b1a20bde1d0a9d9f496a1896f799d1a9
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
