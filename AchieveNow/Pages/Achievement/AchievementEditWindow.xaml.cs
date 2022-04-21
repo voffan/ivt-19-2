@@ -92,7 +92,7 @@ namespace AchieveNow.Pages.Achievement
         {
             if (Name_TextBox.Text == "")
             {
-                MessageBox.Show("В имя пусто");
+                MessageBox.Show("В имени пусто");
                 return;
             }
 
@@ -181,7 +181,7 @@ namespace AchieveNow.Pages.Achievement
                     }
                     else
                     {
-                        MessageBox.Show("Не удалось обновить элемент. Probably is was deleted");
+                        MessageBox.Show("Не удалось обновить элемент. Возможно, он был удалён");
                     }
 
                     Close();
