@@ -59,6 +59,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202203081348229_InitialCreate.cs" />
+    <Compile Include="Migrations\202203081348229_InitialCreate.designer.cs">
+      <DependentUpon>202203081348229_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204211150105_ComponentComputer.cs" />
+    <Compile Include="Migrations\202204211150105_ComponentComputer.designer.cs">
+      <DependentUpon>202204211150105_ComponentComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Tables\ComponentForms\AddComponent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +146,12 @@
     <Compile Include="YaxelStyle\YaxelForm.Designer.cs">
       <DependentUpon>YaxelForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Migrations\202203081348229_InitialCreate.resx">
+      <DependentUpon>202203081348229_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204211150105_ComponentComputer.resx">
+      <DependentUpon>202204211150105_ComponentComputer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>
     </EmbeddedResource>

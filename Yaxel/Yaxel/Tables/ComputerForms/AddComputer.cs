@@ -47,7 +47,6 @@ namespace Yaxel.Tables.ComputerForms
                 computer.Name = textBoxName.Text;
                 computer.Status = (Status)Enum.Parse(typeof(Status), (string)comboBoxStatus.SelectedValue);
                 computer.EmployeeId = (int)comboBoxEmployee.SelectedValue;
-                computer.ManufacturerId = (int)comboBoxManufacturer.SelectedValue;
 
                 context.Computers.Add(computer);
                 context.SaveChanges();

@@ -40,7 +40,7 @@ namespace Yaxel.Tables.ComponentForms
                 Yaxel.Classes.Component component = new Yaxel.Classes.Component();
                 component.Model = textBox1.Text;
                 component.ComponentType = (ComponentType)Enum.Parse(typeof(ComponentType), (string)comboBox2.SelectedValue);
-                component.ComputerId = (int)comboBox1.SelectedValue;
+                //component.ComputerId = (int)comboBox1.SelectedValue;
 
                 context.Components.Add(component);
                 context.SaveChanges();

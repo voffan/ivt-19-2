@@ -110,7 +110,7 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        List<Computer> computersList = context.Computers.Include(e => e.Employee).Include(m => m.Manufacturer).ToList();
+                        List<Computer> computersList = context.Computers.Include(e => e.Employee).ToList();
 
                         DataGridViewImageCell cell = new DataGridViewImageCell();
 
@@ -140,7 +140,7 @@ namespace Yaxel
 
                         foreach (Computer c in computersList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, c.Manufacturer.Name, cell.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, cell.Value);
                         }
                         break;
                     case CurrentTable.Periphery:

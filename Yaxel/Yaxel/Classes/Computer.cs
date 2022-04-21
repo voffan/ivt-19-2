@@ -15,8 +15,6 @@ namespace Yaxel.Classes
         public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual List<Component> Components { get; set; }
-        public int ManufacturerId { get; set; }
-        public virtual Manufacturer Manufacturer { get; set; }
         [NotMapped]
         public string CompStatus { get { return EnumDictionaries.CompStatus[Enum.GetName(typeof(Status), this.Status)]; } }
     }
