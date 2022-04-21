@@ -138,7 +138,7 @@ namespace AchieveNow.Pages.Achievement
             DateOnly dateOfIssue = DateOnly.FromDateTime((DateTime)DateOfIssue.SelectedDate);
             if (dateOfIssue < dateOfExecCompetition)
             {
-                MessageBox.Show("Дата выдачи не может быть раньше даты соревнования!");
+                MessageBox.Show("Дата выдачи не может быть раньше даты соревнования!\nДата соревнования: " + dateOfExecCompetition.ToString("yyyy-MM-dd"));
                 return;
             }
 

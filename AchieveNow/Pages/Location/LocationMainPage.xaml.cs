@@ -168,7 +168,26 @@ namespace AchieveNow.Pages.Location
 
         private void Edit_LocationGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (LocationsGrid.SelectedItem != null)
+            {
+                if (LocationsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Location location = (Classes.Location)LocationsGrid.SelectedItem;
 
+                    LocationEditWindow editWindow = new LocationEditWindow(location);
+                    editWindow.ShowDialog();
+
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите спортсмена");
+            }
         }
 
         private void Delete_LocationsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)

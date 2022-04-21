@@ -53,7 +53,7 @@
             <ComboBox x:Name="Country_ComboBox" IsEditable="False" StaysOpenOnEdit="True"></ComboBox>
         </WrapPanel>
 
-        <Button x:Name="AddButton" Content="Добавить" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" IsDefault="True" Click="AddButton_Click"></Button>
+        <Button x:Name="UpdateButton" Content="Обновить" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" IsDefault="True" Click="UpdateButton_Click"></Button>
 
         <Menu VerticalAlignment="Top" Height="18" FontSize="14">
             <MenuItem Header="Файл">
