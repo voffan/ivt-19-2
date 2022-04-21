@@ -1,7 +1,7 @@
 # ivt-19-2
 ## Hoplits
-### Semen
+### Semen deceased
 ### Timur
 ### Aiaal
-### Kirill
-### Konstantine
+### Kirill 
+### Konstantine deceased
