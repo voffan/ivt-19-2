@@ -1,28 +1,32 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Data.Entity;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Yaxel.Tables.Computer
+namespace Yaxel.Tables.ComputerForms
 {
-    public partial class DeleteComputers : Form
+    public partial class DeleteComputer : Form
     {
         List<int> selectedRowsId;
 
-        public DeleteComputers(List<int> delItems)
+        public DeleteComputer(List<int> delItems)
         {
             InitializeComponent();
 
             selectedRowsId = delItems;
         }
 
-        private void DeleteComputers_Load(object sender, EventArgs e)
+        private void DeleteComputer_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void yesButton_Click(object sender, EventArgs e)
+        private void ApplyButton_Click(object sender, EventArgs e)
         {
             using (var context = new YaxelContext())
             {
@@ -40,7 +44,7 @@ namespace Yaxel.Tables.Computer
             Close();
         }
 
-        private void noButton_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
         }

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Yaxel.Classes
 {
@@ -15,5 +17,7 @@ namespace Yaxel.Classes
         public virtual List<Component> Components { get; set; }
         public int ManufacturerId { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
+        [NotMapped]
+        public string CompStatus { get { return EnumDictionaries.CompStatus[Enum.GetName(typeof(Status), this.Status)]; } }
     }
 }

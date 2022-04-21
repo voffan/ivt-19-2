@@ -42,12 +42,18 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+<<<<<<< HEAD
     <Reference Include="System.Data.SqlClient, Version=4.6.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.8.3\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
+=======
+    <Reference Include="System.DirectoryServices" />
+>>>>>>> eba850a9b1a20bde1d0a9d9f496a1896f799d1a9
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,11 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tables\Component\AddComponents.cs">
+    <Compile Include="Tables\ComponentForms\AddComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\Component\AddComponents.Designer.cs">
-      <DependentUpon>AddComponents.cs</DependentUpon>
+    <Compile Include="Tables\ComponentForms\AddComponent.Designer.cs">
+      <DependentUpon>AddComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="EnumTranslator.cs" />
     <Compile Include="Authorization.cs">
@@ -91,23 +97,41 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables\Computer\AddComputers.cs">
+    <Compile Include="Tables\ComponentForms\DeleteComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\Computer\AddComputers.Designer.cs">
-      <DependentUpon>AddComputers.cs</DependentUpon>
+    <Compile Include="Tables\ComponentForms\DeleteComponent.Designer.cs">
+      <DependentUpon>DeleteComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\Computer\DeleteComputers.cs">
+    <Compile Include="Tables\ComponentForms\UpdateComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\Computer\DeleteComputers.Designer.cs">
-      <DependentUpon>DeleteComputers.cs</DependentUpon>
+    <Compile Include="Tables\ComponentForms\UpdateComponent.Designer.cs">
+      <DependentUpon>UpdateComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\Computer\UpdateComputers.cs">
+    <Compile Include="Tables\ComputerForms\AddComputer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\Computer\UpdateComputers.Designer.cs">
-      <DependentUpon>UpdateComputers.cs</DependentUpon>
+    <Compile Include="Tables\ComputerForms\AddComputer.Designer.cs">
+      <DependentUpon>AddComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\DeleteComputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\DeleteComputer.Designer.cs">
+      <DependentUpon>DeleteComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\SearchComputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\SearchComputer.Designer.cs">
+      <DependentUpon>SearchComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\UpdateComputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\UpdateComputer.Designer.cs">
+      <DependentUpon>UpdateComputer.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\Employee\AddEmployees.cs">
       <SubType>Form</SubType>
@@ -131,8 +155,8 @@
     <Compile Include="YaxelStyle\YaxelForm.Designer.cs">
       <DependentUpon>YaxelForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Tables\Component\AddComponents.resx">
-      <DependentUpon>AddComponents.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComponentForms\AddComponent.resx">
+      <DependentUpon>AddComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
@@ -150,14 +174,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tables\Computer\AddComputers.resx">
-      <DependentUpon>AddComputers.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComponentForms\DeleteComponent.resx">
+      <DependentUpon>DeleteComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Computer\DeleteComputers.resx">
-      <DependentUpon>DeleteComputers.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComponentForms\UpdateComponent.resx">
+      <DependentUpon>UpdateComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Computer\UpdateComputers.resx">
-      <DependentUpon>UpdateComputers.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComputerForms\AddComputer.resx">
+      <DependentUpon>AddComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComputerForms\DeleteComputer.resx">
+      <DependentUpon>DeleteComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComputerForms\SearchComputer.resx">
+      <DependentUpon>SearchComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComputerForms\UpdateComputer.resx">
+      <DependentUpon>UpdateComputer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Employee\AddEmployees.resx">
       <DependentUpon>AddEmployees.cs</DependentUpon>
@@ -181,7 +214,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+<<<<<<< HEAD
     <Folder Include="Tables\Periphery\" />
+=======
+    <Folder Include="Tables\EmployeeForms\" />
+    <Folder Include="Tables\PeripheryForms\" />
+>>>>>>> eba850a9b1a20bde1d0a9d9f496a1896f799d1a9
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

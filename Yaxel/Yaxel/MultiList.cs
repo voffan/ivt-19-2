@@ -6,8 +6,13 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using Yaxel.Classes;
+<<<<<<< HEAD
 using Yaxel.Tables.Computer;
 using Yaxel.Tables.Employee;
+=======
+using Yaxel.Tables.ComputerForms;
+using Yaxel.Tables.ComponentForms;
+>>>>>>> eba850a9b1a20bde1d0a9d9f496a1896f799d1a9
 
 namespace Yaxel
 {
@@ -140,7 +145,7 @@ namespace Yaxel
 
                         foreach (Computer c in computersList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Name, c.Status, c.Employee.Name, c.Manufacturer.Name, cell.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, c.Manufacturer.Name, cell.Value);
                         }
                         break;
                     case CurrentTable.Periphery:
@@ -168,7 +173,7 @@ namespace Yaxel
                     case CurrentTable.Computer:
                         if (e.ColumnIndex == 5 && e.RowIndex > -1)
                         {
-                            UpdateComputers form = new UpdateComputers((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            UpdateComputer form = new UpdateComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                             fillDataGridView();
                         }
@@ -195,14 +200,16 @@ namespace Yaxel
                     fillDataGridView();
                     break;
                 case CurrentTable.Computer:
-                    AddComputers form = new AddComputers();
-                    form.ShowDialog();
+                    AddComputer computerForm = new AddComputer();
+                    computerForm.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
                     break;
                 case CurrentTable.Component:
-
+                    AddComponent componentForm = new AddComponent();
+                    componentForm.ShowDialog();
+                    fillDataGridView();
                     break;
                 case CurrentTable.none:
 
@@ -231,8 +238,39 @@ namespace Yaxel
                     for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
                         delItems.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
 
-                    DeleteComputers form = new DeleteComputers(delItems);
-                    form.ShowDialog();
+                    DeleteComputer computerForm = new DeleteComputer(delItems);
+                    computerForm.ShowDialog();
+                    fillDataGridView();
+                    break;
+                case CurrentTable.Periphery:
+
+                    break;
+                case CurrentTable.Component:
+                    List<int> delComponents = new List<int>();
+
+                    for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                        delComponents.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
+
+                    DeleteComponent componentForm = new DeleteComponent(delComponents);
+                    componentForm.ShowDialog();
+                    fillDataGridView();
+                    break;
+                case CurrentTable.none:
+
+                    break;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            switch (cTable)
+            {
+                case CurrentTable.Employee:
+
+                    break;
+                case CurrentTable.Computer:
+                    SearchComputer computerForm = new SearchComputer();
+                    computerForm.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
@@ -246,7 +284,6 @@ namespace Yaxel
                     break;
             }
         }
-
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
