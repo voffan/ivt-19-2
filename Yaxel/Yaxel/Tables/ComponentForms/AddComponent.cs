@@ -13,6 +13,8 @@ namespace Yaxel.Tables.ComponentForms
 {
     public partial class AddComponent : Form
     {
+        List <Classes.Attribute> attributes = new List <Classes.Attribute> ();
+
         public AddComponent()
         {
             InitializeComponent();
@@ -20,6 +22,8 @@ namespace Yaxel.Tables.ComponentForms
 
         private void AddComponent_Load(object sender, EventArgs e)
         {
+            SetDoubleBuffered(dataGridView1);
+
             comboBox2.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<ComponentType>.RetrieveAttributes(), null);
             comboBox2.DisplayMember = "Key";
             comboBox2.ValueMember = "Value";
@@ -30,6 +34,12 @@ namespace Yaxel.Tables.ComponentForms
                 comboBox1.DataSource = context.Computers.ToList();
                 comboBox1.DisplayMember = "Name";
                 comboBox1.ValueMember = "Id";
+
+                attributeTypeComboBox.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<AttrType>.RetrieveAttributes(), null);
+                attributeTypeComboBox.DisplayMember = "Key";
+                attributeTypeComboBox.ValueMember = "Value";
+
+                dataGridView1.DataSource = attributes;
             }
         }
 
@@ -37,15 +47,69 @@ namespace Yaxel.Tables.ComponentForms
         {
             using (var context = new YaxelContext())
             {
-                Yaxel.Classes.Component component = new Yaxel.Classes.Component();
+                Classes.Component component = new Classes.Component();
                 component.Model = textBox1.Text;
                 component.ComponentType = (ComponentType)Enum.Parse(typeof(ComponentType), (string)comboBox2.SelectedValue);
                 //component.ComputerId = (int)comboBox1.SelectedValue;
 
                 context.Components.Add(component);
                 context.SaveChanges();
+
+                foreach (var at in attributes)
+                {
+                    at.ComponentId = component.Id;
+                }
+
+                context.Attributes.AddRange(attributes);
+                context.SaveChanges();
+
                 Close();
             }
+        }
+
+        private void addAttributeButton_Click(object sender, EventArgs e)
+        {
+            attributes.Add(new Classes.Attribute
+            {
+                AttrType = (AttrType)Enum.Parse(typeof(AttrType), (string)attributeTypeComboBox.SelectedValue),
+                Name = attributeValueTextBox.Text,
+                ComponentId = 0
+            });
+
+            dataGridView1.DataSource = attributes.ToList();
+
+            attributeTypeComboBox.SelectedIndex = 0;
+            attributeValueTextBox.Text = "";
+        }
+
+
+        private void deleteAttributeButton_Click(object sender, EventArgs e)
+        {
+            List<int> delIndex = new List<int> ();
+
+            for (int i = attributes.Count - 1; i >= 0; i--)
+            {
+                if (dataGridView1.Rows[i].Selected)
+                    delIndex.Add(i);
+            }
+
+            foreach (int i in delIndex) attributes.RemoveAt(i);
+
+            dataGridView1.DataSource = attributes.ToList();
+        }
+
+        private static void SetDoubleBuffered(Control c)
+        {
+            if (SystemInformation.TerminalServerSession)
+                return;
+
+            System.Reflection.PropertyInfo pDoubleBuffered =
+                  typeof(Control).GetProperty(
+                        "DoubleBuffered",
+                        System.Reflection.BindingFlags.NonPublic |
+                        System.Reflection.BindingFlags.Instance);
+
+            pDoubleBuffered.SetValue(c, true, null);
         }
     }
 }
