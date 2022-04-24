@@ -8,19 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Yaxel.Tables.Employee
+namespace Yaxel.Tables.EmployeeForms
 {
-    public partial class DeleteEmployees : Form
+    public partial class DeleteEmployee : Form
     {
         List<int> selectedRowsId;
-
-        public DeleteEmployees(List<int> delItems)
+        public DeleteEmployee(List<int> delItems)
         {
             InitializeComponent();
             selectedRowsId = delItems;
         }
 
-        private void DeleteEmployees_Load(object sender, EventArgs e)
+        private void DeleteEmployee_Load(object sender, EventArgs e)
         {
 
         }

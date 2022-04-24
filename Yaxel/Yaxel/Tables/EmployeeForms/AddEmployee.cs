@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Yaxel.Tables.Employee
+namespace Yaxel.Tables.EmployeeForms
 {
-    public partial class AddEmployees : Form
+    public partial class AddEmployee : Form
     {
-        public AddEmployees()
+        public AddEmployee()
         {
             InitializeComponent();
         }
