@@ -323,5 +323,10 @@ namespace AchieveNow.Pages.Achievement
                 MessageBox.Show("Выберите достижение");
             }
         }
+
+        private void Assign_AchievementSportsman_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

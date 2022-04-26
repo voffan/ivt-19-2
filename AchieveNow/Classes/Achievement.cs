@@ -17,7 +17,8 @@ namespace AchieveNow.Classes
         public Result Result { get; set; }
         public int CompetitionId { get; set; }
         public virtual Competition Competition { get; set; }
-        public virtual List<Sportsman> Sportsmen { get; set; } = new();
+        public int SportsmanId { get; set; }
+        public virtual Sportsman Sportsmen { get; set; }
 
         public Achievement(string name, DateOnly dateOfIssue, Result result, int competitionId)
         {
