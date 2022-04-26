@@ -27,7 +27,7 @@
 
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Результат</TextBlock>
-            <ComboBox x:Name="Result_ComboBox" IsEditable="False" MinWidth="150"></ComboBox>
+            <ComboBox x:Name="Result_ComboBox" IsEditable="False" MinWidth="150" StaysOpenOnEdit="True"></ComboBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
