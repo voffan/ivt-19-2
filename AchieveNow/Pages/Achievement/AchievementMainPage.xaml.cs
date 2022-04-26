@@ -68,14 +68,6 @@ namespace AchieveNow.Pages.Achievement
             }
         }
 
-        private void Page_ContextMenuClosing(object sender, ContextMenuEventArgs e)
-        {
-            using (ApplicationContext context = new ApplicationContext())
-            {
-                context.Dispose();
-            }
-        }
-
         private void ListOfCompetition()
         {
             Competition_ComboBox.Items.Clear();
@@ -268,38 +260,6 @@ namespace AchieveNow.Pages.Achievement
             }
         }
 
-        /*
-        private void Edit_AchievementsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
-        {
-            if (AchievementsGrid.SelectedItem != null)
-            {
-                if (AchievementsGrid.SelectedItems.Count == 1)
-                {
-                    Classes.Achievement achievement = (Classes.Achievement)AchievementsGrid.SelectedItem;
-
-                    AchievementEditWindow editWindow = new AchievementEditWindow(achievement);
-                    editWindow.ShowDialog();
-
-                    // Обновить после закрытия диалогового окна редактирования
-                    Update();
-                }
-                else
-                {
-                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Выберите достижение");
-            }
-        }
-        */
-
-        private void Result_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Edit_AchievementsGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
             if (AchievementsGrid.SelectedItem != null)
@@ -327,6 +287,26 @@ namespace AchieveNow.Pages.Achievement
         private void Assign_AchievementSportsman_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
 
+            if (AchievementsGrid.SelectedItem != null)
+            {
+                if (AchievementsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Achievement achievement = (Classes.Achievement)AchievementsGrid.SelectedItem;
+
+                    AchievementAssignWindow assignWindow = new AchievementAssignWindow(achievement);
+                    assignWindow.ShowDialog();
+
+                    Update();
+                }
+                else
+                {
+                    MessageBox.Show("Для присвоения разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите достижение");
+            }
         }
     }
 }

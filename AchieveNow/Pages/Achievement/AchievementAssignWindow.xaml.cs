@@ -23,24 +23,29 @@ using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Country;
 using AchieveNow.Pages.User;
 
-namespace AchieveNow.Pages.Sportsman
+namespace AchieveNow.Pages.Achievement
 {
     /// <summary>
-    /// Interaction logic for SportsmanPage.xaml
+    /// Логика взаимодействия для AchievementAssignWindow.xaml
     /// </summary>
-    public partial class SportsmanMainPage : Page
+    public partial class AchievementAssignWindow : Window
     {
         TextBlock? ToDate = null;
         DatePicker? DateOfBirth2 = new DatePicker { SelectedDate = null };
+        private Classes.Achievement achievement;
         private const int MAX_HEIGHT_LENGTH = 3;
         private const int MAX_WEIGHT_LENGTH = 3;
-        public SportsmanMainPage()
+
+        public AchievementAssignWindow(Classes.Achievement achievement)
         {
             InitializeComponent();
+            this.achievement = achievement;
         }
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
+
         }
 
         private void ShowSportsmen()
@@ -78,7 +83,7 @@ namespace AchieveNow.Pages.Sportsman
                 {
                     Gender_ComboBox.Items.Add(gender);
                 }
-                
+
                 var sportKinds = context.SportKinds.ToList();
                 foreach (Classes.SportKind sportKind in sportKinds)
                 {
@@ -110,20 +115,13 @@ namespace AchieveNow.Pages.Sportsman
             DateOfBirth.SelectedDate = null;
             isIntervalDate_CheckBox.IsChecked = false;
         }
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+
+        private void Refresh_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
-        private void AddSportsman_Button_Click(object sender, RoutedEventArgs e)
-        {
-            var sportsmanAddWindow = new SportsmanAddWindow();
-            sportsmanAddWindow.ShowDialog();
-
-            // Обновить таблицу после закрытия окна
-            ShowSportsmen();
-        }
         private void isIntervalDate_CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             FromDate_TextBlock.Visibility = Visibility.Visible;
@@ -260,72 +258,15 @@ namespace AchieveNow.Pages.Sportsman
             e.Handled = e.Key != Key.Space ? false : true;
         }
 
-        private void Button_Competitions(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CompetitionMainPage());
-        }
-
-        private void Button_Achievements(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AchievementMainPage());
-        }
-
-        private void Button_Locations(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new LocationMainPage());
-        }
-
-        private void Button_SportKinds(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new SportKindMainPage());
-        }
-
-        private void Button_Countries(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CountryMainPage());
-        }
-
-        private void Button_Users(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new UserMainPage());
-        }
-
         
 
-        private void Delete_SportsmenGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
-        {
-            if (SportsmenGrid.SelectedItem != null)
-            {
-                List<Classes.Sportsman> sportsmen = new List<Classes.Sportsman>();
-
-                foreach (Classes.Sportsman sportsman in SportsmenGrid.SelectedItems)
-                {
-                    sportsmen.Add(sportsman);
-                }
-
-                DeleteWindow deleteWindow = new DeleteWindow(sportsmen);
-                deleteWindow.ShowDialog();
-
-                // Обновить после закрытия диалогового окна удаления
-                Update();
-            }
-            else
-            {
-                MessageBox.Show("Выберите спортсмена");
-            }
-        }
-        private void Edit_SportsmenGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        private void Assign_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
             if (SportsmenGrid.SelectedItem != null)
             {
                 if (SportsmenGrid.SelectedItems.Count == 1)
                 {
-                    Classes.Sportsman sportsman = (Classes.Sportsman)SportsmenGrid.SelectedItem;
-
-                    SportsmanEditWindow editWindow = new SportsmanEditWindow(sportsman);
-                    editWindow.ShowDialog();
-
-                    Update();
+                    
                 }
                 else
                 {

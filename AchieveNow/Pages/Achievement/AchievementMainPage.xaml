@@ -8,7 +8,6 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="Список достижений"
       Loaded="Page_Loaded"
-      ContextMenuClosing="Page_ContextMenuClosing"
       Background="LightGray">
 
     <Grid>
@@ -36,7 +35,7 @@
             <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
             <TextBlock Text="Результат" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <ComboBox x:Name="Result_ComboBox" IsEditable="False" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16" SelectionChanged="Result_ComboBox_SelectionChanged"></ComboBox>
+            <ComboBox x:Name="Result_ComboBox" IsEditable="False" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></ComboBox>
             <TextBlock Text="Соревнование" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <ComboBox x:Name="Competition_ComboBox" Text="" HorizontalContentAlignment="Center"></ComboBox>
             <StackPanel x:Name="Date_StackPanel" HorizontalAlignment="Center" Orientation="Vertical">
