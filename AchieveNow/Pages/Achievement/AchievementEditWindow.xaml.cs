@@ -52,7 +52,10 @@ namespace AchieveNow.Pages.Achievement
 
             Competition_ComboBox.SelectedValue = achievement.Competition.Id;
 
-            Result_ComboBox.SelectedIndex = (int)achievement.Result;
+            Result_ComboBox.SelectedIndex = (int)achievement.Result - 1;
+
+            DateOnly dateOnlyOfIssue = new DateOnly(achievement.DateOfIssue.Year, achievement.DateOfIssue.Month, achievement.DateOfIssue.Day);
+            DateOfIssue.SelectedDate = dateOnlyOfIssue.ToDateTime(TimeOnly.MinValue);
         }
         private void ListOfCompetitions()
         {
