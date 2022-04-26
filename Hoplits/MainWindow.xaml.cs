@@ -22,33 +22,49 @@ namespace Hoplits
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        public MainWindow()
+        int current;
+        int id;
+        public int auth
         {
+            get => id;
+            set
+            {
+                id = value;
+            }
+        }
+        public MainWindow(int _id)
+        {
+            auth = _id;
             InitializeComponent();
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ApplicationContext a = new ApplicationContext();
             datagrid1.ItemsSource = a.Errors.ToList();
             datagrid1.Columns[0].Visibility = Visibility.Hidden;
-          }
+            current = 1;
+        }
 
         private void getBugs(object sender, RoutedEventArgs e)
         {
             ApplicationContext a = new ApplicationContext();
             datagrid1.ItemsSource = a.Errors.ToList();
+            datagrid1.Columns[0].Visibility = Visibility.Hidden;
+            current = 1;
         }
         private void getSolutions(object sender, RoutedEventArgs e)
         {
             ApplicationContext a = new ApplicationContext();
             datagrid1.ItemsSource = a.Solutions.ToList();
+            datagrid1.Columns[0].Visibility = Visibility.Hidden;
+            current = 2;
         }
         private void getEmployees(object sender, RoutedEventArgs e)
         {
             ApplicationContext a = new ApplicationContext();
             datagrid1.ItemsSource = a.Employees.ToList();
+            datagrid1.Columns[0].Visibility = Visibility.Hidden;
+            current = 3;
         }
 
         private void exit(object sender, RoutedEventArgs e)
@@ -65,8 +81,25 @@ namespace Hoplits
         {
             ApplicationContext a = new ApplicationContext();
             var row = datagrid1.SelectedItem;
-            Error error = row as Error;
-            if(error != null) a.Errors.Remove(error);
+            switch (current)
+            {
+                case 1:
+                    Error error = row as Error;
+                    if (error != null) a.Errors.Remove(error);
+                    break;
+                case 2:
+                    Solution solution = row as Solution;
+                    if (solution != null) a.Solutions.Remove(solution);
+                    break;
+                case 3:
+                    Employee employee = row as Employee;
+                    if (employee != null) a.Employees.Remove(employee);
+                    break;
+                default:
+                    return;
+            }
+            //Error error = row as Error;
+            //if(error != null) a.Errors.Remove(error);
             a.SaveChanges();
             datagrid1.ItemsSource = a.Errors.ToList();
             datagrid1.Columns[0].Visibility = Visibility.Hidden;
@@ -74,16 +107,26 @@ namespace Hoplits
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-            datagrid1.IsReadOnly = false;
-            ApplicationContext a = new ApplicationContext();
-            a.SaveChanges();
         }
 
         private void Add(object sender, RoutedEventArgs e)
         {
-            ApplicationContext a = new ApplicationContext();
-            var row = datagrid1.CurrentItem;
-            Error error = row as Error;
+            Window temp;
+            switch (current)
+            {
+                case 1:
+                    temp = new AddBug(auth);
+                    break;
+                case 2:
+                    temp = new AddSolution();
+                    break;
+                case 3:
+                    temp = new AddEmployee();
+                    break;
+                default:
+                    return;
+            }
+            temp.Show();
         }
     }
 }

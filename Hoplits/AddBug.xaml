@@ -1,0 +1,15 @@
+﻿<Window x:Class="Hoplits.AddBug"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hoplits"
+        mc:Ignorable="d"
+        Title="AddBug" Height="391" Width="674">
+    <Grid>
+        <Button Content="Add" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="28" Width="76"/>
+        <TextBox HorizontalAlignment="Left" Margin="70,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="305" Height="186" Name="error_desc"/>
+        <ComboBox HorizontalAlignment="Left" Margin="441,81,0,0" VerticalAlignment="Top" Width="120" Name="errortype_list"/>
+
+    </Grid>
+</Window>

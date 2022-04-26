@@ -38,7 +38,8 @@ namespace Hoplits
                 //go to main menu 
                 //MessageBox.Show("Logged in!");
                 this.Hide();
-                MainWindow mainWindow = new MainWindow(); 
+                
+                MainWindow mainWindow = new MainWindow(empl.id); 
                 mainWindow.ShowDialog();
 
                 

@@ -28,7 +28,7 @@ namespace Hoplits.Cs
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(
-                "server=localhost;user=root;password=1234;database=usersdb5;",
+                "server=localhost;user=root;password=1234;database=hoplits;",
                 new MySqlServerVersion(new Version(8, 0, 28))
             );
         }
