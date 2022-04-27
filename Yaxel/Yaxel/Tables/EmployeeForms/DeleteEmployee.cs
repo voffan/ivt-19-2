@@ -1,23 +1,25 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Data.Entity;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Yaxel.Tables.Computer
+namespace Yaxel.Tables.EmployeeForms
 {
-    public partial class DeleteComputers : Form
+    public partial class DeleteEmployee : Form
     {
         List<int> selectedRowsId;
-
-        public DeleteComputers(List<int> delItems)
+        public DeleteEmployee(List<int> delItems)
         {
             InitializeComponent();
-
             selectedRowsId = delItems;
         }
 
-        private void DeleteComputers_Load(object sender, EventArgs e)
+        private void DeleteEmployee_Load(object sender, EventArgs e)
         {
 
         }
@@ -26,14 +28,14 @@ namespace Yaxel.Tables.Computer
         {
             using (var context = new YaxelContext())
             {
-                List<Classes.Computer> computers = new List<Classes.Computer>();
+                List<Classes.Employee> employees = new List<Classes.Employee>();
 
                 foreach (var item in selectedRowsId)
                 {
-                    computers.Add(context.Computers.Where(c => c.Id == item).ToList().ElementAt(0));
+                    employees.Add(context.Employees.Where(c => c.Id == item).ToList().ElementAt(0));
                 }
 
-                context.Computers.RemoveRange(computers);
+                context.Employees.RemoveRange(employees);
                 context.SaveChanges();
             }
 

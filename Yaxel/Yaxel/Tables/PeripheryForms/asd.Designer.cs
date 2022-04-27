@@ -1,6 +1,6 @@
-﻿namespace Yaxel.Tables.Component
+﻿namespace Yaxel.Tables.PeripheryForms
 {
-    partial class AddComponents
+    partial class asd
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+<<<<<<< HEAD:Yaxel/Yaxel/Tables/Component/AddComponents.Designer.cs
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -79,5 +80,13 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private YaxelStyle.YaxelForm yaxelForm1;
         private System.Windows.Forms.Label label1;
+=======
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "asd";
+        }
+
+        #endregion
+>>>>>>> 1c84b032e4cef6e6fdf61ac14a528d130973d9d0:Yaxel/Yaxel/Tables/PeripheryForms/asd.Designer.cs
     }
 }

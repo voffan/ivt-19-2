@@ -7,29 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using cls = Yaxel.Classes;
+using Yaxel.Classes;
 
-namespace Yaxel.Tables.Computer
+namespace Yaxel.Tables.ComputerForms
 {
-    public partial class UpdateComputers : Form
+    public partial class UpdateComputer : Form
     {
         private int compId;
 
-        public UpdateComputers(int compId)
+        public UpdateComputer(int compId)
         {
             InitializeComponent();
 
             this.compId = compId;
         }
 
-        private void UpdateComputers_Load(object sender, EventArgs e)
+
+        private void UpdateComputer_Load(object sender, EventArgs e)
         {
             using (var context = new YaxelContext())
             {
-                cls.Computer computer = context.Computers.Where(c => c.Id == compId).ToList().First();
+                Computer computer = context.Computers.Where(c => c.Id == compId).ToList().First();
                 textBoxName.Text = computer.Name;
 
-                comboBoxStatus.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<cls.Status>.RetrieveAttributes(), null);
+                comboBoxStatus.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<Status>.RetrieveAttributes(), null);
                 comboBoxStatus.DisplayMember = "Key";
                 comboBoxStatus.ValueMember = "Value";
 
@@ -45,20 +46,20 @@ namespace Yaxel.Tables.Computer
                 comboBoxManufacturer.DisplayMember = "Name";
                 comboBoxManufacturer.ValueMember = "Id";
 
-                comboBoxManufacturer.SelectedItem = computer.ManufacturerId;
+                //comboBoxManufacturer.SelectedItem = computer.ManufacturerId;
             }
         }
 
-        private void yaxelButton1_Click(object sender, EventArgs e)
+        private void applyButton_Click(object sender, EventArgs e)
         {
             using (var context = new YaxelContext())
             {
-                cls.Computer computer = context.Computers.Where(c => c.Id == compId).ToList().First();
+                Computer computer = context.Computers.Where(c => c.Id == compId).ToList().First();
 
                 computer.Name = textBoxName.Text;
-                computer.Status = (cls.Status)Enum.Parse(typeof(cls.Status), (string)comboBoxStatus.SelectedValue);
+                computer.Status = (Status)Enum.Parse(typeof(Status), (string)comboBoxStatus.SelectedValue);
                 computer.EmployeeId = (int)comboBoxEmployee.SelectedValue;
-                computer.ManufacturerId = (int)comboBoxManufacturer.SelectedValue;
+                //computer.ManufacturerId = (int)comboBoxManufacturer.SelectedValue;
 
                 context.SaveChanges();
             }
