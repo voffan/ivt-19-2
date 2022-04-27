@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Yaxel.Classes;
 
 namespace Yaxel.Tables.EmployeeForms
 {
@@ -19,7 +20,9 @@ namespace Yaxel.Tables.EmployeeForms
 
         private void AddEmployee_Load(object sender, EventArgs e)
         {
-
+            comboBoxPosition.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<Position>.RetrieveAttributes(), null);
+            comboBoxPosition.DisplayMember = "Key";
+            comboBoxPosition.ValueMember = "Value";
         }
 
         private void yaxelButton1_Click(object sender, EventArgs e)

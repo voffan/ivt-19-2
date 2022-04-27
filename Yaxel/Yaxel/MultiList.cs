@@ -117,8 +117,41 @@ namespace Yaxel
                 switch (cTable)
                 {
                     case CurrentTable.Employee:
+                        dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
-                        dataGridView1.DataSource = context.Employees.ToList();
+
+                        List<Employee> employeesList = context.Employees.ToList();
+
+                        DataGridViewImageCell cellEmployee = new DataGridViewImageCell();
+
+                        Image srcImageEmployee = Image.FromFile("../../Resources/Update_Icon.png");
+
+                        Bitmap newImageEmployee = new Bitmap(25, 25);
+                        using (Graphics gr = Graphics.FromImage(newImageEmployee))
+                        {
+                            gr.SmoothingMode = SmoothingMode.HighQuality;
+                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                            gr.DrawImage(srcImageEmployee, new Rectangle(0, 0, 25, 25));
+                        }
+
+                        cellEmployee.Value = newImageEmployee;
+
+                        dataGridView1.Columns.Add("Id", "Id");
+                        dataGridView1.Columns.Add("Name", "Имя");
+                        dataGridView1.Columns.Add("Login", "Логин");
+                        dataGridView1.Columns.Add("Password", "Пароль");
+                        dataGridView1.Columns.Add("Position", "Должность");
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
+
+                        dataGridView1.Columns[0].Width = 25;
+                        dataGridView1.Columns[5].Width = 28;
+                        dataGridView1.RowTemplate.Height = 28;
+
+                        foreach (Employee e in employeesList)
+                        {
+                            dataGridView1.Rows.Add(e.Id, e.Name, e.Login, e.Password, e.Position, cellEmployee.Value);
+                        }
                         break;
                     case CurrentTable.Computer:
                         dataGridView1.DataSource = null;
@@ -179,7 +212,57 @@ namespace Yaxel
                         break;
                     case CurrentTable.Component:
                         dataGridView1.Columns.Clear();
-                        dataGridView1.DataSource = context.Components.ToList();
+                        //dataGridView1.DataSource = context.Components.ToList();
+
+                        List<Component> componentsList = context.Components.ToList();
+
+                        DataGridViewImageCell update_Icon2 = new DataGridViewImageCell();
+                        DataGridViewImageCell detail_Icon2 = new DataGridViewImageCell();
+                        //DataGridViewImageCell unknown_Icon2 = new DataGridViewImageCell();
+
+                        Image srcImage2 = Image.FromFile("../../Resources/Update_Icon.png");
+
+                        Bitmap newImage2 = new Bitmap(25, 25);
+                        using (Graphics gr = Graphics.FromImage(newImage2))
+                        {
+                            gr.SmoothingMode = SmoothingMode.HighQuality;
+                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                            gr.DrawImage(srcImage2, new Rectangle(0, 0, 25, 25));
+                        }
+
+                        update_Icon2.Value = newImage2;
+
+                        srcImage = Image.FromFile("../../Resources/Detail_Icon.png");
+
+                        newImage2 = new Bitmap(25, 25);
+                        using (Graphics gr = Graphics.FromImage(newImage2))
+                        {
+                            gr.SmoothingMode = SmoothingMode.HighQuality;
+                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                            gr.DrawImage(srcImage, new Rectangle(0, 0, 25, 25));
+                        }
+
+                        detail_Icon2.Value = newImage2;
+
+                        dataGridView1.Columns.Add("Id", "Id");
+                        dataGridView1.Columns.Add("Model", "Модель");
+                        dataGridView1.Columns.Add("ComponentType", "Тип компонента");
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
+
+                        dataGridView1.Columns[0].Width = 25;
+                        dataGridView1.Columns[3].Width = 28;
+                        dataGridView1.Columns[4].Width = 28;
+                        dataGridView1.Columns[5].Width = 28;
+                        dataGridView1.RowTemplate.Height = 28;
+
+                        foreach (Component c in componentsList)
+                        {
+                            dataGridView1.Rows.Add(c.Id, c.Model, c.ComponentType, detail_Icon2.Value, detail_Icon2.Value, update_Icon2.Value);  ;
+                        }
                         break;
                     case CurrentTable.none:
                         break;
@@ -193,7 +276,12 @@ namespace Yaxel
                 switch (cTable)
                 {
                     case CurrentTable.Employee:
-
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
+                        {
+                            UpdateEmployee form = new UpdateEmployee((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                            fillDataGridView();
+                        }
                         break;
                     case CurrentTable.Computer:
                         if (e.ColumnIndex == 5 && e.RowIndex > -1)
@@ -335,6 +423,11 @@ namespace Yaxel
                         System.Reflection.BindingFlags.Instance);
 
             pDoubleBuffered.SetValue(c, true, null);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

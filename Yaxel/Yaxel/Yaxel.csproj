@@ -156,6 +156,12 @@
     <Compile Include="Tables\EmployeeForms\DeleteEmployee.Designer.cs">
       <DependentUpon>DeleteEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\EmployeeForms\UpdateEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\EmployeeForms\UpdateEmployee.Designer.cs">
+      <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="YaxelContext.cs" />
     <Compile Include="YaxelStyle\YaxelButton.cs">
       <SubType>Component</SubType>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\EmployeeForms\DeleteEmployee.resx">
       <DependentUpon>DeleteEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\EmployeeForms\UpdateEmployee.resx">
+      <DependentUpon>UpdateEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
