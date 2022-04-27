@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Hoplits.Cs;
+
 namespace Hoplits
 {
     /// <summary>
@@ -22,6 +24,13 @@ namespace Hoplits
         public AddEmployee(int _id)
         {
             InitializeComponent();
+            
+
+            using (ApplicationContext a = new ApplicationContext())
+            {
+                cbEmployer.ItemsSource = a.Employers.ToList();
+                //shit
+            }
             //errortype_list.ItemsSource = Enum.GetValues(typeof(ErrorType));
         }
 

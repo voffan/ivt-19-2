@@ -9,9 +9,9 @@
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="26" Margin="260,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" AutomationProperties.Name="login" Name="login"/>
         <Button Content="Log in" HorizontalAlignment="Left" Margin="415,227,0,0" VerticalAlignment="Top" Click="Button_Click" AutomationProperties.Name="loggingin" Height="26" Width="42"/>
-        <TextBox HorizontalAlignment="Left" Height="26" Margin="260,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" AutomationProperties.Name="password" Name="password"/>
         <Label Content="Authorization" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="56" Width="280" FontSize="36" FontWeight="Bold"/>
         <Label Content="Login" HorizontalAlignment="Left" Margin="211,191,0,0" VerticalAlignment="Top"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="191,227,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="260,227,0,0" VerticalAlignment="Top" Width="140" Height="26"/>
     </Grid>
 </Window>

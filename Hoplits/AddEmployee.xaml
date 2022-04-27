@@ -8,22 +8,23 @@
         Title="AddEmployee" Height="424" Width="414">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="177*"/>
-            <RowDefinition Height="257*"/>
+            <RowDefinition Height="182*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="223*"/>
         </Grid.RowDefinitions>
-        <Button Content="Add" HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" Height="29" Width="74" Grid.Row="1" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Left" Margin="114,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="login"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="114,92,0,0" VerticalAlignment="Top" Width="120" Name="password"/>
-        <TextBox HorizontalAlignment="Left" Margin="114,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Name="fullname"/>
-        <TextBox HorizontalAlignment="Left" Margin="114,6,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Grid.Row="1" Name="phone"/>
-        <TextBox HorizontalAlignment="Left" Margin="114,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Grid.Row="1" Name="post"/>
-        <ComboBox HorizontalAlignment="Left" Margin="114,109,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" x:Name="cbEmployer"/>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="45,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.079,0.091"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="35,89,0,0" VerticalAlignment="Top"/>
-        <Label Content="Full Name" HorizontalAlignment="Left" Margin="33,135,0,0" VerticalAlignment="Top"/>
-        <Label Content="Phone number" HorizontalAlignment="Left" Margin="21,2,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Post" HorizontalAlignment="Left" Margin="48,56,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Employer" HorizontalAlignment="Left" Margin="35,107,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Add" HorizontalAlignment="Center" Margin="0,166,0,0" VerticalAlignment="Top" Height="29" Width="74" Grid.Row="2" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Margin="114,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="login" Height="18"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="114,92,0,0" VerticalAlignment="Top" Width="120" Name="password" Height="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="114,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Name="fullname" Height="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="114,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Grid.Row="2" Name="phone" Height="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="114,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Grid.Row="2" Name="post" Height="18"/>
+        <ComboBox HorizontalAlignment="Left" Margin="114,0,0,0" VerticalAlignment="Center" Width="120" Grid.Row="2" x:Name="cbEmployer" Height="22"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="45,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.079,0.091" Height="26" Width="39"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="35,89,0,0" VerticalAlignment="Top" Height="26" Width="60"/>
+        <Label Content="Full Name" HorizontalAlignment="Left" Margin="33,135,0,0" VerticalAlignment="Top" Height="26" Width="63"/>
+        <Label Content="Phone number" HorizontalAlignment="Left" Margin="21,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="88"/>
+        <Label Content="Post" HorizontalAlignment="Left" Margin="48,51,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="32"/>
+        <Label Content="Employer" HorizontalAlignment="Left" Margin="35,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="60"/>
 
     </Grid>
 </Window>

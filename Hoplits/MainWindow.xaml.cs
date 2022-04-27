@@ -115,5 +115,12 @@ namespace Hoplits
             }
             temp.Show();
         }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationContext a = new ApplicationContext();
+            datagrid1.ItemsSource = a.Errors.ToList();
+            datagrid1.Columns[0].Visibility = Visibility.Hidden;
+        }
     }
 }

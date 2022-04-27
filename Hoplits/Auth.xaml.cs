@@ -29,7 +29,7 @@ namespace Hoplits
         {
             try
             {
-                var empl = EmployeeLogic.Login(login.Text, password.Text);
+                var empl = EmployeeLogic.Login(login.Text, passwordBox.Password);
                 if (empl == null)
                 {
                     MessageBox.Show("Failed to log in!");
