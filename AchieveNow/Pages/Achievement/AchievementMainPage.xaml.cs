@@ -53,7 +53,7 @@ namespace AchieveNow.Pages.Achievement
                 AchievementsGrid.ItemsSource = null;
                 ShowErrorWindow showErrorWindow = new ShowErrorWindow();
                 showErrorWindow.ShowDialog();
-                MessageBox.Show(ex.Message);
+
                 Console.WriteLine(ex.Message);
             }
         }
