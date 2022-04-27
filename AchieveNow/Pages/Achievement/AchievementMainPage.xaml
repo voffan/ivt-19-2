@@ -55,7 +55,7 @@
                 <DataGridTextColumn Binding="{Binding Result}" Header="Результат" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Competition}" Header="Соревнование" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding DateOfIssue}" Header="Дата выдачи" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Sportsman}" Header="Спортсмен" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Sportsman.Name}" Header="Спортсмен" Width="*"/>
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>

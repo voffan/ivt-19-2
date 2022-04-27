@@ -20,6 +20,7 @@ namespace AchieveNow.Classes
         public virtual SportKind SportKind { get; set; }
         public DateOnly DateOfExecution { get; set; }
         public virtual List<Employee> Employees { get; set; } = new();
+        public virtual List<Achievement> Achievements { get; set; } = new();
 
         public Competition(string name, Level level, int locationId, int sportKindId, DateOnly dateOfExecution)
         {

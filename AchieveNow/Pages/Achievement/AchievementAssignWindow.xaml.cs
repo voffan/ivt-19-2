@@ -45,7 +45,6 @@ namespace AchieveNow.Pages.Achievement
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
-
         }
 
         private void ShowSportsmen()
@@ -255,10 +254,8 @@ namespace AchieveNow.Pages.Achievement
 
         private void PreviewKeyDown_Space(object sender, KeyEventArgs e)
         {
-            e.Handled = e.Key != Key.Space ? false : true;
+            //e.Handled = e.Key != Key.Space ? false : true;
         }
-
-        
 
         private void Assign_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -266,11 +263,31 @@ namespace AchieveNow.Pages.Achievement
             {
                 if (SportsmenGrid.SelectedItems.Count == 1)
                 {
-                    
+                    using (ApplicationContext context = new ApplicationContext())
+                    {
+                        if (!context.IsAvailable)
+                            return;
+
+                        Classes.Sportsman sportsman = (Classes.Sportsman)SportsmenGrid.SelectedItem;
+                        if (achievement != null)
+                        {
+                            achievement.SportsmanId = sportsman.Id;
+
+                            // Сделать UPDATE
+                            context.Achievements.Update(achievement);
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось присвоить достижение. Возможно, оно было удалено");
+                        }
+
+                        Close();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                    MessageBox.Show("Для присвоения разрешается выбрать только одну запись");
                 }
             }
             else
