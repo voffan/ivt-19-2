@@ -113,7 +113,8 @@ namespace Yaxel
 
                         List<Computer> computersList = context.Computers.Include(e => e.Employee).ToList();
 
-                        DataGridViewImageCell cell = new DataGridViewImageCell();
+                        DataGridViewImageCell update_Icon = new DataGridViewImageCell();
+                        DataGridViewImageCell detail_Icon = new DataGridViewImageCell();
 
                         Image srcImage = Image.FromFile("../../Resources/Update_Icon.png");
 
@@ -126,22 +127,37 @@ namespace Yaxel
                             gr.DrawImage(srcImage, new Rectangle(0, 0, 25, 25));
                         }
 
-                        cell.Value = newImage;
+                        update_Icon.Value = newImage;
+
+                        srcImage = Image.FromFile("../../Resources/Detail_Icon.png");
+
+                        newImage = new Bitmap(25, 25);
+                        using (Graphics gr = Graphics.FromImage(newImage))
+                        {
+                            gr.SmoothingMode = SmoothingMode.HighQuality;
+                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                            gr.DrawImage(srcImage, new Rectangle(0, 0, 25, 25));
+                        }
+
+                        detail_Icon.Value = newImage;
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Имя компьютера");
                         dataGridView1.Columns.Add("Status", "Статус");
                         dataGridView1.Columns.Add("Employee", "Сотрудник");
-                        dataGridView1.Columns.Add("Manufacturer", "Производитель");
+                        //dataGridView1.Columns.Add("Manufacturer", "Производитель");
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
 
                         dataGridView1.Columns[0].Width = 25;
+                        dataGridView1.Columns[4].Width = 28;
                         dataGridView1.Columns[5].Width = 28;
                         dataGridView1.RowTemplate.Height = 28;
 
                         foreach (Computer c in computersList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, cell.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, detail_Icon.Value, update_Icon.Value);
                         }
                         break;
                     case CurrentTable.Periphery:
@@ -172,6 +188,11 @@ namespace Yaxel
                             UpdateComputer form = new UpdateComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                             fillDataGridView();
+                        }
+
+                        if (e.ColumnIndex == 4 && e.RowIndex > -1)
+                        {
+
                         }
                         break;
                     case CurrentTable.Periphery:
