@@ -126,6 +126,12 @@
     <Compile Include="Tables\ComputerForms\DeleteComputer.Designer.cs">
       <DependentUpon>DeleteComputer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\ComputerForms\ListComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\ListComponent.Designer.cs">
+      <DependentUpon>ListComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\ComputerForms\SearchComputer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\DeleteComputer.resx">
       <DependentUpon>DeleteComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComputerForms\ListComponent.resx">
+      <DependentUpon>ListComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\SearchComputer.resx">
       <DependentUpon>SearchComputer.cs</DependentUpon>
