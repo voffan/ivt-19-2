@@ -192,15 +192,17 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Computer:
-                    AddComputers form = new AddComputers();
-                    form.ShowDialog();
+                    AddComputers addComputers = new AddComputers();
+                    addComputers.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
 
                     break;
                 case CurrentTable.Component:
-
+                    Yaxel.Tables.Component.AddComponents addComponents = new Tables.Component.AddComponents();
+                    addComponents.ShowDialog();
+                    fillDataGridView();
                     break;
                 case CurrentTable.none:
 
