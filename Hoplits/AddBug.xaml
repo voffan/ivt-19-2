@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="AddBug" Height="391" Width="674">
     <Grid>
-        <Button Content="Add" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="28" Width="76"/>
-        <TextBox HorizontalAlignment="Left" Margin="70,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="305" Height="186" Name="error_desc"/>
+        <Button Content="Add" HorizontalAlignment="Center" Margin="0,279,0,0" VerticalAlignment="Top" Height="28" Width="76" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Margin="70,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="305" Height="186" Name="error_desc"/>
         <ComboBox HorizontalAlignment="Left" Margin="441,81,0,0" VerticalAlignment="Top" Width="120" Name="errortype_list"/>
 
     </Grid>

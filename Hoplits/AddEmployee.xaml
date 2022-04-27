@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hoplits"
         mc:Ignorable="d"
-        Title="AddEmployee" Height="450" Width="800">
+        Title="AddEmployee" Height="424" Width="414">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="257*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Add" HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" Height="29" Width="74" Grid.Row="1" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Margin="114,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="login"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="114,92,0,0" VerticalAlignment="Top" Width="120" Name="password"/>
+        <TextBox HorizontalAlignment="Left" Margin="114,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Name="fullname"/>
+        <TextBox HorizontalAlignment="Left" Margin="114,6,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Grid.Row="1" Name="phone"/>
+        <TextBox HorizontalAlignment="Left" Margin="114,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Grid.Row="1" Name="post"/>
+        <ComboBox HorizontalAlignment="Left" Margin="114,109,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" x:Name="cbEmployer"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="45,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.079,0.091"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="35,89,0,0" VerticalAlignment="Top"/>
+        <Label Content="Full Name" HorizontalAlignment="Left" Margin="33,135,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone number" HorizontalAlignment="Left" Margin="21,2,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Post" HorizontalAlignment="Left" Margin="48,56,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Employer" HorizontalAlignment="Left" Margin="35,107,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

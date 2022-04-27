@@ -19,9 +19,15 @@ namespace Hoplits
     /// </summary>
     public partial class AddEmployee : Window
     {
-        public AddEmployee()
+        public AddEmployee(int _id)
         {
             InitializeComponent();
+            //errortype_list.ItemsSource = Enum.GetValues(typeof(ErrorType));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

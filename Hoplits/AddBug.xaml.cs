@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hoplits.Classes;
+using Hoplits.Cs;
 
 namespace Hoplits
 {
@@ -20,11 +21,26 @@ namespace Hoplits
     /// </summary>
     public partial class AddBug : Window
     {
+        int id;
         public AddBug(int _id)
         {
+            id = _id;
             InitializeComponent();
             errortype_list.ItemsSource = Enum.GetValues(typeof(ErrorType));
-            MessageBox.Show(_id.ToString());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (errortype_list.SelectedValue == null || error_desc.Text == "")
+            {
+                MessageBox.Show("Fill the form!");
+                return;
+            }
+            Error error = new Error { EmployeeId = id, Date = DateTime.Now, Description = error_desc.Text, ErrorType = (ErrorType)errortype_list.SelectedValue };
+            ApplicationContext a = new ApplicationContext();
+            a.Errors.Add(error);
+            a.SaveChanges();
+            MessageBox.Show("Successfuly added");
         }
     }
 }

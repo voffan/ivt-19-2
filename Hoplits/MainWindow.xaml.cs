@@ -24,17 +24,9 @@ namespace Hoplits
     {
         int current;
         int id;
-        public int auth
-        {
-            get => id;
-            set
-            {
-                id = value;
-            }
-        }
         public MainWindow(int _id)
         {
-            auth = _id;
+            id = _id;
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -52,6 +44,7 @@ namespace Hoplits
             datagrid1.Columns[0].Visibility = Visibility.Hidden;
             current = 1;
         }
+        /*
         private void getSolutions(object sender, RoutedEventArgs e)
         {
             ApplicationContext a = new ApplicationContext();
@@ -59,12 +52,13 @@ namespace Hoplits
             datagrid1.Columns[0].Visibility = Visibility.Hidden;
             current = 2;
         }
+        */
         private void getEmployees(object sender, RoutedEventArgs e)
         {
             ApplicationContext a = new ApplicationContext();
             datagrid1.ItemsSource = a.Employees.ToList();
             datagrid1.Columns[0].Visibility = Visibility.Hidden;
-            current = 3;
+            current = 2;
         }
 
         private void exit(object sender, RoutedEventArgs e)
@@ -88,10 +82,6 @@ namespace Hoplits
                     if (error != null) a.Errors.Remove(error);
                     break;
                 case 2:
-                    Solution solution = row as Solution;
-                    if (solution != null) a.Solutions.Remove(solution);
-                    break;
-                case 3:
                     Employee employee = row as Employee;
                     if (employee != null) a.Employees.Remove(employee);
                     break;
@@ -115,13 +105,10 @@ namespace Hoplits
             switch (current)
             {
                 case 1:
-                    temp = new AddBug(auth);
+                    temp = new AddBug(id);
                     break;
                 case 2:
-                    temp = new AddSolution();
-                    break;
-                case 3:
-                    temp = new AddEmployee();
+                    temp = new AddEmployee(id);
                     break;
                 default:
                     return;
