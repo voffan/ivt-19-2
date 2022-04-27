@@ -5,6 +5,10 @@ namespace Yaxel.Classes
 {
     internal class Component
     {
+        public Component()
+        {
+            Computers = new List<Computer>();
+        }
         public int Id { get; set; }
         [MaxLength(50)]
         public string Model { get; set; }

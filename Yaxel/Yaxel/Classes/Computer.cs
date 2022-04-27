@@ -7,6 +7,11 @@ namespace Yaxel.Classes
 {
     internal class Computer
     {
+        public Computer()
+        {
+            Components = new List<Component>();
+        }
+
         public int Id { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
