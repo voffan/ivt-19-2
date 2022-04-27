@@ -56,18 +56,18 @@ namespace Yaxel
 
             dataGridView1.CellMouseUp += DataGridView1_CellMouseUp;
 
-            using (var context = new YaxelContext())
-            {
-                //Component component = new Component();
-                //component.Model = "GTX 1660 Sqweqwe";
-                //component.ComponentType = ComponentType.Video;
-                //component.Computers.Add(context.Computers.Find(1));
+            //using (var context = new YaxelContext())
+            //{
+            //    //Component component = new Component();
+            //    //component.Model = "GTX 1660 Sqweqwe";
+            //    //component.ComponentType = ComponentType.Video;
+            //    //component.Computers.Add(context.Computers.Find(1));
 
-                //context.Components.Add(component);
-                //context.SaveChanges();
-                //Component c = context.Components.Include("Computers").Where(item => item.Model.CompareTo("GTX 1660 S")==0).FirstOrDefault();
-                //MessageBox.Show(c.Computers.Count.ToString());
-            }
+            //    //context.Components.Add(component);
+            //    //context.SaveChanges();
+            //    //Component c = context.Components.Include("Computers").Where(item => item.Model.CompareTo("GTX 1660 S")==0).FirstOrDefault();
+            //    //MessageBox.Show(c.Computers.Count.ToString());
+            //}
         }
 
         private void btnEmployees_Click(object sender, EventArgs e)
@@ -211,6 +211,7 @@ namespace Yaxel
                         dataGridView1.DataSource = context.Peripheries.ToList();
                         break;
                     case CurrentTable.Component:
+                        dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
                         //dataGridView1.DataSource = context.Components.ToList();
 

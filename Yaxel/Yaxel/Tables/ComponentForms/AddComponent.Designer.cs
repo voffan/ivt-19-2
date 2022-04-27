@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.attributeValueTextBox = new System.Windows.Forms.TextBox();
             this.attributeTypeComboBox = new System.Windows.Forms.ComboBox();
@@ -43,19 +41,9 @@
             this.addAttributeButton = new Yaxel.YaxelStyle.YaxelButton();
             this.applyButton = new Yaxel.YaxelStyle.YaxelButton();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
+            this.selectComputersButton = new Yaxel.YaxelStyle.YaxelButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(139, 152);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 26);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Компьютер";
-            this.label3.UseMnemonic = false;
             // 
             // label2
             // 
@@ -95,15 +83,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(203, 32);
             this.textBox1.TabIndex = 22;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(269, 149);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(203, 33);
-            this.comboBox1.TabIndex = 20;
             // 
             // label4
             // 
@@ -187,24 +166,35 @@
             // 
             this.yaxelForm1.ThisForm = this;
             // 
+            // selectComputersButton
+            // 
+            this.selectComputersButton.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.selectComputersButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.selectComputersButton.ForeColor = System.Drawing.Color.White;
+            this.selectComputersButton.Location = new System.Drawing.Point(420, 148);
+            this.selectComputersButton.Name = "selectComputersButton";
+            this.selectComputersButton.Size = new System.Drawing.Size(250, 50);
+            this.selectComputersButton.TabIndex = 34;
+            this.selectComputersButton.Text = "Выбрать компьютер";
+            this.selectComputersButton.Click += new System.EventHandler(this.selectComputersButton_Click);
+            // 
             // AddComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 577);
+            this.Controls.Add(this.selectComputersButton);
             this.Controls.Add(this.deleteAttributeButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.attributeTypeComboBox);
             this.Controls.Add(this.attributeValueTextBox);
             this.Controls.Add(this.addAttributeButton);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.applyButton);
-            this.Controls.Add(this.comboBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddComponent";
@@ -220,18 +210,17 @@
         #endregion
 
         private YaxelStyle.YaxelForm yaxelForm1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox1;
         private YaxelStyle.YaxelButton applyButton;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
         private YaxelStyle.YaxelButton addAttributeButton;
         private System.Windows.Forms.ComboBox attributeTypeComboBox;
         private System.Windows.Forms.TextBox attributeValueTextBox;
         private System.Windows.Forms.DataGridView dataGridView1;
         private YaxelStyle.YaxelButton deleteAttributeButton;
+        private YaxelStyle.YaxelButton selectComputersButton;
     }
 }

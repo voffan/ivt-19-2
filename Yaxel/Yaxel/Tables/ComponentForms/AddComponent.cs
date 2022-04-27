@@ -13,6 +13,7 @@ namespace Yaxel.Tables.ComponentForms
 {
     public partial class AddComponent : Form
     {
+        public List<int> selectedComputersId = new List<int>();
         List <Classes.Attribute> attributes = new List <Classes.Attribute> ();
 
         public AddComponent()
@@ -31,9 +32,9 @@ namespace Yaxel.Tables.ComponentForms
             using (var context = new YaxelContext())
             {
                 // Вывод список сотрудников в comboBox
-                comboBox1.DataSource = context.Computers.ToList();
-                comboBox1.DisplayMember = "Name";
-                comboBox1.ValueMember = "Id";
+                //comboBox1.DataSource = context.Computers.ToList();
+                //comboBox1.DisplayMember = "Name";
+                //comboBox1.ValueMember = "Id";
 
                 attributeTypeComboBox.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<AttrType>.RetrieveAttributes(), null);
                 attributeTypeComboBox.DisplayMember = "Key";
@@ -51,6 +52,12 @@ namespace Yaxel.Tables.ComponentForms
                 component.Model = textBox1.Text;
                 component.ComponentType = (ComponentType)Enum.Parse(typeof(ComponentType), (string)comboBox2.SelectedValue);
                 //component.ComputerId = (int)comboBox1.SelectedValue;
+                //foreach(int i in selectedComputersId)
+                //{
+                //    component.Computers.Add(context.Computers.Find(i));
+                //}
+
+                component.Computers.AddRange(context.Computers.Where(c => selectedComputersId.Contains(c.Id)));
 
                 context.Components.Add(component);
                 context.SaveChanges();
@@ -96,6 +103,13 @@ namespace Yaxel.Tables.ComponentForms
             foreach (int i in delIndex) attributes.RemoveAt(i);
 
             dataGridView1.DataSource = attributes.ToList();
+        }
+
+
+        private void selectComputersButton_Click(object sender, EventArgs e)
+        {
+            SelectComputer selectComputer = new SelectComputer(this);
+            selectComputer.ShowDialog();
         }
 
         private static void SetDoubleBuffered(Control c)
