@@ -8,7 +8,10 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="Список достижений"
       Loaded="Page_Loaded"
-      Background="LightGray">
+      Background="LightGray"
+      KeyUp="PageKeyUp"
+      x:Name="Page_AchievementMainPage"
+      Focusable="True">
 
     <Grid>
         <Grid.RowDefinitions>

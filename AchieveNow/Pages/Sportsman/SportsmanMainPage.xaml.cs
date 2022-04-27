@@ -37,6 +37,7 @@ namespace AchieveNow.Pages.Sportsman
         public SportsmanMainPage()
         {
             InitializeComponent();
+            Page_SportsmanMainPage.Focus();
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -110,13 +111,13 @@ namespace AchieveNow.Pages.Sportsman
             DateOfBirth.SelectedDate = null;
             isIntervalDate_CheckBox.IsChecked = false;
         }
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
-        private void AddSportsman_Button_Click(object sender, RoutedEventArgs e)
+        public void AddSportsman_Button_Click(object sender, RoutedEventArgs e)
         {
             var sportsmanAddWindow = new SportsmanAddWindow();
             sportsmanAddWindow.ShowDialog();
@@ -142,7 +143,7 @@ namespace AchieveNow.Pages.Sportsman
             Date_StackPanel.Children.Remove(DateOfBirth2);
             DateOfBirth2 = new DatePicker { SelectedDate = null };
         }
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -336,6 +337,11 @@ namespace AchieveNow.Pages.Sportsman
             {
                 MessageBox.Show("Выберите спортсмена");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyDownHandler(sender, e, this);
         }
     }
 }

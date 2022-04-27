@@ -33,6 +33,7 @@ namespace AchieveNow.Pages.SportKind
         public SportKindMainPage()
         {
             InitializeComponent();
+            Page_SportKindMainPage.Focus();
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -77,12 +78,12 @@ namespace AchieveNow.Pages.SportKind
                 context.Dispose();
             }
         }
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
-        private void AddSportKind_Button_Click(object sender, RoutedEventArgs e)
+        public void AddSportKind_Button_Click(object sender, RoutedEventArgs e)
         {         
             var sportKindAddWindow = new SportKindAddWindow();
             sportKindAddWindow.ShowDialog();
@@ -120,7 +121,7 @@ namespace AchieveNow.Pages.SportKind
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -179,6 +180,11 @@ namespace AchieveNow.Pages.SportKind
             {
                 MessageBox.Show("Выберите вид спорта");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyDownHandler(sender, e, this);
         }
     }
 }

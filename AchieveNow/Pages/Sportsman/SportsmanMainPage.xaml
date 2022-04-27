@@ -8,7 +8,10 @@
       d:DesignHeight="600" d:DesignWidth="900"
       Title="Список спортсменов"
       Loaded="Page_Loaded"
-      Background="LightGray">
+      Background="LightGray"
+      KeyUp="PageKeyUp"
+      x:Name="Page_SportsmanMainPage"
+      Focusable="True">
 
     <Grid>
         <Grid.RowDefinitions>

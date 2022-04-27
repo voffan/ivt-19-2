@@ -32,6 +32,7 @@ namespace AchieveNow.Pages.Achievement
         public AchievementMainPage()
         {
             InitializeComponent();
+            Page_AchievementMainPage.Focus();
         }
 
         private void ShowAchievements()
@@ -144,14 +145,14 @@ namespace AchieveNow.Pages.Achievement
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
             ShowAchievements();
         }
 
-        private void AddAchievement_Click(object sender, RoutedEventArgs e)
+        public void AddAchievement_Click(object sender, RoutedEventArgs e)
         {
             var AchievementAddWindow = new AchievementAddWindow();
             AchievementAddWindow.ShowDialog();
@@ -182,7 +183,7 @@ namespace AchieveNow.Pages.Achievement
             DateOfIssue2 = new DatePicker { SelectedDate = null };
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -308,6 +309,11 @@ namespace AchieveNow.Pages.Achievement
             {
                 MessageBox.Show("Выберите достижение");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyDownHandler(sender, e, this);
         }
     }
 }

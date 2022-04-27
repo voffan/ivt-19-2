@@ -33,6 +33,7 @@ namespace AchieveNow.Pages.User
         public UserMainPage()
         {
             InitializeComponent();
+            Page_UserMainPage.Focus();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -45,7 +46,7 @@ namespace AchieveNow.Pages.User
 
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -90,14 +91,22 @@ namespace AchieveNow.Pages.User
 
         }
 
-        private void AddUser_Button_Click(object sender, RoutedEventArgs e)
+        public void AddUser_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var sportsmanAddWindow = new SportsmanAddWindow();
+            sportsmanAddWindow.ShowDialog();
+
+            // ShowUser();
+        }
+
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        private void PageKeyUp(object sender, KeyEventArgs e)
         {
-
+            Keybo.PageOnKeyDownHandler(sender, e, this);
         }
     }
 }

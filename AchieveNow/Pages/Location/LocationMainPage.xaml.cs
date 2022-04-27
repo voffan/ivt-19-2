@@ -33,6 +33,7 @@ namespace AchieveNow.Pages.Location
         public LocationMainPage()
         {
             InitializeComponent();
+            Page_LocationMainPage.Focus();
             Update();
         }
 
@@ -88,7 +89,7 @@ namespace AchieveNow.Pages.Location
             }
         }
 
-        private void AddLocation_Button_Click(object sender, RoutedEventArgs e)
+        public void AddLocation_Button_Click(object sender, RoutedEventArgs e)
         {
             var locationAddWindow = new LocationAddWindow();
             locationAddWindow.ShowDialog();
@@ -98,13 +99,13 @@ namespace AchieveNow.Pages.Location
             Update();
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -211,6 +212,11 @@ namespace AchieveNow.Pages.Location
             {
                 MessageBox.Show("Выберите спортсмена");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyDownHandler(sender, e, this);
         }
     }
 }

@@ -8,7 +8,12 @@
       d:DesignHeight="600" d:DesignWidth="900"
       Title="Список мероприятий"
       Loaded="Page_Loaded"
-      Background="LightGray">
+      Background="LightGray"
+      KeyUp="PageKeyUp"
+      x:Name="Page_CompetitionMainPage"
+      Focusable="True">
+
+
 
     <Grid>
         <Grid.RowDefinitions>
@@ -78,4 +83,5 @@
 
         <Button x:Name="Refresh_Button" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
+    
 </Page>

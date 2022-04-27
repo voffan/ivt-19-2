@@ -32,6 +32,7 @@ namespace AchieveNow.Pages.Competition
         public CompetitionMainPage()
         {
             InitializeComponent();
+            Page_CompetitionMainPage.Focus();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -118,44 +119,44 @@ namespace AchieveNow.Pages.Competition
             isIntervalDate_CheckBox.IsChecked = false;
         }
 
-        private void Button_Achievements(object sender, RoutedEventArgs e)
+        public void Button_Achievements(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AchievementMainPage());
         }
 
-        private void Button_Sportsmen(object sender, RoutedEventArgs e)
+        public void Button_Sportsmen(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
-        private void Button_Locations(object sender, RoutedEventArgs e)
+        public void Button_Locations(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new LocationMainPage());
         }
 
-        private void Button_SportKinds(object sender, RoutedEventArgs e)
+        public void Button_SportKinds(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SportKindMainPage());
         }
 
-        private void Button_Countries(object sender, RoutedEventArgs e)
+        public void Button_Countries(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CountryMainPage());
         }
 
-        private void Button_Users(object sender, RoutedEventArgs e)
+        public void Button_Users(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
         // Открыть диалоговое окно добавления соревнования
-        private void AddCompetition_Button_Click(object sender, RoutedEventArgs e)
+        public void AddCompetition_Button_Click(object sender, RoutedEventArgs e)
         {
             var competitionAddWindow = new CompetitionAddWindow();
             competitionAddWindow.ShowDialog();
@@ -187,7 +188,7 @@ namespace AchieveNow.Pages.Competition
             DateOfExecution2 = new DatePicker { SelectedDate = null };
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -292,6 +293,11 @@ namespace AchieveNow.Pages.Competition
             {
                 MessageBox.Show("Выберите соревнование");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyDownHandler(sender, e, this);
         }
     }
 }

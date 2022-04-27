@@ -33,6 +33,7 @@ namespace AchieveNow.Pages.Country
         public CountryMainPage()
         {
             InitializeComponent();
+            Page_CountryMainPage.Focus();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -81,13 +82,13 @@ namespace AchieveNow.Pages.Country
             }
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
-        private void AddCountry_Button_Click(object sender, RoutedEventArgs e)
+        public void AddCountry_Button_Click(object sender, RoutedEventArgs e)
         {
             CountryAddWindow addWindow = new CountryAddWindow();
             addWindow.ShowDialog();
@@ -126,7 +127,7 @@ namespace AchieveNow.Pages.Country
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -185,6 +186,11 @@ namespace AchieveNow.Pages.Country
             {
                 MessageBox.Show("Выберите страну");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyDownHandler(sender, e, this);
         }
     }
 }
