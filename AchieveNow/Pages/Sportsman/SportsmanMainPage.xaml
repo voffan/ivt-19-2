@@ -37,7 +37,7 @@
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>
             
             <TextBlock Text="Имя" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="NameValidationTextBox"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
 
             <TextBlock Text="Рост" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <TextBox x:Name="Height_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="HeightValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>

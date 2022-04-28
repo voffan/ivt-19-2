@@ -108,5 +108,28 @@ namespace AchieveNow.Pages.User
         {
             Keybo.PageOnKeyDownHandler(sender, e, this);
         }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Login_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Login_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (Login_TextBox.Text.Length > 0 && Login_TextBox.Text.EndsWith(' '))
+            {
+                Login_TextBox.Text = Login_TextBox.Text.Substring(0, Login_TextBox.Text.Length - 1);
+            }
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Login_TextBox.Text = Login_TextBox.Text.Replace("  ", " ");
+        }
     }
 }

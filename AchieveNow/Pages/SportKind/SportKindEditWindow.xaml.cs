@@ -22,7 +22,6 @@ namespace AchieveNow.Pages.SportKind
     /// </summary>
     public partial class SportKindEditWindow : Window
     {
-        private const int MAX_NAME_LENGTH = 50;
         Classes.SportKind sportKind;
 
         public SportKindEditWindow(Classes.SportKind sportKind)
@@ -35,20 +34,6 @@ namespace AchieveNow.Pages.SportKind
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SportKindInit();
-        }
-
-        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex(@"[A-Za-z\sа-яА-ЯёЁ]");
-
-            if (regex.IsMatch(e.Text) && Name_TextBox.Text.Length < MAX_NAME_LENGTH)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
         }
 
         private void SportKindInit()
@@ -103,6 +88,29 @@ namespace AchieveNow.Pages.SportKind
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (Name_TextBox.Text.Length > 0 && Name_TextBox.Text.EndsWith(' '))
+            {
+                Name_TextBox.Text = Name_TextBox.Text.Substring(0, Name_TextBox.Text.Length - 1);
+            }
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
         }
     }
 }

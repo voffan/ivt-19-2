@@ -60,7 +60,6 @@ namespace AchieveNow.Pages.SportKind
             }
         }
 
-
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -68,15 +67,25 @@ namespace AchieveNow.Pages.SportKind
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex(@"[A-Za-z\sа-яА-ЯёЁ]");
-            if (regex.IsMatch(e.Text) && Name_TextBox.Text.Length < MAX_NAME_LENGTH)
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (Name_TextBox.Text.Length > 0 && Name_TextBox.Text.EndsWith(' '))
             {
-                e.Handled = false;
+                Name_TextBox.Text = Name_TextBox.Text.Substring(0, Name_TextBox.Text.Length - 1);
             }
-            else
-            {
-                e.Handled = true;
-            }
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
         }
     }
 }

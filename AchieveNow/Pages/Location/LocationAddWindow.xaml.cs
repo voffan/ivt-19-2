@@ -57,18 +57,6 @@ namespace AchieveNow.Pages.Location
                 Country_ComboBox.SelectedValuePath = "Id";
             }
         }
-        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex(@"[A-Za-z\sа-яА-ЯёЁ-]");
-            if (regex.IsMatch(e.Text) && Name_TextBox.Text.Length < MAX_NAME_LENGTH)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
         private void Space_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             // e.Handled = e.Key != Key.Space ? false : true;
@@ -131,6 +119,29 @@ namespace AchieveNow.Pages.Location
             {
                 MessageBox.Show("Произошла неизвестная ошибка: " + ex.Message);
             }
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (Name_TextBox.Text.Length > 0 && Name_TextBox.Text.EndsWith(' '))
+            {
+                Name_TextBox.Text = Name_TextBox.Text.Substring(0, Name_TextBox.Text.Length - 1);
+            }
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
         }
     }
 }

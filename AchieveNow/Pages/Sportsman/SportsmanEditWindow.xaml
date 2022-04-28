@@ -20,7 +20,7 @@
 
         <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 20, 0, 0">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Имя</TextBlock>
-            <TextBox x:Name="Name_TextBox" MinWidth="150" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="Space_PreviewKeyDown"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" MinWidth="150" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
@@ -30,12 +30,12 @@
 
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Рост</TextBlock>
-            <TextBox x:Name="Height_TextBox" MinWidth="150" PreviewTextInput="HeightValidationTextBox" PreviewKeyDown="Space_PreviewKeyDown"></TextBox>
+            <TextBox x:Name="Height_TextBox" MinWidth="150" PreviewTextInput="HeightValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Вес</TextBlock>
-            <TextBox x:Name="Weight_TextBox" MinWidth="150" PreviewTextInput="WeightValidationTextBox" PreviewKeyDown="Space_PreviewKeyDown"></TextBox>
+            <TextBox x:Name="Weight_TextBox" MinWidth="150" PreviewTextInput="WeightValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">

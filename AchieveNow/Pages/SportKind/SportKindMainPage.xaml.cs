@@ -84,7 +84,7 @@ namespace AchieveNow.Pages.SportKind
             Update();
         }
         public void AddSportKind_Button_Click(object sender, RoutedEventArgs e)
-        {         
+        {
             var sportKindAddWindow = new SportKindAddWindow();
             sportKindAddWindow.ShowDialog();
 
@@ -185,6 +185,29 @@ namespace AchieveNow.Pages.SportKind
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyDownHandler(sender, e, this);
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (Name_TextBox.Text.Length > 0 && Name_TextBox.Text.EndsWith(' '))
+            {
+                Name_TextBox.Text = Name_TextBox.Text.Substring(0, Name_TextBox.Text.Length - 1);
+            }
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
         }
     }
 }
