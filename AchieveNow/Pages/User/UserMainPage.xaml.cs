@@ -83,7 +83,26 @@ namespace AchieveNow.Pages.User
 
         private void Edit_UserGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (true)
+            {
+                if (true)
+                {
+                    Classes.User user = (Classes.User)UsersGrid.SelectedItem;
 
+                    UserEditWindow editWindow = new UserEditWindow(user);
+                    editWindow.ShowDialog();
+
+                    // Update();  // Вернуть after создания метода Update
+                }
+                else
+                {
+                    MessageBox.Show("Для редактирования разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите спортсмена");
+            }
         }
 
         private void Delete_UsersGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
@@ -93,10 +112,10 @@ namespace AchieveNow.Pages.User
 
         public void AddUser_Button_Click(object sender, RoutedEventArgs e)
         {
-            var sportsmanAddWindow = new SportsmanAddWindow();
-            sportsmanAddWindow.ShowDialog();
+            var userAddWindow = new UserAddWindow();
+            userAddWindow.ShowDialog();
 
-            // ShowUser();
+            // Update();
         }
 
         public void Refresh_Button_Click(object sender, RoutedEventArgs e)
@@ -130,6 +149,16 @@ namespace AchieveNow.Pages.User
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Login_TextBox.Text = Login_TextBox.Text.Replace("  ", " ");
+        }
+
+        private void PasswordValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Password(sender, e);
+        }
+
+        private void PreviewKeyDown_Space(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_NoSpace(sender, e);
         }
     }
 }

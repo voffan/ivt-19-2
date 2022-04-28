@@ -40,8 +40,8 @@
             <TextBox x:Name="Login_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16" Width="140" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
 
             <TextBlock Text="Пароль" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <ComboBox x:Name="Password_ComboBox" IsEditable="False" Margin="0, 0, 0, 10"></ComboBox>
-            
+            <TextBox x:Name="Password_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16" MinWidth="150" PreviewTextInput="PasswordValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
+
             <TextBlock Text="Должность" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <ComboBox x:Name="Position_ComboBox" IsEditable="False" Margin="0, 0, 0, 10"></ComboBox>
 

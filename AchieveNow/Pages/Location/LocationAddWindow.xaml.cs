@@ -57,10 +57,6 @@ namespace AchieveNow.Pages.Location
                 Country_ComboBox.SelectedValuePath = "Id";
             }
         }
-        private void Space_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            // e.Handled = e.Key != Key.Space ? false : true;
-        }
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ClearAndListOfCountry();

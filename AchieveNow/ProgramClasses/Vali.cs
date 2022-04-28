@@ -32,7 +32,19 @@ namespace AchieveNow
         public static int MAX_WEIGHT_LENGTH = 3;
         public static void Name(object sender, TextCompositionEventArgs e, TextBox t)
         {
-            Regex regex = new Regex(@"[A-Za-z\sа-яА-Я-0-9]");
+            Regex regex = new Regex(@"[A-Za-z\sа-яА-Я0-9-]");
+            if (regex.IsMatch(e.Text))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+        public static void Password(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"[A-Za-z\sа-яА-Я0-9-!#$%&'()*+,\-./:;<=>?@[\]^_`{|}~]");
             if (regex.IsMatch(e.Text))
             {
                 e.Handled = false;
