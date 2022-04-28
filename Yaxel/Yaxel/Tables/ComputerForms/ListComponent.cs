@@ -24,7 +24,7 @@ namespace Yaxel.Tables.ComputerForms
         {
             using (var context = new YaxelContext())
             {
-                //dataGridView1.DataSource = context.Components.;
+                //dataGridView1.DataSource = context.Components.ToList();
                 Computer c = context.Computers.Include("Components").Where(item=>item.Id == id).FirstOrDefault();
                 dataGridView1.DataSource = c.Components.ToList();
             }

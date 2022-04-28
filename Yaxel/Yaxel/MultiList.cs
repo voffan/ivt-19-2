@@ -55,21 +55,11 @@ namespace Yaxel
             cTable = CurrentTable.none;
 
             dataGridView1.CellMouseUp += DataGridView1_CellMouseUp;
-
-            //using (var context = new YaxelContext())
-            //{
-            //    //Component component = new Component();
-            //    //component.Model = "GTX 1660 Sqweqwe";
-            //    //component.ComponentType = ComponentType.Video;
-            //    //component.Computers.Add(context.Computers.Find(1));
-
-            //    //context.Components.Add(component);
-            //    //context.SaveChanges();
-            //    //Component c = context.Components.Include("Computers").Where(item => item.Model.CompareTo("GTX 1660 S")==0).FirstOrDefault();
-            //    //MessageBox.Show(c.Computers.Count.ToString());
-            //}
         }
 
+        #region Кнопки выбора таблицы
+
+        // сотрудник
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             listName = "Сотрудники";
@@ -80,6 +70,7 @@ namespace Yaxel
             fillDataGridView();
         }
 
+        // компьютер
         private void btnComputers_Click(object sender, EventArgs e)
         {
             listName = "Компьютеры";
@@ -90,6 +81,7 @@ namespace Yaxel
             fillDataGridView();
         }
 
+        // периферия
         private void btnPeripherals_Click(object sender, EventArgs e)
         {
             listName = "Периферии";
@@ -100,6 +92,7 @@ namespace Yaxel
             fillDataGridView();
         }
 
+        // компонент
         private void btnComponents_Click(object sender, EventArgs e)
         {
             listName = "Компоненты";
@@ -109,33 +102,30 @@ namespace Yaxel
             cTable = CurrentTable.Component;
             fillDataGridView();
         }
+        #endregion
 
+        // заполнение данных в datagridview
         private void fillDataGridView()
         {
             using (var context = new YaxelContext())
             {
+                DataGridViewImageCell updateImageCell = new DataGridViewImageCell();
+                DataGridViewImageCell detailImageCell = new DataGridViewImageCell();
+
+                updateImageCell.Value = new Bitmap(25, 25);
+                detailImageCell.Value = new Bitmap(25, 25);
+
+                Graphics.FromImage((Image)updateImageCell.Value).DrawImage(Image.FromFile("../../Resources/Update_Icon.png"), new Rectangle(0, 0, 25, 25));
+                Graphics.FromImage((Image)detailImageCell.Value).DrawImage(Image.FromFile("../../Resources/Detail_Icon.png"), new Rectangle(0, 0, 25, 25));
+
                 switch (cTable)
                 {
+                    // сотрудник
                     case CurrentTable.Employee:
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
                         List<Employee> employeesList = context.Employees.ToList();
-
-                        DataGridViewImageCell cellEmployee = new DataGridViewImageCell();
-
-                        Image srcImageEmployee = Image.FromFile("../../Resources/Update_Icon.png");
-
-                        Bitmap newImageEmployee = new Bitmap(25, 25);
-                        using (Graphics gr = Graphics.FromImage(newImageEmployee))
-                        {
-                            gr.SmoothingMode = SmoothingMode.HighQuality;
-                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                            gr.DrawImage(srcImageEmployee, new Rectangle(0, 0, 25, 25));
-                        }
-
-                        cellEmployee.Value = newImageEmployee;
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Имя");
@@ -150,49 +140,21 @@ namespace Yaxel
 
                         foreach (Employee e in employeesList)
                         {
-                            dataGridView1.Rows.Add(e.Id, e.Name, e.Login, e.Password, e.Position, cellEmployee.Value);
+                            dataGridView1.Rows.Add(e.Id, e.Name, e.Login, e.Password, e.Position, updateImageCell.Value);
                         }
                         break;
+
+                    // компьютер
                     case CurrentTable.Computer:
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
                         List<Computer> computersList = context.Computers.Include(e => e.Employee).ToList();
 
-                        DataGridViewImageCell update_Icon = new DataGridViewImageCell();
-                        DataGridViewImageCell detail_Icon = new DataGridViewImageCell();
-
-                        Image srcImage = Image.FromFile("../../Resources/Update_Icon.png");
-
-                        Bitmap newImage = new Bitmap(25, 25);
-                        using (Graphics gr = Graphics.FromImage(newImage))
-                        {
-                            gr.SmoothingMode = SmoothingMode.HighQuality;
-                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                            gr.DrawImage(srcImage, new Rectangle(0, 0, 25, 25));
-                        }
-
-                        update_Icon.Value = newImage;
-
-                        srcImage = Image.FromFile("../../Resources/Detail_Icon.png");
-
-                        newImage = new Bitmap(25, 25);
-                        using (Graphics gr = Graphics.FromImage(newImage))
-                        {
-                            gr.SmoothingMode = SmoothingMode.HighQuality;
-                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                            gr.DrawImage(srcImage, new Rectangle(0, 0, 25, 25));
-                        }
-
-                        detail_Icon.Value = newImage;
-
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Имя компьютера");
                         dataGridView1.Columns.Add("Status", "Статус");
                         dataGridView1.Columns.Add("Employee", "Сотрудник");
-                        //dataGridView1.Columns.Add("Manufacturer", "Производитель");
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
 
@@ -203,49 +165,22 @@ namespace Yaxel
 
                         foreach (Computer c in computersList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, detail_Icon.Value, update_Icon.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, detailImageCell.Value, updateImageCell.Value);
                         }
                         break;
+
+                    // периферия
                     case CurrentTable.Periphery:
                         dataGridView1.Columns.Clear();
                         dataGridView1.DataSource = context.Peripheries.ToList();
                         break;
+
+                    // компонент
                     case CurrentTable.Component:
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
-                        //dataGridView1.DataSource = context.Components.ToList();
 
                         List<Component> componentsList = context.Components.ToList();
-
-                        DataGridViewImageCell update_Icon2 = new DataGridViewImageCell();
-                        DataGridViewImageCell detail_Icon2 = new DataGridViewImageCell();
-                        //DataGridViewImageCell unknown_Icon2 = new DataGridViewImageCell();
-
-                        Image srcImage2 = Image.FromFile("../../Resources/Update_Icon.png");
-
-                        Bitmap newImage2 = new Bitmap(25, 25);
-                        using (Graphics gr = Graphics.FromImage(newImage2))
-                        {
-                            gr.SmoothingMode = SmoothingMode.HighQuality;
-                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                            gr.DrawImage(srcImage2, new Rectangle(0, 0, 25, 25));
-                        }
-
-                        update_Icon2.Value = newImage2;
-
-                        srcImage = Image.FromFile("../../Resources/Detail_Icon.png");
-
-                        newImage2 = new Bitmap(25, 25);
-                        using (Graphics gr = Graphics.FromImage(newImage2))
-                        {
-                            gr.SmoothingMode = SmoothingMode.HighQuality;
-                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                            gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                            gr.DrawImage(srcImage, new Rectangle(0, 0, 25, 25));
-                        }
-
-                        detail_Icon2.Value = newImage2;
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Model", "Модель");
@@ -262,15 +197,17 @@ namespace Yaxel
 
                         foreach (Component c in componentsList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Model, c.ComponentType, detail_Icon2.Value, detail_Icon2.Value, update_Icon2.Value);  ;
+                            dataGridView1.Rows.Add(c.Id, c.Model, c.ComponentType, detailImageCell.Value, detailImageCell.Value, updateImageCell.Value);
                         }
                         break;
+
                     case CurrentTable.none:
                         break;
                 }
             }
         }
 
+        // клик по ячейке
         private void DataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -310,6 +247,16 @@ namespace Yaxel
                 }
         }
 
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            int count = dataGridView1.SelectedRows.Count;
+            btnDeleteEntry.Text = oldTextDelete + " (" + (count != 0 ? count : 0) + ")";
+            btnDeleteEntry.Invalidate();
+        }
+
+        #region Кнопки "добавить", "удалить", "поиск"
+
+        // добавить
         private void btnAddEntry_Click(object sender, EventArgs e)
         {
             switch (cTable)
@@ -337,7 +284,7 @@ namespace Yaxel
             }
         }
 
-
+        // удалить
         private void btnDeleteEntry_Click(object sender, EventArgs e)
         {
             switch (cTable)
@@ -381,6 +328,7 @@ namespace Yaxel
             }
         }
 
+        // поиск
         private void btnSearch_Click(object sender, EventArgs e)
         {
             switch (cTable)
@@ -404,13 +352,7 @@ namespace Yaxel
                     break;
             }
         }
-
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            int count = dataGridView1.SelectedRows.Count;
-            btnDeleteEntry.Text = oldTextDelete + " (" + (count != 0 ? count : 0) + ")";
-            btnDeleteEntry.Invalidate();
-        }
+        #endregion
 
         private static void SetDoubleBuffered(Control c)
         {
@@ -424,11 +366,6 @@ namespace Yaxel
                         System.Reflection.BindingFlags.Instance);
 
             pDoubleBuffered.SetValue(c, true, null);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
