@@ -1,6 +1,6 @@
-﻿namespace Yaxel.Tables.ComponentForms
+﻿namespace Yaxel.Tables.ComputerForms
 {
-    partial class SelectComputer
+    partial class SelectComponent
     {
         /// <summary>
         /// Required designer variable.
@@ -46,10 +46,10 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(59, 57);
+            this.dataGridView1.Location = new System.Drawing.Point(50, 65);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(966, 413);
+            this.dataGridView1.Size = new System.Drawing.Size(984, 410);
             this.dataGridView1.TabIndex = 0;
             // 
             // applyButton
@@ -57,14 +57,14 @@
             this.applyButton.DialogResult = System.Windows.Forms.DialogResult.None;
             this.applyButton.Font = new System.Drawing.Font("Arial", 16F);
             this.applyButton.ForeColor = System.Drawing.Color.White;
-            this.applyButton.Location = new System.Drawing.Point(416, 498);
+            this.applyButton.Location = new System.Drawing.Point(417, 499);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(250, 50);
             this.applyButton.TabIndex = 1;
             this.applyButton.Text = "Выбрать";
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
-            // SelectComputer
+            // SelectComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -73,10 +73,10 @@
             this.Controls.Add(this.dataGridView1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SelectComputer";
+            this.Name = "SelectComponent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Выбирать компьютеры";
-            this.Load += new System.EventHandler(this.SelectComputer_Load);
+            this.Text = "Выбирать компоненты";
+            this.Load += new System.EventHandler(this.SelectComponent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

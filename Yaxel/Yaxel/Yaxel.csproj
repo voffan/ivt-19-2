@@ -144,6 +144,12 @@
     <Compile Include="Tables\ComputerForms\SearchComputer.Designer.cs">
       <DependentUpon>SearchComputer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\ComputerForms\SelectComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\SelectComponent.Designer.cs">
+      <DependentUpon>SelectComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\ComputerForms\UpdateComputer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\SearchComputer.resx">
       <DependentUpon>SearchComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComputerForms\SelectComponent.resx">
+      <DependentUpon>SelectComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\UpdateComputer.resx">
       <DependentUpon>UpdateComputer.cs</DependentUpon>

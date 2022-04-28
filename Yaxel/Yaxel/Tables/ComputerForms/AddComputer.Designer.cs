@@ -56,6 +56,7 @@
             this.yaxelButton2.Size = new System.Drawing.Size(400, 50);
             this.yaxelButton2.TabIndex = 24;
             this.yaxelButton2.Text = "Выбрать комплектующие";
+            this.yaxelButton2.Click += new System.EventHandler(this.yaxelButton2_Click);
             // 
             // ApplyButton
             // 

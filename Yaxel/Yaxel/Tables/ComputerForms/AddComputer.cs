@@ -13,6 +13,7 @@ namespace Yaxel.Tables.ComputerForms
 {
     public partial class AddComputer : Form
     {
+        public List<int> selectedComponentsId = new List<int>();
         public AddComputer()
         {
             InitializeComponent();
@@ -39,6 +40,12 @@ namespace Yaxel.Tables.ComputerForms
             }
         }
 
+        private void yaxelButton2_Click(object sender, EventArgs e)
+        {
+            SelectComponent selectComponent = new SelectComponent(this);
+            selectComponent.ShowDialog();
+        }
+
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             using (var context = new YaxelContext())
@@ -47,6 +54,7 @@ namespace Yaxel.Tables.ComputerForms
                 computer.Name = textBoxName.Text;
                 computer.Status = (Status)Enum.Parse(typeof(Status), (string)comboBoxStatus.SelectedValue);
                 computer.EmployeeId = (int)comboBoxEmployee.SelectedValue;
+                computer.Components.AddRange(context.Components.Where(c => selectedComponentsId.Contains(c.Id)));
 
                 context.Computers.Add(computer);
                 context.SaveChanges();
