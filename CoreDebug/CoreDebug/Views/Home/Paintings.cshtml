@@ -1,4 +1,20 @@
-﻿@{
+﻿@page
+@model CoreDebug.Views.Home.PaintingsModel
+ 
+@{
     ViewData["Title"] = "Картины";
 }
-<h1>@ViewData["Title"]</h1>
+<h2>@ViewData["Title"]</h2>
+ 
+<p><a asp-page="Create">Добавить картину</a></p>
+<table class="table">
+    <thead>
+        <tr><th>Имя</th><th>Стоимость</th><th>Год</th><th>Автор</th><th>Жанр</th><th>Местонахождение</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var painting in Model.Painting)
+        {
+            <tr><td>@painting.Name</td><td>@painting.Value</td><td>@painting.DateOfCreation</td><td>@painting.Author</td><td>@painting.Genre</td><td>@painting.Location</td></tr>
+        }
+    </tbody>
+</table>
