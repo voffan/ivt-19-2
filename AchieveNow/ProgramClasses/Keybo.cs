@@ -28,7 +28,7 @@ namespace AchieveNow
 {
     public static class Keybo
     {
-        public static void PageOnKeyDownHandler(object sender, KeyEventArgs e, CompetitionMainPage page)
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, CompetitionMainPage page)
         {
             // MessageBox.Show(e.Key.ToString());
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
@@ -75,7 +75,7 @@ namespace AchieveNow
             }
         }
 
-        public static void PageOnKeyDownHandler(object sender, KeyEventArgs e, AchievementMainPage page)
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, AchievementMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -120,7 +120,7 @@ namespace AchieveNow
                     break;
             }
         }
-        public static void PageOnKeyDownHandler(object sender, KeyEventArgs e, SportsmanMainPage page)
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, SportsmanMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -165,7 +165,7 @@ namespace AchieveNow
                     break;
             }
         }
-        public static void PageOnKeyDownHandler(object sender, KeyEventArgs e, LocationMainPage page)
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, LocationMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -210,7 +210,7 @@ namespace AchieveNow
                     break;
             }
         }
-        public static void PageOnKeyDownHandler(object sender, KeyEventArgs e, SportKindMainPage page)
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, SportKindMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -255,7 +255,7 @@ namespace AchieveNow
                     break;
             }
         }
-        public static void PageOnKeyDownHandler(object sender, KeyEventArgs e, CountryMainPage page)
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, CountryMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -300,7 +300,7 @@ namespace AchieveNow
                     break;
             }
         }
-        public static void PageOnKeyDownHandler(object sender, KeyEventArgs e, UserMainPage page)
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, UserMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -340,6 +340,40 @@ namespace AchieveNow
                     break;
                 case Key.F5:
                     page.Refresh_Button_Click(null, null);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, IAddWindow addWindow)
+        {
+            switch (e.Key)
+            {
+                case Key.Escape:
+                    addWindow.Exit_Click(null, null);
+                    break;
+                case Key.Enter:
+                    addWindow.AddButton_Click(null, null);
+                    break;
+                case Key.F5:
+                    addWindow.Refresh_Click(null, null);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, IEditWindow editWindow)
+        {
+            switch (e.Key)
+            {
+                case Key.Escape:
+                    editWindow.Exit_Click(null, null);
+                    break;
+                case Key.Enter:
+                    editWindow.UpdateButton_Click(null, null);
+                    break;
+                case Key.F5:
+                    editWindow.Refresh_Click(null, null);
                     break;
                 default:
                     break;

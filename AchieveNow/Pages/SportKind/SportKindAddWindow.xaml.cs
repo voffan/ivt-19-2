@@ -18,14 +18,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AchieveNow.Pages.SportKind
 {
-    public partial class SportKindAddWindow : Window
+    public partial class SportKindAddWindow : Window, IAddWindow
     {
         private const int MAX_NAME_LENGTH = 50;
         public SportKindAddWindow()
         {
             InitializeComponent();
+            Name_TextBox.Focus();
         }    
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        public void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -59,8 +60,11 @@ namespace AchieveNow.Pages.SportKind
                 Console.WriteLine(ex.Message);
             }
         }
+        public void Refresh_Click(object sender, RoutedEventArgs e)
+        {
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        }
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -86,6 +90,10 @@ namespace AchieveNow.Pages.SportKind
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

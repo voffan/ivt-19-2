@@ -17,26 +17,27 @@ namespace AchieveNow.Pages.User
     /// <summary>
     /// Логика взаимодействия для UserEditWindow.xaml
     /// </summary>
-    public partial class UserEditWindow : Window
+    public partial class UserEditWindow : Window, IEditWindow
     {
         private Classes.User user;
         public UserEditWindow(Classes.User _user)
         {
             InitializeComponent();
             user = _user;
+            Login_TextBox.Focus();
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -72,6 +73,11 @@ namespace AchieveNow.Pages.User
         private void PreviewKeyDown_Space(object sender, KeyEventArgs e)
         {
             Vali.PreviewKeyDown_NoSpace(sender, e);
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

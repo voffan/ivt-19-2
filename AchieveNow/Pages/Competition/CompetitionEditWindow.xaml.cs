@@ -19,7 +19,7 @@ namespace AchieveNow.Pages.Competition
     /// <summary>
     /// Interaction logic for CompetitionEditWindow.xaml
     /// </summary>
-    public partial class CompetitionEditWindow : Window
+    public partial class CompetitionEditWindow : Window, IEditWindow
     {
         Classes.Competition competition;
 
@@ -28,6 +28,7 @@ namespace AchieveNow.Pages.Competition
             InitializeComponent();
 
             this.competition = competition;
+            Name_TextBox.Focus();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -87,12 +88,12 @@ namespace AchieveNow.Pages.Competition
             }
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             CompetitionInit();
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -198,7 +199,7 @@ namespace AchieveNow.Pages.Competition
             }
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -224,6 +225,11 @@ namespace AchieveNow.Pages.Competition
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace AchieveNow.Pages.Sportsman
     /// <summary>
     /// Interaction logic for SportsmanAddWindow.xaml
     /// </summary>
-    public partial class SportsmanAddWindow : Window
+    public partial class SportsmanAddWindow : Window, IAddWindow
     {
         private const int MAX_NAME_LENGTH = 50;
         private const int MAX_HEIGHT_LENGTH = 3;
@@ -28,6 +28,7 @@ namespace AchieveNow.Pages.Sportsman
         public SportsmanAddWindow()
         {
             InitializeComponent();
+            Name_TextBox.Focus();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -83,17 +84,17 @@ namespace AchieveNow.Pages.Sportsman
             Vali.PreviewKeyDown_NoSpace(sender, e);
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ListOfSporkind();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        public void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -252,6 +253,10 @@ namespace AchieveNow.Pages.Sportsman
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

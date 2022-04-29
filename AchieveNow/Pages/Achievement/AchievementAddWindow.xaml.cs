@@ -19,12 +19,12 @@ namespace AchieveNow.Pages.Achievement
     /// <summary>
     /// Interaction logic for CompetitionAddWindow.xaml
     /// </summary>
-    public partial class AchievementAddWindow : Window
+    public partial class AchievementAddWindow : Window, IAddWindow
     {
         public AchievementAddWindow()
         {
             InitializeComponent();
-            
+            Name_TextBox.Focus();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -36,7 +36,7 @@ namespace AchieveNow.Pages.Achievement
             }
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ListOfCompetitions();
         }
@@ -68,7 +68,7 @@ namespace AchieveNow.Pages.Achievement
             }
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        public void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -163,7 +163,7 @@ namespace AchieveNow.Pages.Achievement
                 Console.WriteLine(ex.Message);
             }
         }    
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -189,6 +189,10 @@ namespace AchieveNow.Pages.Achievement
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

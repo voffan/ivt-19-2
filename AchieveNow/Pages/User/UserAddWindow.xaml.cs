@@ -17,24 +17,25 @@ namespace AchieveNow.Pages.User
     /// <summary>
     /// Логика взаимодействия для UserAddWindow.xaml
     /// </summary>
-    public partial class UserAddWindow : Window
+    public partial class UserAddWindow : Window, IAddWindow
     {
         public UserAddWindow()
         {
             InitializeComponent();
+            Login_TextBox.Focus();
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        public void AddButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -70,6 +71,10 @@ namespace AchieveNow.Pages.User
         private void PreviewKeyDown_Space(object sender, KeyEventArgs e)
         {
             Vali.PreviewKeyDown_NoSpace(sender, e);
+        }
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

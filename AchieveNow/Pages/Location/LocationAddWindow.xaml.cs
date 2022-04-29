@@ -28,7 +28,7 @@ namespace AchieveNow.Pages.Location
     /// <summary>
     /// Логика взаимодействия для LocationAddWindow.xaml
     /// </summary>
-    public partial class LocationAddWindow : Window
+    public partial class LocationAddWindow : Window, IAddWindow
     {
         private const int MAX_NAME_LENGTH = 50;
         public LocationAddWindow()
@@ -37,6 +37,7 @@ namespace AchieveNow.Pages.Location
 
 
             ClearAndListOfCountry();
+            Name_TextBox.Focus();
         }
         private void ClearAndListOfCountry()
         {
@@ -57,16 +58,16 @@ namespace AchieveNow.Pages.Location
                 Country_ComboBox.SelectedValuePath = "Id";
             }
         }
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ClearAndListOfCountry();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        public void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -138,6 +139,10 @@ namespace AchieveNow.Pages.Location
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Sportsman"
         mc:Ignorable="d"
+        KeyUp="Window_KeyUp"
+        Focusable="True"
         Title="Окно добавления спортсмена" Height="450" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>

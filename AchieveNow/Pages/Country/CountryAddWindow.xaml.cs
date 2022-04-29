@@ -20,16 +20,17 @@ namespace AchieveNow.Pages.Country
     /// <summary>
     /// Interaction logic for CountryAddWindow.xaml
     /// </summary>
-    public partial class CountryAddWindow : Window
+    public partial class CountryAddWindow : Window, IAddWindow
     {
         private const int MAX_NAME_LENGTH = 50;
 
         public CountryAddWindow()
         {
             InitializeComponent();
+            Name_TextBox.Focus();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        public void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -57,8 +58,12 @@ namespace AchieveNow.Pages.Country
                 }
             }
         }
+        public void Refresh_Click(object sender, RoutedEventArgs e)
+        {
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        }
+
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -84,6 +89,10 @@ namespace AchieveNow.Pages.Country
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

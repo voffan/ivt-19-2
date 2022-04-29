@@ -184,7 +184,7 @@ namespace AchieveNow.Pages.SportKind
 
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
-            Keybo.PageOnKeyDownHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)

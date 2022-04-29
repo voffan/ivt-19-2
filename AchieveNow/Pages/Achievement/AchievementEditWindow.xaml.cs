@@ -28,13 +28,14 @@ namespace AchieveNow.Pages.Achievement
     /// <summary>
     /// Interaction logic for AchievementEditWindow.xaml
     /// </summary>
-    public partial class AchievementEditWindow : Window
+    public partial class AchievementEditWindow : Window, IEditWindow
     {
         Classes.Achievement achievement;
         public AchievementEditWindow(Classes.Achievement _achievement)
         {
             InitializeComponent();
             achievement = _achievement;
+            Name_TextBox.Focus();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -83,15 +84,15 @@ namespace AchieveNow.Pages.Achievement
                 Console.WriteLine(ex.Message);
             }
         }
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ListOfCompetitions();
         }
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -217,6 +218,11 @@ namespace AchieveNow.Pages.Achievement
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

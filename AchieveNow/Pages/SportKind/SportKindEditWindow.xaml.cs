@@ -20,7 +20,7 @@ namespace AchieveNow.Pages.SportKind
     /// <summary>
     /// Логика взаимодействия для SportKindEditWindow.xaml
     /// </summary>
-    public partial class SportKindEditWindow : Window
+    public partial class SportKindEditWindow : Window, IEditWindow
     {
         Classes.SportKind sportKind;
 
@@ -29,6 +29,7 @@ namespace AchieveNow.Pages.SportKind
             InitializeComponent();
 
             this.sportKind = sportKind;
+            Name_TextBox.Focus();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,12 +42,12 @@ namespace AchieveNow.Pages.SportKind
             Name_TextBox.Text = sportKind.Name;
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             SportKindInit();
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -85,7 +86,7 @@ namespace AchieveNow.Pages.SportKind
             }
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -111,6 +112,11 @@ namespace AchieveNow.Pages.SportKind
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }
