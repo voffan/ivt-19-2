@@ -6,26 +6,27 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 using System.Windows.Forms;
 using Yaxel.Classes;
 
-namespace Yaxel.Tables.ComputerForms
+namespace Yaxel.Tables.ComponentForms
 {
-    public partial class ListComponent : Form
+    public partial class ListComputer : Form
     {
         int id;
-        public ListComponent(int id)
+        public ListComputer(int id)
         {
             InitializeComponent();
             this.id = id;
         }
 
-        private void ListComponent_Load(object sender, EventArgs e)
+        private void ListComputer_Load(object sender, EventArgs e)
         {
             using (var context = new YaxelContext())
             {
-                Computer c = context.Computers.Include("Components").Where(item=>item.Id == id).FirstOrDefault();
-                dataGridView1.DataSource = c.Components.ToList();
+                Classes.Component c = context.Components.Include(item => item.Computers).Where(item => item.Id == id).FirstOrDefault();
+                dataGridView1.DataSource = c.Computers.ToList();
             }
         }
     }

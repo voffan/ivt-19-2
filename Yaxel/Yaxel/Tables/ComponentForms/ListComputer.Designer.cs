@@ -1,6 +1,6 @@
-﻿namespace Yaxel.Tables.ComputerForms
+﻿namespace Yaxel.Tables.ComponentForms
 {
-    partial class ListComponent
+    partial class ListComputer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(151, 90);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 400);
-            this.dataGridView1.TabIndex = 0;
             // 
             // yaxelForm1
             // 
             this.yaxelForm1.ThisForm = this;
             // 
-            // ListComponent
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(152, 104);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(800, 400);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // ListComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -54,10 +54,10 @@
             this.Controls.Add(this.dataGridView1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ListComponent";
+            this.Name = "ListComputer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Список компонентов";
-            this.Load += new System.EventHandler(this.ListComponent_Load);
+            this.Text = "Список компьютеров";
+            this.Load += new System.EventHandler(this.ListComputer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

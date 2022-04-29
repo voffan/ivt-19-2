@@ -108,6 +108,18 @@
     <Compile Include="Tables\ComponentForms\DeleteComponent.Designer.cs">
       <DependentUpon>DeleteComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\ComponentForms\ListAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComponentForms\ListAttribute.Designer.cs">
+      <DependentUpon>ListAttribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\ComponentForms\ListComputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComponentForms\ListComputer.Designer.cs">
+      <DependentUpon>ListComputer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\ComponentForms\SelectComputer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +223,12 @@
     </Compile>
     <EmbeddedResource Include="Tables\ComponentForms\DeleteComponent.resx">
       <DependentUpon>DeleteComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComponentForms\ListAttribute.resx">
+      <DependentUpon>ListAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComponentForms\ListComputer.resx">
+      <DependentUpon>ListComputer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\SelectComputer.resx">
       <DependentUpon>SelectComputer.cs</DependentUpon>

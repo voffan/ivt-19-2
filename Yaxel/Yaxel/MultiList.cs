@@ -239,7 +239,17 @@ namespace Yaxel
 
                         break;
                     case CurrentTable.Component:
+                        if (e.ColumnIndex == 3 && e.RowIndex > -1)
+                        {
+                            ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                        }
 
+                        if (e.ColumnIndex == 4 && e.RowIndex > -1)
+                        {
+                            ListAttribute form = new ListAttribute((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                        }
                         break;
                     case CurrentTable.none:
 
