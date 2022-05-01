@@ -39,7 +39,6 @@ namespace Yaxel
             Component,
             none
         }
-
         public MultiList()
         {
             InitializeComponent();
@@ -206,6 +205,34 @@ namespace Yaxel
                 }
             }
         }
+
+        //public void ViewComputer(DataGridView dgv)
+        //{
+        //    using (var context = new YaxelContext())
+        //    {
+        //        dgv.DataSource = null;
+        //        dgv.Columns.Clear();
+
+        //        List<Computer> computersList = context.Computers.Include(e => e.Employee).ToList();
+
+        //        dgv.Columns.Add("Id", "Id");
+        //        dgv.Columns.Add("Name", "Имя компьютера");
+        //        dgv.Columns.Add("Status", "Статус");
+        //        dgv.Columns.Add("Employee", "Сотрудник");
+        //        dgv.Columns.Add(new DataGridViewImageColumn());
+        //        dgv.Columns.Add(new DataGridViewImageColumn());
+
+        //        dgv.Columns[0].Width = 25;
+        //        dgv.Columns[4].Width = 28;
+        //        dgv.Columns[5].Width = 28;
+        //        dgv.RowTemplate.Height = 28;
+
+        //        foreach (Computer c in computersList)
+        //        {
+        //            dgv.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, detailImageCell.Value, updateImageCell.Value);
+        //        }
+        //    }
+        //}
 
         // клик по ячейке
         private void DataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
