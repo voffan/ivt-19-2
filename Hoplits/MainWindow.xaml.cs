@@ -88,8 +88,6 @@ namespace Hoplits
                 default:
                     return;
             }
-            //Error error = row as Error;
-            //if(error != null) a.Errors.Remove(error);
             a.SaveChanges();
             datagrid1.ItemsSource = a.Errors.ToList();
             datagrid1.Columns[0].Visibility = Visibility.Hidden;
@@ -119,8 +117,20 @@ namespace Hoplits
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ApplicationContext a = new ApplicationContext();
-            datagrid1.ItemsSource = a.Errors.ToList();
-            datagrid1.Columns[0].Visibility = Visibility.Hidden;
+            switch (current)
+            {
+                case 1:
+                    datagrid1.ItemsSource = a.Errors.ToList();
+                    datagrid1.Columns[0].Visibility = Visibility.Hidden;
+                    break;
+                case 2:
+                    datagrid1.ItemsSource = a.Employees.ToList();
+                    datagrid1.Columns[0].Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    return;
+            }
+            
         }
     }
 }
