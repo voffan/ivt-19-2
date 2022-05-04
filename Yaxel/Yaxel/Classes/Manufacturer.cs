@@ -9,7 +9,7 @@ namespace Yaxel.Classes
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public virtual List<Computer> Computers { get; set; }
+        public virtual List<Component> Components { get; set; }
         public virtual List<Periphery> Peripheries { get; set; }
     }
 }

@@ -192,11 +192,12 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        List<Component> componentsList = context.Components.ToList();
+                        List<Component> componentsList = context.Components.ToList();//Include(m => m.Manufacturer).ToList();
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Model", "Модель");
                         dataGridView1.Columns.Add("ComponentType", "Тип компонента");
+                        //dataGridView1.Columns.Add("Manufacturer", "Производитель");
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());

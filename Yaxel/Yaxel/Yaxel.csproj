@@ -69,6 +69,14 @@
     <Compile Include="Migrations\202204211150105_ComponentComputer.designer.cs">
       <DependentUpon>202204211150105_ComponentComputer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205040234392_dropforeginkey computer components.cs" />
+    <Compile Include="Migrations\202205040234392_dropforeginkey computer components.designer.cs">
+      <DependentUpon>202205040234392_dropforeginkey computer components.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205040236193_component-manufacturer.cs" />
+    <Compile Include="Migrations\202205040236193_component-manufacturer.designer.cs">
+      <DependentUpon>202205040236193_component-manufacturer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Tables\ComponentForms\AddComponent.cs">
       <SubType>Form</SubType>
@@ -213,6 +221,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204211150105_ComponentComputer.resx">
       <DependentUpon>202204211150105_ComponentComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205040234392_dropforeginkey computer components.resx">
+      <DependentUpon>202205040234392_dropforeginkey computer components.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205040236193_component-manufacturer.resx">
+      <DependentUpon>202205040236193_component-manufacturer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>

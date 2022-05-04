@@ -57,6 +57,7 @@ namespace Yaxel.Tables.ComponentForms
                 //    component.Computers.Add(context.Computers.Find(i));
                 //}
 
+                //component.ManufacturerId = (int)comboBox1.SelectedValue;
                 component.Computers.AddRange(context.Computers.Where(c => selectedComputersId.Contains(c.Id)));
 
                 context.Components.Add(component);

@@ -14,6 +14,8 @@ namespace Yaxel.Classes
         public string Model { get; set; }
         public ComponentType ComponentType { get; set; }
 
+        public int ManufacturerId { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; }
         public virtual List<Computer> Computers { get; set; }
         public virtual List<Attribute> Attributes { get; set; }
     }
