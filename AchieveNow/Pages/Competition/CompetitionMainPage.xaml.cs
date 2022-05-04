@@ -27,7 +27,7 @@ namespace AchieveNow.Pages.Competition
     /// <summary>
     /// Interaction logic for CompetitionPage.xaml
     /// </summary>
-    public partial class CompetitionMainPage : Page
+    public partial class CompetitionMainPage : Page, IMainPage
     {
         public CompetitionMainPage()
         {
@@ -304,6 +304,7 @@ namespace AchieveNow.Pages.Competition
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -327,6 +328,11 @@ namespace AchieveNow.Pages.Competition
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+
+        public void Add_Button_Click()
+        {
+            AddCompetition_Button_Click(null, null);
         }
     }
 }

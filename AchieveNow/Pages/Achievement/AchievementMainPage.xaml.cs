@@ -27,7 +27,7 @@ namespace AchieveNow.Pages.Achievement
     /// <summary>
     /// Interaction logic for AchievementPage.xaml
     /// </summary>
-    public partial class AchievementMainPage : Page
+    public partial class AchievementMainPage : Page, IMainPage
     {
         public AchievementMainPage()
         {
@@ -158,7 +158,7 @@ namespace AchieveNow.Pages.Achievement
             ShowAchievements();
         }
 
-        public void AddAchievement_Click(object sender, RoutedEventArgs e)
+        public void AddAchievement_Button_Click(object sender, RoutedEventArgs e)
         {
             var AchievementAddWindow = new AchievementAddWindow();
             AchievementAddWindow.ShowDialog();
@@ -358,6 +358,7 @@ namespace AchieveNow.Pages.Achievement
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -383,6 +384,9 @@ namespace AchieveNow.Pages.Achievement
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
         }
 
-
+        public void Add_Button_Click()
+        {
+            AddAchievement_Button_Click(null, null);
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace AchieveNow.Pages.Country
     /// <summary>
     /// Interaction logic for CountryMainPage.xaml
     /// </summary>
-    public partial class CountryMainPage : Page
+    public partial class CountryMainPage : Page, IMainPage
     {
         public CountryMainPage()
         {
@@ -197,6 +197,7 @@ namespace AchieveNow.Pages.Country
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -220,6 +221,11 @@ namespace AchieveNow.Pages.Country
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+
+        public void Add_Button_Click()
+        {
+            AddCountry_Button_Click(null, null);
         }
     }
 }

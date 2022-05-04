@@ -28,7 +28,7 @@ namespace AchieveNow.Pages.Location
     /// <summary>
     /// Interaction logic for LocationMainPage.xaml
     /// </summary>
-    public partial class LocationMainPage : Page
+    public partial class LocationMainPage : Page, IMainPage
     {
         public LocationMainPage()
         {
@@ -223,6 +223,7 @@ namespace AchieveNow.Pages.Location
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -246,6 +247,11 @@ namespace AchieveNow.Pages.Location
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+
+        public void Add_Button_Click()
+        {
+            AddLocation_Button_Click(null, null);
         }
     }
 }

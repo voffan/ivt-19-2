@@ -23,5 +23,20 @@ namespace AchieveNow.Pages.Report
         {
             InitializeComponent();
         }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.ReportWindowKeyUp(e, this);
+        }
+
+        public void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            // this is bug
+        }
+
+        public void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -23,12 +23,20 @@ using AchieveNow.Pages.Location;
 using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Country;
 using AchieveNow.Pages.User;
+using AchieveNow.Pages.Report;
 
 namespace AchieveNow
 {
     public static class Keybo
     {
-        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, CompetitionMainPage page)
+        private static bool _keyH = false;
+        private static bool _keyE = false;
+        private static bool _keyS = false;
+        private static bool _keyO = false;
+        private static bool _keyY = false;
+        private static bool _keyA = false;
+        private static int countNoHesoyam = 0;
+        public static void PageOnKeyUpHandler2(object sender, KeyEventArgs e, CompetitionMainPage page)
         {
             // MessageBox.Show(e.Key.ToString());
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
@@ -59,26 +67,9 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }
-            switch (e.Key)
-            {
-                case Key.Enter:
-                    page.Search_Button_Click(null, null);
-                    break;
-                case Key.F3:
-                    page.AddCompetition_Button_Click(null, null);
-                    break;
-                case Key.F5:
-                    page.Refresh_Button_Click(null, null);
-                    break;
-                case Key.F6:
-                    page.ShowReportWindow();
-                    break;
-                default:
-                    break;
-            }
         }
 
-        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, AchievementMainPage page)
+        public static void PageOnKeyUpHandler2(object sender, KeyEventArgs e, AchievementMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -107,26 +98,9 @@ namespace AchieveNow
             if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
             {
                 page.NavigationService.Navigate(new UserMainPage());
-            }
-            switch (e.Key)
-            {
-                case Key.Enter:
-                    page.Search_Button_Click(null, null);
-                    break;
-                case Key.F3:
-                    page.AddAchievement_Click(null, null);
-                    break;
-                case Key.F5:
-                    page.Refresh_Button_Click(null, null);
-                    break;
-                case Key.F6:
-                    page.ShowReportWindow();
-                    break;
-                default:
-                    break;
             }
         }
-        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, SportsmanMainPage page)
+        public static void PageOnKeyUpHandler2(object sender, KeyEventArgs e, SportsmanMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -155,26 +129,9 @@ namespace AchieveNow
             if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
             {
                 page.NavigationService.Navigate(new UserMainPage());
-            }
-            switch (e.Key)
-            {
-                case Key.Enter:
-                    page.Search_Button_Click(null, null);
-                    break;
-                case Key.F3:
-                    page.AddSportsman_Button_Click(null, null);
-                    break;
-                case Key.F5:
-                    page.Refresh_Button_Click(null, null);
-                    break;
-                case Key.F6:
-                    page.ShowReportWindow();
-                    break;
-                default:
-                    break;
             }
         }
-        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, LocationMainPage page)
+        public static void PageOnKeyUpHandler2(object sender, KeyEventArgs e, LocationMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -203,26 +160,9 @@ namespace AchieveNow
             if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
             {
                 page.NavigationService.Navigate(new UserMainPage());
-            }
-            switch (e.Key)
-            {
-                case Key.Enter:
-                    page.Search_Button_Click(null, null);
-                    break;
-                case Key.F3:
-                    page.AddLocation_Button_Click(null, null);
-                    break;
-                case Key.F5:
-                    page.Refresh_Button_Click(null, null);
-                    break;
-                case Key.F6:
-                    page.ShowReportWindow();
-                    break;
-                default:
-                    break;
             }
         }
-        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, SportKindMainPage page)
+        public static void PageOnKeyUpHandler2(object sender, KeyEventArgs e, SportKindMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -251,26 +191,9 @@ namespace AchieveNow
             if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
             {
                 page.NavigationService.Navigate(new UserMainPage());
-            }
-            switch (e.Key)
-            {
-                case Key.Enter:
-                    page.Search_Button_Click(null, null);
-                    break;
-                case Key.F3:
-                    page.AddSportKind_Button_Click(null, null);
-                    break;
-                case Key.F5:
-                    page.Refresh_Button_Click(null, null);
-                    break;
-                case Key.F6:
-                    page.ShowReportWindow();
-                    break;
-                default:
-                    break;
             }
         }
-        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, CountryMainPage page)
+        public static void PageOnKeyUpHandler2(object sender, KeyEventArgs e, CountryMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -299,26 +222,9 @@ namespace AchieveNow
             if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
             {
                 page.NavigationService.Navigate(new UserMainPage());
-            }
-            switch (e.Key)
-            {
-                case Key.Enter:
-                    page.Search_Button_Click(null, null);
-                    break;
-                case Key.F3:
-                    page.AddCountry_Button_Click(null, null);
-                    break;
-                case Key.F5:
-                    page.Refresh_Button_Click(null, null);
-                    break;
-                case Key.F6:
-                    page.ShowReportWindow();
-                    break;
-                default:
-                    break;
             }
         }
-        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, UserMainPage page)
+        public static void PageOnKeyUpHandler2(object sender, KeyEventArgs e, UserMainPage page)
         {
             if (e.Key == Key.D1 && Keyboard.IsKeyDown(Key.Space))
             {
@@ -348,22 +254,115 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }
+        }
+        public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, IMainPage mainPage)
+        {
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                switch (e.Key)
+                {
+                    case Key.A:
+                        mainPage.Add_Button_Click();
+                        break;
+                    case Key.R:
+                        mainPage.ShowReportWindow();
+                        break;
+                    default:
+                        break;
+                }
+            }
             switch (e.Key)
             {
                 case Key.Enter:
-                    page.Search_Button_Click(null, null);
+                    mainPage.Search_Button_Click(null, null);
                     break;
                 case Key.F3:
-                    page.AddUser_Button_Click(null, null);
+                    mainPage.Add_Button_Click();
                     break;
                 case Key.F5:
-                    page.Refresh_Button_Click(null, null);
+                    mainPage.Refresh_Button_Click(null, null);
                     break;
-                case Key.F6:
-                    page.ShowReportWindow();
+                case Key.F4:
+                    mainPage.ShowReportWindow();
                     break;
                 default:
                     break;
+            }
+            if (e.Key == Key.H)
+            {
+                _keyH = true;
+                countNoHesoyam = 0;
+            }
+            else if (e.Key == Key.Back)
+            {
+                if (countNoHesoyam > 0)
+                {
+                    countNoHesoyam--;
+                }
+                else if (_keyA)
+                {
+                    _keyA = !_keyA;
+                }
+                else if (_keyY)
+                {
+                    _keyY = !_keyY;
+                }
+                else if (_keyO)
+                {
+                    _keyO = !_keyO;
+                }
+                else if (_keyS)
+                {
+                    _keyS = !_keyS;
+                }
+                else if (_keyE)
+                {
+                    _keyE = !_keyE;
+                }
+                else if (_keyH)
+                {
+                    _keyH = !_keyH;
+                }
+            }
+            else if (e.Key == Key.E && _keyH && countNoHesoyam == 0)
+            {
+                _keyE = true;
+            }
+            else if (e.Key == Key.S && _keyE && countNoHesoyam == 0)
+            {
+                _keyS = true;
+            }
+            else if (e.Key == Key.O && _keyS && countNoHesoyam == 0)
+            {
+                _keyO = true;
+            }
+            else if (e.Key == Key.Y && _keyO && countNoHesoyam == 0)
+            {
+                _keyY = true;
+            }
+            else if (e.Key == Key.A && _keyY && countNoHesoyam == 0)
+            {
+                _keyA = true;
+            }
+            else if (e.Key == Key.M && _keyA && countNoHesoyam == 0)
+            {
+                _keyH = false;
+                _keyE = false;
+                _keyS = false;
+                _keyO = false;
+                _keyY = false;
+                _keyA = false;
+                mainPage.ShowReportWindow();
+            }
+            else
+            {
+                countNoHesoyam++;
+                //_keyH = false;
+                //_keyE = false;
+                //_keyS = false;
+                //_keyO = false;
+                //_keyY = false;
+                //_keyA = false;
             }
         }
         public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, IAddWindow addWindow)
@@ -395,6 +394,20 @@ namespace AchieveNow
                     break;
                 case Key.F5:
                     editWindow.Refresh_Click(null, null);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void ReportWindowKeyUp(KeyEventArgs e, ReportWindow reportWindow)
+        {
+            switch (e.Key)
+            {
+                case Key.Escape:
+                    reportWindow.Exit_Click(null, null);
+                    break;
+                case Key.F5:
+                    reportWindow.Refresh_Click(null, null);
                     break;
                 default:
                     break;

@@ -74,7 +74,7 @@
         
 
 
-        <Button x:Name="AddAchievement" Grid.Row="0" Grid.Column="0" Click="AddAchievement_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
+        <Button x:Name="AddAchievement_Button" Grid.Row="0" Grid.Column="0" Click="AddAchievement_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>достижение</TextBlock>
         </Button>
         <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>

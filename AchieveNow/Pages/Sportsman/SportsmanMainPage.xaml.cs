@@ -28,7 +28,7 @@ namespace AchieveNow.Pages.Sportsman
     /// <summary>
     /// Interaction logic for SportsmanPage.xaml
     /// </summary>
-    public partial class SportsmanMainPage : Page
+    public partial class SportsmanMainPage : Page, IMainPage
     {
         TextBlock? ToDate = null;
         DatePicker? DateOfBirth2 = new DatePicker { SelectedDate = null };
@@ -320,6 +320,7 @@ namespace AchieveNow.Pages.Sportsman
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -343,6 +344,11 @@ namespace AchieveNow.Pages.Sportsman
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+
+        public void Add_Button_Click()
+        {
+            AddSportsman_Button_Click(null, null);
         }
     }
 }

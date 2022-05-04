@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Report"
         mc:Ignorable="d"
-        Title="ReportWindow" Height="450" Width="800">
+        KeyUp="Window_KeyUp"
+        Focusable="True"
+        Title="ReportWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid>
         
+        <Menu VerticalAlignment="Top" Height="18" FontSize="14">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Обновить" Click="Refresh_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="Закрыть" Click="Exit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

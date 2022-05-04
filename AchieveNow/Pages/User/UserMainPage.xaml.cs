@@ -28,7 +28,7 @@ namespace AchieveNow.Pages.User
     /// <summary>
     /// Логика взаимодействия для UserMainPage.xaml
     /// </summary>
-    public partial class UserMainPage : Page
+    public partial class UserMainPage : Page, IMainPage
     {
         public UserMainPage()
         {
@@ -37,11 +37,6 @@ namespace AchieveNow.Pages.User
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void User_Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -132,6 +127,7 @@ namespace AchieveNow.Pages.User
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -165,6 +161,11 @@ namespace AchieveNow.Pages.User
         private void PreviewKeyDown_Space(object sender, KeyEventArgs e)
         {
             Vali.PreviewKeyDown_NoSpace(sender, e);
+        }
+
+        public void Add_Button_Click()
+        {
+            AddUser_Button_Click(null, null);
         }
     }
 }

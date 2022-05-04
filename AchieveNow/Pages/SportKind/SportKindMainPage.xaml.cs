@@ -28,7 +28,7 @@ namespace AchieveNow.Pages.SportKind
     /// <summary>
     /// Interaction logic for SportKindMainPage.xaml
     /// </summary>
-    public partial class SportKindMainPage : Page
+    public partial class SportKindMainPage : Page, IMainPage
     {
         public SportKindMainPage()
         {
@@ -191,6 +191,7 @@ namespace AchieveNow.Pages.SportKind
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -214,6 +215,11 @@ namespace AchieveNow.Pages.SportKind
         private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
+        }
+
+        public void Add_Button_Click()
+        {
+            AddSportKind_Button_Click(null, null);
         }
     }
 }
