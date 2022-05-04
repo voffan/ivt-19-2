@@ -70,6 +70,9 @@ namespace AchieveNow
                 case Key.F5:
                     page.Refresh_Button_Click(null, null);
                     break;
+                case Key.F6:
+                    page.ShowReportWindow();
+                    break;
                 default:
                     break;
             }
@@ -116,6 +119,9 @@ namespace AchieveNow
                 case Key.F5:
                     page.Refresh_Button_Click(null, null);
                     break;
+                case Key.F6:
+                    page.ShowReportWindow();
+                    break;
                 default:
                     break;
             }
@@ -160,6 +166,9 @@ namespace AchieveNow
                     break;
                 case Key.F5:
                     page.Refresh_Button_Click(null, null);
+                    break;
+                case Key.F6:
+                    page.ShowReportWindow();
                     break;
                 default:
                     break;
@@ -206,6 +215,9 @@ namespace AchieveNow
                 case Key.F5:
                     page.Refresh_Button_Click(null, null);
                     break;
+                case Key.F6:
+                    page.ShowReportWindow();
+                    break;
                 default:
                     break;
             }
@@ -250,6 +262,9 @@ namespace AchieveNow
                     break;
                 case Key.F5:
                     page.Refresh_Button_Click(null, null);
+                    break;
+                case Key.F6:
+                    page.ShowReportWindow();
                     break;
                 default:
                     break;
@@ -296,6 +311,9 @@ namespace AchieveNow
                 case Key.F5:
                     page.Refresh_Button_Click(null, null);
                     break;
+                case Key.F6:
+                    page.ShowReportWindow();
+                    break;
                 default:
                     break;
             }
@@ -340,6 +358,9 @@ namespace AchieveNow
                     break;
                 case Key.F5:
                     page.Refresh_Button_Click(null, null);
+                    break;
+                case Key.F6:
+                    page.ShowReportWindow();
                     break;
                 default:
                     break;

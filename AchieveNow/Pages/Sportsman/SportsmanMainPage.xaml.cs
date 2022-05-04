@@ -111,6 +111,12 @@ namespace AchieveNow.Pages.Sportsman
             DateOfBirth.SelectedDate = null;
             isIntervalDate_CheckBox.IsChecked = false;
         }
+
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
         public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();

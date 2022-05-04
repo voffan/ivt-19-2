@@ -99,6 +99,12 @@ namespace AchieveNow.Pages.Location
             Update();
         }
 
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
+
         public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
