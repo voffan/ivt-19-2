@@ -9,6 +9,7 @@ using Yaxel.Classes;
 using Yaxel.Tables.ComputerForms;
 using Yaxel.Tables.ComponentForms;
 using Yaxel.Tables.EmployeeForms;
+using Yaxel.Tables.ManufacturerForms;
 
 namespace Yaxel
 {
@@ -37,6 +38,7 @@ namespace Yaxel
             Computer,
             Periphery,
             Component,
+            Manufacturer,
             none
         }
         public MultiList()
@@ -99,6 +101,17 @@ namespace Yaxel
             Invalidate();
 
             cTable = CurrentTable.Component;
+            fillDataGridView();
+        }
+
+        // производители
+        private void btnManufacturers_Click(object sender, EventArgs e)
+        {
+            listName = "Производители";
+            this.Text = oldText + " - " + listName;
+            Invalidate();
+
+            cTable = CurrentTable.Manufacturer;
             fillDataGridView();
         }
         #endregion
@@ -200,39 +213,18 @@ namespace Yaxel
                         }
                         break;
 
+                    case CurrentTable.Manufacturer:
+                        dataGridView1.DataSource = null;
+                        dataGridView1.Columns.Clear();
+
+                        dataGridView1.DataSource = context.Manufacturers.ToList();
+
+                        break;
                     case CurrentTable.none:
                         break;
                 }
             }
         }
-
-        //public void ViewComputer(DataGridView dgv)
-        //{
-        //    using (var context = new YaxelContext())
-        //    {
-        //        dgv.DataSource = null;
-        //        dgv.Columns.Clear();
-
-        //        List<Computer> computersList = context.Computers.Include(e => e.Employee).ToList();
-
-        //        dgv.Columns.Add("Id", "Id");
-        //        dgv.Columns.Add("Name", "Имя компьютера");
-        //        dgv.Columns.Add("Status", "Статус");
-        //        dgv.Columns.Add("Employee", "Сотрудник");
-        //        dgv.Columns.Add(new DataGridViewImageColumn());
-        //        dgv.Columns.Add(new DataGridViewImageColumn());
-
-        //        dgv.Columns[0].Width = 25;
-        //        dgv.Columns[4].Width = 28;
-        //        dgv.Columns[5].Width = 28;
-        //        dgv.RowTemplate.Height = 28;
-
-        //        foreach (Computer c in computersList)
-        //        {
-        //            dgv.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, detailImageCell.Value, updateImageCell.Value);
-        //        }
-        //    }
-        //}
 
         // клик по ячейке
         private void DataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -284,6 +276,7 @@ namespace Yaxel
                 }
         }
 
+        // счётчик сколько элементов выделено
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int count = dataGridView1.SelectedRows.Count;
@@ -315,6 +308,11 @@ namespace Yaxel
                     componentForm.ShowDialog();
                     fillDataGridView();
                     break;
+                case CurrentTable.Manufacturer:
+                    AddManufacturer manufacturerForm = new AddManufacturer();
+                    manufacturerForm.ShowDialog();
+                    fillDataGridView();
+                    break;
                 case CurrentTable.none:
 
                     break;
@@ -337,12 +335,12 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Computer:
-                    List<int> delItems = new List<int>();
+                    List<int> delComputers = new List<int>();
 
                     for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
-                        delItems.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
+                        delComputers.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
 
-                    DeleteComputer computerForm = new DeleteComputer(delItems);
+                    DeleteComputer computerForm = new DeleteComputer(delComputers);
                     computerForm.ShowDialog();
                     fillDataGridView();
                     break;
@@ -357,6 +355,16 @@ namespace Yaxel
 
                     DeleteComponent componentForm = new DeleteComponent(delComponents);
                     componentForm.ShowDialog();
+                    fillDataGridView();
+                    break;
+                case CurrentTable.Manufacturer:
+                    List<int> delManufacturers = new List<int>();
+
+                    for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                        delManufacturers.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
+
+                    DeleteManufacturer manufacturerForm = new DeleteManufacturer(delManufacturers);
+                    manufacturerForm.ShowDialog();
                     fillDataGridView();
                     break;
                 case CurrentTable.none:
