@@ -73,28 +73,12 @@ namespace Hoplits
 
         private void Delete(object sender, RoutedEventArgs e)
         {
-            ApplicationContext a = new ApplicationContext();
-            var row = datagrid1.SelectedItem;
-            switch (current)
-            {
-                case 1:
-                    Error error = row as Error;
-                    if (error != null) a.Errors.Remove(error);
-                    break;
-                case 2:
-                    Employee employee = row as Employee;
-                    if (employee != null) a.Employees.Remove(employee);
-                    break;
-                default:
-                    return;
-            }
-            a.SaveChanges();
-            datagrid1.ItemsSource = a.Errors.ToList();
-            datagrid1.Columns[0].Visibility = Visibility.Hidden;
+            Remove();
         }
 
         private void Edit(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void Add(object sender, RoutedEventArgs e)
@@ -131,6 +115,43 @@ namespace Hoplits
                     return;
             }
             
+        }
+
+        private void MenuItem_Delete(object sender, RoutedEventArgs e)
+        {
+            Remove();
+        }
+
+        private void Remove()
+        {
+            ApplicationContext a = new ApplicationContext();
+            var row = datagrid1.SelectedItem;
+            switch (current)
+            {
+                case 1:
+                    Error error = row as Error;
+                    if (error != null) a.Errors.Remove(error);
+                    break;
+                case 2:
+                    Employee employee = row as Employee;
+                    if (employee != null) a.Employees.Remove(employee);
+                    break;
+                default:
+                    return;
+            }
+            a.SaveChanges();
+        }
+        private void Show_Solutions(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+            ShowSolutions showSolutions = new ShowSolutions();
+            showSolutions.ShowDialog();
+            this.Visibility = Visibility.Visible;
+        }
+        private void Add_Solution(object sender, RoutedEventArgs e)
+        {
+            AddSolution addSolution = new AddSolution();
+            addSolution.Show();
         }
     }
 }

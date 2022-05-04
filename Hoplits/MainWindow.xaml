@@ -11,7 +11,9 @@
             <ColumnDefinition Width="57*"/>
             <ColumnDefinition Width="44*"/>
             <ColumnDefinition Width="299*"/>
+            
         </Grid.ColumnDefinitions>
+        
         <Button Content="Add" HorizontalAlignment="Left" Margin="394,401,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2" Click="Add"/>
         <Button Content="Edit" HorizontalAlignment="Left" Margin="461,401,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2" Click="Edit" Name="Button_Edit"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="529,401,0,0" VerticalAlignment="Top" Height="30" Width="50" Grid.Column="2" Click="Delete"/>
@@ -26,6 +28,15 @@
             </MenuItem>
             <MenuItem Header="About" />
         </Menu>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="10,27,10,0" Loaded="Window_Loaded" Name="datagrid1" IsReadOnly="True" Height="340" VerticalAlignment="Top"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="10,27,10,0" Loaded="Window_Loaded" Name="datagrid1" IsReadOnly="True" Height="340" VerticalAlignment="Top">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Edit"/>
+                    <MenuItem Header="Delete" Click="MenuItem_Delete"/>
+                    <MenuItem Header="Show solutions" Click="Show_Solutions"/>
+                    <MenuItem Header="Add solution" Click="Add_Solution"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
     </Grid>
 </Window>
