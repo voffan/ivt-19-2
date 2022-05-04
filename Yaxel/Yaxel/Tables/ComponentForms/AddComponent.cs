@@ -32,9 +32,9 @@ namespace Yaxel.Tables.ComponentForms
             using (var context = new YaxelContext())
             {
                 // Вывод список сотрудников в comboBox
-                //comboBox1.DataSource = context.Computers.ToList();
-                //comboBox1.DisplayMember = "Name";
-                //comboBox1.ValueMember = "Id";
+                comboBox1.DataSource = context.Manufacturers.ToList();
+                comboBox1.DisplayMember = "Name";
+                comboBox1.ValueMember = "Id";
 
                 attributeTypeComboBox.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<AttrType>.RetrieveAttributes(), null);
                 attributeTypeComboBox.DisplayMember = "Key";

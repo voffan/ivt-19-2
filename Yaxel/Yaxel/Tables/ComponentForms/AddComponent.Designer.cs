@@ -42,6 +42,8 @@
             this.applyButton = new Yaxel.YaxelStyle.YaxelButton();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
             this.selectComputersButton = new Yaxel.YaxelStyle.YaxelButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,29 +51,29 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(611, 70);
+            this.label2.Location = new System.Drawing.Point(322, 108);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 26);
+            this.label2.Size = new System.Drawing.Size(175, 26);
             this.label2.TabIndex = 25;
-            this.label2.Text = "Тип комп.";
+            this.label2.Text = "Тип компонента";
             this.label2.UseMnemonic = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(139, 74);
+            this.label1.Location = new System.Drawing.Point(322, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 26);
+            this.label1.Size = new System.Drawing.Size(219, 26);
             this.label1.TabIndex = 24;
-            this.label1.Text = "Модель";
+            this.label1.Text = "Модель компонента";
             this.label1.UseMnemonic = false;
             // 
             // comboBox2
             // 
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(741, 67);
+            this.comboBox2.Location = new System.Drawing.Point(561, 108);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(203, 33);
             this.comboBox2.TabIndex = 23;
@@ -79,7 +81,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(269, 71);
+            this.textBox1.Location = new System.Drawing.Point(561, 70);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(203, 32);
             this.textBox1.TabIndex = 22;
@@ -88,7 +90,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(139, 239);
+            this.label4.Location = new System.Drawing.Point(145, 207);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(176, 26);
             this.label4.TabIndex = 27;
@@ -98,7 +100,7 @@
             // attributeValueTextBox
             // 
             this.attributeValueTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.attributeValueTextBox.Location = new System.Drawing.Point(565, 236);
+            this.attributeValueTextBox.Location = new System.Drawing.Point(561, 201);
             this.attributeValueTextBox.Name = "attributeValueTextBox";
             this.attributeValueTextBox.Size = new System.Drawing.Size(203, 32);
             this.attributeValueTextBox.TabIndex = 30;
@@ -107,7 +109,7 @@
             // 
             this.attributeTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.attributeTypeComboBox.FormattingEnabled = true;
-            this.attributeTypeComboBox.Location = new System.Drawing.Point(331, 236);
+            this.attributeTypeComboBox.Location = new System.Drawing.Point(327, 200);
             this.attributeTypeComboBox.Name = "attributeTypeComboBox";
             this.attributeTypeComboBox.Size = new System.Drawing.Size(203, 33);
             this.attributeTypeComboBox.TabIndex = 31;
@@ -120,7 +122,7 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(331, 284);
+            this.dataGridView1.Location = new System.Drawing.Point(327, 246);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(437, 182);
@@ -131,7 +133,7 @@
             this.deleteAttributeButton.DialogResult = System.Windows.Forms.DialogResult.None;
             this.deleteAttributeButton.Font = new System.Drawing.Font("Arial", 16F);
             this.deleteAttributeButton.ForeColor = System.Drawing.Color.White;
-            this.deleteAttributeButton.Location = new System.Drawing.Point(793, 284);
+            this.deleteAttributeButton.Location = new System.Drawing.Point(780, 294);
             this.deleteAttributeButton.Name = "deleteAttributeButton";
             this.deleteAttributeButton.Size = new System.Drawing.Size(151, 33);
             this.deleteAttributeButton.TabIndex = 33;
@@ -143,7 +145,7 @@
             this.addAttributeButton.DialogResult = System.Windows.Forms.DialogResult.None;
             this.addAttributeButton.Font = new System.Drawing.Font("Arial", 16F);
             this.addAttributeButton.ForeColor = System.Drawing.Color.White;
-            this.addAttributeButton.Location = new System.Drawing.Point(793, 236);
+            this.addAttributeButton.Location = new System.Drawing.Point(780, 246);
             this.addAttributeButton.Name = "addAttributeButton";
             this.addAttributeButton.Size = new System.Drawing.Size(151, 33);
             this.addAttributeButton.TabIndex = 29;
@@ -171,18 +173,40 @@
             this.selectComputersButton.DialogResult = System.Windows.Forms.DialogResult.None;
             this.selectComputersButton.Font = new System.Drawing.Font("Arial", 16F);
             this.selectComputersButton.ForeColor = System.Drawing.Color.White;
-            this.selectComputersButton.Location = new System.Drawing.Point(420, 148);
+            this.selectComputersButton.Location = new System.Drawing.Point(420, 434);
             this.selectComputersButton.Name = "selectComputersButton";
             this.selectComputersButton.Size = new System.Drawing.Size(250, 50);
             this.selectComputersButton.TabIndex = 34;
             this.selectComputersButton.Text = "Выбрать компьютер";
             this.selectComputersButton.Click += new System.EventHandler(this.selectComputersButton_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(561, 147);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(203, 33);
+            this.comboBox1.TabIndex = 35;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(322, 147);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(171, 26);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Производитель";
+            this.label3.UseMnemonic = false;
+            // 
             // AddComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 577);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.selectComputersButton);
             this.Controls.Add(this.deleteAttributeButton);
             this.Controls.Add(this.dataGridView1);
@@ -222,5 +246,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private YaxelStyle.YaxelButton deleteAttributeButton;
         private YaxelStyle.YaxelButton selectComputersButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

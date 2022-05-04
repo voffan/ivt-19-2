@@ -37,5 +37,19 @@ namespace Yaxel.Tables.ComponentForms
             Close();
         }
 
+        private void UpdateComponent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectComputersButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void applyButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
