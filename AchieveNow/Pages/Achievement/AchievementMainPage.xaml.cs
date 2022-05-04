@@ -311,6 +311,44 @@ namespace AchieveNow.Pages.Achievement
             }
         }
 
+        private void DeAssign_AchievementSportsman_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (AchievementsGrid.SelectedItem != null)
+            {
+                if (AchievementsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Achievement achievementSelected = (Classes.Achievement)AchievementsGrid.SelectedItem;
+
+                    using (ApplicationContext context = new ApplicationContext())
+                    {
+                        if (achievementSelected.SportsmanId != null)
+                        {
+                            var achievement = context.Achievements
+                                .Where(x => x.SportsmanId == achievementSelected.SportsmanId)
+                                .First();
+
+                            achievement.SportsmanId = null;
+                            context.SaveChanges();
+
+                            Update();
+                        }
+                        else 
+                        {
+                            MessageBox.Show("К данному достижению не присвоен спортсмен");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Для присвоения разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите достижение");
+            }
+        }
+
         private void PageKeyUp(object sender, KeyEventArgs e)
         {
             Keybo.PageOnKeyUpHandler(sender, e, this);
@@ -338,5 +376,7 @@ namespace AchieveNow.Pages.Achievement
         {
             Name_TextBox.Text = Name_TextBox.Text.Replace("  ", " ");
         }
+
+
     }
 }
