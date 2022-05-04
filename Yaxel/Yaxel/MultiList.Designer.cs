@@ -38,6 +38,7 @@
             this.btnComputers = new Yaxel.YaxelStyle.YaxelButton();
             this.btnEmployees = new Yaxel.YaxelStyle.YaxelButton();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
+            this.btnManufacturers = new Yaxel.YaxelStyle.YaxelButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,11 +149,24 @@
             // 
             this.yaxelForm1.ThisForm = this;
             // 
+            // btnManufacturers
+            // 
+            this.btnManufacturers.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnManufacturers.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnManufacturers.ForeColor = System.Drawing.Color.White;
+            this.btnManufacturers.Location = new System.Drawing.Point(20, 346);
+            this.btnManufacturers.Name = "btnManufacturers";
+            this.btnManufacturers.Size = new System.Drawing.Size(250, 50);
+            this.btnManufacturers.TabIndex = 19;
+            this.btnManufacturers.Text = "Список производителей";
+            this.btnManufacturers.Click += new System.EventHandler(this.btnManufacturers_Click);
+            // 
             // MultiList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.btnManufacturers);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDeleteEntry);
             this.Controls.Add(this.btnAddEntry);
@@ -183,5 +197,6 @@
         private YaxelStyle.YaxelButton btnSearch;
         private YaxelStyle.YaxelButton btnDeleteEntry;
         private YaxelStyle.YaxelButton btnAddEntry;
+        private YaxelStyle.YaxelButton btnManufacturers;
     }
 }

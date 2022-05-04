@@ -32,11 +32,6 @@ namespace Yaxel.Tables.ComputerForms
                 comboBoxEmployee.DataSource = context.Employees.ToList();
                 comboBoxEmployee.DisplayMember = "Name";
                 comboBoxEmployee.ValueMember = "Id";
-
-                // Вывод список производителей в comboBox
-                comboBoxManufacturer.DataSource = context.Manufacturers.ToList();
-                comboBoxManufacturer.DisplayMember = "Name";
-                comboBoxManufacturer.ValueMember = "Id";
             }
         }
 

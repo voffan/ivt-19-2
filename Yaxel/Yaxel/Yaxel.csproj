@@ -186,6 +186,18 @@
     <Compile Include="Tables\EmployeeForms\UpdateEmployee.Designer.cs">
       <DependentUpon>UpdateEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\ManufacturerForms\AddManufacturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ManufacturerForms\AddManufacturer.Designer.cs">
+      <DependentUpon>AddManufacturer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\ManufacturerForms\DeleteManufacturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ManufacturerForms\DeleteManufacturer.Designer.cs">
+      <DependentUpon>DeleteManufacturer.cs</DependentUpon>
+    </Compile>
     <Compile Include="YaxelContext.cs" />
     <Compile Include="YaxelStyle\YaxelButton.cs">
       <SubType>Component</SubType>
@@ -262,6 +274,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\EmployeeForms\UpdateEmployee.resx">
       <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ManufacturerForms\AddManufacturer.resx">
+      <DependentUpon>AddManufacturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ManufacturerForms\DeleteManufacturer.resx">
+      <DependentUpon>DeleteManufacturer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
