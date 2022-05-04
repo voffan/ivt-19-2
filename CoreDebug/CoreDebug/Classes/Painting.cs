@@ -22,5 +22,6 @@ namespace CoreDebug.Classes
         public int LocationId { get; set; }
         public virtual Location Location { get; set; }
         public Status Status { get; set; }
+        //Заполнить Авторов и сделать список
     }
 }

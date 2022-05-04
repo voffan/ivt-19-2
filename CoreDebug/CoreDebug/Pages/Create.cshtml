@@ -1,5 +1,5 @@
 ﻿@page
-@model CoreDebug.Views.Home.CreateModel
+@model CreateModel
  
 @{
     ViewData["Title"] = "Добавление новой картины";
@@ -9,7 +9,7 @@
 <form method="POST">
     <div><label>Имя</label><br /><input asp-for="Painting.Name" /></div>
     <div><label>Стоимость</label><br /><input asp-for="Painting.Value" type="number" /></div>
-    <div><label>Возраст:</label><br /><input asp-for="Painting.DateOfCreation" type="number" /></div>
+    <div><label>Год</label><br /><input asp-for="Painting.DateOfCreation" type="DateTime" /></div>
     <div><label>Автор</label><br /><input asp-for="Painting.Author" /></div>
     <div><label>Жанр</label><br /><input asp-for="Painting.Genre" /></div>
     <div><label>Местонахождение</label><br /><input asp-for="Painting.Location" /></div>

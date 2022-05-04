@@ -5,7 +5,7 @@ using CoreDebug.Data;
 using CoreDebug.Classes;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoreDebug.Views.Home
+namespace CoreDebug.Pages
 {
     public class PaintingsModel : PageModel
     {

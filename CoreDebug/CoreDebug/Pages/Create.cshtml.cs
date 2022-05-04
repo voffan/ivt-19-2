@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace CoreDebug.Views.Home
+namespace CoreDebug.Pages
 {
     public class CreateModel : PageModel
     {
