@@ -1,0 +1,15 @@
+﻿@page
+@model CreateAuthorModel
+ 
+@{
+    ViewData["Title"] = "Добавление нового Автора";
+}
+<h2>@ViewData["Title"]</h2>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <div><label>Имя</label><br /><input asp-for="Author.Name" /></div>
+    <div><label>Год Рождения</label><br /><input asp-for="Author.Birthday" type="DateTime" /></div>
+    <div><label>Год Смерти</label><br /><input asp-for="Author.DateOfDeath" type="DateTime" /></div>
+    <div><label>Био</label><br /><input asp-for="Author.ShortBio" /></div>
+    <input type="submit" value="Отправить" />
+</form>

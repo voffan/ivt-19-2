@@ -1,0 +1,12 @@
+﻿@page
+@model CreateGenreModel
+ 
+@{
+    ViewData["Title"] = "Добавление нового Жанра";
+}
+<h2>@ViewData["Title"]</h2>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <div><label>Название</label><br /><input asp-for="Genre.Name" /></div>
+    <input type="submit" value="Отправить" />
+</form>

@@ -12,10 +12,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\Create.cshtml" />
+    <Content Remove="Pages\Authors.cshtml" />
+    <Content Remove="Pages\CreateAuthor.cshtml" />
+    <Content Remove="Pages\CreateGenre.cshtml" />
+    <Content Remove="Pages\Genres.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\CreatePage\CreateAuthor.cshtml" />
+    <None Include="Pages\CreatePage\CreateGenre.cshtml" />
+    <None Include="Pages\CreatePage\CreatePainting.cshtml" />
     <None Include="Pages\Error.cshtml" />
     <None Include="Pages\Index.cshtml" />
-    <None Include="Pages\Paintings.cshtml" />
+    <None Include="Pages\MainPages\Genres.cshtml" />
+    <None Include="Pages\MainPages\Authors.cshtml" />
+    <None Include="Pages\MainPages\Paintings.cshtml" />
     <None Include="Pages\Privacy.cshtml" />
     <None Include="Pages\Shared\_Layout.cshtml" />
     <None Include="Pages\Shared\_ValidationScriptsPartial.cshtml" />

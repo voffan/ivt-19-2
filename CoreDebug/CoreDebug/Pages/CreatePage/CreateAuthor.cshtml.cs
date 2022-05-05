@@ -7,16 +7,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace CoreDebug.Pages
+namespace CoreDebug.Pages.CreatePage
 {
-    public class CreateModel : PageModel
+    public class CreateAuthorModel : PageModel
     {
-        private readonly MyDbContext _context;
+        private readonly MyDbContext _Author;
         [BindProperty]
-        public Painting Painting { get; set; }
-        public CreateModel(MyDbContext db)
+        public Author Author { get; set; }
+        public CreateAuthorModel(MyDbContext db)
         {
-            _context = db;
+            _Author = db;
         }
         public void OnGet()
         {
@@ -25,9 +25,9 @@ namespace CoreDebug.Pages
         {
             if (ModelState.IsValid)
             {
-                _context.Paintings.Add(Painting);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("Paintings");
+                _Author.Authors.Add(Author);
+                await _Author.SaveChangesAsync();
+                return RedirectToPage("/MainPages/Authors");
             }
             return Page();
         }

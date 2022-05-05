@@ -5,19 +5,19 @@ using CoreDebug.Data;
 using CoreDebug.Classes;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoreDebug.Pages
+namespace CoreDebug.Pages.MainPages
 {
     public class PaintingsModel : PageModel
     {
-        private readonly MyDbContext _context;
+        private readonly MyDbContext _Painting;
         public List<Painting> Painting { get; set; }
         public PaintingsModel(MyDbContext db)
         {
-            _context = db;
+            _Painting = db;
         }
         public void OnGet()
         {
-            Painting = _context.Paintings.AsNoTracking().ToList();
+            Painting = _Painting.Paintings.AsNoTracking().ToList();
         }
     }
 }

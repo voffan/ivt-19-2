@@ -1,0 +1,20 @@
+﻿@page "{id:int?}"
+@model GenreModel
+ 
+@{
+    ViewData["Title"] = "Жанры";
+}
+<h2>@ViewData["Title"]</h2>
+ 
+<p><a asp-page="/CreatePage/CreateGenre">Добавить Жанр</a></p>
+<table class="table">
+    <thead>
+        <tr><th>Название</th>
+    </thead>
+    <tbody>
+        @foreach (var genre in Model.Genre)
+        {
+            <tr><td>@genre.Name</td></tr>
+        }
+    </tbody>
+</table>

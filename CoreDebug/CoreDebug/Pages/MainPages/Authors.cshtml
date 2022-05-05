@@ -1,0 +1,25 @@
+﻿@page "{id:int?}"
+@model AuthorsModel
+ 
+@{
+    ViewData["Title"] = "Авторы";
+}
+<h2>@ViewData["Title"]</h2>
+ 
+<p><a asp-page="/CreatePage/CreateAuthor">Добавить Автора</a></p>
+<table class="table">
+    <thead>
+        <tr><th>Имя</th><th>Год Рождения</th><th>Год Смерти</th><th>Био</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model.Author)
+        {
+            <tr>
+                <td>@author.Name</td>
+                <td>@author.Birthday</td>
+                <td>@author.DateOfDeath</td>
+                <td>@author.ShortBio</td>
+            </tr>
+        }
+    </tbody>
+</table>
