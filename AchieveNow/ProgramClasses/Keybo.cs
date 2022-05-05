@@ -357,12 +357,6 @@ namespace AchieveNow
             else
             {
                 countNoHesoyam++;
-                //_keyH = false;
-                //_keyE = false;
-                //_keyS = false;
-                //_keyO = false;
-                //_keyY = false;
-                //_keyA = false;
             }
         }
         public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, IAddWindow addWindow)

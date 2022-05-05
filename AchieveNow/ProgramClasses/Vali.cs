@@ -56,18 +56,6 @@ namespace AchieveNow
                     t.CaretIndex++;
                 }
             }
-            if (t.Text.Contains("  ") || t.Text.Contains("''") || t.Text.Contains("--"))
-            {
-                int[] buff = {
-                    t.Text.ToString().IndexOf("  "),
-                    t.Text.ToString().IndexOf("''"),
-                    t.Text.ToString().IndexOf("--"),
-                };
-                t.Text = t.Text.Replace("  ", " ");
-                t.Text = t.Text.Replace("''", "'");
-                t.Text = t.Text.Replace("--", "-");
-                t.CaretIndex = buff.Max();
-            }
         }
         public static void VName_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e, TextBox t)
         {
