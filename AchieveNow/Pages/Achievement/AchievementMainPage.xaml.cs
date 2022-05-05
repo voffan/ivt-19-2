@@ -35,38 +35,29 @@ namespace AchieveNow.Pages.Achievement
             Page_AchievementMainPage.Focus();
         }
 
-        private void ShowAchievements()
-        {
-            try
-            {
-                using (ApplicationContext context = new ApplicationContext())
-                {
-                    var query = context.Achievements
-                        .Include("Competition")
-                        .Include("Sportsman")
-                        .ToList();
-
-                    AchievementsGrid.ItemsSource = query;
-                }
-            }
-            catch (Exception ex)
-            {
-                AchievementsGrid.ItemsSource = null;
-                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
-                showErrorWindow.ShowDialog();
-                MessageBox.Show(ex.Message);
-                Console.WriteLine(ex.Message);
-            }
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
-            ShowAchievements();
 
             foreach (Result result in Enum.GetValues(typeof(Result)))
             {
                 Result_ComboBox.Items.Add(result);
+            }
+        }
+
+        private void ShowAchievements()
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var query = context.Achievements
+                    .Include("Competition")
+                    .Include("Sportsman")
+                    .ToList();
+
+                AchievementsGrid.ItemsSource = query;
             }
         }
 
@@ -247,8 +238,6 @@ namespace AchieveNow.Pages.Achievement
 
             if (AchievementsGrid.SelectedItem != null)
             {
-
-
                 List<Classes.Achievement> achievements = new List<Classes.Achievement>();
 
                 foreach (Classes.Achievement achievement in AchievementsGrid.SelectedItems)
@@ -327,6 +316,9 @@ namespace AchieveNow.Pages.Achievement
 
                     using (ApplicationContext context = new ApplicationContext())
                     {
+                        if (!context.IsAvailable)
+                            return;
+
                         if (achievementSelected.SportsmanId != null)
                         {
                             var achievement = context.Achievements
