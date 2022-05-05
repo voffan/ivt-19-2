@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ctrlz.Classes
 {
-    class Journal
+    public class Journal
     {
         public int Id { get; set; }
         [MaxLength(50)]
@@ -17,8 +17,11 @@ namespace ctrlz.Classes
         public DateTime Date { get; set; }
         public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
-        public int LocationId { get; set; }
-        public virtual Location from { get; set; }
-        public virtual Location to { get; set; }
+        public int FromId { get; set; }
+        [ForeignKey("FromId")]
+        public virtual Location From { get; set; }
+        public int ToId { get; set; }
+        [ForeignKey("ToId")]
+        public virtual Location To { get; set; }
     }
 }

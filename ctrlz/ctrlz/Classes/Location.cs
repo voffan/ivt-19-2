@@ -18,4 +18,10 @@ namespace ctrlz.Classes
 
         public virtual List<Painting> Paintings { get; set; }
     }
+    public enum LocationType
+    {
+        Storage,
+        Expo,
+        Recovery
+    }
 }
