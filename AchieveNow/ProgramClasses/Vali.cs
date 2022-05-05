@@ -32,7 +32,7 @@ namespace AchieveNow
         public static int MAX_WEIGHT_LENGTH = 3;
         public static void Name(object sender, TextCompositionEventArgs e, TextBox t)
         {
-            Regex regex = new Regex(@"[A-Za-z\sа-яА-Я0-9-]");
+            Regex regex = new Regex(@"[a-zA-Zа-яА-ЯёЁ0-9-\s']");
             if (regex.IsMatch(e.Text))
             {
                 e.Handled = false;
@@ -40,6 +40,40 @@ namespace AchieveNow
             else
             {
                 e.Handled = true;
+            }
+        }
+        public static void VName_TextBox_TextChanged(object sender, TextChangedEventArgs e, TextBox t)
+        {
+            if (t.Text.Contains("  ") || t.Text.Contains("''") || t.Text.Contains("--"))
+            {
+                int buff = t.CaretIndex - 1;
+                t.Text = t.Text.Replace("  ", " ");
+                t.Text = t.Text.Replace("''", "'");
+                t.Text = t.Text.Replace("--", "-");
+                t.CaretIndex = buff;
+                if (t.CaretIndex != t.Text.Length && (t.Text[t.CaretIndex] == ' ' || t.Text[t.CaretIndex] == '\'' || t.Text[t.CaretIndex] == '-'))
+                {
+                    t.CaretIndex++;
+                }
+            }
+            if (t.Text.Contains("  ") || t.Text.Contains("''") || t.Text.Contains("--"))
+            {
+                int[] buff = {
+                    t.Text.ToString().IndexOf("  "),
+                    t.Text.ToString().IndexOf("''"),
+                    t.Text.ToString().IndexOf("--"),
+                };
+                t.Text = t.Text.Replace("  ", " ");
+                t.Text = t.Text.Replace("''", "'");
+                t.Text = t.Text.Replace("--", "-");
+                t.CaretIndex = buff.Max();
+            }
+        }
+        public static void VName_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e, TextBox t)
+        {
+            if (t.Text.Length > 0 && t.Text.EndsWith(' '))
+            {
+                t.Text = t.Text.Substring(0, t.Text.Length - 1);
             }
         }
         public static void Password(object sender, TextCompositionEventArgs e)
@@ -56,7 +90,10 @@ namespace AchieveNow
         }
         public static void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e, TextBox t)
         {
-            if (e.Key == Key.Space && (t.Text.Length == 0 || t.Text.Length != 0 && t.Text[t.CaretIndex - 1] == ' ' || t.CaretIndex < t.Text.Length && t.Text[t.CaretIndex] == ' '))
+            if (e.Key == Key.Space && (
+                    t.CaretIndex == 0 ||
+                    t.Text.Length != 0 && t.Text[t.CaretIndex - 1] == ' '||
+                    t.CaretIndex < t.Text.Length && t.Text[t.CaretIndex] == ' '))
             {
                 e.Handled = true;
             }
