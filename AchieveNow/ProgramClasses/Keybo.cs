@@ -283,7 +283,7 @@ namespace AchieveNow
                     mainPage.Refresh_Button_Click(null, null);
                     break;
                 case Key.F4:
-                    mainPage.ShowReportWindow();
+                    mainPage.ShowWinnerPage();
                     break;
                 default:
                     break;
@@ -405,6 +405,57 @@ namespace AchieveNow
                     break;
                 default:
                     break;
+            }
+        }
+        public static void VReportPageOnKeyUpHandler(object sender, KeyEventArgs e, IReport report)
+        {
+            switch (e.Key)
+            {
+                case Key.F3:
+                    report.Print_Button_Click(null, null);
+                    break;
+                case Key.F5:
+                    report.Refresh_Button_Click(null, null);
+                    break;
+                case Key.F4:
+                    report.NavigateToMainPage();
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void VReportPageOnKeyUpHandler2(object sender, KeyEventArgs e, ReportWinnerPage reportWinnerPage)
+        {
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                switch (e.Key)
+                {
+                    case Key.D1:
+                        reportWinnerPage.NavigationService.Navigate(new ReportWinnerPage());
+                        break;
+                    case Key.D2:
+                        reportWinnerPage.NavigationService.Navigate(new ReportPeriodPage());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        public static void VReportPageOnKeyUpHandler2(object sender, KeyEventArgs e, ReportPeriodPage reportPeriodPage)
+        {
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                switch (e.Key)
+                {
+                    case Key.D1:
+                        reportPeriodPage.NavigationService.Navigate(new ReportWinnerPage());
+                        break;
+                    case Key.D2:
+                        reportPeriodPage.NavigationService.Navigate(new ReportPeriodPage());
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

@@ -84,6 +84,11 @@ namespace AchieveNow.Pages.SportKind
             var reportWindow = new Report.ReportWindow();
             reportWindow.ShowDialog();
         }
+
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
         public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();

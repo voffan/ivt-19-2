@@ -26,12 +26,10 @@ using AchieveNow.Pages.User;
 
 namespace AchieveNow
 {
-    public interface IMainPage
+    public interface IReport
     {
-        void Search_Button_Click(object sender, RoutedEventArgs e);
         void Refresh_Button_Click(object sender, RoutedEventArgs e);
-        void Add_Button_Click();
-        void ShowReportWindow();
-        void ShowWinnerPage();
+        void Print_Button_Click(object sender, RoutedEventArgs e);
+        void NavigateToMainPage();
     }
 }

@@ -155,6 +155,11 @@ namespace AchieveNow.Pages.Competition
             reportWindow.ShowDialog();
         }
 
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
+
         public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
