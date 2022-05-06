@@ -30,12 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
-            this.yaxelButton2 = new Yaxel.YaxelStyle.YaxelButton();
+            this.selectComponentButton = new Yaxel.YaxelStyle.YaxelButton();
             this.applyButton = new Yaxel.YaxelStyle.YaxelButton();
-            this.comboBoxManufacturer = new System.Windows.Forms.ComboBox();
             this.comboBoxEmployee = new System.Windows.Forms.ComboBox();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,16 +44,17 @@
             // 
             this.yaxelForm1.ThisForm = this;
             // 
-            // yaxelButton2
+            // selectComponentButton
             // 
-            this.yaxelButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.yaxelButton2.Font = new System.Drawing.Font("Arial", 16F);
-            this.yaxelButton2.ForeColor = System.Drawing.Color.White;
-            this.yaxelButton2.Location = new System.Drawing.Point(340, 400);
-            this.yaxelButton2.Name = "yaxelButton2";
-            this.yaxelButton2.Size = new System.Drawing.Size(400, 50);
-            this.yaxelButton2.TabIndex = 34;
-            this.yaxelButton2.Text = "Выбрать комплектующие";
+            this.selectComponentButton.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.selectComponentButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.selectComponentButton.ForeColor = System.Drawing.Color.White;
+            this.selectComponentButton.Location = new System.Drawing.Point(340, 400);
+            this.selectComponentButton.Name = "selectComponentButton";
+            this.selectComponentButton.Size = new System.Drawing.Size(400, 50);
+            this.selectComponentButton.TabIndex = 34;
+            this.selectComponentButton.Text = "Выбрать комплектующие";
+            this.selectComponentButton.Click += new System.EventHandler(this.selectComponentButton_Click);
             // 
             // applyButton
             // 
@@ -68,15 +67,6 @@
             this.applyButton.TabIndex = 33;
             this.applyButton.Text = "Обновить";
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
-            // 
-            // comboBoxManufacturer
-            // 
-            this.comboBoxManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxManufacturer.FormattingEnabled = true;
-            this.comboBoxManufacturer.Location = new System.Drawing.Point(530, 315);
-            this.comboBoxManufacturer.Name = "comboBoxManufacturer";
-            this.comboBoxManufacturer.Size = new System.Drawing.Size(210, 33);
-            this.comboBoxManufacturer.TabIndex = 32;
             // 
             // comboBoxEmployee
             // 
@@ -95,17 +85,6 @@
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(210, 33);
             this.comboBoxStatus.TabIndex = 30;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(340, 314);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(190, 32);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Производитель";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
@@ -154,12 +133,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 577);
-            this.Controls.Add(this.yaxelButton2);
+            this.Controls.Add(this.selectComponentButton);
             this.Controls.Add(this.applyButton);
-            this.Controls.Add(this.comboBoxManufacturer);
             this.Controls.Add(this.comboBoxEmployee);
             this.Controls.Add(this.comboBoxStatus);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -178,12 +155,10 @@
         #endregion
 
         private YaxelStyle.YaxelForm yaxelForm1;
-        private YaxelStyle.YaxelButton yaxelButton2;
+        private YaxelStyle.YaxelButton selectComponentButton;
         private YaxelStyle.YaxelButton applyButton;
-        private System.Windows.Forms.ComboBox comboBoxManufacturer;
         private System.Windows.Forms.ComboBox comboBoxEmployee;
         private System.Windows.Forms.ComboBox comboBoxStatus;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

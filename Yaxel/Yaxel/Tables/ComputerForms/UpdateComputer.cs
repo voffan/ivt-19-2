@@ -41,13 +41,13 @@ namespace Yaxel.Tables.ComputerForms
                 comboBoxEmployee.ValueMember = "Id";
 
                 comboBoxEmployee.SelectedItem = computer.EmployeeId;
-
-                comboBoxManufacturer.DataSource = context.Manufacturers.ToList();
-                comboBoxManufacturer.DisplayMember = "Name";
-                comboBoxManufacturer.ValueMember = "Id";
-
-                //comboBoxManufacturer.SelectedItem = computer.ManufacturerId;
             }
+        }
+
+        private void selectComponentButton_Click(object sender, EventArgs e)
+        {
+            //SelectComponent selectComponentForm = new SelectComponent();
+            //selectComponentForm.ShowDialog();
         }
 
         private void applyButton_Click(object sender, EventArgs e)
@@ -59,7 +59,6 @@ namespace Yaxel.Tables.ComputerForms
                 computer.Name = textBoxName.Text;
                 computer.Status = (Status)Enum.Parse(typeof(Status), (string)comboBoxStatus.SelectedValue);
                 computer.EmployeeId = (int)comboBoxEmployee.SelectedValue;
-                //computer.ManufacturerId = (int)comboBoxManufacturer.SelectedValue;
 
                 context.SaveChanges();
             }

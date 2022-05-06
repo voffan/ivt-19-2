@@ -51,13 +51,8 @@ namespace Yaxel.Tables.ComponentForms
                 Classes.Component component = new Classes.Component();
                 component.Model = textBox1.Text;
                 component.ComponentType = (ComponentType)Enum.Parse(typeof(ComponentType), (string)comboBox2.SelectedValue);
-                //component.ComputerId = (int)comboBox1.SelectedValue;
-                //foreach(int i in selectedComputersId)
-                //{
-                //    component.Computers.Add(context.Computers.Find(i));
-                //}
 
-                //component.ManufacturerId = (int)comboBox1.SelectedValue;
+                component.ManufacturerId = (int)comboBox1.SelectedValue;
                 component.Computers.AddRange(context.Computers.Where(c => selectedComputersId.Contains(c.Id)));
 
                 context.Components.Add(component);

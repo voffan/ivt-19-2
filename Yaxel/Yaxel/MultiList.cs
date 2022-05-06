@@ -192,25 +192,25 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        List<Component> componentsList = context.Components.ToList();//Include(m => m.Manufacturer).ToList();
+                        List<Component> componentsList = context.Components.Include(m => m.Manufacturer).ToList();
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Model", "Модель");
                         dataGridView1.Columns.Add("ComponentType", "Тип компонента");
-                        //dataGridView1.Columns.Add("Manufacturer", "Производитель");
+                        dataGridView1.Columns.Add("Manufacturer", "Производитель");
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
 
                         dataGridView1.Columns[0].Width = 25;
-                        dataGridView1.Columns[3].Width = 28;
                         dataGridView1.Columns[4].Width = 28;
                         dataGridView1.Columns[5].Width = 28;
+                        dataGridView1.Columns[6].Width = 28;
                         dataGridView1.RowTemplate.Height = 28;
 
                         foreach (Component c in componentsList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Model, c.ComponentType, detailImageCell.Value, detailImageCell.Value, updateImageCell.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Model, c.ComponentType, c.Manufacturer.Name, detailImageCell.Value, detailImageCell.Value, updateImageCell.Value);
                         }
                         break;
 
@@ -259,13 +259,13 @@ namespace Yaxel
 
                         break;
                     case CurrentTable.Component:
-                        if (e.ColumnIndex == 3 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 4 && e.RowIndex > -1)
                         {
                             ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                         }
 
-                        if (e.ColumnIndex == 4 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
                         {
                             ListAttribute form = new ListAttribute((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();

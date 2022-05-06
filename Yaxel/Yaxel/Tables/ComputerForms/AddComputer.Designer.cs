@@ -30,49 +30,38 @@
         {
             this.components = new System.ComponentModel.Container();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
-            this.yaxelButton2 = new Yaxel.YaxelStyle.YaxelButton();
-            this.ApplyButton = new Yaxel.YaxelStyle.YaxelButton();
+            this.applyButton = new Yaxel.YaxelStyle.YaxelButton();
             this.comboBoxEmployee = new System.Windows.Forms.ComboBox();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // yaxelForm1
             // 
             this.yaxelForm1.ThisForm = this;
             // 
-            // yaxelButton2
+            // applyButton
             // 
-            this.yaxelButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.yaxelButton2.Font = new System.Drawing.Font("Arial", 16F);
-            this.yaxelButton2.ForeColor = System.Drawing.Color.White;
-            this.yaxelButton2.Location = new System.Drawing.Point(340, 400);
-            this.yaxelButton2.Name = "yaxelButton2";
-            this.yaxelButton2.Size = new System.Drawing.Size(400, 50);
-            this.yaxelButton2.TabIndex = 24;
-            this.yaxelButton2.Text = "Выбрать комплектующие";
-            this.yaxelButton2.Click += new System.EventHandler(this.yaxelButton2_Click);
-            // 
-            // ApplyButton
-            // 
-            this.ApplyButton.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.ApplyButton.Font = new System.Drawing.Font("Arial", 16F);
-            this.ApplyButton.ForeColor = System.Drawing.Color.White;
-            this.ApplyButton.Location = new System.Drawing.Point(420, 490);
-            this.ApplyButton.Name = "ApplyButton";
-            this.ApplyButton.Size = new System.Drawing.Size(250, 50);
-            this.ApplyButton.TabIndex = 23;
-            this.ApplyButton.Text = "Добавить";
-            this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
+            this.applyButton.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.applyButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.applyButton.ForeColor = System.Drawing.Color.White;
+            this.applyButton.Location = new System.Drawing.Point(420, 490);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(250, 50);
+            this.applyButton.TabIndex = 23;
+            this.applyButton.Text = "Добавить";
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
             // comboBoxEmployee
             // 
             this.comboBoxEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxEmployee.FormattingEnabled = true;
-            this.comboBoxEmployee.Location = new System.Drawing.Point(530, 232);
+            this.comboBoxEmployee.Location = new System.Drawing.Point(234, 233);
             this.comboBoxEmployee.Name = "comboBoxEmployee";
             this.comboBoxEmployee.Size = new System.Drawing.Size(210, 33);
             this.comboBoxEmployee.TabIndex = 21;
@@ -81,7 +70,7 @@
             // 
             this.comboBoxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Location = new System.Drawing.Point(530, 149);
+            this.comboBoxStatus.Location = new System.Drawing.Point(234, 150);
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(210, 33);
             this.comboBoxStatus.TabIndex = 20;
@@ -89,7 +78,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(340, 231);
+            this.label3.Location = new System.Drawing.Point(44, 232);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(190, 32);
@@ -100,7 +89,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(340, 148);
+            this.label2.Location = new System.Drawing.Point(44, 149);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(190, 32);
@@ -111,7 +100,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(340, 61);
+            this.label1.Location = new System.Drawing.Point(44, 62);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 32);
@@ -122,19 +111,31 @@
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxName.Location = new System.Drawing.Point(530, 62);
+            this.textBoxName.Location = new System.Drawing.Point(234, 63);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(210, 32);
             this.textBoxName.TabIndex = 15;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(508, 62);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(560, 376);
+            this.dataGridView1.TabIndex = 24;
             // 
             // AddComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 577);
-            this.Controls.Add(this.yaxelButton2);
-            this.Controls.Add(this.ApplyButton);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.applyButton);
             this.Controls.Add(this.comboBoxEmployee);
             this.Controls.Add(this.comboBoxStatus);
             this.Controls.Add(this.label3);
@@ -147,6 +148,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить компьютер";
             this.Load += new System.EventHandler(this.AddComputer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,13 +157,13 @@
         #endregion
 
         private YaxelStyle.YaxelForm yaxelForm1;
-        private YaxelStyle.YaxelButton yaxelButton2;
-        private YaxelStyle.YaxelButton ApplyButton;
+        private YaxelStyle.YaxelButton applyButton;
         private System.Windows.Forms.ComboBox comboBoxEmployee;
         private System.Windows.Forms.ComboBox comboBoxStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

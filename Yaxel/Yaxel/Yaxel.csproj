@@ -73,9 +73,13 @@
     <Compile Include="Migrations\202205040234392_dropforeginkey computer components.designer.cs">
       <DependentUpon>202205040234392_dropforeginkey computer components.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205040236193_component-manufacturer.cs" />
-    <Compile Include="Migrations\202205040236193_component-manufacturer.designer.cs">
-      <DependentUpon>202205040236193_component-manufacturer.cs</DependentUpon>
+    <Compile Include="Migrations\202205050553413_component-manufcaturer.cs" />
+    <Compile Include="Migrations\202205050553413_component-manufcaturer.designer.cs">
+      <DependentUpon>202205050553413_component-manufcaturer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205050555599_component-manufcaturer2.cs" />
+    <Compile Include="Migrations\202205050555599_component-manufcaturer2.designer.cs">
+      <DependentUpon>202205050555599_component-manufcaturer2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Tables\ComponentForms\AddComponent.cs">
@@ -164,12 +168,6 @@
     <Compile Include="Tables\ComputerForms\SearchComputer.Designer.cs">
       <DependentUpon>SearchComputer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\ComputerForms\SelectComponent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tables\ComputerForms\SelectComponent.Designer.cs">
-      <DependentUpon>SelectComponent.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tables\ComputerForms\UpdateComputer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,8 +223,11 @@
     <EmbeddedResource Include="Migrations\202205040234392_dropforeginkey computer components.resx">
       <DependentUpon>202205040234392_dropforeginkey computer components.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205040236193_component-manufacturer.resx">
-      <DependentUpon>202205040236193_component-manufacturer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205050553413_component-manufcaturer.resx">
+      <DependentUpon>202205050553413_component-manufcaturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205050555599_component-manufcaturer2.resx">
+      <DependentUpon>202205050555599_component-manufcaturer2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>
@@ -273,9 +274,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\SearchComputer.resx">
       <DependentUpon>SearchComputer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tables\ComputerForms\SelectComponent.resx">
-      <DependentUpon>SelectComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\UpdateComputer.resx">
       <DependentUpon>UpdateComputer.cs</DependentUpon>
