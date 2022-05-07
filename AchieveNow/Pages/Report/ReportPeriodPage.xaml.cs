@@ -12,6 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
+using AchieveNow.Classes;
+using AchieveNow.ProgramClasses;
+using AchieveNow.Pages.Competition;
+using AchieveNow.Pages.Achievement;
+using AchieveNow.Pages.Sportsman;
+using AchieveNow.Pages.SportKind;
+using AchieveNow.Pages.Country;
+using AchieveNow.Pages.User;
 
 namespace AchieveNow.Pages.Report
 {
@@ -24,6 +34,24 @@ namespace AchieveNow.Pages.Report
         {
             InitializeComponent();
             Page_ReportPeriodPage.Focus();
+            ShowGrid();
+        }
+
+        public void ShowGrid()
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var query = context.Sportsmen
+                    .Include("SportKind")
+                    .Include("Country")
+                    .Include("Achievements")
+                    .ToList();
+
+                ReportPeriodGrid.ItemsSource = query;
+            }
         }
 
         public void Print_Button_Click(object sender, RoutedEventArgs e)
