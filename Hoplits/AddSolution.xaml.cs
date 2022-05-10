@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Hoplits.Classes;
+using Hoplits.Cs;
 
 namespace Hoplits
 {
@@ -19,9 +21,23 @@ namespace Hoplits
     /// </summary>
     public partial class AddSolution : Window
     {
-        public AddSolution()
+        Error error;
+        int id;
+        public AddSolution(Error _error, int _id)
         {
             InitializeComponent();
+            error = _error;
+            id = _id;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Solution solution = new Solution { Description = error.Description, ErrorId = error.id, EmployeeId = id, SolutionOfError = textbox_sol.Text };
+            using (ApplicationContext a = new ApplicationContext())
+            {
+                a.Solutions.Add(solution);
+                a.SaveChanges();
+            }
         }
     }
 }

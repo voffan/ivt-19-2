@@ -78,7 +78,24 @@ namespace Hoplits
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-
+            if(datagrid1.SelectedItem == null)
+            {
+                MessageBox.Show("Select please");
+                return;
+            }
+            int x = ((Error)datagrid1.SelectedItem).id;
+            switch (current)
+            {
+                case 1:
+                    EditError editError = new EditError(x);
+                    editError.Show();
+                    break;
+                case 2:
+                    break;
+                default:
+                    return;
+            }
+            
         }
 
         private void Add(object sender, RoutedEventArgs e)
@@ -116,12 +133,22 @@ namespace Hoplits
             }
             
         }
-
         private void MenuItem_Delete(object sender, RoutedEventArgs e)
         {
             Remove();
         }
-
+        private void Show_Solutions(object sender, RoutedEventArgs e)
+        {
+            ShowSolutions showSolutions = new ShowSolutions();
+            showSolutions.ShowDialog();
+        }
+        private void Add_Solution(object sender, RoutedEventArgs e)
+        {
+            var obj = datagrid1.SelectedItem;
+            Error error = obj as Error;
+            AddSolution addSolution = new AddSolution(error, id);
+            addSolution.Show();
+        }
         private void Remove()
         {
             ApplicationContext a = new ApplicationContext();
@@ -140,18 +167,6 @@ namespace Hoplits
                     return;
             }
             a.SaveChanges();
-        }
-        private void Show_Solutions(object sender, RoutedEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-            ShowSolutions showSolutions = new ShowSolutions();
-            showSolutions.ShowDialog();
-            this.Visibility = Visibility.Visible;
-        }
-        private void Add_Solution(object sender, RoutedEventArgs e)
-        {
-            AddSolution addSolution = new AddSolution();
-            addSolution.Show();
         }
     }
 }
