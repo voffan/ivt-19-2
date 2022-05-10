@@ -4,17 +4,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Yaxel.Classes;
+using Yaxel.YaxelStyle;
 
 namespace Yaxel.Tables.ComputerForms
 {
     public partial class AddComputer : Form
     {
-        List<int> selectedComponentsId;
-
         public AddComputer()
         {
             InitializeComponent();
@@ -34,19 +34,28 @@ namespace Yaxel.Tables.ComputerForms
                 comboBoxEmployee.DisplayMember = "Name";
                 comboBoxEmployee.ValueMember = "Id";
 
-                List<Classes.Component> componentsList = context.Components.ToList();
+                DataGridViewImageCell detailImageCell = new DataGridViewImageCell();
+                detailImageCell.Value = new Bitmap(25, 25);
+                Graphics.FromImage((Image)detailImageCell.Value).DrawImage(Image.FromFile("../../Resources/Detail_Icon.png"), new Rectangle(0, 0, 25, 25));
+
+                var componentsList = context.Components.Include(a => a.Attributes).ToList();
 
                 dataGridView1.Columns.Add(new DataGridViewCheckBoxColumn());
                 dataGridView1.Columns.Add("Id", "Id");
                 dataGridView1.Columns.Add("Model", "Модель");
                 dataGridView1.Columns.Add("ComponentType", "Тип компонента");
+                dataGridView1.Columns.Add(new DataGridViewImageColumn());
 
-                dataGridView1.Columns[1].Width = 25;
+                dataGridView1.Columns[0].Width = 28;
+                dataGridView1.Columns[1].Width = 100;
+                dataGridView1.Columns[2].Width = 141;
+                dataGridView1.Columns[3].Width = 100;
+                dataGridView1.Columns[4].Width = 28;
                 dataGridView1.RowTemplate.Height = 28;
 
                 foreach (Classes.Component c in componentsList)
                 {
-                    dataGridView1.Rows.Add(null, c.Id, c.Model, c.ComponentType);
+                    dataGridView1.Rows.Add(null, c.Id, c.Model, c.ComponentType, detailImageCell.Value);
                 }
             }
         }
