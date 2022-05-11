@@ -40,7 +40,7 @@
                 <DataGridTextColumn Binding="{Binding Id}"          Header="ID"                 Width="22"  MinWidth="22" MaxWidth="50"/>
                 <DataGridTextColumn Binding="{Binding Name}"        Header="Спортсмен"          Width="180" MinWidth="0"  MaxWidth="500"/>
                 <DataGridTextColumn Binding="{Binding SportKind}"   Header="Вид спорта"         Width="110" MinWidth="0"  MaxWidth="2000"/>
-                <DataGridTextColumn Binding="{Binding Gender}"      Header="Гендер"             Width="78"  MinWidth="78"  MaxWidth="78"/>
+                <DataGridTextColumn Binding="{Binding Gender}"      Header="Пол"                Width="78"  MinWidth="78"  MaxWidth="78"/>
                 <DataGridTextColumn Binding="{Binding Country}"     Header="Страна"             Width="200"   MinWidth="0"  MaxWidth="2000"/>
                 <DataGridTextColumn Binding="{Binding Point}"       Header="Баллы"              />
                 <DataGridTextColumn Binding="{Binding Place}"       Header="Место"              Width="*"/>
