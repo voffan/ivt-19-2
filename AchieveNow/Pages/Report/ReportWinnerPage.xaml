@@ -35,7 +35,7 @@
             </Button>
         </StackPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="ReportWinnerGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="40, 10, 40, 40">
+        <DataGrid AutoGenerateColumns="False" x:Name="ReportWinnerGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="40, 10, 40, 40" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}"          Header="ID"                 Width="22"  MinWidth="22" MaxWidth="50"/>
                 <DataGridTextColumn Binding="{Binding Name}"        Header="Спортсмен"          Width="180" MinWidth="0"  MaxWidth="500"/>

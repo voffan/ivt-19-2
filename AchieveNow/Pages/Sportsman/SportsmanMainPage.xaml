@@ -65,7 +65,7 @@
             <Button x:Name="Search_Button" Content="Искать" Click="Search_Button_Click" Margin="0, 0, 0, 10" FontSize="18"></Button>
         </WrapPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="SportsmenGrid" Grid.Row="1" Grid.Column="1">
+        <DataGrid AutoGenerateColumns="False" x:Name="SportsmenGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}"          Header="ID"             Width="22"  MinWidth="22" MaxWidth="50"/>
                 <DataGridTextColumn Binding="{Binding Name}"        Header="Имя"            Width="180" MinWidth="0"  MaxWidth="500"/>
