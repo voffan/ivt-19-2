@@ -35,12 +35,21 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Painting.Author.Name)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Painting.Author.Birthday)
+        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Painting.Author.Birthday)
         </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Painting.Author.DateOfDeath)
+        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Painting.Author.DateOfDeath)
         </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Painting.Author.ShortBio)
+        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Painting.Author.ShortBio)
         </dd>
@@ -56,6 +65,9 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Painting.Location.Name)
         </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Painting.Location.Adress)
+        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Painting.Location.Adress)
         </dd>

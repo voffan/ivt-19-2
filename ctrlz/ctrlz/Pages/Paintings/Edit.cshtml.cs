@@ -39,9 +39,9 @@ namespace ctrlz.Pages.Paintings
             {
                 return NotFound();
             }
-           ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id");
-           ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "Id");
-           ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Id");
+           ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name");
+           ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "Name");
+           ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Name");
             return Page();
         }
 

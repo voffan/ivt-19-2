@@ -1,4 +1,5 @@
 ﻿@page
+@using ctrlz.Classes
 @model ctrlz.Pages.Paintings.EditModel
 
 @{
@@ -30,23 +31,23 @@
                 <span asp-validation-for="Painting.DateOfCreation" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Painting.AuthorId" class="control-label"></label>
+                <label asp-for="Painting.Author" class="control-label"></label>
                 <select asp-for="Painting.AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
-                <span asp-validation-for="Painting.AuthorId" class="text-danger"></span>
+                <span asp-validation-for="Painting.Author.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Painting.GenreId" class="control-label"></label>
+                <label asp-for="Painting.Genre" class="control-label"></label>
                 <select asp-for="Painting.GenreId" class="form-control" asp-items="ViewBag.GenreId"></select>
-                <span asp-validation-for="Painting.GenreId" class="text-danger"></span>
+                <span asp-validation-for="Painting.Genre.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Painting.LocationId" class="control-label"></label>
+                <label asp-for="Painting.Location" class="control-label"></label>
                 <select asp-for="Painting.LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
-                <span asp-validation-for="Painting.LocationId" class="text-danger"></span>
+                <span asp-validation-for="Painting.Location.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Painting.Status" class="control-label"></label>
-                <select asp-for="Painting.Status" class="form-control"></select>
+                <select asp-for="Painting.Status" asp-items="Html.GetEnumSelectList<Status>()"></select>
                 <span asp-validation-for="Painting.Status" class="text-danger"></span>
             </div>
             <div class="form-group">
