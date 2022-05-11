@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hoplits"
         mc:Ignorable="d"
-        Title="EditError" Height="401" Width="487">
+        Title="EditError" Height="400" Width="480">
     <Grid Loaded="Form_Load">
         <Grid.RowDefinitions>
             <RowDefinition Height="316*"/>
