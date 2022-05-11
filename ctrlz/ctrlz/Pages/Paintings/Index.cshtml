@@ -2,43 +2,66 @@
 @model ctrlz.Pages.Paintings.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "PaintingsS";
 }
 
-<h1>Index</h1>
+<h1>Paintings</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Painting[0].Name)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Painting[0].Name)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Painting[0].Value)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ValueSort">
+                    @Html.DisplayNameFor(model => model.Painting[0].Value)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Painting[0].DateOfCreation)
+               <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Painting[0].DateOfCreation)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Painting[0].Author)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
+                    @Html.DisplayNameFor(model => model.Painting[0].Author)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Painting[0].Genre)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.GenreSort">
+                    @Html.DisplayNameFor(model => model.Painting[0].Genre)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Painting[0].Location)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LocationSort">
+                    @Html.DisplayNameFor(model => model.Painting[0].Location)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Painting[0].Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Painting) {
+                <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort">
+                    @Html.DisplayNameFor(model => model.Painting[0].Status)
+                </a><tbody>
+@foreach (var item in Model.Painting) 
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
