@@ -49,6 +49,8 @@ namespace Hoplits
                             id = item.id
                         });
                     }
+                    cb_errortype.SelectedValue = row.ErrorType;
+                    cb_employeeid.SelectedValue = row.EmployeeId;
                 }
             }
         }

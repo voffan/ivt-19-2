@@ -78,24 +78,7 @@ namespace Hoplits
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-            if(datagrid1.SelectedItem == null)
-            {
-                MessageBox.Show("Select please");
-                return;
-            }
-            int x = ((Error)datagrid1.SelectedItem).id;
-            switch (current)
-            {
-                case 1:
-                    EditError editError = new EditError(x);
-                    editError.Show();
-                    break;
-                case 2:
-                    break;
-                default:
-                    return;
-            }
-            
+            Correct();
         }
 
         private void Add(object sender, RoutedEventArgs e)
@@ -149,6 +132,29 @@ namespace Hoplits
             AddSolution addSolution = new AddSolution(error, id);
             addSolution.Show();
         }
+
+        private void Correct()
+        {
+            if (datagrid1.SelectedItem == null)
+            {
+                MessageBox.Show("Select please");
+                return;
+            }
+            int x = ((Error)datagrid1.SelectedItem).id;
+            switch (current)
+            {
+                case 1:
+                    EditError editError = new EditError(x);
+                    editError.Show();
+                    break;
+                case 2:
+                    EditEmployee editEmployee = new EditEmployee(x);
+                    editEmployee.Show();
+                    break;
+                default:
+                    return;
+            }
+        }
         private void Remove()
         {
             ApplicationContext a = new ApplicationContext();
@@ -166,6 +172,7 @@ namespace Hoplits
                 default:
                     return;
             }
+
             a.SaveChanges();
         }
     }

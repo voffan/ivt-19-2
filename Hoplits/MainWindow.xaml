@@ -30,8 +30,8 @@
         </Menu>
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="10,27,10,0" Loaded="Window_Loaded" Name="datagrid1" IsReadOnly="True" Height="340" VerticalAlignment="Top">
             <DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Edit"/>
+                <ContextMenu Name="contextmenu">
+                    <MenuItem Header="Edit" Click="Edit"/>
                     <MenuItem Header="Delete" Click="MenuItem_Delete"/>
                     <MenuItem Header="Show solutions" Click="Show_Solutions"/>
                     <MenuItem Header="Add solution" Click="Add_Solution"/>
