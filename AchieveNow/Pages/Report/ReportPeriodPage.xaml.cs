@@ -39,19 +39,7 @@ namespace AchieveNow.Pages.Report
 
         public void ShowGrid()
         {
-            using (ApplicationContext context = new ApplicationContext())
-            {
-                if (!context.IsAvailable)
-                    return;
-
-                var query = context.Sportsmen
-                    .Include("SportKind")
-                    .Include("Country")
-                    .Include("Achievements")
-                    .ToList();
-
-                ReportPeriodGrid.ItemsSource = query;
-            }
+            
         }
 
         public void Print_Button_Click(object sender, RoutedEventArgs e)

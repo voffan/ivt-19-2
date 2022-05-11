@@ -42,7 +42,7 @@
                 <DataGridTextColumn Binding="{Binding SportKind}"   Header="Вид спорта"         Width="110" MinWidth="0"  MaxWidth="2000"/>
                 <DataGridTextColumn Binding="{Binding Gender}"      Header="Пол"                Width="78"  MinWidth="78"  MaxWidth="78"/>
                 <DataGridTextColumn Binding="{Binding Country}"     Header="Страна"             Width="200"   MinWidth="0"  MaxWidth="2000"/>
-                <DataGridTextColumn Binding="{Binding Point}"       Header="Баллы"              />
+                <DataGridTextColumn Binding="{Binding Scores}"       Header="Баллы"              />
                 <DataGridTextColumn Binding="{Binding Place}"       Header="Место"              Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
