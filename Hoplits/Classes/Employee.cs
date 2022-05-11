@@ -27,7 +27,8 @@ namespace Hoplits.Classes
         //[Required(ErrorMessage = "Введите ФИО")]
         public string FullName { get; set; }
         //[Required(ErrorMessage = "Введите номер телефона")]
-        public int PhoneNumber { get; set; }
+        [MaxLength(12)]
+        public string PhoneNumber { get; set; }
         public string Post { get; set; }
 
         public int EmployerId { get; set; }

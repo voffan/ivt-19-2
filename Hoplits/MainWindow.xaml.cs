@@ -115,6 +115,12 @@ namespace Hoplits
             temp.Show();
         }
 
+        private void getAbout(object sender, RoutedEventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
+
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ApplicationContext a = new ApplicationContext();

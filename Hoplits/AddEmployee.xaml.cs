@@ -56,7 +56,7 @@ namespace Hoplits
                 Login = login.Text,
                 Password = password.Password,
                 FullName = fullname.Text,
-                PhoneNumber = int.Parse(phone.Text),
+                PhoneNumber = phone.Text,
                 Post = post.Text,
                 EmployerId = int.Parse(cbEmployer.SelectedValue.ToString())
             };
