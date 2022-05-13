@@ -33,11 +33,6 @@ namespace ctrlz.Pages.Paintings
 
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
-            Painting = await _context.Paintings
-                .Include(p => p.Author)
-                .Include(p => p.Genre)
-                .Include(p => p.Location).ToListAsync();
-
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             ValueSort = sortOrder == "Value" ? "value_desc" : "Value";
@@ -102,8 +97,11 @@ namespace ctrlz.Pages.Paintings
                     break;
             }
 
+            paintingsIQ = paintingsIQ.Include(s => s.Author);
+            paintingsIQ = paintingsIQ.Include(s => s.Genre);
+            paintingsIQ = paintingsIQ.Include(s => s.Location);
+
             Painting = await paintingsIQ.AsNoTracking().ToListAsync();
         }
     }
-
 }
