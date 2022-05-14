@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Yaxel.Classes
 {
@@ -11,5 +14,7 @@ namespace Yaxel.Classes
 
         public int ComponentId { get; set; }
         public virtual Component Component { get; set; }
+        [NotMapped]
+        public string AttrTypeTranslation { get { return EnumDictionaries.AttrTypeTranslation[Enum.GetName(typeof(AttrType), this.AttrType)]; } }
     }
 }

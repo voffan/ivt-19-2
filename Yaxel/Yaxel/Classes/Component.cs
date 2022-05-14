@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Yaxel.Classes
 {
@@ -18,5 +20,7 @@ namespace Yaxel.Classes
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual List<Computer> Computers { get; set; }
         public virtual List<Attribute> Attributes { get; set; }
+        [NotMapped]
+        public string ComponentTypeTranslation { get { return EnumDictionaries.ComponentTypeTranslation[Enum.GetName(typeof(ComponentType), this.ComponentType)]; } }
     }
 }

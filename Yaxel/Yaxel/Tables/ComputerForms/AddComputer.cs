@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Yaxel.Classes;
-using Yaxel.YaxelStyle;
+using Yaxel.Tables.ComponentForms;
 
 namespace Yaxel.Tables.ComputerForms
 {
@@ -55,7 +55,7 @@ namespace Yaxel.Tables.ComputerForms
 
                 foreach (Classes.Component c in componentsList)
                 {
-                    dataGridView1.Rows.Add(null, c.Id, c.Model, c.ComponentType, detailImageCell.Value);
+                    dataGridView1.Rows.Add(false, c.Id, c.Model, c.ComponentType, detailImageCell.Value);
                 }
             }
         }
@@ -82,6 +82,15 @@ namespace Yaxel.Tables.ComputerForms
                 context.SaveChanges();
 
                 Close();
+            }
+        }
+
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && (e.ColumnIndex == 4 && e.RowIndex > -1))
+            {
+                ListAttribute listAttributeForm = new ListAttribute((int)dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+                listAttributeForm.ShowDialog();
             }
         }
     }

@@ -7,6 +7,8 @@ namespace Yaxel
     internal static class EnumDictionaries
     {
         public static Dictionary<string, string> CompStatus = EnumTranslator.DescriptionAttributes<Classes.Status>.RetrieveBackConverter();
+        public static Dictionary<string, string> AttrTypeTranslation = EnumTranslator.DescriptionAttributes<Classes.AttrType>.RetrieveBackConverter();
+        public static Dictionary<string, string> ComponentTypeTranslation = EnumTranslator.DescriptionAttributes<Classes.ComponentType>.RetrieveBackConverter();
     }
 
     internal class EnumTranslator

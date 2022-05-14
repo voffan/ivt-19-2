@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
-            this.applyButton = new Yaxel.YaxelStyle.YaxelButton();
             this.comboBoxEmployee = new System.Windows.Forms.ComboBox();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,24 +37,10 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
+            this.applyButton = new Yaxel.YaxelStyle.YaxelButton();
+            this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // yaxelForm1
-            // 
-            this.yaxelForm1.ThisForm = this;
-            // 
-            // applyButton
-            // 
-            this.applyButton.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.applyButton.Font = new System.Drawing.Font("Arial", 16F);
-            this.applyButton.ForeColor = System.Drawing.Color.White;
-            this.applyButton.Location = new System.Drawing.Point(415, 502);
-            this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(250, 50);
-            this.applyButton.TabIndex = 23;
-            this.applyButton.Text = "Добавить";
-            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
             // comboBoxEmployee
             // 
@@ -132,6 +116,7 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.Size = new System.Drawing.Size(440, 340);
             this.dataGridView1.TabIndex = 24;
+            this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             // 
             // label4
             // 
@@ -143,6 +128,22 @@
             this.label4.TabIndex = 25;
             this.label4.Text = "Выбор компонентов";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // applyButton
+            // 
+            this.applyButton.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.applyButton.Font = new System.Drawing.Font("Arial", 16F);
+            this.applyButton.ForeColor = System.Drawing.Color.White;
+            this.applyButton.Location = new System.Drawing.Point(415, 502);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(250, 50);
+            this.applyButton.TabIndex = 23;
+            this.applyButton.Text = "Добавить";
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
+            // 
+            // yaxelForm1
+            // 
+            this.yaxelForm1.ThisForm = this;
             // 
             // AddComputer
             // 
