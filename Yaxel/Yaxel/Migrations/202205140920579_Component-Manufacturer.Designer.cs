@@ -7,13 +7,13 @@ namespace Yaxel.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class componentmanufcaturer2 : IMigrationMetadata
+    public sealed partial class ComponentManufacturer : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(componentmanufcaturer2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ComponentManufacturer));
         
         string IMigrationMetadata.Id
         {
-            get { return "202205050555599_component-manufcaturer2"; }
+            get { return "202205140920579_Component-Manufacturer"; }
         }
         
         string IMigrationMetadata.Source

@@ -73,13 +73,9 @@
     <Compile Include="Migrations\202205040234392_dropforeginkey computer components.designer.cs">
       <DependentUpon>202205040234392_dropforeginkey computer components.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205050553413_component-manufcaturer.cs" />
-    <Compile Include="Migrations\202205050553413_component-manufcaturer.designer.cs">
-      <DependentUpon>202205050553413_component-manufcaturer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205050555599_component-manufcaturer2.cs" />
-    <Compile Include="Migrations\202205050555599_component-manufcaturer2.designer.cs">
-      <DependentUpon>202205050555599_component-manufcaturer2.cs</DependentUpon>
+    <Compile Include="Migrations\202205140920579_Component-Manufacturer.cs" />
+    <Compile Include="Migrations\202205140920579_Component-Manufacturer.designer.cs">
+      <DependentUpon>202205140920579_Component-Manufacturer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Tables\ComponentForms\AddComponent.cs">
@@ -223,11 +219,8 @@
     <EmbeddedResource Include="Migrations\202205040234392_dropforeginkey computer components.resx">
       <DependentUpon>202205040234392_dropforeginkey computer components.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205050553413_component-manufcaturer.resx">
-      <DependentUpon>202205050553413_component-manufcaturer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205050555599_component-manufcaturer2.resx">
-      <DependentUpon>202205050555599_component-manufcaturer2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205140920579_Component-Manufacturer.resx">
+      <DependentUpon>202205140920579_Component-Manufacturer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>
