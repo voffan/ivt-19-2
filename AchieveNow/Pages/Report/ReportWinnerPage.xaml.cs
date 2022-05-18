@@ -77,6 +77,9 @@ namespace AchieveNow.Pages.Report
                     {
                         if (reader.HasRows) // если есть данные
                         {
+                            List<WinnerGrid> win = new List<WinnerGrid>();
+
+
                             while (reader.Read())   // построчно считываем данные
                             {
                                 var id = reader.GetValue(0);
@@ -84,9 +87,11 @@ namespace AchieveNow.Pages.Report
                                 var gender = reader.GetValue(3);
                                 var scores = reader.GetValue(5);
                                 var place = reader.GetValue(6);
+                                win.Add(new WinnerGrid() { Id = id.ToString(), Name = name.ToString(), SportKind = reader.GetValue(2).ToString(), Gender = gender.ToString(), Country = reader.GetValue(4).ToString(), Point = scores.ToString(), Place = place.ToString() });
 
                                 MessageBox.Show($"{id} | {name} | {gender} | {scores} | {place}");
                             }
+                            ReportWinnerGrid.ItemsSource = win;
                         }
                     }
                 }
@@ -100,36 +105,36 @@ namespace AchieveNow.Pages.Report
 
         public void Print_Button_Click(object sender, RoutedEventArgs e)
         {
-/*            MessageBox.Show("Out of бумага");
-            Microsoft.Office.Interop.Excel.Application excel = null;
-            Microsoft.Office.Interop.Excel.Workbook wb = null;
-            object missing = Type.Missing;
-            Microsoft.Office.Interop.Excel.Worksheet ws = null;
-            Microsoft.Office.Interop.Excel.Range rng = null;
+            /*            MessageBox.Show("Out of бумага");
+                        Microsoft.Office.Interop.Excel.Application excel = null;
+                        Microsoft.Office.Interop.Excel.Workbook wb = null;
+                        object missing = Type.Missing;
+                        Microsoft.Office.Interop.Excel.Worksheet ws = null;
+                        Microsoft.Office.Interop.Excel.Range rng = null;
 
-            // collection of DataGrid Items
-            var dtExcelDataTable = ReportWinnerGrid(txtFrmDte.Text, txtToDte.Text, strCondition);
+                        // collection of DataGrid Items
+                        var dtExcelDataTable = ReportWinnerGrid(txtFrmDte.Text, txtToDte.Text, strCondition);
 
-            excel = new Microsoft.Office.Interop.Excel.Application();
-            wb = excel.Workbooks.Add();
-            ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet;
-            ws.Columns.AutoFit();
-            ws.Columns.EntireColumn.ColumnWidth = 25;
+                        excel = new Microsoft.Office.Interop.Excel.Application();
+                        wb = excel.Workbooks.Add();
+                        ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet;
+                        ws.Columns.AutoFit();
+                        ws.Columns.EntireColumn.ColumnWidth = 25;
 
-            // Header row
-            for (int Idx = 0; Idx < dtExcelDataTable.Columns.Count; Idx++)
-            {
-                ws.Range["A1"].Offset[0, Idx].Value = dtExcelDataTable.Columns[Idx].ColumnName;
-            }
+                        // Header row
+                        for (int Idx = 0; Idx < dtExcelDataTable.Columns.Count; Idx++)
+                        {
+                            ws.Range["A1"].Offset[0, Idx].Value = dtExcelDataTable.Columns[Idx].ColumnName;
+                        }
 
-            // Data Rows
-            for (int Idx = 0; Idx < dtExcelDataTable.Rows.Count; Idx++)
-            {
-                ws.Range["A2"].Offset[Idx].Resize[1, dtExcelDataTable.Columns.Count].Value = dtExcelDataTable.Rows[Idx].ItemArray;
-            }
+                        // Data Rows
+                        for (int Idx = 0; Idx < dtExcelDataTable.Rows.Count; Idx++)
+                        {
+                            ws.Range["A2"].Offset[Idx].Resize[1, dtExcelDataTable.Columns.Count].Value = dtExcelDataTable.Rows[Idx].ItemArray;
+                        }
 
-            excel.Visible = true;
-            wb.Activate();*/
+                        excel.Visible = true;
+                        wb.Activate();*/
         }
 
         private void ReportWinner_Button_Click(object sender, RoutedEventArgs e)
@@ -158,4 +163,15 @@ namespace AchieveNow.Pages.Report
             NavigationService.Navigate(new Competition.CompetitionMainPage());
         }
     }
+}
+
+public class WinnerGrid
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public string SportKind { get; set; }
+    public string Gender { get; set; }
+    public string Country { get; set; }
+    public string Point { get; set; }
+    public string Place { get; set; }
 }
