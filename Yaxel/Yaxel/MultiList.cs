@@ -15,16 +15,16 @@ namespace Yaxel
 {
     public partial class MultiList : Form
     {
-        private static MultiList inst;
-        public static MultiList GetForm
-        {
-            get
-            {
-                if (inst == null || inst.IsDisposed)
-                    inst = new MultiList();
-                return inst;
-            }
-        }
+        //private static MultiList inst;
+        //public static MultiList GetForm
+        //{
+        //    get
+        //    {
+        //        if (inst == null || inst.IsDisposed)
+        //            inst = new MultiList();
+        //        return inst;
+        //    }
+        //}
 
         private String oldText = "";
         private String listName = "";

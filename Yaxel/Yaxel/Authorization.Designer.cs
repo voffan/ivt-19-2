@@ -132,7 +132,7 @@
             this.MinimumSize = new System.Drawing.Size(960, 540);
             this.Name = "Authorization";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Authorization";
+            this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.Authorization_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -7,16 +7,16 @@ namespace Yaxel
 {
     public partial class Authorization : Form
     {
-        private static Authorization inst;
-        public static Authorization GetForm
-        {
-            get
-            {
-                if (inst == null || inst.IsDisposed)
-                    inst = new Authorization();
-                return inst;
-            }
-        }
+        //private static Authorization inst;
+        //public static Authorization GetForm
+        //{
+        //    get
+        //    {
+        //        if (inst == null || inst.IsDisposed)
+        //            inst = new Authorization();
+        //        return inst;
+        //    }
+        //}
 
         string login, password;
 
@@ -70,9 +70,13 @@ namespace Yaxel
             {
                 if (context.Employees.Any(em => em.Login == login && em.Password == password && em.Position == Position.Sysadmin))
                 {
-                    Authorization.GetForm.Hide();
-                    MultiList.GetForm.ShowDialog();
-                    Authorization.GetForm.Show();
+                    //Authorization.GetForm.Hide();
+                    //MultiList.GetForm.ShowDialog();
+                    //Authorization.GetForm.Show();
+                    MultiList multiList = new MultiList();
+                    Hide();
+                    multiList.ShowDialog();
+                    Show();
                 }
                 else
                 {
