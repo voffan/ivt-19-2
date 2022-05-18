@@ -120,12 +120,6 @@
     <Compile Include="Tables\ComponentForms\DeleteComponent.Designer.cs">
       <DependentUpon>DeleteComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\ComponentForms\SelectComputer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tables\ComponentForms\SelectComputer.Designer.cs">
-      <DependentUpon>SelectComputer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tables\ComponentForms\UpdateComponent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,9 +262,6 @@
     </Compile>
     <EmbeddedResource Include="Tables\ComponentForms\DeleteComponent.resx">
       <DependentUpon>DeleteComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tables\ComponentForms\SelectComputer.resx">
-      <DependentUpon>SelectComputer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\UpdateComponent.resx">
       <DependentUpon>UpdateComponent.cs</DependentUpon>
