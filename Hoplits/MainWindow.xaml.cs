@@ -66,11 +66,6 @@ namespace Hoplits
             Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            datagrid1.IsReadOnly = false;
-        }
-
         private void Delete(object sender, RoutedEventArgs e)
         {
             Remove();
@@ -96,6 +91,7 @@ namespace Hoplits
                     return;
             }
             temp.Show();
+            
         }
 
         private void getAbout(object sender, RoutedEventArgs e)
@@ -106,21 +102,7 @@ namespace Hoplits
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationContext a = new ApplicationContext();
-            switch (current)
-            {
-                case 1:
-                    datagrid1.ItemsSource = a.Errors.ToList();
-                    datagrid1.Columns[0].Visibility = Visibility.Hidden;
-                    break;
-                case 2:
-                    datagrid1.ItemsSource = a.Employees.ToList();
-                    datagrid1.Columns[0].Visibility = Visibility.Hidden;
-                    break;
-                default:
-                    return;
-            }
-            
+            Update();
         }
         private void MenuItem_Delete(object sender, RoutedEventArgs e)
         {
@@ -137,6 +119,7 @@ namespace Hoplits
             Error error = obj as Error;
             AddSolution addSolution = new AddSolution(error, id);
             addSolution.Show();
+            
         }
 
         private void Correct()
@@ -146,14 +129,16 @@ namespace Hoplits
                 MessageBox.Show("Select please");
                 return;
             }
-            int x = ((Error)datagrid1.SelectedItem).id;
+            int x;
             switch (current)
             {
                 case 1:
+                    x = ((Error)datagrid1.SelectedItem).id;
                     EditError editError = new EditError(x);
                     editError.Show();
                     break;
                 case 2:
+                    x = ((Employee)datagrid1.SelectedItem).id;
                     EditEmployee editEmployee = new EditEmployee(x);
                     editEmployee.Show();
                     break;
@@ -180,6 +165,23 @@ namespace Hoplits
             }
 
             a.SaveChanges();
+        }
+        private void Update()
+        {
+            ApplicationContext a = new ApplicationContext();
+            switch (current)
+            {
+                case 1:
+                    datagrid1.ItemsSource = a.Errors.ToList();
+                    datagrid1.Columns[0].Visibility = Visibility.Hidden;
+                    break;
+                case 2:
+                    datagrid1.ItemsSource = a.Employees.ToList();
+                    datagrid1.Columns[0].Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    return;
+            }
         }
     }
 }

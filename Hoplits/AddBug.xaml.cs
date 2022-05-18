@@ -41,6 +41,7 @@ namespace Hoplits
             a.Errors.Add(error);
             a.SaveChanges();
             MessageBox.Show("Successfuly added");
+            this.Close();
         }
     }
 }
