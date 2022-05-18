@@ -193,7 +193,8 @@ namespace AchieveNow.Pages.Achievement
                     return;
 
                 IQueryable<Classes.Achievement> achievementIQuer = context.Achievements
-                    .Include("Competition");
+                    .Include("Competition")
+                    .Include("Sportsman");
 
                 if (Name_TextBox.Text != "")
                 {
