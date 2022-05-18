@@ -24,6 +24,8 @@ using AchieveNow.Pages.Country;
 using AchieveNow.Pages.User;
 using MySql.Data.MySqlClient;
 using Microsoft.Data.Sqlite;
+using System.IO;
+using System.Text.Json;
 
 namespace AchieveNow.Pages.Report
 {
@@ -45,59 +47,72 @@ namespace AchieveNow.Pages.Report
             {
                 if (!context.IsAvailable)
                     return;
-                /*var query1 = context.SportKinds.jo
-                var query = context.SportKinds
-                    .GroupJoin(context.Sportsmen,
-                    sportKind => sportKind.Id,
-                    sportsman => sportsman.Id,
-                    )
 
-                var query12345 = context.Achievements
-                    .FromSqlRaw("SELECT Sportsmen.Id, Sportsmen.Name, SportKinds.Name, Sportsmen.Gender, Countries.Name, (SUM(Achievements.Results)+SUM(Competitions.Level)) AS \"Scores\" FROM SportKinds JOIN Sportsmen ON SportKinds.Id = Sportsmen.SportKindId JOIN Achievements ON Achievements.SportsmanId = Sportsmen.Id JOIN Competitions ON Competitions.Id = Achievements.CompetitionId JOIN Countries ON Countries.Id = Sportsmen.CountryId GROUP BY Sportsmen.Name ORDER BY Scores")
-                    .Include(x => x.Competition)
-                    .Include("SportKinds")
-                    .Include("Sportsmen");
+                List<WinnerGrid> win = new List<WinnerGrid>();
+                string sql = "SELECT *, row_number() over(order by mytable.Scores) as Place FROM (SELECT Sportsmen.Id, Sportsmen.Name, SportKinds.Name, Sportsmen.Gender, Countries.Name, (SUM(Achievements.Result)+SUM(Competitions.Level)) as \"Scores\" FROM SportKinds JOIN Sportsmen ON SportKinds.Id = Sportsmen.SportKindId JOIN Achievements ON Achievements.SportsmanId = Sportsmen.Id JOIN Competitions ON Competitions.Id = Achievements.CompetitionId JOIN Countries ON Countries.Id = Sportsmen.CountryId GROUP BY Sportsmen.Name) mytable GROUP BY mytable.Name ORDER BY mytable.Scores";
 
-                var query123 = context.SportKinds
-                    .Include("Sportsmen")
-                    .FromSqlRaw;
+                FileInfo configurationFile = new FileInfo("ConfigurationDB.json");
+                var configurationDB = JsonSerializer.Deserialize<ConfigurationDB>(File.ReadAllText(configurationFile.ToString()));
 
-
-                ReportWinnerGrid.ItemsSource = query;*/
-
-                using (var connection = new SqliteConnection("Data Source=AchieveNowDB.db"))
+                if (configurationDB.isRemote)
                 {
-                    connection.Open();
+                    // Подключение к MySQL требует проверки
+                    string connString = $"Server={configurationDB?.Server};Database={configurationDB?.Database};port=3306;User Id={configurationDB?.User};password={configurationDB?.Password}";
 
-                    string sql = "SELECT *, row_number() over(order by mytable.Scores) as Place FROM (SELECT Sportsmen.Id, Sportsmen.Name, SportKinds.Name, Sportsmen.Gender, Countries.Name, (SUM(Achievements.Result)+SUM(Competitions.Level)) as \"Scores\" FROM SportKinds JOIN Sportsmen ON SportKinds.Id = Sportsmen.SportKindId JOIN Achievements ON Achievements.SportsmanId = Sportsmen.Id JOIN Competitions ON Competitions.Id = Achievements.CompetitionId JOIN Countries ON Countries.Id = Sportsmen.CountryId GROUP BY Sportsmen.Name) mytable GROUP BY mytable.Name ORDER BY mytable.Scores";
-
-                    SqliteCommand command = new SqliteCommand(sql, connection);
-
-                    using (var reader = command.ExecuteReader())
+                    using (var connection = new MySqlConnection(connString))
                     {
-                        if (reader.HasRows) // если есть данные
+                        connection.Open();
+
+                        MySqlCommand command = new MySqlCommand(sql, connection);
+
+                        using (var reader = command.ExecuteReader())
                         {
-                            List<WinnerGrid> win = new List<WinnerGrid>();
-
-
-                            while (reader.Read())   // построчно считываем данные
+                            if (reader.HasRows) // если есть данные
                             {
-                                var id = reader.GetValue(0);
-                                var name = reader.GetValue(1);
-                                var gender = reader.GetValue(3);
-                                var scores = reader.GetValue(5);
-                                var place = reader.GetValue(6);
-                                win.Add(new WinnerGrid() { Id = id.ToString(), Name = name.ToString(), SportKind = reader.GetValue(2).ToString(), Gender = gender.ToString(), Country = reader.GetValue(4).ToString(), Point = scores.ToString(), Place = place.ToString() });
+                                while (reader.Read())   // построчно считываем данные
+                                {
+                                    var id = reader.GetValue(0);
+                                    var name = reader.GetValue(1);
+                                    Gender gender = (Gender)Enum.GetValues(typeof(Gender)).GetValue(Convert.ToInt64(reader.GetValue(3)));
+                                    var scores = reader.GetValue(5);
+                                    var place = reader.GetValue(6);
 
-                                MessageBox.Show($"{id} | {name} | {gender} | {scores} | {place}");
+                                    win.Add(new WinnerGrid() { Id = id.ToString(), Name = name.ToString(), SportKind = reader.GetValue(2).ToString(), Gender = gender.ToString(), Country = reader.GetValue(4).ToString(), Point = scores.ToString(), Place = place.ToString() });
+                                }
                             }
-                            ReportWinnerGrid.ItemsSource = win;
                         }
                     }
                 }
-            }
+                else
+                {
+                    using (var connection = new SqliteConnection("Data Source=AchieveNowDB.db"))
+                    {
+                        connection.Open();
 
+                        SqliteCommand command = new SqliteCommand(sql, connection);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows) // если есть данные
+                            {
+                                while (reader.Read())   // построчно считываем данные
+                                {
+                                    var id = reader.GetValue(0);
+                                    var name = reader.GetValue(1);
+                                    Gender gender = (Gender)Enum.GetValues(typeof(Gender)).GetValue(Convert.ToInt64(reader.GetValue(3)));
+                                    var scores = reader.GetValue(5);
+                                    var place = reader.GetValue(6);
+
+                                    win.Add(new WinnerGrid() { Id = id.ToString(), Name = name.ToString(), SportKind = reader.GetValue(2).ToString(), Gender = gender.ToString(), Country = reader.GetValue(4).ToString(), Point = scores.ToString(), Place = place.ToString() });
+                                }
+                            }
+                        }
+                    }
+                }
+                ReportWinnerGrid.ItemsSource = win;
+            }
         }
+
         public void Update()
         {
             ShowGrid();
@@ -149,7 +164,7 @@ namespace AchieveNow.Pages.Report
 
         public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("What!?");
+            Update();
         }
 
         private void PageKeyUp(object sender, KeyEventArgs e)

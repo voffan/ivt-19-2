@@ -47,6 +47,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="Refresh_Button" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="642,0,0,0" Background="White"/>
+        <Button x:Name="Refresh_Button" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 40, 0" Background="White"/>
     </Grid>
 </Page>
