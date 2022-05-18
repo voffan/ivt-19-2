@@ -8,8 +8,8 @@ namespace AchieveNow.Classes
 {
     public enum Result
     {
-        Первое_место = 1,
+        Первое_место = 3,
         Второе_место = 2,
-        Третье_место = 3
+        Третье_место = 1
     }
 } 

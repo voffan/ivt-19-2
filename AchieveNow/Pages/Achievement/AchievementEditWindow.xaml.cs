@@ -124,9 +124,6 @@ namespace AchieveNow.Pages.Achievement
                 return;
             }
 
-            int result;
-            result = Result_ComboBox.SelectedIndex;
-
             DateOnly dateOfExecCompetition;
             try
             {
@@ -178,7 +175,7 @@ namespace AchieveNow.Pages.Achievement
                     {
                         achievementUpdate.Name = Name_TextBox.Text;
                         achievementUpdate.CompetitionId = competitionId;
-                        achievementUpdate.Result = (Result)Result_ComboBox.SelectedIndex;
+                        achievementUpdate.Result = (Result)Result_ComboBox.SelectedItem;
                         achievementUpdate.DateOfIssue = dateOfIssue;
 
                         context.SaveChanges();

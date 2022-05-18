@@ -46,8 +46,8 @@ namespace AchieveNow.Pages.Competition
             ListOfLocationsAndSporkinds();
 
             Name_TextBox.Text = competition.Name;
-
-            Level_ComboBox.SelectedIndex = (int)competition.Level;
+            
+            Level_ComboBox.SelectedItem = competition.Level;
 
             Location_ComboBox.SelectedValue = competition.Location.Id;
 
@@ -177,7 +177,7 @@ namespace AchieveNow.Pages.Competition
                     if (competitionUpdate != null)
                     {
                         competitionUpdate.Name = Name_TextBox.Text;
-                        competitionUpdate.Level = (Level)Level_ComboBox.SelectedIndex;
+                        competitionUpdate.Level = (Level)Level_ComboBox.SelectedItem;
                         competitionUpdate.LocationId = locationId;
                         competitionUpdate.SportKindId = sportKindId;
                         competitionUpdate.DateOfExecution = dateOfExecution;
