@@ -61,7 +61,7 @@ namespace Yaxel.Tables.ComputerForms
             {
                 if (e.ColumnIndex == 4 && e.RowIndex > -1)
                 {
-                    ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                    ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value, 1);
                     form.ShowDialog();
                 }
 

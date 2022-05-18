@@ -10,6 +10,7 @@ namespace Yaxel.Classes
         public Computer()
         {
             Components = new List<Component>();
+            Peripheries = new List<Periphery>();
         }
 
         public int Id { get; set; }
@@ -20,6 +21,7 @@ namespace Yaxel.Classes
         public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual List<Component> Components { get; set; }
+        public virtual List<Periphery> Peripheries { get; set; }
         [NotMapped]
         public string CompStatus { get { return EnumDictionaries.CompStatus[Enum.GetName(typeof(Status), this.Status)]; } }
     }

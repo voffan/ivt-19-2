@@ -9,6 +9,7 @@ using Yaxel.Classes;
 using Yaxel.Tables.ComputerForms;
 using Yaxel.Tables.ComponentForms;
 using Yaxel.Tables.EmployeeForms;
+using Yaxel.Tables.PeripheryForms;
 using Yaxel.Tables.ManufacturerForms;
 
 namespace Yaxel
@@ -123,12 +124,21 @@ namespace Yaxel
             {
                 DataGridViewImageCell updateImageCell = new DataGridViewImageCell();
                 DataGridViewImageCell detailImageCell = new DataGridViewImageCell();
+                DataGridViewImageCell componentImageCell = new DataGridViewImageCell();
+                DataGridViewImageCell PCImageCell = new DataGridViewImageCell();
+                DataGridViewImageCell PeripheryImageCell = new DataGridViewImageCell();
 
                 updateImageCell.Value = new Bitmap(25, 25);
                 detailImageCell.Value = new Bitmap(25, 25);
+                componentImageCell.Value = new Bitmap(25, 25);
+                PCImageCell.Value = new Bitmap(25, 25);
+                PeripheryImageCell.Value = new Bitmap(25, 25);
 
                 Graphics.FromImage((Image)updateImageCell.Value).DrawImage(Image.FromFile("../../Resources/Update_Icon.png"), new Rectangle(0, 0, 25, 25));
                 Graphics.FromImage((Image)detailImageCell.Value).DrawImage(Image.FromFile("../../Resources/Detail_Icon.png"), new Rectangle(0, 0, 25, 25));
+                Graphics.FromImage((Image)componentImageCell.Value).DrawImage(Image.FromFile("../../Resources/Component.png"), new Rectangle(0, 0, 25, 25));
+                Graphics.FromImage((Image)PCImageCell.Value).DrawImage(Image.FromFile("../../Resources/PC.png"), new Rectangle(0, 0, 25, 25));
+                Graphics.FromImage((Image)PeripheryImageCell.Value).DrawImage(Image.FromFile("../../Resources/Periphery.png"), new Rectangle(0, 0, 25, 25));
 
                 switch (cTable)
                 {
@@ -169,22 +179,45 @@ namespace Yaxel
                         dataGridView1.Columns.Add("Employee", "Сотрудник");
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
 
                         dataGridView1.Columns[0].Width = 25;
                         dataGridView1.Columns[4].Width = 28;
                         dataGridView1.Columns[5].Width = 28;
+                        dataGridView1.Columns[6].Width = 28;
                         dataGridView1.RowTemplate.Height = 28;
 
                         foreach (Computer c in computersList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, detailImageCell.Value, updateImageCell.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, componentImageCell.Value, PeripheryImageCell.Value, updateImageCell.Value);
                         }
                         break;
 
                     // периферия
                     case CurrentTable.Periphery:
+                        dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
-                        dataGridView1.DataSource = context.Peripheries.ToList();
+                        //dataGridView1.DataSource = context.Peripheries.ToList();
+
+                        List<Periphery> peripheriesList = context.Peripheries.Include(p => p.Manufacturer).ToList();
+
+                        dataGridView1.Columns.Add("Id", "Id");
+                        dataGridView1.Columns.Add("Model", "Модель");
+                        dataGridView1.Columns.Add("PeripheryType", "Тип");
+                        dataGridView1.Columns.Add("Status", "Статус");
+                        dataGridView1.Columns.Add("Manufacturer", "Производитель");
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
+
+                        dataGridView1.Columns[0].Width = 25;
+                        dataGridView1.Columns[5].Width = 28;
+                        dataGridView1.Columns[6].Width = 28;
+                        dataGridView1.RowTemplate.Height = 28;
+
+                        foreach (Periphery p in peripheriesList)
+                        {
+                            dataGridView1.Rows.Add(p.Id, p.Model, p.TranslationType, p.PeripheryStatus, p.Manufacturer.Name, PCImageCell.Value, updateImageCell.Value);
+                        }
                         break;
 
                     // компонент
@@ -210,7 +243,7 @@ namespace Yaxel
 
                         foreach (Component c in componentsList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Model, c.ComponentType, c.Manufacturer.Name, detailImageCell.Value, detailImageCell.Value, updateImageCell.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Model, c.ComponentType, c.Manufacturer.Name, PCImageCell.Value, detailImageCell.Value, updateImageCell.Value);
                         }
                         break;
 
@@ -242,26 +275,38 @@ namespace Yaxel
                         }
                         break;
                     case CurrentTable.Computer:
-                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
-                        {
-                            UpdateComputer form = new UpdateComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-                            form.ShowDialog();
-                            fillDataGridView();
-                        }
-
                         if (e.ColumnIndex == 4 && e.RowIndex > -1)
                         {
                             ListComponent form = new ListComponent((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                         }
+
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
+                        {
+                            //ListComponent form = new ListComponent((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            //form.ShowDialog();
+                            MessageBox.Show("Periphery");
+                        }
+
+                        if (e.ColumnIndex == 6 && e.RowIndex > -1)
+                        {
+                            UpdateComputer form = new UpdateComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                            fillDataGridView();
+                        }
                         break;
                     case CurrentTable.Periphery:
-
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
+                        {
+                            ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value, 2);
+                            form.ShowDialog();
+                            //MessageBox.Show("Periphery");
+                        }
                         break;
                     case CurrentTable.Component:
                         if (e.ColumnIndex == 4 && e.RowIndex > -1)
                         {
-                            ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value, 1);
                             form.ShowDialog();
                         }
 
@@ -292,28 +337,37 @@ namespace Yaxel
         {
             switch (cTable)
             {
+                
                 case CurrentTable.Employee:
                     AddEmployee formEmployee = new AddEmployee();
                     formEmployee.ShowDialog();
                     fillDataGridView();
                     break;
+
                 case CurrentTable.Computer:
                     AddComputer computerForm = new AddComputer();
                     computerForm.ShowDialog();
                     fillDataGridView();
                     break;
+
                 case CurrentTable.Periphery:
+                    AddPeriphery peripheryForm = new AddPeriphery();
+                    peripheryForm.ShowDialog();
+                    fillDataGridView();
                     break;
+
                 case CurrentTable.Component:
                     AddComponent componentForm = new AddComponent();
                     componentForm.ShowDialog();
                     fillDataGridView();
                     break;
+
                 case CurrentTable.Manufacturer:
                     AddManufacturer manufacturerForm = new AddManufacturer();
                     manufacturerForm.ShowDialog();
                     fillDataGridView();
                     break;
+
                 case CurrentTable.none:
 
                     break;

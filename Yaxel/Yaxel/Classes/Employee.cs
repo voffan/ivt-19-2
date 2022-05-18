@@ -13,6 +13,6 @@ namespace Yaxel.Classes
         public Position Position { get; set; }
 
         public virtual List<Computer> Computers { get; set; }
-        public virtual List<Periphery> Peripheries { get; set; }
+        //public virtual List<Periphery> Peripheries { get; set; }
     }
 }

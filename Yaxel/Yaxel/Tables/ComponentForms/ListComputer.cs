@@ -16,10 +16,12 @@ namespace Yaxel.Tables.ComponentForms
     public partial class ListComputer : Form
     {
         int id;
-        public ListComputer(int id)
+        private int num;
+        public ListComputer(int id, int num)
         {
             InitializeComponent();
             this.id = id;
+            this.num = num;
         }
 
         private void ListComputer_Load(object sender, EventArgs e)
@@ -30,8 +32,19 @@ namespace Yaxel.Tables.ComponentForms
 
             using (var context = new YaxelContext())
             {
-                Classes.Component component = context.Components.Include(c => c.Computers.Select(x => x.Employee)).Where(item => item.Id == id).FirstOrDefault();
-                List<Computer> computers = component.Computers.ToList();
+                List<Computer> computers = context.Computers.ToList();
+                if (num == 1)
+                {
+                    Classes.Component component = context.Components.Include(c => c.Computers.Select(x => x.Employee)).Where(item => item.Id == id).FirstOrDefault();
+                    computers = component.Computers.ToList();
+                }
+                else if (num == 2)
+                {
+                    Periphery periphery = context.Peripheries.Include(c => c.Computers.Select(x => x.Employee)).Where(item => item.Id == id).FirstOrDefault();
+                    computers = periphery.Computers.ToList();
+                }
+                //Classes.Component component = context.Components.Include(c => c.Computers.Select(x => x.Employee)).Where(item => item.Id == id).FirstOrDefault();
+                //List<Computer> computers = component.Computers.ToList();
 
                 dataGridView1.Columns.Add("Id", "Id");
                 dataGridView1.Columns.Add("Name", "Имя компьютера");
