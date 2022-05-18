@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Yaxel.Classes;
 using Yaxel.Tables.ComponentForms;
+using Yaxel.Tables.Lists;
 
 namespace Yaxel.Tables.ComputerForms
 {
@@ -89,7 +90,7 @@ namespace Yaxel.Tables.ComputerForms
         {
             if (e.Button == MouseButtons.Left && (e.ColumnIndex == 4 && e.RowIndex > -1))
             {
-                ListAttribute listAttributeForm = new ListAttribute((int)dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+                AttributeList listAttributeForm = new AttributeList((int)dataGridView1.Rows[e.RowIndex].Cells[1].Value);
                 listAttributeForm.ShowDialog();
             }
         }

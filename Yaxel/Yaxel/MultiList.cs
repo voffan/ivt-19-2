@@ -11,6 +11,7 @@ using Yaxel.Tables.ComponentForms;
 using Yaxel.Tables.EmployeeForms;
 using Yaxel.Tables.PeripheryForms;
 using Yaxel.Tables.ManufacturerForms;
+using Yaxel.Tables.Lists;
 
 namespace Yaxel
 {
@@ -267,7 +268,7 @@ namespace Yaxel
                 switch (cTable)
                 {
                     case CurrentTable.Employee:
-                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1) // Update
                         {
                             UpdateEmployee form = new UpdateEmployee((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
@@ -275,20 +276,20 @@ namespace Yaxel
                         }
                         break;
                     case CurrentTable.Computer:
-                        if (e.ColumnIndex == 4 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 4 && e.RowIndex > -1) // Component
                         {
-                            ListComponent form = new ListComponent((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            ComponentList form = new ComponentList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                         }
 
-                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1) // Periphery
                         {
-                            //ListComponent form = new ListComponent((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-                            //form.ShowDialog();
-                            MessageBox.Show("Periphery");
+                            PeripheryList form = new PeripheryList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                            fillDataGridView();
                         }
 
-                        if (e.ColumnIndex == 6 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
                         {
                             UpdateComputer form = new UpdateComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
@@ -296,24 +297,32 @@ namespace Yaxel
                         }
                         break;
                     case CurrentTable.Periphery:
-                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1) // Computer
                         {
-                            ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value, 2);
+                            ComputerList form = new ComputerList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value, 2);
                             form.ShowDialog();
                             //MessageBox.Show("Periphery");
                         }
+                        if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
+                        {
+                            MessageBox.Show("Update");
+                        }
                         break;
                     case CurrentTable.Component:
-                        if (e.ColumnIndex == 4 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 4 && e.RowIndex > -1) // Computer
                         {
-                            ListComputer form = new ListComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value, 1);
+                            ComputerList form = new ComputerList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value, 1);
                             form.ShowDialog();
                         }
 
-                        if (e.ColumnIndex == 5 && e.RowIndex > -1)
+                        if (e.ColumnIndex == 5 && e.RowIndex > -1) // Attribute
                         {
-                            ListAttribute form = new ListAttribute((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            AttributeList form = new AttributeList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
+                        }
+                        if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
+                        {
+                            MessageBox.Show("Update");
                         }
                         break;
                     case CurrentTable.none:
@@ -400,7 +409,14 @@ namespace Yaxel
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
+                    List<int> delPeriphery = new List<int>();
 
+                    for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                        delPeriphery.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
+
+                    DeletePeriphery peripheryForm = new DeletePeriphery(delPeriphery);
+                    peripheryForm.ShowDialog();
+                    fillDataGridView();
                     break;
                 case CurrentTable.Component:
                     List<int> delComponents = new List<int>();

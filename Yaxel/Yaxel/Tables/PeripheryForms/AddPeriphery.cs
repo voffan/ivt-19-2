@@ -11,6 +11,7 @@ using System.Data.Entity;
 using Yaxel.Classes;
 using Yaxel.Tables.ComponentForms;
 using Yaxel.Tables.ComputerForms;
+using Yaxel.Tables.Lists;
 
 namespace Yaxel.Tables.PeripheryForms
 {
@@ -95,7 +96,7 @@ namespace Yaxel.Tables.PeripheryForms
         {
             if (e.Button == MouseButtons.Left && (e.ColumnIndex == 5 && e.RowIndex > -1))
             {
-                ListComponent form = new ListComponent((int)dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+                ComponentList form = new ComponentList((int)dataGridView1.Rows[e.RowIndex].Cells[1].Value);
                 form.ShowDialog();
             }
         }

@@ -120,18 +120,6 @@
     <Compile Include="Tables\ComponentForms\DeleteComponent.Designer.cs">
       <DependentUpon>DeleteComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\ComponentForms\ListAttribute.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tables\ComponentForms\ListAttribute.Designer.cs">
-      <DependentUpon>ListAttribute.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tables\ComponentForms\ListComputer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tables\ComponentForms\ListComputer.Designer.cs">
-      <DependentUpon>ListComputer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tables\ComponentForms\SelectComputer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,12 +143,6 @@
     </Compile>
     <Compile Include="Tables\ComputerForms\DeleteComputer.Designer.cs">
       <DependentUpon>DeleteComputer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tables\ComputerForms\ListComponent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tables\ComputerForms\ListComponent.Designer.cs">
-      <DependentUpon>ListComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\ComputerForms\SearchComputer.cs">
       <SubType>Form</SubType>
@@ -192,6 +174,30 @@
     <Compile Include="Tables\EmployeeForms\UpdateEmployee.Designer.cs">
       <DependentUpon>UpdateEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\Lists\AttributeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\Lists\AttributeList.Designer.cs">
+      <DependentUpon>AttributeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\Lists\ComponentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\Lists\ComponentList.Designer.cs">
+      <DependentUpon>ComponentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\Lists\ComputerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\Lists\ComputerList.Designer.cs">
+      <DependentUpon>ComputerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\Lists\PeripheryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\Lists\PeripheryList.Designer.cs">
+      <DependentUpon>PeripheryList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\ManufacturerForms\AddManufacturer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,12 @@
     </Compile>
     <Compile Include="Tables\PeripheryForms\AddPeriphery.Designer.cs">
       <DependentUpon>AddPeriphery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\PeripheryForms\DeletePeriphery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\PeripheryForms\DeletePeriphery.Designer.cs">
+      <DependentUpon>DeletePeriphery.cs</DependentUpon>
     </Compile>
     <Compile Include="YaxelContext.cs" />
     <Compile Include="YaxelStyle\YaxelButton.cs">
@@ -257,12 +269,6 @@
     <EmbeddedResource Include="Tables\ComponentForms\DeleteComponent.resx">
       <DependentUpon>DeleteComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\ComponentForms\ListAttribute.resx">
-      <DependentUpon>ListAttribute.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tables\ComponentForms\ListComputer.resx">
-      <DependentUpon>ListComputer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\SelectComputer.resx">
       <DependentUpon>SelectComputer.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,9 +280,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\DeleteComputer.resx">
       <DependentUpon>DeleteComputer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tables\ComputerForms\ListComponent.resx">
-      <DependentUpon>ListComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\SearchComputer.resx">
       <DependentUpon>SearchComputer.cs</DependentUpon>
@@ -293,6 +296,18 @@
     <EmbeddedResource Include="Tables\EmployeeForms\UpdateEmployee.resx">
       <DependentUpon>UpdateEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Lists\AttributeList.resx">
+      <DependentUpon>AttributeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Lists\ComponentList.resx">
+      <DependentUpon>ComponentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Lists\ComputerList.resx">
+      <DependentUpon>ComputerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Lists\PeripheryList.resx">
+      <DependentUpon>PeripheryList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\ManufacturerForms\AddManufacturer.resx">
       <DependentUpon>AddManufacturer.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\PeripheryForms\AddPeriphery.resx">
       <DependentUpon>AddPeriphery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\PeripheryForms\DeletePeriphery.resx">
+      <DependentUpon>DeletePeriphery.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

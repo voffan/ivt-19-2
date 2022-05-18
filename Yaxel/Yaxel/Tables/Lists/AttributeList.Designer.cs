@@ -1,6 +1,6 @@
-﻿namespace Yaxel.Tables.ComponentForms
+﻿namespace Yaxel.Tables.Lists
 {
-    partial class ListComputer
+    partial class AttributeList
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // yaxelForm1
+            // 
+            this.yaxelForm1.ThisForm = this;
             // 
             // dataGridView1
             // 
@@ -45,27 +49,23 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 37);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(743, 394);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 412);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             // 
-            // yaxelForm1
-            // 
-            this.yaxelForm1.ThisForm = this;
-            // 
-            // ListComputer
+            // AttributeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 432);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataGridView1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ListComputer";
+            this.Name = "AttributeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Список компьютеров";
-            this.Load += new System.EventHandler(this.ListComputer_Load);
+            this.Text = "Список атрибутов";
+            this.Load += new System.EventHandler(this.AttributeList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
