@@ -22,6 +22,8 @@ using AchieveNow.Pages.Sportsman;
 using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Country;
 using AchieveNow.Pages.User;
+using MySql.Data.MySqlClient;
+using Microsoft.Data.Sqlite;
 
 namespace AchieveNow.Pages.Report
 {
@@ -43,14 +45,51 @@ namespace AchieveNow.Pages.Report
             {
                 if (!context.IsAvailable)
                     return;
+                /*var query1 = context.SportKinds.jo
+                var query = context.SportKinds
+                    .GroupJoin(context.Sportsmen,
+                    sportKind => sportKind.Id,
+                    sportsman => sportsman.Id,
+                    )
 
-                /*var query = context.Achievements
-                    .FromSqlRaw("SELECT Sportsmen.Id, Sportsmen.Name, SportKinds.Name, Sportsmen.Gender, Countries.Name, (SUM(Achievements.Result)+SUM(Competitions.Level)) AS \"Scores\" FROM SportKinds JOIN Sportsmen ON SportKinds.Id = Sportsmen.SportKindId JOIN Achievements ON Achievements.SportsmanId = Sportsmen.Id JOIN Competitions ON Competitions.Id = Achievements.CompetitionId JOIN Countries ON Countries.Id = Sportsmen.CountryId GROUP BY Sportsmen.Name ORDER BY Scores")
+                var query12345 = context.Achievements
+                    .FromSqlRaw("SELECT Sportsmen.Id, Sportsmen.Name, SportKinds.Name, Sportsmen.Gender, Countries.Name, (SUM(Achievements.Results)+SUM(Competitions.Level)) AS \"Scores\" FROM SportKinds JOIN Sportsmen ON SportKinds.Id = Sportsmen.SportKindId JOIN Achievements ON Achievements.SportsmanId = Sportsmen.Id JOIN Competitions ON Competitions.Id = Achievements.CompetitionId JOIN Countries ON Countries.Id = Sportsmen.CountryId GROUP BY Sportsmen.Name ORDER BY Scores")
                     .Include(x => x.Competition)
                     .Include("SportKinds")
                     .Include("Sportsmen");
 
+                var query123 = context.SportKinds
+                    .Include("Sportsmen")
+                    .FromSqlRaw;
+
+
                 ReportWinnerGrid.ItemsSource = query;*/
+
+                using (var connection = new SqliteConnection("Data Source=AchieveNowDB.db"))
+                {
+                    connection.Open();
+
+                    string sql = "SELECT *, row_number() over(order by mytable.Scores) as Place FROM (SELECT Sportsmen.Id, Sportsmen.Name, SportKinds.Name, Sportsmen.Gender, Countries.Name, (SUM(Achievements.Result)+SUM(Competitions.Level)) as \"Scores\" FROM SportKinds JOIN Sportsmen ON SportKinds.Id = Sportsmen.SportKindId JOIN Achievements ON Achievements.SportsmanId = Sportsmen.Id JOIN Competitions ON Competitions.Id = Achievements.CompetitionId JOIN Countries ON Countries.Id = Sportsmen.CountryId GROUP BY Sportsmen.Name) mytable GROUP BY mytable.Name ORDER BY mytable.Scores";
+
+                    SqliteCommand command = new SqliteCommand(sql, connection);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows) // если есть данные
+                        {
+                            while (reader.Read())   // построчно считываем данные
+                            {
+                                var id = reader.GetValue(0);
+                                var name = reader.GetValue(1);
+                                var gender = reader.GetValue(3);
+                                var scores = reader.GetValue(5);
+                                var place = reader.GetValue(6);
+
+                                MessageBox.Show($"{id} | {name} | {gender} | {scores} | {place}");
+                            }
+                        }
+                    }
+                }
             }
 
         }
