@@ -204,6 +204,12 @@
     <Compile Include="Tables\ManufacturerForms\DeleteManufacturer.Designer.cs">
       <DependentUpon>DeleteManufacturer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\ManufacturerForms\UpdateManufacturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ManufacturerForms\UpdateManufacturer.Designer.cs">
+      <DependentUpon>UpdateManufacturer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\PeripheryForms\AddPeriphery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ManufacturerForms\DeleteManufacturer.resx">
       <DependentUpon>DeleteManufacturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ManufacturerForms\UpdateManufacturer.resx">
+      <DependentUpon>UpdateManufacturer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\PeripheryForms\AddPeriphery.resx">
       <DependentUpon>AddPeriphery.cs</DependentUpon>

@@ -252,7 +252,18 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        dataGridView1.DataSource = context.Manufacturers.ToList();
+                        List<Manufacturer> manufacturers = context.Manufacturers.ToList();
+                        dataGridView1.Columns.Add("Id", "Id");
+                        dataGridView1.Columns.Add("Name", "Название");
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
+
+                        dataGridView1.Columns[2].Width = 50;
+                        dataGridView1.RowTemplate.Height = 28;
+
+                        foreach (Manufacturer m in manufacturers)
+                        {
+                            dataGridView1.Rows.Add(m.Id, m.Name, updateImageCell.Value);
+                        }
 
                         break;
                     case CurrentTable.none:
@@ -286,7 +297,6 @@ namespace Yaxel
                         {
                             PeripheryList form = new PeripheryList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
-                            fillDataGridView();
                         }
 
                         if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
@@ -301,7 +311,6 @@ namespace Yaxel
                         {
                             ComputerList form = new ComputerList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value, 2);
                             form.ShowDialog();
-                            //MessageBox.Show("Periphery");
                         }
                         if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
                         {
@@ -323,6 +332,14 @@ namespace Yaxel
                         if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
                         {
                             MessageBox.Show("Update");
+                        }
+                        break;
+                    case CurrentTable.Manufacturer:
+                        if (e.ColumnIndex == 2 && e.RowIndex > -1) // Update
+                        {
+                            UpdateManufacturer form = new UpdateManufacturer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                            fillDataGridView();
                         }
                         break;
                     case CurrentTable.none:
