@@ -43,5 +43,10 @@ namespace Yaxel.Tables.PeripheryForms
         {
             Close();
         }
+
+        private void DeletePeriphery_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

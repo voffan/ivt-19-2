@@ -19,7 +19,7 @@ namespace Yaxel
     {
         //private static MultiList inst;
         //public static MultiList GetForm
-        //{
+        //{ 
         //    get
         //    {
         //        if (inst == null || inst.IsDisposed)
@@ -314,7 +314,10 @@ namespace Yaxel
                         }
                         if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
                         {
-                            MessageBox.Show("Update");
+                            UpdatePeriphery form = new UpdatePeriphery((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                            fillDataGridView();
+                            //MessageBox.Show("Update");
                         }
                         break;
                     case CurrentTable.Component:
@@ -331,7 +334,10 @@ namespace Yaxel
                         }
                         if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
                         {
-                            MessageBox.Show("Update");
+                            UpdateComponent form = new UpdateComponent((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                            fillDataGridView();
+                            //MessageBox.Show("Update");
                         }
                         break;
                     case CurrentTable.Manufacturer:

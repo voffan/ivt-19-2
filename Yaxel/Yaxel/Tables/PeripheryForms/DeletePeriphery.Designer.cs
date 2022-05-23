@@ -87,6 +87,7 @@
             this.Name = "DeletePeriphery";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Удалить периферию";
+            this.Load += new System.EventHandler(this.DeletePeriphery_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

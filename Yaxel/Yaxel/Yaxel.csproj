@@ -222,6 +222,12 @@
     <Compile Include="Tables\PeripheryForms\DeletePeriphery.Designer.cs">
       <DependentUpon>DeletePeriphery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\PeripheryForms\UpdatePeriphery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\PeripheryForms\UpdatePeriphery.Designer.cs">
+      <DependentUpon>UpdatePeriphery.cs</DependentUpon>
+    </Compile>
     <Compile Include="YaxelContext.cs" />
     <Compile Include="YaxelStyle\YaxelButton.cs">
       <SubType>Component</SubType>
@@ -319,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\PeripheryForms\DeletePeriphery.resx">
       <DependentUpon>DeletePeriphery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\PeripheryForms\UpdatePeriphery.resx">
+      <DependentUpon>UpdatePeriphery.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
