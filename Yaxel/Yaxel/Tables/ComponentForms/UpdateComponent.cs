@@ -91,6 +91,10 @@ namespace Yaxel.Tables.ComponentForms
                 {
                     dataGridView2.Rows.Add(component.Computers.Contains(c), c.Id, c.Name, c.CompStatus, c.Employee.Name, PeripheryImageCell.Value);
                 }
+
+                List<Classes.Attribute> currentAttributes = context.Attributes.Where(a => a.ComponentId == componentId).ToList();
+                context.Attributes.RemoveRange(currentAttributes);
+                context.SaveChanges();
             }
         }
 
@@ -150,22 +154,14 @@ namespace Yaxel.Tables.ComponentForms
                     }
                 }
 
-                context.SaveChanges();             
+                foreach (var at in attributes)
+                {
+                    at.ComponentId = componentId;
+                }
+
+                component.Attributes.AddRange(attributes);
+                context.SaveChanges();
             }
-
-            //using (var context = new YaxelContext())
-            //{
-            //    List<Classes.Attribute> currentAttributes = context.Attributes.Where(a => a.ComponentId == componentId).ToList();
-            //    context.Attributes.RemoveRange(currentAttributes);
-
-            //    foreach (var at in attributes)
-            //    {
-            //        at.ComponentId = componentId;
-            //    }
-
-            //    context.Attributes.AddRange(attributes);
-            //    context.SaveChanges();
-            //}
             Close();
         }
     }
