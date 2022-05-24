@@ -12,10 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AchieveNow.ProgramClasses;
-using AchieveNow.Classes;
+using AchieveNow.Pages;
 using AchieveNow.Pages.Competition;
-using AchieveNow.Pages.Sportsman;
 
 namespace AchieveNow
 {
@@ -28,7 +26,7 @@ namespace AchieveNow
         {
             InitializeComponent();
 
-            MainFrame.Content = new CompetitionMainPage();
+            MainFrame.Content = new AuthorizationPage();
         }
     }
 }
