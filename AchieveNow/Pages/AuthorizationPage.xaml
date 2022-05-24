@@ -1,0 +1,33 @@
+﻿<Page x:Class="AchieveNow.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AchieveNow.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="Авторизация"
+      Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.6*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20, 0, 0">
+            <TextBlock Text="Вход в аккаунт AchieveNow" Grid.Row="0" FontSize="35" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Text="Введите логин и пароль, выданный администратором" Grid.Row="0" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+            <TextBlock Text="Логин" Margin="10, 0, 0, 10"></TextBlock>
+            <TextBox x:Name="Login_TextBox" Margin="0, 0, 0, 30" FontSize="20"></TextBox>
+            <TextBlock Text="Пароль" Margin="10, 0, 0, 10"></TextBlock>
+            <TextBox x:Name="Password_TextBox" Margin="0, 0, 0, 30" FontSize="20"></TextBox>
+        </StackPanel>
+
+        <Button x:Name="Login_Button" Grid.Row="2" Content="Войти в аккаунт" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Width="600" Height="45" Click="Login_Button_Click"></Button>
+    </Grid>
+</Page>

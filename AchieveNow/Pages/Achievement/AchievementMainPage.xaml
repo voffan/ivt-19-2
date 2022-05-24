@@ -23,7 +23,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel x:Name="Pages_StackPanel" Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="Competition_Button" Content="Соревнования" Margin="0, 0, 10, 0" Click="Button_Competitions"></Button>
             <Button x:Name="Achievement_Button" Content="Достижения" Margin="0, 0, 10, 0" Background="Gray"></Button>
             <Button x:Name="Sportsman_Button" Content="Спортсмены" Margin="0, 0, 10, 0" Click="Button_Sportsmen"></Button>
@@ -31,7 +31,7 @@
             <Button x:Name="SportKind_Button" Content="Виды спорта" Margin="0, 0, 10, 0" Click="Button_SportKinds"></Button>
             <Button x:Name="Country_Button" Content="Страны" Margin="0, 0, 10, 0" Click="Button_Countries"></Button>
             <Button x:Name="User_Button" Content="Пользователи" Margin="0, 0, 10, 0" Click="Button_Users"></Button>
-        </WrapPanel>
+        </StackPanel>
 
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>

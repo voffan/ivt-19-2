@@ -34,7 +34,7 @@ namespace AchieveNow.Pages.Report
         {
             InitializeComponent();
             Page_ReportPeriodPage.Focus();
-            ShowGrid();
+            Update();
         }
 
         public void ShowGrid()
@@ -42,9 +42,102 @@ namespace AchieveNow.Pages.Report
             
         }
 
+        // Вывести в ComboBox данные из таблицы Locations и Sportkinds
+        private void ListOfSportkinds()
+        {
+            SportKind_ComboBox.Items.Clear();
+
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var sportKinds = context.SportKinds.ToList();
+                foreach (Classes.SportKind sportKind in sportKinds)
+                {
+                    SportKind_ComboBox.Items.Add(sportKind);
+                }
+
+                SportKind_ComboBox.DisplayMemberPath = "Name";
+                SportKind_ComboBox.SelectedValuePath = "Id";
+            }
+        }
+
+        private void Update()
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                {
+                    ReportPeriodGrid.ItemsSource = null;
+                    return;
+                }
+
+                ShowGrid();
+                ListOfSportkinds();
+            }
+        }
+
+        private void ClearForms()
+        {
+            SportKind_ComboBox.SelectedItem = null;
+            FromDateOfExecution_DatePicker.SelectedDate = null;
+            ToDateOfExecution_DatePicker.SelectedDate = null;
+        }
+
+        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+            int sportKindId;
+            if (SportKind_ComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите вид спорта");
+                return;
+            }
+
+            try
+            {
+                Int32.TryParse(SportKind_ComboBox.SelectedValue.ToString(), out int sportKindIdParsed);
+                sportKindId = sportKindIdParsed;
+            }
+            catch
+            {
+                MessageBox.Show("Неизвестная ошибка при выборе вида спорта");
+                return;
+            }
+
+            DateOnly fromDateOfExecution;
+            DateOnly toDateOfExecution;
+
+            if (FromDateOfExecution_DatePicker.SelectedDate != null && ToDateOfExecution_DatePicker.SelectedDate != null)
+            {
+
+                fromDateOfExecution = DateOnly.FromDateTime((DateTime)FromDateOfExecution_DatePicker.SelectedDate);
+                toDateOfExecution = DateOnly.FromDateTime((DateTime)ToDateOfExecution_DatePicker.SelectedDate);
+
+                if (fromDateOfExecution > toDateOfExecution)
+                {
+                    MessageBox.Show("Время ОТ не должно быть позднее, чем время ДО");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите даты периода");
+                return;
+            }
+
+            MessageBox.Show("Coming Soon!");
+        }
+
         public void Print_Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Out of бумага");
+        }
+
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ClearForms();
+            Update();
         }
 
         private void ReportWinner_Button_Click(object sender, RoutedEventArgs e)
@@ -55,11 +148,6 @@ namespace AchieveNow.Pages.Report
         private void ReportPeriod_Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ReportPeriodPage());
-        }
-
-        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("What!?");
         }
 
         private void PageKeyUp(object sender, KeyEventArgs e)
