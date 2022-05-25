@@ -177,7 +177,25 @@ namespace AchieveNow.Pages.User
 
         private void Delete_UsersGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (UsersGrid.SelectedItem != null)
+            {
+                List<Classes.User> users = new List<Classes.User>();
 
+                foreach (Classes.User user in UsersGrid.SelectedItems)
+                {
+                    users.Add(user);
+                }
+
+                DeleteWindow deleteWindow = new DeleteWindow(users);
+                deleteWindow.ShowDialog();
+
+                // Обновить после закрытия диалогового окна удаления
+                Update();
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя");
+            }
         }
 
         private void Edit_UserGrid_ContextMenu_Click(object sender, RoutedEventArgs e)

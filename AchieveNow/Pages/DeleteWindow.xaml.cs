@@ -26,6 +26,7 @@ namespace AchieveNow.Pages
         List<Classes.Country>? countryList;
         List<Classes.Location>? locationList;
         List<Classes.Achievement> achievementList;
+        List<Classes.User> userList;
 
         public DeleteWindow(List<Classes.Competition> competitions)
         {
@@ -113,6 +114,20 @@ namespace AchieveNow.Pages
             Delete_DataGrid.ItemsSource = achievements.ToList();
         }
 
+        public DeleteWindow(List<Classes.User> users)
+        {
+            InitializeComponent();
+
+            userList = users;
+
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Id"), Width = 30 });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Логин", Binding = new Binding("Login"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Пароль", Binding = new Binding("Password"), MinWidth = 200, Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+            Delete_DataGrid.Columns.Add(new DataGridTextColumn { Header = "Должность", Binding = new Binding("Position"), Width = new DataGridLength(1, DataGridLengthUnitType.Star) });
+
+            Delete_DataGrid.ItemsSource = users.ToList();
+        }
+
         private void Confirm_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
@@ -120,7 +135,7 @@ namespace AchieveNow.Pages
                 if (!context.IsAvailable)
                     return;
 
-                if (competitionList != null || sportsmanList != null || sportKindList != null || countryList != null || locationList != null || achievementList != null)
+                if (competitionList != null || sportsmanList != null || sportKindList != null || countryList != null || locationList != null || achievementList != null || userList != null)
                 {
                     try
                     {
@@ -136,6 +151,8 @@ namespace AchieveNow.Pages
                             context.RemoveRange(achievementList);
                         if (locationList != null)
                             context.RemoveRange(locationList);
+                        if (userList != null)
+                            context.RemoveRange(userList);
 
                         context.SaveChanges();
                     }
