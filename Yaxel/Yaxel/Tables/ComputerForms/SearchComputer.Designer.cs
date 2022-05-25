@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PCNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SearchButton = new Yaxel.YaxelStyle.YaxelButton();
+            this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
             this.SuspendLayout();
             // 
             // PCNameTextBox
             // 
             this.PCNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PCNameTextBox.Location = new System.Drawing.Point(346, 72);
+            this.PCNameTextBox.Location = new System.Drawing.Point(366, 158);
             this.PCNameTextBox.Name = "PCNameTextBox";
             this.PCNameTextBox.Size = new System.Drawing.Size(221, 32);
             this.PCNameTextBox.TabIndex = 0;
@@ -45,7 +47,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(153, 72);
+            this.label1.Location = new System.Drawing.Point(173, 158);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(187, 26);
             this.label1.TabIndex = 1;
@@ -63,6 +65,10 @@
             this.SearchButton.Text = "Поиск";
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
+            // yaxelForm1
+            // 
+            this.yaxelForm1.ThisForm = this;
+            // 
             // SearchComputer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -71,8 +77,12 @@
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PCNameTextBox);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SearchComputer";
-            this.Text = "SearchComputer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Поиск компьютера";
+            this.Load += new System.EventHandler(this.SearchComputer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,5 +93,6 @@
         private System.Windows.Forms.TextBox PCNameTextBox;
         private System.Windows.Forms.Label label1;
         private YaxelStyle.YaxelButton SearchButton;
+        private YaxelStyle.YaxelForm yaxelForm1;
     }
 }

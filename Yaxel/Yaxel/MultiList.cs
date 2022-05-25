@@ -34,6 +34,10 @@ namespace Yaxel
         private String oldTextDelete = "";
 
         private CurrentTable cTable;
+
+        private bool isSearch;
+        private SearchComputer searchComputer;
+
         private enum CurrentTable
         {
             Employee,
@@ -172,7 +176,19 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        List<Computer> computersList = context.Computers.Include(e => e.Employee).ToList();
+                        List<Computer> computersList;
+                        if (!isSearch)
+                        {
+                            computersList = context.Computers.Include(e => e.Employee).ToList();
+                        }
+                        else
+                        {
+                            computersList = searchComputer.resultComputer;
+                            searchComputer.Close();
+                            isSearch = false;
+                        }
+
+                        
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Имя компьютера");
@@ -476,8 +492,9 @@ namespace Yaxel
 
                     break;
                 case CurrentTable.Computer:
-                    SearchComputer computerForm = new SearchComputer();
-                    computerForm.ShowDialog();
+                    searchComputer = new SearchComputer();
+                    searchComputer.ShowDialog();
+                    isSearch = true;
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
