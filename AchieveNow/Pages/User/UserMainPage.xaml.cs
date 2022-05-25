@@ -55,12 +55,44 @@ namespace AchieveNow.Pages.User
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Update();
 
+            foreach (Position position in Enum.GetValues(typeof(Position)))
+            {
+                Position_ComboBox.Items.Add(position);
+            }
+        }
+        private void ShowUsers()
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var query = context.Users.ToList();
+
+                UsersGrid.ItemsSource = query;
+            }
         }
 
-        public void Search_Button_Click(object sender, RoutedEventArgs e)
+        private void Update()
         {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                {
+                    UsersGrid.ItemsSource = null;
+                    return;
+                }
 
+                ShowUsers();
+            }
+        }
+
+        private void ClearForms()
+        {
+            Login_TextBox.Text = "";
+            Position_ComboBox.SelectedItem = null;
         }
 
         private void Button_Competitions(object sender, RoutedEventArgs e)
@@ -93,6 +125,41 @@ namespace AchieveNow.Pages.User
             NavigationService.Navigate(new CountryMainPage());
         }
 
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
+
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
+
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ClearForms();
+            Update();
+        }
+
+        public void AddUser_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var userAddWindow = new UserAddWindow();
+            userAddWindow.ShowDialog();
+
+            Update();
+        }
+
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_UsersGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Edit_UserGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
             if (true)
@@ -113,37 +180,8 @@ namespace AchieveNow.Pages.User
             }
             else
             {
-                MessageBox.Show("Выберите спортсмена");
+                MessageBox.Show("Выберите пользователя");
             }
-        }
-
-        private void Delete_UsersGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        public void AddUser_Button_Click(object sender, RoutedEventArgs e)
-        {
-            var userAddWindow = new UserAddWindow();
-            userAddWindow.ShowDialog();
-
-            // Update();
-        }
-
-        public void ShowReportWindow()
-        {
-            var reportWindow = new Report.ReportWindow();
-            reportWindow.ShowDialog();
-        }
-
-        public void ShowWinnerPage()
-        {
-            NavigationService.Navigate(new Report.ReportWinnerPage());
-        }
-
-        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void PageKeyUp(object sender, KeyEventArgs e)
