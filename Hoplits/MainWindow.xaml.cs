@@ -110,7 +110,8 @@ namespace Hoplits
         }
         private void Show_Solutions(object sender, RoutedEventArgs e)
         {
-            ShowSolutions showSolutions = new ShowSolutions();
+            var x = ((Error)datagrid1.SelectedItem).id;
+            ShowSolutions showSolutions = new ShowSolutions(x);
             showSolutions.ShowDialog();
         }
         private void Add_Solution(object sender, RoutedEventArgs e)
@@ -178,6 +179,23 @@ namespace Hoplits
                 case 2:
                     datagrid1.ItemsSource = a.Employees.ToList();
                     datagrid1.Columns[0].Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    return;
+            }
+        }
+        private void MDouble_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (datagrid1.SelectedItem == null)
+            {
+                return;
+            }
+            switch (current)
+            {
+                case 1:
+                    Show_Solutions(sender, e);
+                    break;
+                case 2:
                     break;
                 default:
                     return;
