@@ -167,7 +167,7 @@ namespace Yaxel
 
                         foreach (Employee e in employeesList)
                         {
-                            dataGridView1.Rows.Add(e.Id, e.Name, e.Login, e.Password, e.Position, updateImageCell.Value);
+                            dataGridView1.Rows.Add(e.Id, e.Name, e.Login, e.Password, e.EmployeePosition, updateImageCell.Value);
                         }
                         break;
 

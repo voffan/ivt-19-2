@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace Yaxel.Classes
 {
@@ -14,5 +16,8 @@ namespace Yaxel.Classes
 
         public virtual List<Computer> Computers { get; set; }
         //public virtual List<Periphery> Peripheries { get; set; }
+        [NotMapped]
+        public string EmployeePosition { get { return EnumDictionaries.EmployeePosition[Enum.GetName(typeof(Position), this.Position)]; } }
+
     }
 }
