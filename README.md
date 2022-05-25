@@ -12,7 +12,7 @@
 - [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 - [MySQL Workbench](https://www.mysql.com/products/workbench/)
 - [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
-- NuGet пакеты Microsoft.EntityFrameworkCore.Sqlite & Microsoft.EntityFrameworkCore.Tools & Pomelo.EntityFrameworkCore.MySql
+- NuGet пакеты Microsoft.EntityFrameworkCore.Sqlite & Microsoft.EntityFrameworkCore.Tools & Pomelo.EntityFrameworkCore.MySql & Microsoft.Office.Interop.Excel & MySql.Data & Microsoft.Data.Sqlite
 
 ### Требуемое ПО для запуска проекта:
 - [Git](https://git-scm.com/)

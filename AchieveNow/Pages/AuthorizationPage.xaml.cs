@@ -30,7 +30,7 @@ namespace AchieveNow.Pages
 
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Login_TextBox.Text != "" && Password_TextBox.Text != "")
+            if (Login_TextBox.Text != "" && Password_PasswordBox.Password != "")
             {
                 using (ApplicationContext context = new ApplicationContext())
                 {
@@ -39,7 +39,7 @@ namespace AchieveNow.Pages
 
                     var user = context.Users
                         .Where(u => u.Login == Login_TextBox.Text)
-                        .Where(u => u.Password == Password_TextBox.Text)
+                        .Where(u => u.Password == Password_PasswordBox.Password)
                         .FirstOrDefault();
 
                     if (user != null)
