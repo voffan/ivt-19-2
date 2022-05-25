@@ -6,7 +6,7 @@ namespace Yaxel.Classes
     {
         [Description("Процессор")]
         CPU,
-        [Description("Материнская память")]
+        [Description("Материнская плата")]
         Motherboard,
         [Description("ОЗУ")]
         RAM,
@@ -17,6 +17,8 @@ namespace Yaxel.Classes
         [Description("SSD")]
         SSD,
         [Description("Сетевая карта")]
-        Net
+        Net,
+        [Description("Корпус")]
+        Box
     }
 }

@@ -8,16 +8,20 @@ namespace Yaxel.Classes
         Frequency,
         [Description("Количество ядер")]
         CoreCount,
-        [Description("Кэш процессора")]
-        CacheSize,
         [Description("Размер кэша")]
+        CacheSize,
+        [Description("Количество транзисторов")]
         Transistors,
         [Description("Тепловыделение")]
-        Heat,
+        TDP,
         [Description("Память")]
         MemorySize,
         [Description("Напряжение")]
         Power,
+        [Description("Тип памяти")]
+        MemoryType,
+        [Description("Скорость вращения")]
+        SpinRate
     }
 
 }
