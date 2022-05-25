@@ -67,7 +67,7 @@ namespace Hoplits
                 dbEmployee.PhoneNumber = tb_phone.Text;
                 dbEmployee.EmployerId = (int)cb_employer.SelectedValue;
                 a.SaveChanges();
-                MessageBox.Show("Success!");
+                MessageBox.Show("Employee info successfully changed.");
                 this.Close();
             }
         }

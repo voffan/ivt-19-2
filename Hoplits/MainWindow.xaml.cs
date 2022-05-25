@@ -42,7 +42,16 @@ namespace Hoplits
             ApplicationContext a = new ApplicationContext();
             datagrid1.ItemsSource = a.Errors.ToList();
             datagrid1.Columns[0].Visibility = Visibility.Hidden;
+            listName.Content = "List of bugs";
             current = 1;
+        }
+        private void getEmployees(object sender, RoutedEventArgs e)
+        {
+            ApplicationContext a = new ApplicationContext();
+            datagrid1.ItemsSource = a.Employees.ToList();
+            datagrid1.Columns[0].Visibility = Visibility.Hidden;
+            listName.Content = "List of employees";
+            current = 2;
         }
         /*
         private void getSolutions(object sender, RoutedEventArgs e)
@@ -53,14 +62,6 @@ namespace Hoplits
             current = 2;
         }
         */
-        private void getEmployees(object sender, RoutedEventArgs e)
-        {
-            ApplicationContext a = new ApplicationContext();
-            datagrid1.ItemsSource = a.Employees.ToList();
-            datagrid1.Columns[0].Visibility = Visibility.Hidden;
-            current = 2;
-        }
-
         private void exit(object sender, RoutedEventArgs e)
         {
             Close();
@@ -91,7 +92,6 @@ namespace Hoplits
                     return;
             }
             temp.Show();
-            
         }
 
         private void getAbout(object sender, RoutedEventArgs e)

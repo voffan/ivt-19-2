@@ -62,7 +62,8 @@ namespace Hoplits
             };
             a.Employees.Add(employee);
             a.SaveChanges();
-            MessageBox.Show("Added successfuly");
+            MessageBox.Show("Employee successfully added.");
+            this.Close();
         }
     }
 }

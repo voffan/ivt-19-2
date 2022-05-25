@@ -15,7 +15,7 @@
         <DatePicker HorizontalAlignment="Left" Margin="59,169,0,0" VerticalAlignment="Top" Width="120" Name="datepicker" Height="24"/>
         <ComboBox HorizontalAlignment="Left" Margin="59,213,0,0" VerticalAlignment="Top" Width="120" Name="cb_errortype" Height="22"/>
         <ComboBox HorizontalAlignment="Left" Margin="59,257,0,0" VerticalAlignment="Top" Width="120" Name="cb_employeeid" SelectedValuePath="id" DisplayMemberPath="name" Height="22"/>
-        <Button Content="Button" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="65" Grid.Row="1" Click="Button_Click" Height="20"/>
+        <Button Content="Save changes" HorizontalAlignment="Left" Margin="353,10,0,0" VerticalAlignment="Top" Width="89" Grid.Row="1" Click="Button_Click" Height="25"/>
 
     </Grid>
 </Window>
