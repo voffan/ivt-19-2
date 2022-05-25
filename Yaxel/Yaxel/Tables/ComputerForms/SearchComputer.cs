@@ -35,6 +35,7 @@ namespace Yaxel.Tables.ComputerForms
 
                 MessageBox.Show("Найдено " + q.Count + " строк");
             }
+            this.DialogResult = DialogResult.OK;
             Hide();
         }
 

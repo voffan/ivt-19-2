@@ -31,10 +31,11 @@ namespace Yaxel.Tables.EmployeeForms
 
                 textBoxPassword.Text = employee.Password;
 
-
                 comboBoxPosition.DataSource = new BindingSource(EnumTranslator.DescriptionAttributes<Position>.RetrieveAttributes(), null);
                 comboBoxPosition.DisplayMember = "Key";
                 comboBoxPosition.ValueMember = "Value";
+                comboBoxPosition.SelectedIndex = (int)employee.Position;
+
             }
         }
 

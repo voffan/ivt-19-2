@@ -11,6 +11,8 @@ namespace Yaxel
         public static Dictionary<string, string> ComponentTypeTranslation = EnumTranslator.DescriptionAttributes<Classes.ComponentType>.RetrieveBackConverter();
         public static Dictionary<string, string> PeripheryStatus = EnumTranslator.DescriptionAttributes<Classes.Status>.RetrieveBackConverter();
         public static Dictionary<string, string> TranslationType = EnumTranslator.DescriptionAttributes<Classes.PeripheryType>.RetrieveBackConverter();
+        public static Dictionary<string, string> EmployeePosition = EnumTranslator.DescriptionAttributes<Classes.Position>.RetrieveBackConverter();
+     
     }
 
     internal class EnumTranslator

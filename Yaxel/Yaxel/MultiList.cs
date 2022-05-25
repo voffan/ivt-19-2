@@ -167,7 +167,7 @@ namespace Yaxel
 
                         foreach (Employee e in employeesList)
                         {
-                            dataGridView1.Rows.Add(e.Id, e.Name, e.Login, e.Password, e.Position, updateImageCell.Value);
+                            dataGridView1.Rows.Add(e.Id, e.Name, e.Login, e.Password, e.EmployeePosition, updateImageCell.Value);
                         }
                         break;
 
@@ -493,8 +493,9 @@ namespace Yaxel
                     break;
                 case CurrentTable.Computer:
                     searchComputer = new SearchComputer();
-                    searchComputer.ShowDialog();
-                    isSearch = true;
+                    var res = searchComputer.ShowDialog();
+                    if (res == DialogResult.OK)
+                        isSearch = true;
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
