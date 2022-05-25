@@ -65,6 +65,22 @@
     <Compile Include="Migrations\202205250136224_Initial.designer.cs">
       <DependentUpon>202205250136224_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205250541333_newColumnInComputer.cs" />
+    <Compile Include="Migrations\202205250541333_newColumnInComputer.designer.cs">
+      <DependentUpon>202205250541333_newColumnInComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205250554101_newColumnInComputer2.cs" />
+    <Compile Include="Migrations\202205250554101_newColumnInComputer2.designer.cs">
+      <DependentUpon>202205250554101_newColumnInComputer2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205250607451_nullColumnInComputer.cs" />
+    <Compile Include="Migrations\202205250607451_nullColumnInComputer.designer.cs">
+      <DependentUpon>202205250607451_nullColumnInComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205250621577_dropColumnInComputer.cs" />
+    <Compile Include="Migrations\202205250621577_dropColumnInComputer.designer.cs">
+      <DependentUpon>202205250621577_dropColumnInComputer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Tables\ComponentForms\AddComponent.cs">
       <SubType>Form</SubType>
@@ -116,17 +132,23 @@
     <Compile Include="Tables\ComputerForms\AddComputer.Designer.cs">
       <DependentUpon>AddComputer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\ComputerForms\ChangeStateComputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\ComputerForms\ChangeStateComputer.Designer.cs">
+      <DependentUpon>ChangeStateComputer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\ComputerForms\DeleteComputer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tables\ComputerForms\DeleteComputer.Designer.cs">
       <DependentUpon>DeleteComputer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\ComputerForms\SearchComputer.cs">
+    <Compile Include="Tables\ComputerForms\ReportComputer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tables\ComputerForms\SearchComputer.Designer.cs">
-      <DependentUpon>SearchComputer.cs</DependentUpon>
+    <Compile Include="Tables\ComputerForms\ReportComputer.Designer.cs">
+      <DependentUpon>ReportComputer.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\ComputerForms\UpdateComputer.cs">
       <SubType>Form</SubType>
@@ -225,6 +247,18 @@
     <EmbeddedResource Include="Migrations\202205250136224_Initial.resx">
       <DependentUpon>202205250136224_Initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205250541333_newColumnInComputer.resx">
+      <DependentUpon>202205250541333_newColumnInComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205250554101_newColumnInComputer2.resx">
+      <DependentUpon>202205250554101_newColumnInComputer2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205250607451_nullColumnInComputer.resx">
+      <DependentUpon>202205250607451_nullColumnInComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205250621577_dropColumnInComputer.resx">
+      <DependentUpon>202205250621577_dropColumnInComputer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,11 +287,14 @@
     <EmbeddedResource Include="Tables\ComputerForms\AddComputer.resx">
       <DependentUpon>AddComputer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\ComputerForms\ChangeStateComputer.resx">
+      <DependentUpon>ChangeStateComputer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\DeleteComputer.resx">
       <DependentUpon>DeleteComputer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\ComputerForms\SearchComputer.resx">
-      <DependentUpon>SearchComputer.cs</DependentUpon>
+    <EmbeddedResource Include="Tables\ComputerForms\ReportComputer.resx">
+      <DependentUpon>ReportComputer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComputerForms\UpdateComputer.resx">
       <DependentUpon>UpdateComputer.cs</DependentUpon>

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.yaxelButton1 = new Yaxel.YaxelStyle.YaxelButton();
             this.btnManufacturers = new Yaxel.YaxelStyle.YaxelButton();
             this.btnSearch = new Yaxel.YaxelStyle.YaxelButton();
             this.btnDeleteEntry = new Yaxel.YaxelStyle.YaxelButton();
@@ -69,6 +70,18 @@
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.Size = new System.Drawing.Size(290, 32);
             this.SearchTextBox.TabIndex = 20;
+            // 
+            // yaxelButton1
+            // 
+            this.yaxelButton1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.yaxelButton1.Font = new System.Drawing.Font("Arial", 16F);
+            this.yaxelButton1.ForeColor = System.Drawing.Color.White;
+            this.yaxelButton1.Location = new System.Drawing.Point(20, 650);
+            this.yaxelButton1.Name = "yaxelButton1";
+            this.yaxelButton1.Size = new System.Drawing.Size(250, 50);
+            this.yaxelButton1.TabIndex = 21;
+            this.yaxelButton1.Text = "Отчёты";
+            this.yaxelButton1.Click += new System.EventHandler(this.yaxelButton1_Click);
             // 
             // btnManufacturers
             // 
@@ -175,6 +188,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.yaxelButton1);
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.btnManufacturers);
             this.Controls.Add(this.btnSearch);
@@ -210,5 +224,6 @@
         private YaxelStyle.YaxelButton btnManufacturers;
         private System.Windows.Forms.TextBox SearchTextBox;
         private YaxelStyle.YaxelButton btnSearch;
+        private YaxelStyle.YaxelButton yaxelButton1;
     }
 }

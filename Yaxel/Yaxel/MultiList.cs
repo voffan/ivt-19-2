@@ -130,24 +130,27 @@ namespace Yaxel
         private void fillDataGridView()
         {
             using (var context = new YaxelContext())
-            {
+            {//Repair.png
                 DataGridViewImageCell updateImageCell = new DataGridViewImageCell();
                 DataGridViewImageCell detailImageCell = new DataGridViewImageCell();
                 DataGridViewImageCell componentImageCell = new DataGridViewImageCell();
                 DataGridViewImageCell PCImageCell = new DataGridViewImageCell();
                 DataGridViewImageCell PeripheryImageCell = new DataGridViewImageCell();
+                DataGridViewImageCell repairImageCell = new DataGridViewImageCell();
 
                 updateImageCell.Value = new Bitmap(25, 25);
                 detailImageCell.Value = new Bitmap(25, 25);
                 componentImageCell.Value = new Bitmap(25, 25);
                 PCImageCell.Value = new Bitmap(25, 25);
                 PeripheryImageCell.Value = new Bitmap(25, 25);
+                repairImageCell.Value = new Bitmap(25, 25);
 
                 Graphics.FromImage((Image)updateImageCell.Value).DrawImage(Image.FromFile("../../Resources/Update_Icon.png"), new Rectangle(0, 0, 25, 25));
                 Graphics.FromImage((Image)detailImageCell.Value).DrawImage(Image.FromFile("../../Resources/Detail_Icon.png"), new Rectangle(0, 0, 25, 25));
                 Graphics.FromImage((Image)componentImageCell.Value).DrawImage(Image.FromFile("../../Resources/Component.png"), new Rectangle(0, 0, 25, 25));
                 Graphics.FromImage((Image)PCImageCell.Value).DrawImage(Image.FromFile("../../Resources/PC.png"), new Rectangle(0, 0, 25, 25));
                 Graphics.FromImage((Image)PeripheryImageCell.Value).DrawImage(Image.FromFile("../../Resources/Periphery.png"), new Rectangle(0, 0, 25, 25));
+                Graphics.FromImage((Image)repairImageCell.Value).DrawImage(Image.FromFile("../../Resources/Repair.png"), new Rectangle(0, 0, 25, 25));
 
                 switch (cTable)
                 {
@@ -207,20 +210,24 @@ namespace Yaxel
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Имя компьютера");
                         dataGridView1.Columns.Add("Status", "Статус");
+                        dataGridView1.Columns.Add("Reason", "Причина");
+                        dataGridView1.Columns.Add("Date", "Дата");
                         dataGridView1.Columns.Add("Employee", "Сотрудник");
+                        dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
 
                         dataGridView1.Columns[0].Width = 25;
-                        dataGridView1.Columns[4].Width = 28;
-                        dataGridView1.Columns[5].Width = 28;
                         dataGridView1.Columns[6].Width = 28;
+                        dataGridView1.Columns[7].Width = 28;
+                        dataGridView1.Columns[8].Width = 28;
+                        dataGridView1.Columns[9].Width = 28;
                         dataGridView1.RowTemplate.Height = 28;
 
                         foreach (Computer c in computersList)
                         {
-                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.Employee.Name, componentImageCell.Value, PeripheryImageCell.Value, updateImageCell.Value);
+                            dataGridView1.Rows.Add(c.Id, c.Name, c.CompStatus, c.ReasonRepair, c.RepairTime, c.Employee.Name, componentImageCell.Value, PeripheryImageCell.Value, updateImageCell.Value, repairImageCell.Value);
                         }
                         break;
 
@@ -347,21 +354,27 @@ namespace Yaxel
                         }
                         break;
                     case CurrentTable.Computer:
-                        if (e.ColumnIndex == 4 && e.RowIndex > -1) // Component
+                        if (e.ColumnIndex == 6 && e.RowIndex > -1) // Component
                         {
                             ComponentList form = new ComponentList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                         }
 
-                        if (e.ColumnIndex == 5 && e.RowIndex > -1) // Periphery
+                        if (e.ColumnIndex == 7 && e.RowIndex > -1) // Periphery
                         {
                             PeripheryList form = new PeripheryList((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                         }
 
-                        if (e.ColumnIndex == 6 && e.RowIndex > -1) // Update
+                        if (e.ColumnIndex == 8 && e.RowIndex > -1) // Update
                         {
                             UpdateComputer form = new UpdateComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            form.ShowDialog();
+                            fillDataGridView();
+                        }
+                        if (e.ColumnIndex == 9 && e.RowIndex > -1) // ChangeStates
+                        {
+                            ChangeStateComputer form = new ChangeStateComputer((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             form.ShowDialog();
                             fillDataGridView();
                         }
@@ -600,6 +613,13 @@ namespace Yaxel
 
         }
         #endregion
+
+        // Report
+        private void yaxelButton1_Click(object sender, EventArgs e)
+        {
+            ReportComputer form = new ReportComputer();
+            form.ShowDialog();
+        }
 
         private static void SetDoubleBuffered(Control c)
         {
