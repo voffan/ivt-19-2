@@ -27,11 +27,30 @@ namespace AchieveNow.Pages.Competition
     /// <summary>
     /// Interaction logic for CompetitionPage.xaml
     /// </summary>
-    public partial class CompetitionMainPage : Page
+    public partial class CompetitionMainPage : Page, IMainPage
     {
         public CompetitionMainPage()
         {
             InitializeComponent();
+            Page_CompetitionMainPage.Focus();
+
+            if (Classes.User.position == Position.Сотрудник)
+            {
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == Position.Судья)
+            {
+                Pages_StackPanel.Children.Remove(Location_Button);
+                Pages_StackPanel.Children.Remove(SportKind_Button);
+                Pages_StackPanel.Children.Remove(Country_Button);
+                Pages_StackPanel.Children.Remove(User_Button);
+                AddCompetition_Button.Visibility = Visibility.Collapsed;
+            }
+            else if (Classes.User.position == (Position)(-1))
+            {
+                MessageBox.Show("Вы не авторизовались! Программа завершает работу...");
+                Application.Current.Shutdown();
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -118,44 +137,55 @@ namespace AchieveNow.Pages.Competition
             isIntervalDate_CheckBox.IsChecked = false;
         }
 
-        private void Button_Achievements(object sender, RoutedEventArgs e)
+        public void Button_Achievements(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AchievementMainPage());
         }
 
-        private void Button_Sportsmen(object sender, RoutedEventArgs e)
+        public void Button_Sportsmen(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SportsmanMainPage());
         }
 
-        private void Button_Locations(object sender, RoutedEventArgs e)
+        public void Button_Locations(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new LocationMainPage());
         }
 
-        private void Button_SportKinds(object sender, RoutedEventArgs e)
+        public void Button_SportKinds(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SportKindMainPage());
         }
 
-        private void Button_Countries(object sender, RoutedEventArgs e)
+        public void Button_Countries(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CountryMainPage());
         }
 
-        private void Button_Users(object sender, RoutedEventArgs e)
+        public void Button_Users(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
+
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
+
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
         // Открыть диалоговое окно добавления соревнования
-        private void AddCompetition_Button_Click(object sender, RoutedEventArgs e)
+        public void AddCompetition_Button_Click(object sender, RoutedEventArgs e)
         {
             var competitionAddWindow = new CompetitionAddWindow();
             competitionAddWindow.ShowDialog();
@@ -187,7 +217,7 @@ namespace AchieveNow.Pages.Competition
             DateOfExecution2 = new DatePicker { SelectedDate = null };
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -292,6 +322,37 @@ namespace AchieveNow.Pages.Competition
             {
                 MessageBox.Show("Выберите соревнование");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Add_Button_Click()
+        {
+            AddCompetition_Button_Click(null, null);
         }
     }
 }

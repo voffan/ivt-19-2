@@ -8,7 +8,10 @@
       d:DesignHeight="600" d:DesignWidth="900"
       Title="Список спортсменов"
       Loaded="Page_Loaded"
-      Background="LightGray">
+      Background="LightGray"
+      KeyUp="PageKeyUp"
+      x:Name="Page_SportsmanMainPage"
+      Focusable="True">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,7 +23,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel x:Name="Pages_StackPanel" Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="Competition_Button"     Content="Соревнования"  Margin="0, 0, 10, 0" Click="Button_Competitions"></Button>
             <Button x:Name="Achievement_Button"     Content="Достижения"    Margin="0, 0, 10, 0" Click="Button_Achievements"></Button>
             <Button x:Name="Sportsman_Button"       Content="Спортсмены"    Margin="0, 0, 10, 0" Background="Gray"></Button>
@@ -28,13 +31,13 @@
             <Button x:Name="SportKind_Button"       Content="Виды спорта"   Margin="0, 0, 10, 0" Click="Button_SportKinds"></Button>
             <Button x:Name="Country_Button"         Content="Страны"        Margin="0, 0, 10, 0" Click="Button_Countries"></Button>
             <Button x:Name="User_Button"            Content="Пользователи"  Margin="0, 0, 10, 0" Click="Button_Users"></Button>
-        </WrapPanel>
+        </StackPanel>
 
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 0">
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 5"></TextBlock>
             
             <TextBlock Text="Имя" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="NameValidationTextBox"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
 
             <TextBlock Text="Рост" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <TextBox x:Name="Height_TextBox" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 5" FontSize="16" PreviewTextInput="HeightValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
@@ -62,7 +65,7 @@
             <Button x:Name="Search_Button" Content="Искать" Click="Search_Button_Click" Margin="0, 0, 0, 10" FontSize="18"></Button>
         </WrapPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="SportsmenGrid" Grid.Row="1" Grid.Column="1">
+        <DataGrid AutoGenerateColumns="False" x:Name="SportsmenGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}"          Header="ID"             Width="22"  MinWidth="22" MaxWidth="50"/>
                 <DataGridTextColumn Binding="{Binding Name}"        Header="Имя"            Width="180" MinWidth="0"  MaxWidth="500"/>

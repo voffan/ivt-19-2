@@ -28,7 +28,7 @@ namespace AchieveNow.Pages.Sportsman
     /// <summary>
     /// Interaction logic for SportsmanPage.xaml
     /// </summary>
-    public partial class SportsmanMainPage : Page
+    public partial class SportsmanMainPage : Page, IMainPage
     {
         TextBlock? ToDate = null;
         DatePicker? DateOfBirth2 = new DatePicker { SelectedDate = null };
@@ -37,6 +37,25 @@ namespace AchieveNow.Pages.Sportsman
         public SportsmanMainPage()
         {
             InitializeComponent();
+            Page_SportsmanMainPage.Focus();
+
+            if (Classes.User.position == Position.Сотрудник)
+            {
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == Position.Судья)
+            {
+                Pages_StackPanel.Children.Remove(Location_Button);
+                Pages_StackPanel.Children.Remove(SportKind_Button);
+                Pages_StackPanel.Children.Remove(Country_Button);
+                Pages_StackPanel.Children.Remove(User_Button);
+                AddSportsman_Button.Visibility = Visibility.Collapsed;
+            }
+            else if (Classes.User.position == (Position)(-1))
+            {
+                MessageBox.Show("Вы не авторизовались! Программа завершает работу...");
+                Application.Current.Shutdown();
+            }
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -110,13 +129,24 @@ namespace AchieveNow.Pages.Sportsman
             DateOfBirth.SelectedDate = null;
             isIntervalDate_CheckBox.IsChecked = false;
         }
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
+
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
-        private void AddSportsman_Button_Click(object sender, RoutedEventArgs e)
+        public void AddSportsman_Button_Click(object sender, RoutedEventArgs e)
         {
             var sportsmanAddWindow = new SportsmanAddWindow();
             sportsmanAddWindow.ShowDialog();
@@ -142,7 +172,7 @@ namespace AchieveNow.Pages.Sportsman
             Date_StackPanel.Children.Remove(DateOfBirth2);
             DateOfBirth2 = new DatePicker { SelectedDate = null };
         }
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -217,47 +247,19 @@ namespace AchieveNow.Pages.Sportsman
             }
         }
 
-        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex(@"[A-Za-z\sа-яА-Я]");
-            if (regex.IsMatch(e.Text))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-
-        }
         private void HeightValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[0-9]");
-            if (regex.IsMatch(e.Text) && Height_TextBox.Text.Length < MAX_HEIGHT_LENGTH)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            Vali.Height(sender, e, Height_TextBox);
         }
+
         private void WeightValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[0-9]");
-            if (regex.IsMatch(e.Text) && Weight_TextBox.Text.Length < MAX_WEIGHT_LENGTH)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            Vali.Weight(sender, e, Weight_TextBox);
         }
 
         private void PreviewKeyDown_Space(object sender, KeyEventArgs e)
         {
-            e.Handled = e.Key != Key.Space ? false : true;
+            Vali.PreviewKeyDown_NoSpace(sender, e);
         }
 
         private void Button_Competitions(object sender, RoutedEventArgs e)
@@ -336,6 +338,37 @@ namespace AchieveNow.Pages.Sportsman
             {
                 MessageBox.Show("Выберите спортсмена");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Add_Button_Click()
+        {
+            AddSportsman_Button_Click(null, null);
         }
     }
 }

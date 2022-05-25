@@ -19,7 +19,7 @@ namespace AchieveNow.Pages.Competition
     /// <summary>
     /// Interaction logic for CompetitionEditWindow.xaml
     /// </summary>
-    public partial class CompetitionEditWindow : Window
+    public partial class CompetitionEditWindow : Window, IEditWindow
     {
         Classes.Competition competition;
 
@@ -28,6 +28,7 @@ namespace AchieveNow.Pages.Competition
             InitializeComponent();
 
             this.competition = competition;
+            Name_TextBox.Focus();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,8 +46,8 @@ namespace AchieveNow.Pages.Competition
             ListOfLocationsAndSporkinds();
 
             Name_TextBox.Text = competition.Name;
-
-            Level_ComboBox.SelectedIndex = (int)competition.Level;
+            
+            Level_ComboBox.SelectedItem = competition.Level;
 
             Location_ComboBox.SelectedValue = competition.Location.Id;
 
@@ -87,12 +88,12 @@ namespace AchieveNow.Pages.Competition
             }
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             CompetitionInit();
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -176,7 +177,7 @@ namespace AchieveNow.Pages.Competition
                     if (competitionUpdate != null)
                     {
                         competitionUpdate.Name = Name_TextBox.Text;
-                        competitionUpdate.Level = (Level)Level_ComboBox.SelectedIndex;
+                        competitionUpdate.Level = (Level)Level_ComboBox.SelectedItem;
                         competitionUpdate.LocationId = locationId;
                         competitionUpdate.SportKindId = sportKindId;
                         competitionUpdate.DateOfExecution = dateOfExecution;
@@ -198,9 +199,34 @@ namespace AchieveNow.Pages.Competition
             }
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

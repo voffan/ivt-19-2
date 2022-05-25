@@ -28,11 +28,29 @@ namespace AchieveNow.Pages.Country
     /// <summary>
     /// Interaction logic for CountryMainPage.xaml
     /// </summary>
-    public partial class CountryMainPage : Page
+    public partial class CountryMainPage : Page, IMainPage
     {
         public CountryMainPage()
         {
             InitializeComponent();
+            Page_CountryMainPage.Focus();
+
+            if (Classes.User.position == Position.Сотрудник)
+            {
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == Position.Судья)
+            {
+                Pages_StackPanel.Children.Remove(Location_Button);
+                Pages_StackPanel.Children.Remove(SportKind_Button);
+                Pages_StackPanel.Children.Remove(Country_Button);
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == (Position)(-1))
+            {
+                MessageBox.Show("Вы не авторизовались! Программа завершает работу...");
+                Application.Current.Shutdown();
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -81,13 +99,24 @@ namespace AchieveNow.Pages.Country
             }
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
+
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
+
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
-        private void AddCountry_Button_Click(object sender, RoutedEventArgs e)
+        public void AddCountry_Button_Click(object sender, RoutedEventArgs e)
         {
             CountryAddWindow addWindow = new CountryAddWindow();
             addWindow.ShowDialog();
@@ -126,7 +155,7 @@ namespace AchieveNow.Pages.Country
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -185,6 +214,37 @@ namespace AchieveNow.Pages.Country
             {
                 MessageBox.Show("Выберите страну");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Add_Button_Click()
+        {
+            AddCountry_Button_Click(null, null);
         }
     }
 }

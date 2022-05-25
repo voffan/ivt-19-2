@@ -28,11 +28,29 @@ namespace AchieveNow.Pages.SportKind
     /// <summary>
     /// Interaction logic for SportKindMainPage.xaml
     /// </summary>
-    public partial class SportKindMainPage : Page
+    public partial class SportKindMainPage : Page, IMainPage
     {
         public SportKindMainPage()
         {
             InitializeComponent();
+            Page_SportKindMainPage.Focus();
+
+            if (Classes.User.position == Position.Сотрудник)
+            {
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == Position.Судья)
+            {
+                Pages_StackPanel.Children.Remove(Location_Button);
+                Pages_StackPanel.Children.Remove(SportKind_Button);
+                Pages_StackPanel.Children.Remove(Country_Button);
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == (Position)(-1))
+            {
+                MessageBox.Show("Вы не авторизовались! Программа завершает работу...");
+                Application.Current.Shutdown();
+            }
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -77,13 +95,24 @@ namespace AchieveNow.Pages.SportKind
                 context.Dispose();
             }
         }
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
+
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
-        private void AddSportKind_Button_Click(object sender, RoutedEventArgs e)
-        {         
+        public void AddSportKind_Button_Click(object sender, RoutedEventArgs e)
+        {
             var sportKindAddWindow = new SportKindAddWindow();
             sportKindAddWindow.ShowDialog();
 
@@ -120,7 +149,7 @@ namespace AchieveNow.Pages.SportKind
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -179,6 +208,37 @@ namespace AchieveNow.Pages.SportKind
             {
                 MessageBox.Show("Выберите вид спорта");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Add_Button_Click()
+        {
+            AddSportKind_Button_Click(null, null);
         }
     }
 }

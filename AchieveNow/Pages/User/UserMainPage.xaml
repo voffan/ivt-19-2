@@ -8,7 +8,10 @@
       d:DesignHeight="600" d:DesignWidth="900"
       Title="UserMainPage"
       Loaded="Page_Loaded"
-      Background="LightGray">
+      Background="LightGray"
+      KeyUp="PageKeyUp"
+      x:Name="Page_UserMainPage"
+      Focusable="True">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,7 +23,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel x:Name="Pages_StackPanel" Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="Competition_Button" Content="Соревнования" Margin="0, 0, 10, 0" Click="Button_Competitions"></Button>
             <Button x:Name="Achievement_Button" Content="Достижения" Margin="0, 0, 10, 0" Click="Button_Achievements"></Button>
             <Button x:Name="Sportsman_Button" Content="Спортсмены" Margin="0, 0, 10, 0" Click="Button_Sportsmen"></Button>
@@ -34,11 +37,11 @@
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
 
             <TextBlock Text="Логин" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Login_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16" Width="140"></TextBox>
+            <TextBox x:Name="Login_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16" Width="140" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
 
             <TextBlock Text="Пароль" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <ComboBox x:Name="Password_ComboBox" IsEditable="False" Margin="0, 0, 0, 10"></ComboBox>
-            
+            <TextBox x:Name="Password_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16" MinWidth="150" PreviewTextInput="PasswordValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
+
             <TextBlock Text="Должность" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <ComboBox x:Name="Position_ComboBox" IsEditable="False" Margin="0, 0, 0, 10"></ComboBox>
 

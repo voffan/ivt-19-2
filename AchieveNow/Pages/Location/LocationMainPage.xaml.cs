@@ -28,11 +28,30 @@ namespace AchieveNow.Pages.Location
     /// <summary>
     /// Interaction logic for LocationMainPage.xaml
     /// </summary>
-    public partial class LocationMainPage : Page
+    public partial class LocationMainPage : Page, IMainPage
     {
         public LocationMainPage()
         {
             InitializeComponent();
+            Page_LocationMainPage.Focus();
+
+            if (Classes.User.position == Position.Сотрудник)
+            {
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == Position.Судья)
+            {
+                Pages_StackPanel.Children.Remove(Location_Button);
+                Pages_StackPanel.Children.Remove(SportKind_Button);
+                Pages_StackPanel.Children.Remove(Country_Button);
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == (Position)(-1))
+            {
+                MessageBox.Show("Вы не авторизовались! Программа завершает работу...");
+                Application.Current.Shutdown();
+            }
+
             Update();
         }
 
@@ -88,7 +107,7 @@ namespace AchieveNow.Pages.Location
             }
         }
 
-        private void AddLocation_Button_Click(object sender, RoutedEventArgs e)
+        public void AddLocation_Button_Click(object sender, RoutedEventArgs e)
         {
             var locationAddWindow = new LocationAddWindow();
             locationAddWindow.ShowDialog();
@@ -98,13 +117,24 @@ namespace AchieveNow.Pages.Location
             Update();
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
+
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
+
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -211,6 +241,37 @@ namespace AchieveNow.Pages.Location
             {
                 MessageBox.Show("Выберите спортсмена");
             }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Add_Button_Click()
+        {
+            AddLocation_Button_Click(null, null);
         }
     }
 }

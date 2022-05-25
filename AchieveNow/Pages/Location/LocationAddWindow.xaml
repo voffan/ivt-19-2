@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Location"
         mc:Ignorable="d"
+        KeyUp="Window_KeyUp"
+        Focusable="True"
         Title="LocationAddWindow" Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
@@ -15,7 +17,7 @@
 
         <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 15, 0, 0">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 3">Название</TextBlock>
-            <TextBox x:Name="Name_TextBox" MinWidth="150" Width="250" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="Space_PreviewKeyDown"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" MinWidth="150" Width="250" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">

@@ -28,13 +28,14 @@ namespace AchieveNow.Pages.Achievement
     /// <summary>
     /// Interaction logic for AchievementEditWindow.xaml
     /// </summary>
-    public partial class AchievementEditWindow : Window
+    public partial class AchievementEditWindow : Window, IEditWindow
     {
         Classes.Achievement achievement;
         public AchievementEditWindow(Classes.Achievement _achievement)
         {
             InitializeComponent();
             achievement = _achievement;
+            Name_TextBox.Focus();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -83,15 +84,15 @@ namespace AchieveNow.Pages.Achievement
                 Console.WriteLine(ex.Message);
             }
         }
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             ListOfCompetitions();
         }
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -122,9 +123,6 @@ namespace AchieveNow.Pages.Achievement
                 MessageBox.Show("Выберите результат");
                 return;
             }
-
-            int result;
-            result = Result_ComboBox.SelectedIndex;
 
             DateOnly dateOfExecCompetition;
             try
@@ -177,7 +175,7 @@ namespace AchieveNow.Pages.Achievement
                     {
                         achievementUpdate.Name = Name_TextBox.Text;
                         achievementUpdate.CompetitionId = competitionId;
-                        achievementUpdate.Result = (Result)Result_ComboBox.SelectedIndex;
+                        achievementUpdate.Result = (Result)Result_ComboBox.SelectedItem;
                         achievementUpdate.DateOfIssue = dateOfIssue;
 
                         context.SaveChanges();
@@ -194,6 +192,31 @@ namespace AchieveNow.Pages.Achievement
             {
                 MessageBox.Show("Произошла неизвестная ошибка: " + ex.Message);
             }
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

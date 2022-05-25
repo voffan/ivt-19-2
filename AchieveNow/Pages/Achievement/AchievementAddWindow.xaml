@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Achievement"
         mc:Ignorable="d"
+        KeyUp="Window_KeyUp"
+        Focusable="True"
         Title="Окно добавления достижения" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,7 +19,7 @@
 
         <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 15, 0, 0">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Название достижения</TextBlock>
-            <TextBox x:Name="Name_TextBox" MinWidth="150"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" MinWidth="150" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">

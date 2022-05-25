@@ -28,7 +28,7 @@ namespace AchieveNow.Pages.Location
     /// <summary>
     /// Логика взаимодействия для LocationEditWindow.xaml
     /// </summary>
-    public partial class LocationEditWindow : Window
+    public partial class LocationEditWindow : Window, IEditWindow
     {
         Classes.Location location;
         public LocationEditWindow(Classes.Location __location)
@@ -36,6 +36,7 @@ namespace AchieveNow.Pages.Location
             InitializeComponent();
             location = __location;
             LocationInit();
+            Name_TextBox.Focus();
         }
         private void ClearAndListOfCountry()
         {
@@ -63,18 +64,18 @@ namespace AchieveNow.Pages.Location
             Name_TextBox.Text = location.Name;
             Country_ComboBox.SelectedValue = location.CountryId;
         }
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
         
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -133,7 +134,27 @@ namespace AchieveNow.Pages.Location
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
         {
+            Vali.Name(sender, e, Name_TextBox);
+        }
 
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

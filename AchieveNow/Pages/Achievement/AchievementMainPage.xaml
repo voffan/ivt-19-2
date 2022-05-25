@@ -8,7 +8,10 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="Список достижений"
       Loaded="Page_Loaded"
-      Background="LightGray">
+      Background="LightGray"
+      KeyUp="PageKeyUp"
+      x:Name="Page_AchievementMainPage"
+      Focusable="True">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,7 +23,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel x:Name="Pages_StackPanel" Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="Competition_Button" Content="Соревнования" Margin="0, 0, 10, 0" Click="Button_Competitions"></Button>
             <Button x:Name="Achievement_Button" Content="Достижения" Margin="0, 0, 10, 0" Background="Gray"></Button>
             <Button x:Name="Sportsman_Button" Content="Спортсмены" Margin="0, 0, 10, 0" Click="Button_Sportsmen"></Button>
@@ -28,12 +31,12 @@
             <Button x:Name="SportKind_Button" Content="Виды спорта" Margin="0, 0, 10, 0" Click="Button_SportKinds"></Button>
             <Button x:Name="Country_Button" Content="Страны" Margin="0, 0, 10, 0" Click="Button_Countries"></Button>
             <Button x:Name="User_Button" Content="Пользователи" Margin="0, 0, 10, 0" Click="Button_Users"></Button>
-        </WrapPanel>
+        </StackPanel>
 
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 50">
             <TextBlock Text="Поиск" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20"></TextBlock>
             <TextBlock Text="Название" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
             <TextBlock Text="Результат" FontSize="16" HorizontalAlignment="Center"></TextBlock>
             <ComboBox x:Name="Result_ComboBox" IsEditable="False" Text="" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></ComboBox>
             <TextBlock Text="Соревнование" FontSize="16" HorizontalAlignment="Center"></TextBlock>
@@ -62,6 +65,7 @@
                     <MenuItem x:Name="Edit_AchievementsGrid_ContextMenu" Header="Редактировать" Click="Edit_AchievementsGrid_ContextMenu_Click"></MenuItem>
                     <MenuItem x:Name="Delete_AchievementsGrid_ContextMenu" Header="Удалить" Click="Delete_AchievementsGrid_ContextMenu_Click"></MenuItem>
                     <MenuItem x:Name="Assign_AchievementSportsman_ContextMenu" Header="Присвоить" Click="Assign_AchievementSportsman_ContextMenu_Click"></MenuItem>
+                    <MenuItem x:Name="DeAssign_AchievementSportsman_ContextMenu" Header="Удалить присвоение" Click="DeAssign_AchievementSportsman_ContextMenu_Click"></MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
 
@@ -70,7 +74,7 @@
         
 
 
-        <Button x:Name="AddAchievement" Grid.Row="0" Grid.Column="0" Click="AddAchievement_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
+        <Button x:Name="AddAchievement_Button" Grid.Row="0" Grid.Column="0" Click="AddAchievement_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>достижение</TextBlock>
         </Button>
         <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>

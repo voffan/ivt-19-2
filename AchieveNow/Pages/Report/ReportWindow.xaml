@@ -1,0 +1,23 @@
+﻿<Window x:Class="AchieveNow.Pages.Report.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AchieveNow.Pages.Report"
+        mc:Ignorable="d"
+        KeyUp="Window_KeyUp"
+        Focusable="True"
+        Title="ReportWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        
+        <Menu VerticalAlignment="Top" Height="18" FontSize="14">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Обновить" Click="Refresh_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="Закрыть" Click="Exit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

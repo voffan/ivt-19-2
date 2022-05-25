@@ -27,45 +27,55 @@ namespace AchieveNow.Pages.Achievement
     /// <summary>
     /// Interaction logic for AchievementPage.xaml
     /// </summary>
-    public partial class AchievementMainPage : Page
+    public partial class AchievementMainPage : Page, IMainPage
     {
         public AchievementMainPage()
         {
             InitializeComponent();
-        }
+            Page_AchievementMainPage.Focus();
 
-        private void ShowAchievements()
-        {
-            try
+            if (Classes.User.position == Position.Сотрудник)
             {
-                using (ApplicationContext context = new ApplicationContext())
-                {
-                    var query = context.Achievements
-                        .Include("Competition")
-                        .Include("Sportsman")
-                        .ToList();
-
-                    AchievementsGrid.ItemsSource = query;
-                }
+                Pages_StackPanel.Children.Remove(User_Button);
+                AddAchievement_Button.Visibility = Visibility.Collapsed;
             }
-            catch (Exception ex)
+            else if (Classes.User.position == Position.Судья)
             {
-                AchievementsGrid.ItemsSource = null;
-                ShowErrorWindow showErrorWindow = new ShowErrorWindow();
-                showErrorWindow.ShowDialog();
-
-                Console.WriteLine(ex.Message);
+                Pages_StackPanel.Children.Remove(Location_Button);
+                Pages_StackPanel.Children.Remove(SportKind_Button);
+                Pages_StackPanel.Children.Remove(Country_Button);
+                Pages_StackPanel.Children.Remove(User_Button);
+            }
+            else if (Classes.User.position == (Position)(-1))
+            {
+                MessageBox.Show("Вы не авторизовались! Программа завершает работу...");
+                Application.Current.Shutdown();
             }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
-            ShowAchievements();
 
             foreach (Result result in Enum.GetValues(typeof(Result)))
             {
                 Result_ComboBox.Items.Add(result);
+            }
+        }
+
+        private void ShowAchievements()
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
+
+                var query = context.Achievements
+                    .Include("Competition")
+                    .Include("Sportsman")
+                    .ToList();
+
+                AchievementsGrid.ItemsSource = query;
             }
         }
 
@@ -144,14 +154,25 @@ namespace AchieveNow.Pages.Achievement
             NavigationService.Navigate(new UserMainPage());
         }
 
-        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        public void ShowReportWindow()
+        {
+            var reportWindow = new Report.ReportWindow();
+            reportWindow.ShowDialog();
+        }
+
+        public void ShowWinnerPage()
+        {
+            NavigationService.Navigate(new Report.ReportWinnerPage());
+        }
+
+        public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
             ShowAchievements();
         }
 
-        private void AddAchievement_Click(object sender, RoutedEventArgs e)
+        public void AddAchievement_Button_Click(object sender, RoutedEventArgs e)
         {
             var AchievementAddWindow = new AchievementAddWindow();
             AchievementAddWindow.ShowDialog();
@@ -182,7 +203,7 @@ namespace AchieveNow.Pages.Achievement
             DateOfIssue2 = new DatePicker { SelectedDate = null };
         }
 
-        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
@@ -190,7 +211,8 @@ namespace AchieveNow.Pages.Achievement
                     return;
 
                 IQueryable<Classes.Achievement> achievementIQuer = context.Achievements
-                    .Include("Competition");
+                    .Include("Competition")
+                    .Include("Sportsman");
 
                 if (Name_TextBox.Text != "")
                 {
@@ -240,8 +262,6 @@ namespace AchieveNow.Pages.Achievement
 
             if (AchievementsGrid.SelectedItem != null)
             {
-
-
                 List<Classes.Achievement> achievements = new List<Classes.Achievement>();
 
                 foreach (Classes.Achievement achievement in AchievementsGrid.SelectedItems)
@@ -308,6 +328,78 @@ namespace AchieveNow.Pages.Achievement
             {
                 MessageBox.Show("Выберите достижение");
             }
+        }
+
+        private void DeAssign_AchievementSportsman_ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (AchievementsGrid.SelectedItem != null)
+            {
+                if (AchievementsGrid.SelectedItems.Count == 1)
+                {
+                    Classes.Achievement achievementSelected = (Classes.Achievement)AchievementsGrid.SelectedItem;
+
+                    using (ApplicationContext context = new ApplicationContext())
+                    {
+                        if (!context.IsAvailable)
+                            return;
+
+                        if (achievementSelected.SportsmanId != null)
+                        {
+                            var achievement = context.Achievements
+                                .Where(x => x.SportsmanId == achievementSelected.SportsmanId)
+                                .First();
+
+                            achievement.SportsmanId = null;
+                            context.SaveChanges();
+
+                            Update();
+                        }
+                        else 
+                        {
+                            MessageBox.Show("К данному достижению не присвоен спортсмен");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Для присвоения разрешается выбрать только одну запись");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите достижение");
+            }
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
+            Keybo.PageOnKeyUpHandler2(sender, e, this);
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Add_Button_Click()
+        {
+            AddAchievement_Button_Click(null, null);
         }
     }
 }

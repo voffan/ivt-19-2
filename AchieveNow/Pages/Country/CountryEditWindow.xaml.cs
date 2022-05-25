@@ -20,9 +20,8 @@ namespace AchieveNow.Pages.Country
     /// <summary>
     /// Interaction logic for CountryEditWindow.xaml
     /// </summary>
-    public partial class CountryEditWindow : Window
+    public partial class CountryEditWindow : Window, IEditWindow
     {
-        private const int MAX_NAME_LENGTH = 50;
         Classes.Country country;
 
         public CountryEditWindow(Classes.Country country)
@@ -30,6 +29,7 @@ namespace AchieveNow.Pages.Country
             InitializeComponent();
 
             this.country = country;
+            Name_TextBox.Focus();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -37,31 +37,17 @@ namespace AchieveNow.Pages.Country
             CountryInit();
         }
 
-        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex(@"[A-Za-z\sа-яА-ЯёЁ]");
-
-            if (regex.IsMatch(e.Text) && Name_TextBox.Text.Length < MAX_NAME_LENGTH)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
         private void CountryInit()
         {
             Name_TextBox.Text = country.Name;
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+        public void Refresh_Click(object sender, RoutedEventArgs e)
         {
             CountryInit();
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (Name_TextBox.Text == "")
             {
@@ -100,9 +86,34 @@ namespace AchieveNow.Pages.Country
             }
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        public void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void NameValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Vali.Name(sender, e, Name_TextBox);
+        }
+
+        private void PreviewKeyDown_OnlyOneSpace(object sender, KeyEventArgs e)
+        {
+            Vali.PreviewKeyDown_OnlyOneSpace(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Vali.VName_TextBox_LostKeyboardFocus(sender, e, Name_TextBox);
+        }
+
+        private void Name_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Vali.VName_TextBox_TextChanged(sender, e, Name_TextBox);
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.PageOnKeyUpHandler(sender, e, this);
         }
     }
 }

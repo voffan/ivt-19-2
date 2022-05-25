@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow.Pages.Country"
         mc:Ignorable="d"
-        Title="Окно редактирования страны" Height="150" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+        KeyUp="Window_KeyUp"
+        Focusable="True"
+        Title="Окно редактирования страны" Height="150" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -14,7 +16,7 @@
 
         <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0, 15, 0, 0">
             <TextBlock TextAlignment="Center" Margin="0, 0, 0, 3">Название</TextBlock>
-            <TextBox x:Name="Name_TextBox" PreviewTextInput="NameValidationTextBox" MinWidth="150" Width="250"></TextBox>
+            <TextBox x:Name="Name_TextBox" HorizontalContentAlignment="Center" MinWidth="150" TextChanged="Name_TextBox_TextChanged" PreviewTextInput="NameValidationTextBox" PreviewKeyDown="PreviewKeyDown_OnlyOneSpace" LostKeyboardFocus="Name_TextBox_LostKeyboardFocus"></TextBox>
         </WrapPanel>
 
         <Button x:Name="UpdateButton" Content="Обновить" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpdateButton_Click"></Button>
