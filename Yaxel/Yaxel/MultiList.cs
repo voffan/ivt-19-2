@@ -493,8 +493,9 @@ namespace Yaxel
                     break;
                 case CurrentTable.Computer:
                     searchComputer = new SearchComputer();
-                    searchComputer.ShowDialog();
-                    isSearch = true;
+                    var res = searchComputer.ShowDialog();
+                    if (res == DialogResult.OK)
+                        isSearch = true;
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
