@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.btnManufacturers = new Yaxel.YaxelStyle.YaxelButton();
             this.btnSearch = new Yaxel.YaxelStyle.YaxelButton();
             this.btnDeleteEntry = new Yaxel.YaxelStyle.YaxelButton();
             this.btnAddEntry = new Yaxel.YaxelStyle.YaxelButton();
@@ -38,7 +40,6 @@
             this.btnComputers = new Yaxel.YaxelStyle.YaxelButton();
             this.btnEmployees = new Yaxel.YaxelStyle.YaxelButton();
             this.yaxelForm1 = new Yaxel.YaxelStyle.YaxelForm(this.components);
-            this.btnManufacturers = new Yaxel.YaxelStyle.YaxelButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,14 +62,34 @@
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
+            // SearchTextBox
+            // 
+            this.SearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SearchTextBox.Location = new System.Drawing.Point(811, 75);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(290, 32);
+            this.SearchTextBox.TabIndex = 20;
+            // 
+            // btnManufacturers
+            // 
+            this.btnManufacturers.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnManufacturers.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnManufacturers.ForeColor = System.Drawing.Color.White;
+            this.btnManufacturers.Location = new System.Drawing.Point(20, 346);
+            this.btnManufacturers.Name = "btnManufacturers";
+            this.btnManufacturers.Size = new System.Drawing.Size(250, 50);
+            this.btnManufacturers.TabIndex = 19;
+            this.btnManufacturers.Text = "Список производителей";
+            this.btnManufacturers.Click += new System.EventHandler(this.btnManufacturers_Click);
+            // 
             // btnSearch
             // 
             this.btnSearch.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSearch.Font = new System.Drawing.Font("Arial", 16F);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(910, 66);
+            this.btnSearch.Location = new System.Drawing.Point(1107, 66);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(250, 50);
+            this.btnSearch.Size = new System.Drawing.Size(153, 50);
             this.btnSearch.TabIndex = 18;
             this.btnSearch.Text = "Поиск";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -78,7 +99,7 @@
             this.btnDeleteEntry.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnDeleteEntry.Font = new System.Drawing.Font("Arial", 16F);
             this.btnDeleteEntry.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteEntry.Location = new System.Drawing.Point(650, 66);
+            this.btnDeleteEntry.Location = new System.Drawing.Point(555, 66);
             this.btnDeleteEntry.Name = "btnDeleteEntry";
             this.btnDeleteEntry.Size = new System.Drawing.Size(250, 50);
             this.btnDeleteEntry.TabIndex = 17;
@@ -90,7 +111,7 @@
             this.btnAddEntry.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAddEntry.Font = new System.Drawing.Font("Arial", 16F);
             this.btnAddEntry.ForeColor = System.Drawing.Color.White;
-            this.btnAddEntry.Location = new System.Drawing.Point(390, 66);
+            this.btnAddEntry.Location = new System.Drawing.Point(295, 66);
             this.btnAddEntry.Name = "btnAddEntry";
             this.btnAddEntry.Size = new System.Drawing.Size(250, 50);
             this.btnAddEntry.TabIndex = 16;
@@ -149,23 +170,12 @@
             // 
             this.yaxelForm1.ThisForm = this;
             // 
-            // btnManufacturers
-            // 
-            this.btnManufacturers.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnManufacturers.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnManufacturers.ForeColor = System.Drawing.Color.White;
-            this.btnManufacturers.Location = new System.Drawing.Point(20, 346);
-            this.btnManufacturers.Name = "btnManufacturers";
-            this.btnManufacturers.Size = new System.Drawing.Size(250, 50);
-            this.btnManufacturers.TabIndex = 19;
-            this.btnManufacturers.Text = "Список производителей";
-            this.btnManufacturers.Click += new System.EventHandler(this.btnManufacturers_Click);
-            // 
             // MultiList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.btnManufacturers);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDeleteEntry);
@@ -183,6 +193,7 @@
             this.Load += new System.EventHandler(this.MultiList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -194,9 +205,10 @@
         private YaxelStyle.YaxelButton btnComputers;
         private YaxelStyle.YaxelButton btnComponents;
         private YaxelStyle.YaxelButton btnPeripherals;
-        private YaxelStyle.YaxelButton btnSearch;
         private YaxelStyle.YaxelButton btnDeleteEntry;
         private YaxelStyle.YaxelButton btnAddEntry;
         private YaxelStyle.YaxelButton btnManufacturers;
+        private System.Windows.Forms.TextBox SearchTextBox;
+        private YaxelStyle.YaxelButton btnSearch;
     }
 }

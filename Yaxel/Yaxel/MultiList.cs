@@ -36,7 +36,11 @@ namespace Yaxel
         private CurrentTable cTable;
 
         private bool isSearch;
-        private SearchComputer searchComputer;
+        private List<Computer> resultComputer = new List<Computer>();
+        private List<Employee> resultEmployee = new List<Employee>();
+        private List<Component> resultComponent = new List<Component>();
+        private List<Periphery> resultPeriphery = new List<Periphery>();
+        private List<Manufacturer> resultManufacturer = new List<Manufacturer>();
 
         private enum CurrentTable
         {
@@ -152,7 +156,17 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        List<Employee> employeesList = context.Employees.ToList();
+                        List<Employee> employeesList = new List<Employee>();
+                        if (!isSearch)
+                        {
+                            employeesList = context.Employees.ToList();
+                        }
+                        else
+                        {
+                            employeesList.AddRange(resultEmployee);
+                            isSearch = false;
+                            resultEmployee.Clear();
+                        }
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Имя");
@@ -176,16 +190,16 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        List<Computer> computersList;
+                        List<Computer> computersList = new List<Computer>();
                         if (!isSearch)
                         {
                             computersList = context.Computers.Include(e => e.Employee).ToList();
                         }
                         else
                         {
-                            computersList = searchComputer.resultComputer;
-                            searchComputer.Close();
+                            computersList.AddRange(resultComputer);
                             isSearch = false;
+                            resultComputer.Clear();
                         }
 
                         
@@ -214,9 +228,18 @@ namespace Yaxel
                     case CurrentTable.Periphery:
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
-                        //dataGridView1.DataSource = context.Peripheries.ToList();
 
-                        List<Periphery> peripheriesList = context.Peripheries.Include(p => p.Manufacturer).ToList();
+                        List<Periphery> peripheriesList = new List<Periphery>();
+                        if (!isSearch)
+                        {
+                            peripheriesList = context.Peripheries.Include(p => p.Manufacturer).ToList();
+                        }
+                        else
+                        {
+                            peripheriesList.AddRange(resultPeriphery);
+                            isSearch = false;
+                            resultPeriphery.Clear();
+                        }
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Model", "Модель");
@@ -242,7 +265,17 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        List<Component> componentsList = context.Components.Include(m => m.Manufacturer).ToList();
+                        List<Component> componentsList = new List<Component>();
+                        if (!isSearch)
+                        { 
+                            componentsList = context.Components.Include(m => m.Manufacturer).ToList();
+                        }
+                        else
+                        {
+                            componentsList.AddRange(resultComponent);
+                            isSearch = false;
+                            resultComponent.Clear();
+                        }
 
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Model", "Модель");
@@ -268,7 +301,18 @@ namespace Yaxel
                         dataGridView1.DataSource = null;
                         dataGridView1.Columns.Clear();
 
-                        List<Manufacturer> manufacturers = context.Manufacturers.ToList();
+                        List<Manufacturer> manufacturers = new List<Manufacturer>();
+                        if (!isSearch)
+                        {
+                            manufacturers = context.Manufacturers.ToList();
+                        }
+                        else
+                        {
+                            manufacturers.AddRange(resultManufacturer);
+                            isSearch = false;
+                            resultManufacturer.Clear();
+                        }
+
                         dataGridView1.Columns.Add("Id", "Id");
                         dataGridView1.Columns.Add("Name", "Название");
                         dataGridView1.Columns.Add(new DataGridViewImageColumn());
@@ -483,31 +527,77 @@ namespace Yaxel
             }
         }
 
-        // поиск
         private void btnSearch_Click(object sender, EventArgs e)
         {
             switch (cTable)
             {
                 case CurrentTable.Employee:
+                    using (var context = new YaxelContext())
+                    {
+                        var q = context.Employees.Where(x => x.Name == SearchTextBox.Text).ToList();
 
+                        resultEmployee.AddRange(q);
+                        MessageBox.Show("Найдено " + q.Count + " строк");
+                    }
+                    isSearch = true;
+                    SearchTextBox.Text = "";
+                    fillDataGridView();
                     break;
                 case CurrentTable.Computer:
-                    searchComputer = new SearchComputer();
-                    var res = searchComputer.ShowDialog();
-                    if (res == DialogResult.OK)
-                        isSearch = true;
+                    using (var context = new YaxelContext())
+                    {
+                        var q = context.Computers.Include(c => c.Employee)
+                            .Where(x => x.Name == SearchTextBox.Text)
+                            .ToList();
+
+                        resultComputer.AddRange(q);
+                        MessageBox.Show("Найдено " + q.Count + " строк");
+                    }
+                    isSearch = true;
+                    SearchTextBox.Text = "";
                     fillDataGridView();
                     break;
                 case CurrentTable.Periphery:
+                    using (var context = new YaxelContext())
+                    {
+                        var q = context.Peripheries.Include(p => p.Manufacturer).Where(x => x.Model == SearchTextBox.Text).ToList();
 
+                        resultPeriphery.AddRange(q);
+                        MessageBox.Show("Найдено " + q.Count + " строк");
+                    }
+                    isSearch = true;
+                    SearchTextBox.Text = "";
+                    fillDataGridView();
                     break;
                 case CurrentTable.Component:
+                    using (var context = new YaxelContext())
+                    {
+                        var q = context.Components.Include(p => p.Manufacturer).Where(x => x.Model == SearchTextBox.Text).ToList();
 
+                        resultComponent.AddRange(q);
+                        MessageBox.Show("Найдено " + q.Count + " строк");
+                    }
+                    isSearch = true;
+                    SearchTextBox.Text = "";
+                    fillDataGridView();
+                    break;
+                case CurrentTable.Manufacturer:
+                    using (var context = new YaxelContext())
+                    {
+                        var q = context.Manufacturers.Where(x => x.Name == SearchTextBox.Text).ToList();
+
+                        resultManufacturer.AddRange(q);
+                        MessageBox.Show("Найдено " + q.Count + " строк");
+                    }
+                    isSearch = true;
+                    SearchTextBox.Text = "";
+                    fillDataGridView();
                     break;
                 case CurrentTable.none:
 
                     break;
             }
+
         }
         #endregion
 
