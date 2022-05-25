@@ -200,16 +200,17 @@ namespace AchieveNow.Pages.User
 
         private void Edit_UserGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
         {
-            if (true)
+            if (UsersGrid.SelectedItem != null)
             {
-                if (true)
+                if (UsersGrid.SelectedItems.Count == 1)
                 {
                     Classes.User user = (Classes.User)UsersGrid.SelectedItem;
 
                     UserEditWindow editWindow = new UserEditWindow(user);
                     editWindow.ShowDialog();
 
-                    // Update();  // Вернуть after создания метода Update
+                    // Обновить после закрытия диалогового окна редактирования
+                    Update();
                 }
                 else
                 {

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         KeyUp="Window_KeyUp"
         Focusable="True"
-        Title="Окно редактирования пользователей" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Окно редактирования пользователей" Height="300" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -22,7 +22,7 @@
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">The Secret Society</TextBlock>
+            <TextBlock TextAlignment="Center" Margin="0, 0, 0, 5">Пароль</TextBlock>
             <TextBox x:Name="Password_TextBox" HorizontalContentAlignment="Center" MinWidth="150" PreviewTextInput="PasswordValidationTextBox" PreviewKeyDown="PreviewKeyDown_Space"></TextBox>
         </WrapPanel>
 
