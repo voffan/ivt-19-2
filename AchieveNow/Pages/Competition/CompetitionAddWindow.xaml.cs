@@ -164,7 +164,7 @@ namespace AchieveNow.Pages.Competition
                     if (!context.IsAvailable)
                         return;
 
-                    Classes.Competition competition = new Classes.Competition(Name_TextBox.Text, (Level)Level_ComboBox.SelectedIndex, locationId, sportKindId, dateOfExecution);
+                    Classes.Competition competition = new Classes.Competition(Name_TextBox.Text, (Level)Level_ComboBox.SelectedItem, locationId, sportKindId, dateOfExecution);
 
                     context.Competitions.Add(competition);
                     context.SaveChanges();
