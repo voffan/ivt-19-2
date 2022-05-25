@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AchieveNow.Classes;
+using AchieveNow.ProgramClasses;
 
 namespace AchieveNow.Pages.User
 {
@@ -25,6 +27,14 @@ namespace AchieveNow.Pages.User
             Login_TextBox.Focus();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach (Position position in Enum.GetValues(typeof(Position)))
+            {
+                Position_ComboBox.Items.Add(position);
+            }
+        }
+
         public void Refresh_Click(object sender, RoutedEventArgs e)
         {
 
@@ -37,7 +47,60 @@ namespace AchieveNow.Pages.User
 
         public void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Login_TextBox.Text == "")
+            {
+                MessageBox.Show("Логин пустой");
+                return;
+            }
 
+            if (Login_TextBox.Text.Length > 50)
+            {
+                MessageBox.Show("Логин не должен превышать 50 символов");
+                return;
+            }
+
+            if (Password_TextBox.Text == "")
+            {
+                MessageBox.Show("Пароль пустой");
+                return;
+            }
+
+            if (Password_TextBox.Text.Length > 50)
+            {
+                MessageBox.Show("Пароль не должен превышать 50 символов");
+                return;
+            }
+
+            if (Position_ComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите должность");
+                return;
+            }
+
+            try
+            {
+                using (ApplicationContext context = new ApplicationContext())
+                {
+                    if (!context.IsAvailable)
+                        return;
+
+                    Classes.User user = new Classes.User
+                    (
+                        Login_TextBox.Text,
+                        Password_TextBox.Text,
+                        (Position)Position_ComboBox.SelectedIndex
+                    );
+
+                    context.Users.Add(user);
+                    context.SaveChanges();
+
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла неизвестная ошибка: " + ex.Message);
+            }
         }
 
         private void NameValidationTextBox(object sender, TextCompositionEventArgs e)

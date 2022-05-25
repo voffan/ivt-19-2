@@ -19,5 +19,14 @@ namespace AchieveNow.Classes
         public Position Position { get; set; }
 
         public static Position position = (Position)(-1);
+
+        public User() { }
+
+        public User(string _login, string _password, Position _position)
+        {
+            Login = _login;
+            Password = _password;
+            Position = _position;
+        }
     }
 }
