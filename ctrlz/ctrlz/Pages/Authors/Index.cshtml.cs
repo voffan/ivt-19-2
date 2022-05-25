@@ -19,11 +19,19 @@ namespace ctrlz.Pages.Authors
             _context = context;
         }
 
+        public string CurrentFilter { get; set; }
+
         public IList<Author> Author { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Author = await _context.Authors.ToListAsync();
+            CurrentFilter = searchString;
+            IQueryable<Author> authorsIQ = from s in _context.Authors select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                authorsIQ = authorsIQ.Where(s => s.Name.Contains(searchString));
+            }
+            Author = await authorsIQ.ToListAsync();
         }
     }
 }
