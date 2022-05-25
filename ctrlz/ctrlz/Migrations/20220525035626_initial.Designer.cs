@@ -9,15 +9,15 @@ using ctrlz.Data;
 namespace ctrlz.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20220505060320_3rd")]
-    partial class _3rd
+    [Migration("20220525035626_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.16");
+                .HasAnnotation("ProductVersion", "5.0.17");
 
             modelBuilder.Entity("ctrlz.Classes.Author", b =>
                 {
@@ -49,16 +49,29 @@ namespace ctrlz.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Bio")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("HireDate")
+                        .HasColumnType("datetime");
+
                     b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("OwnerID")
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int>("PositionId")
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Position")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PositionId");
 
                     b.ToTable("Employees");
                 });
@@ -173,32 +186,6 @@ namespace ctrlz.Migrations
                     b.ToTable("Paintings");
                 });
 
-            modelBuilder.Entity("ctrlz.Classes.Position", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Positions");
-                });
-
-            modelBuilder.Entity("ctrlz.Classes.Employee", b =>
-                {
-                    b.HasOne("ctrlz.Classes.Position", "Position")
-                        .WithMany("Employees")
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Position");
-                });
-
             modelBuilder.Entity("ctrlz.Classes.Journal", b =>
                 {
                     b.HasOne("ctrlz.Classes.Employee", "Employee")
@@ -274,11 +261,6 @@ namespace ctrlz.Migrations
             modelBuilder.Entity("ctrlz.Classes.Location", b =>
                 {
                     b.Navigation("Paintings");
-                });
-
-            modelBuilder.Entity("ctrlz.Classes.Position", b =>
-                {
-                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

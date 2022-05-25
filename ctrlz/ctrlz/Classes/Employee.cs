@@ -12,8 +12,20 @@ namespace ctrlz.Classes
     {
         public int Id { get; set; }
         [MaxLength(50)]
+        public string OwnerID { get; set; }
         public string Name { get; set; }
-        public int PositionId { get; set; }
-        public virtual Position Position { get; set; }
+        public string Password { get; set; }
+        public string Bio { get; set; }
+        public string Email { get; set; }
+        public DateTime HireDate { get; set; }
+        public Position Position { get; set; }
     }
+
+    public enum Position
+    {
+        Handyman,
+        Director,
+        Administrator
+    }
+
 }
