@@ -167,7 +167,7 @@
             <TextBlock Text="Вход в аккаунт AchieveNow" Grid.Row="0" FontSize="35" HorizontalAlignment="Center"></TextBlock>
             <TextBlock Text="Введите логин и пароль, выданный администратором" Grid.Row="0" FontSize="20" HorizontalAlignment="Center"></TextBlock>
         </StackPanel>
-        <Image Source="/Resources/AchieveNowLogo.png" HorizontalAlignment="Right" Margin="0,226,37,81" Width="132" Grid.RowSpan="2" Grid.Row="1"/>
+        <Image Source="/Resources/AchieveNowLogo.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="735,0,0,-360" Width="132" Grid.RowSpan="3" Grid.Row="0"/>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
             <TextBlock Text="Логин" Margin="10, 0, 0, 10"></TextBlock>
