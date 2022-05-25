@@ -40,7 +40,7 @@ namespace Hoplits
             ApplicationContext a = new ApplicationContext();
             a.Errors.Add(error);
             a.SaveChanges();
-            MessageBox.Show("Successfuly added");
+            MessageBox.Show("Bug successfuly added.");
             this.Close();
         }
     }

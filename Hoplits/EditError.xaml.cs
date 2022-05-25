@@ -64,6 +64,7 @@ namespace Hoplits
                 dbError.ErrorType = (ErrorType)cb_errortype.SelectedValue;
                 //MessageBox.Show(datepicker.SelectedDate.Value.Date.ToString());
                 a.SaveChanges();
+                MessageBox.Show("Bug info successfully changed.");
                 this.Close();
             }
         }
