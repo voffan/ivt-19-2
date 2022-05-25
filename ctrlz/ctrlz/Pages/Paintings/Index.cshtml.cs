@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ctrlz.Classes;
 using ctrlz.Data;
+using System.Web.Mvc;
+using JsonResult = Microsoft.AspNetCore.Mvc.JsonResult;
 
 namespace ctrlz.Pages.Paintings
 {
@@ -28,10 +30,13 @@ namespace ctrlz.Pages.Paintings
         public string StatusSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
+        public string SearchBy { get; set; }
 
         public IList<Painting> Painting { get;set; }
 
-        public async Task OnGetAsync(string sortOrder, string searchString)
+             
+
+        public async Task OnGetAsync(string sortOrder, string searchString, string searchBy)
         {
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
@@ -42,13 +47,35 @@ namespace ctrlz.Pages.Paintings
             StatusSort = sortOrder == "Status" ? "status_desc" : "Status";
 
             CurrentFilter = searchString;
+            SearchBy = searchBy;
 
-            IQueryable<Painting> paintingsIQ = from s in _context.Paintings
-                                              select s;
+            IQueryable<Painting> paintingsIQ = from s in _context.Paintings select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                paintingsIQ = paintingsIQ.Where(s => s.Name.Contains(searchString));
+                if (searchBy == "Name") {
+                    paintingsIQ = paintingsIQ.Where(s => s.Name.Contains(searchString));
+                }
+                else if (searchBy == "Value")
+                {
+                    paintingsIQ = paintingsIQ.Where(s => s.Value.ToString().Contains(searchString));
+                }
+                else if (searchBy == "Author")
+                {
+                    paintingsIQ = paintingsIQ.Where(s => s.Author.Name.Contains(searchString));
+                }
+                else if (searchBy == "DateOfCreation")
+                {
+                    paintingsIQ = paintingsIQ.Where(s => s.DateOfCreation.ToString().Contains(searchString));
+                }
+                else if (searchBy == "Genre")
+                {
+                    paintingsIQ = paintingsIQ.Where(s => s.Genre.Name.Contains(searchString));
+                }
+                else if (searchBy == "Location")
+                {
+                    paintingsIQ = paintingsIQ.Where(s => s.Location.Name.Contains(searchString));
+                }
             }
 
             switch (sortOrder)

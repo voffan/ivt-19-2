@@ -1,8 +1,9 @@
 ﻿@page
+@using ctrlz.Classes
 @model ctrlz.Pages.Paintings.IndexModel
 
 @{
-    ViewData["Title"] = "PaintingsS";
+    ViewData["Title"] = "Paintings";
 }
 
 <h1>Paintings</h1>
@@ -12,16 +13,27 @@
 </p>
 
 
-<form asp-page="./Index" method="get">
+<form asp-page="./Index" method="get" runat="server">
     <div class="form-actions no-color">
         <p>
-            Find by name:
+            <b>Search by: </b>
+            <select type="text" id="searchby" name="searchby" value="@Model.SearchBy">
+                <option value="Name">Name</option>
+                <option value="Value">Value</option>
+                <option value="DateOfCreation">DateOfCreation</option>
+                <option value="Author">Author</option>
+                <option value="Genre">Genre</option>
+                <option value="Location">Location</option>
+                <option value="Status">Status</option>
+            </select><br /><br />
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
+            <a asp-page="./Index">Back to full List</a>         
         </p>
     </div>
 </form>
+
+
 
 <table class="table">
     <thead>
