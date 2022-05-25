@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -27,11 +27,11 @@
                         Id = c.Int(nullable: false, identity: true),
                         Model = c.String(maxLength: 50),
                         ComponentType = c.Int(nullable: false),
-                        ComputerId = c.Int(nullable: false),
+                        ManufacturerId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Computers", t => t.ComputerId, cascadeDelete: true)
-                .Index(t => t.ComputerId);
+                .ForeignKey("dbo.Manufacturers", t => t.ManufacturerId, cascadeDelete: true)
+                .Index(t => t.ManufacturerId);
             
             CreateTable(
                 "dbo.Computers",
@@ -41,13 +41,10 @@
                         Name = c.String(maxLength: 50),
                         Status = c.Int(nullable: false),
                         EmployeeId = c.Int(nullable: false),
-                        ManufacturerId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
-                .ForeignKey("dbo.Manufacturers", t => t.ManufacturerId, cascadeDelete: true)
-                .Index(t => t.EmployeeId)
-                .Index(t => t.ManufacturerId);
+                .Index(t => t.EmployeeId);
             
             CreateTable(
                 "dbo.Employees",
@@ -69,13 +66,10 @@
                         Model = c.String(maxLength: 50),
                         PeripheryType = c.Int(nullable: false),
                         Status = c.Int(nullable: false),
-                        EmployeeId = c.Int(nullable: false),
                         ManufacturerId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
                 .ForeignKey("dbo.Manufacturers", t => t.ManufacturerId, cascadeDelete: true)
-                .Index(t => t.EmployeeId)
                 .Index(t => t.ManufacturerId);
             
             CreateTable(
@@ -87,22 +81,54 @@
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.ComputerComponents",
+                c => new
+                    {
+                        Computer_Id = c.Int(nullable: false),
+                        Component_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Computer_Id, t.Component_Id })
+                .ForeignKey("dbo.Computers", t => t.Computer_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Components", t => t.Component_Id, cascadeDelete: true)
+                .Index(t => t.Computer_Id)
+                .Index(t => t.Component_Id);
+            
+            CreateTable(
+                "dbo.PeripheryComputers",
+                c => new
+                    {
+                        Periphery_Id = c.Int(nullable: false),
+                        Computer_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Periphery_Id, t.Computer_Id })
+                .ForeignKey("dbo.Peripheries", t => t.Periphery_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Computers", t => t.Computer_Id, cascadeDelete: true)
+                .Index(t => t.Periphery_Id)
+                .Index(t => t.Computer_Id);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Peripheries", "ManufacturerId", "dbo.Manufacturers");
-            DropForeignKey("dbo.Computers", "ManufacturerId", "dbo.Manufacturers");
-            DropForeignKey("dbo.Peripheries", "EmployeeId", "dbo.Employees");
+            DropForeignKey("dbo.Components", "ManufacturerId", "dbo.Manufacturers");
+            DropForeignKey("dbo.PeripheryComputers", "Computer_Id", "dbo.Computers");
+            DropForeignKey("dbo.PeripheryComputers", "Periphery_Id", "dbo.Peripheries");
             DropForeignKey("dbo.Computers", "EmployeeId", "dbo.Employees");
-            DropForeignKey("dbo.Components", "ComputerId", "dbo.Computers");
+            DropForeignKey("dbo.ComputerComponents", "Component_Id", "dbo.Components");
+            DropForeignKey("dbo.ComputerComponents", "Computer_Id", "dbo.Computers");
             DropForeignKey("dbo.Attributes", "ComponentId", "dbo.Components");
+            DropIndex("dbo.PeripheryComputers", new[] { "Computer_Id" });
+            DropIndex("dbo.PeripheryComputers", new[] { "Periphery_Id" });
+            DropIndex("dbo.ComputerComponents", new[] { "Component_Id" });
+            DropIndex("dbo.ComputerComponents", new[] { "Computer_Id" });
             DropIndex("dbo.Peripheries", new[] { "ManufacturerId" });
-            DropIndex("dbo.Peripheries", new[] { "EmployeeId" });
-            DropIndex("dbo.Computers", new[] { "ManufacturerId" });
             DropIndex("dbo.Computers", new[] { "EmployeeId" });
-            DropIndex("dbo.Components", new[] { "ComputerId" });
+            DropIndex("dbo.Components", new[] { "ManufacturerId" });
             DropIndex("dbo.Attributes", new[] { "ComponentId" });
+            DropTable("dbo.PeripheryComputers");
+            DropTable("dbo.ComputerComponents");
             DropTable("dbo.Manufacturers");
             DropTable("dbo.Peripheries");
             DropTable("dbo.Employees");

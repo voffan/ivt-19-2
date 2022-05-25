@@ -7,13 +7,13 @@ namespace Yaxel.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddForeignKeyComputerPeriphery : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddForeignKeyComputerPeriphery));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202205180622527_AddForeignKey Computer-Periphery"; }
+            get { return "202205250136224_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -61,25 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202203081348229_InitialCreate.cs" />
-    <Compile Include="Migrations\202203081348229_InitialCreate.designer.cs">
-      <DependentUpon>202203081348229_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204211150105_ComponentComputer.cs" />
-    <Compile Include="Migrations\202204211150105_ComponentComputer.designer.cs">
-      <DependentUpon>202204211150105_ComponentComputer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205040234392_dropforeginkey computer components.cs" />
-    <Compile Include="Migrations\202205040234392_dropforeginkey computer components.designer.cs">
-      <DependentUpon>202205040234392_dropforeginkey computer components.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205180617596_dropforeginkey Employee-Periphery.cs" />
-    <Compile Include="Migrations\202205180617596_dropforeginkey Employee-Periphery.designer.cs">
-      <DependentUpon>202205180617596_dropforeginkey Employee-Periphery.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205180622527_AddForeignKey Computer-Periphery.cs" />
-    <Compile Include="Migrations\202205180622527_AddForeignKey Computer-Periphery.designer.cs">
-      <DependentUpon>202205180622527_AddForeignKey Computer-Periphery.cs</DependentUpon>
+    <Compile Include="Migrations\202205250136224_Initial.cs" />
+    <Compile Include="Migrations\202205250136224_Initial.designer.cs">
+      <DependentUpon>202205250136224_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Tables\ComponentForms\AddComponent.cs">
@@ -238,20 +222,8 @@
     <Compile Include="YaxelStyle\YaxelForm.Designer.cs">
       <DependentUpon>YaxelForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\202203081348229_InitialCreate.resx">
-      <DependentUpon>202203081348229_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204211150105_ComponentComputer.resx">
-      <DependentUpon>202204211150105_ComponentComputer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205040234392_dropforeginkey computer components.resx">
-      <DependentUpon>202205040234392_dropforeginkey computer components.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205180617596_dropforeginkey Employee-Periphery.resx">
-      <DependentUpon>202205180617596_dropforeginkey Employee-Periphery.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205180622527_AddForeignKey Computer-Periphery.resx">
-      <DependentUpon>202205180622527_AddForeignKey Computer-Periphery.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205250136224_Initial.resx">
+      <DependentUpon>202205250136224_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\ComponentForms\AddComponent.resx">
       <DependentUpon>AddComponent.cs</DependentUpon>
