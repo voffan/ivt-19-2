@@ -152,7 +152,27 @@ namespace AchieveNow.Pages.User
 
         public void Search_Button_Click(object sender, RoutedEventArgs e)
         {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                if (!context.IsAvailable)
+                    return;
 
+                IQueryable<Classes.User> userIQuer = context.Users;
+
+                if (Login_TextBox.Text != "")
+                {
+                    userIQuer = userIQuer.Where(c => EF.Functions.Like(c.Login!, $"%{Login_TextBox.Text}%"));
+                }
+
+                if (Position_ComboBox.SelectedItem != null)
+                {
+                    userIQuer = userIQuer.Where(c => c.Position == (Position)Position_ComboBox.SelectedItem);
+                }
+
+                var search = userIQuer.ToList();
+
+                UsersGrid.ItemsSource = search;
+            }
         }
 
         private void Delete_UsersGrid_ContextMenu_Click(object sender, RoutedEventArgs e)
