@@ -29,6 +29,7 @@ namespace AchieveNow
 {
     public static class Keybo
     {
+        public static int State = 0;
         private static bool _keyH = false;
         private static bool _keyE = false;
         private static bool _keyS = false;
@@ -51,19 +52,19 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new SportsmanMainPage());
             }
-            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new LocationMainPage());
             }
-            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new SportKindMainPage());
             }
-            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new CountryMainPage());
             }
-            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space) && State == 0)
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }
@@ -83,19 +84,19 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new SportsmanMainPage());
             }
-            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new LocationMainPage());
             }
-            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new SportKindMainPage());
             }
-            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new CountryMainPage());
             }
-            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space) && State == 0)
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }
@@ -114,19 +115,19 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new SportsmanMainPage());
             }
-            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new LocationMainPage());
             }
-            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new SportKindMainPage());
             }
-            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new CountryMainPage());
             }
-            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space) && State == 0)
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }
@@ -145,19 +146,19 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new SportsmanMainPage());
             }
-            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new LocationMainPage());
             }
-            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new SportKindMainPage());
             }
-            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new CountryMainPage());
             }
-            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space) && State == 0)
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }
@@ -176,19 +177,19 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new SportsmanMainPage());
             }
-            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new LocationMainPage());
             }
-            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new SportKindMainPage());
             }
-            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new CountryMainPage());
             }
-            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space) && State == 0)
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }
@@ -207,19 +208,19 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new SportsmanMainPage());
             }
-            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new LocationMainPage());
             }
-            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new SportKindMainPage());
             }
-            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new CountryMainPage());
             }
-            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space) && State == 0)
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }
@@ -238,19 +239,19 @@ namespace AchieveNow
             {
                 page.NavigationService.Navigate(new SportsmanMainPage());
             }
-            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D4 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new LocationMainPage());
             }
-            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D5 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new SportKindMainPage());
             }
-            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D6 && Keyboard.IsKeyDown(Key.Space) && State != 2)
             {
                 page.NavigationService.Navigate(new CountryMainPage());
             }
-            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space))
+            if (e.Key == Key.D7 && Keyboard.IsKeyDown(Key.Space) && State == 0)
             {
                 page.NavigationService.Navigate(new UserMainPage());
             }

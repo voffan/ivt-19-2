@@ -45,8 +45,16 @@ namespace AchieveNow.Pages
                     if (user != null)
                     {
                         Classes.User.position = user.Position;
-
+                        if (Classes.User.position == Position.Сотрудник)
+                        {
+                            Keybo.State = 1;
+                        }
+                        else if (Classes.User.position == Position.Судья)
+                        {
+                            Keybo.State = 2;
+                        }
                         NavigationService.Navigate(new CompetitionMainPage());
+                        
                     }
                     else
                     {
