@@ -9,11 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\AchieveNowLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Resources\AchieveNowLogo.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\achieveNowLogo.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\AchieveNowLogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
