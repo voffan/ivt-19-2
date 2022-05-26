@@ -156,26 +156,30 @@
     </Page.Resources>
 
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="1.0*"/>
+            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20, 0, 0">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 20, 0, 0">
             <TextBlock Text="Вход в аккаунт AchieveNow" Grid.Row="0" FontSize="35" HorizontalAlignment="Center"></TextBlock>
             <TextBlock Text="Введите логин и пароль, выданный администратором" Grid.Row="0" FontSize="20" HorizontalAlignment="Center"></TextBlock>
         </StackPanel>
-        <Image Source="/Resources/AchieveNowLogo.png" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="735,0,0, -370" Width="132" Grid.RowSpan="3" Grid.Row="0"/>
 
-        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Margin="0, 0, 0, -40">
             <TextBlock Text="Логин" Margin="10, 0, 0, 10"></TextBlock>
             <TextBox Style="{DynamicResource TextBoxStyleCornder}" x:Name="Login_TextBox" Margin="0, 0, 0, 30" FontSize="20"></TextBox>
             <TextBlock Text="Пароль" Margin="10, 0, 0, 10"></TextBlock>
             <PasswordBox Style="{DynamicResource PasswordBoxStyleCorner}" x:Name="Password_PasswordBox" Margin="0, 0, 0, 30" FontSize="20"></PasswordBox>
         </StackPanel>
-
-        <Button Style="{DynamicResource ButtonStyleCorner}" x:Name="Login_Button" Grid.Row="2" Content="Войти в аккаунт" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Width="600" Height="45" Click="Login_Button_Click"></Button>
+        
+        <Image Source="/Resources/AchieveNowLogo.png" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="715,0,0,25" Width="132" Grid.RowSpan="1" Grid.Row="2"/>
+        <Button Style="{DynamicResource ButtonStyleCorner}" x:Name="Login_Button" Grid.Row="2" Content="Войти в аккаунт" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" Width="600" Height="45" Click="Login_Button_Click"></Button>
     </Grid>
 </Page>
