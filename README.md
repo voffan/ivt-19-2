@@ -8,6 +8,7 @@
 - Git
 - Visual Studio
 - MySQL Workbench
+- Entity Framework Core 6.0.3
 
 -------------
 ### :question: Инструкция по запуску: 
@@ -18,9 +19,9 @@
 -------------
 ### :world_map: RoadMap
 * #### :star: Начало :heavy_check_mark:
-- [x] Требовании
-- [x] Диаграмма классов UML (OOM)
-- [x] Диаграмма последовательностей
+- [x] Требовании (Requirements)
+- [x] Диаграмма моделей классов UML (OOM)
+- [x] Диаграмма последовательностей (Application Architecture Diagram)
 * #### :crown: MVP
 - [x] Главное меню со списком всех ошибок или сотрудников с отображением данных из БД.
 - [x] Взаимодействие с БД.
@@ -46,9 +47,9 @@
 - [ ] Отчет о зарегестрированных за день/неделю/месяц/ ошибках.
 
 -------------
-### :trophy: Squad Hoplits:
-* :superhero_man: Semen :zzz:
-* :superhero_man: Timur
-* :superhero_man: Aiaal
-* :superhero_man: Kirill 
-* :superhero_man: Konstantine :zzz:
+### :trophy: Воины Hoplits:
+* :superhero_man: Gavriliev Semen :zzz:
+* :superhero_man: Ivanov Timur
+* :superhero_man: Adamov Aiaal
+* :superhero_man: Ustinov Kirill 
+* :superhero_man: Mikhaylov Konstantine :zzz:
