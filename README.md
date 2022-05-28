@@ -16,8 +16,8 @@
 3. Открыть файл Hoplits/Hoplits.sln
 4. Запускаем проект :boom:!
 -------------
-### :world_map: RoadMap 	(work in progress) TOBEDONE!
-* #### :star: Начало
+### :world_map: RoadMap
+* #### :star: Начало :heavy_check_mark:
 - [x] Требовании
 - [x] Диаграмма классов UML (OOM)
 - [x] Диаграмма последовательностей
