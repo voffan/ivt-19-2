@@ -16,12 +16,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using AchieveNow.Classes;
 using AchieveNow.ProgramClasses;
-using AchieveNow.Pages.Competition;
-using AchieveNow.Pages.Achievement;
-using AchieveNow.Pages.Sportsman;
-using AchieveNow.Pages.SportKind;
-using AchieveNow.Pages.Country;
-using AchieveNow.Pages.User;
 using MySql.Data.MySqlClient;
 using Microsoft.Data.Sqlite;
 using System.IO;
@@ -39,11 +33,6 @@ namespace AchieveNow.Pages.Report
             InitializeComponent();
             Page_ReportPeriodPage.Focus();
             Update();
-        }
-
-        public void ShowGrid()
-        {
-            
         }
 
         // Вывести в ComboBox данные из таблицы Locations и Sportkinds
@@ -241,19 +230,6 @@ namespace AchieveNow.Pages.Report
             NavigationService.Navigate(new Competition.CompetitionMainPage());
         }
     }
-}
-
-public class ReportPeriodGrid
-{
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public string Result { get; set; }
-    public string SportKind { get; set; }
-    public DateOnly DateOfExecution { get; set; }
-    public string Competition { get; set; }
-    public DateOnly DateOfIssue { get; set; }
-    public string Gender { get; set; }
-    public string Country { get; set; }
 }
 
 // 2022-05-25 12:55. Альтернативный вариант report если нужны баллы

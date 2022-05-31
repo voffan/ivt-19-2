@@ -16,12 +16,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using AchieveNow.Classes;
 using AchieveNow.ProgramClasses;
-using AchieveNow.Pages.Competition;
-using AchieveNow.Pages.Achievement;
-using AchieveNow.Pages.Sportsman;
-using AchieveNow.Pages.SportKind;
-using AchieveNow.Pages.Country;
-using AchieveNow.Pages.User;
 using MySql.Data.MySqlClient;
 using Microsoft.Data.Sqlite;
 using System.IO;
@@ -178,15 +172,4 @@ namespace AchieveNow.Pages.Report
             NavigationService.Navigate(new Competition.CompetitionMainPage());
         }
     }
-}
-
-public class WinnerGrid
-{
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public string SportKind { get; set; }
-    public string Gender { get; set; }
-    public string Country { get; set; }
-    public string Point { get; set; }
-    public string Place { get; set; }
 }
