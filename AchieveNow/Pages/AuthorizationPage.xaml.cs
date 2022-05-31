@@ -26,10 +26,12 @@ namespace AchieveNow.Pages
         public AuthorizationPage()
         {
             InitializeComponent();
+            Login_TextBox.Focus();
         }
 
-        private void Login_Button_Click(object sender, RoutedEventArgs e)
+        public void Login_Button_Click(object sender, RoutedEventArgs e)
         {
+            Login_Button.IsEnabled = false;
             if (Login_TextBox.Text != "" && Password_PasswordBox.Password != "")
             {
                 using (ApplicationContext context = new ApplicationContext())
@@ -66,6 +68,12 @@ namespace AchieveNow.Pages
             {
                 MessageBox.Show("Введите логин и пароль");
             }
+            Login_Button.IsEnabled = true;
+        }
+
+        private void PageKeyUp(object sender, KeyEventArgs e)
+        {
+            Keybo.AuthPageOnKeyUpHandler(sender, e, this);
         }
     }
 }

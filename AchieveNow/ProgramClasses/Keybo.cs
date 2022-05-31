@@ -24,6 +24,7 @@ using AchieveNow.Pages.SportKind;
 using AchieveNow.Pages.Country;
 using AchieveNow.Pages.User;
 using AchieveNow.Pages.Report;
+using AchieveNow.Pages;
 
 namespace AchieveNow
 {
@@ -37,6 +38,7 @@ namespace AchieveNow
         private static bool _keyY = false;
         private static bool _keyA = false;
         private static int countNoHesoyam = 0;
+        private static int countAuthKeyEnter = 0;
         public static void PageOnKeyUpHandler2(object sender, KeyEventArgs e, CompetitionMainPage page)
         {
             // MessageBox.Show(e.Key.ToString());
@@ -258,6 +260,7 @@ namespace AchieveNow
         }
         public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, IMainPage mainPage)
         {
+            Console.WriteLine();
             if (Keyboard.IsKeyDown(Key.Space))
             {
                 switch (e.Key)
@@ -457,6 +460,26 @@ namespace AchieveNow
                     default:
                         break;
                 }
+            }
+        }
+        public static void AuthPageOnKeyUpHandler(object sender, KeyEventArgs e, AuthorizationPage authorizationPage)
+        {
+            
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    if (countAuthKeyEnter == 0)
+                    {
+                        authorizationPage.Password_PasswordBox.Focus();
+                        countAuthKeyEnter++;
+                        break;
+                    }
+                    else
+                    {
+                        authorizationPage.Login_Button_Click(null, null);
+                        countAuthKeyEnter--;
+                        break;
+                    }
             }
         }
     }
