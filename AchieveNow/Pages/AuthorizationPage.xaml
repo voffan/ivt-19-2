@@ -7,7 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="900"
       Title="Авторизация"
-      Background="White">
+      Background="White"
+      KeyUp="PageKeyUp">
     <Page.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
@@ -181,5 +182,7 @@
         
         <Image Source="/Resources/AchieveNowLogo.png" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="715,0,0,25" Width="132" Grid.RowSpan="1" Grid.Row="2"/>
         <Button Style="{DynamicResource ButtonStyleCorner}" x:Name="Login_Button" Grid.Row="2" Content="Войти в аккаунт" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" Width="600" Height="45" Click="Login_Button_Click"></Button>
+        
     </Grid>
+    
 </Page>
