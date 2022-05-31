@@ -28,6 +28,8 @@ namespace AchieveNow.Pages.Report
     /// </summary>
     public partial class ReportPeriodPage : Page, IReport
     {
+        List<ReportPeriodGrid>? win = new List<ReportPeriodGrid>();
+
         public ReportPeriodPage()
         {
             InitializeComponent();
@@ -75,6 +77,7 @@ namespace AchieveNow.Pages.Report
             SportKind_ComboBox.SelectedItem = null;
             FromDateOfExecution_DatePicker.SelectedDate = null;
             ToDateOfExecution_DatePicker.SelectedDate = null;
+            win = null;
         }
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
@@ -124,7 +127,6 @@ namespace AchieveNow.Pages.Report
                 if (!context.IsAvailable)
                     return;
 
-                List<ReportPeriodGrid> win = new List<ReportPeriodGrid>();
                 string sql = $"SELECT Sportsmen.Id, Sportsmen.Name, Achievements.Result, SportKinds.Name, Competitions.DateOfExecution, Competitions.Name AS \"Competition\", Achievements.DateOfIssue, Sportsmen.Gender, Countries.Name FROM SportKinds JOIN Sportsmen ON SportKinds.Id = Competitions.SportKindId JOIN Achievements ON Achievements.SportsmanId = Sportsmen.Id JOIN Competitions ON Competitions.Id = Achievements.CompetitionId JOIN Countries ON Countries.Id = Sportsmen.CountryId WHERE SportKinds.Id = {sportKindId} AND (Competitions.DateOfExecution >= '{fromDateOfExecution}' AND Competitions.DateOfExecution <= '{toDateOfExecution}') AND Achievements.Result = 3";
 
                 FileInfo configurationFile = new FileInfo("ConfigurationDB.json");
@@ -180,7 +182,7 @@ namespace AchieveNow.Pages.Report
                                     var id = reader.GetValue(0);
                                     var name = reader.GetValue(1);
                                     //Result result = (Result)Enum.GetValues(typeof(Result)).GetValue(Convert.ToInt64(reader.GetValue(2)));
-                                    var result = reader.GetValue(2);
+                                    long result = (long)reader.GetValue(2);
                                     var sportKind = reader.GetValue(3);
                                     var dateOfExecution = Convert.ToDateTime(reader.GetValue(4));
                                     var competition = reader.GetValue(5);
@@ -188,7 +190,21 @@ namespace AchieveNow.Pages.Report
                                     Gender gender = (Gender)Enum.GetValues(typeof(Gender)).GetValue(Convert.ToInt64(reader.GetValue(7)));
                                     var country = reader.GetValue(8);
 
-                                    win.Add(new ReportPeriodGrid() { Id = id.ToString(), Name = name.ToString(), Result = result.ToString(), SportKind = sportKind.ToString(), DateOfExecution = DateOnly.FromDateTime(dateOfExecution), Competition = competition.ToString(), DateOfIssue = DateOnly.FromDateTime(dateOfIssue), Gender = gender.ToString(), Country = country.ToString() });
+                                    string convertedResult = "";
+                                    switch (result)
+                                    {
+                                        case 3:
+                                            convertedResult = "Первое место";
+                                            break;
+                                        case 2:
+                                            convertedResult = "Второе место";
+                                            break;
+                                        case 1:
+                                            convertedResult = "Третье место";
+                                            break;
+                                    }
+
+                                    win.Add(new ReportPeriodGrid() { Id = id.ToString(), Name = name.ToString(), Result = convertedResult, SportKind = sportKind.ToString(), DateOfExecution = DateOnly.FromDateTime(dateOfExecution), Competition = competition.ToString(), DateOfIssue = DateOnly.FromDateTime(dateOfIssue), Gender = gender.ToString(), Country = country.ToString() });
                                 }
                             }
                         }
@@ -207,6 +223,7 @@ namespace AchieveNow.Pages.Report
         {
             ClearForms();
             Update();
+            ReportPeriodGrid.ItemsSource = win;
         }
 
         private void ReportWinner_Button_Click(object sender, RoutedEventArgs e)

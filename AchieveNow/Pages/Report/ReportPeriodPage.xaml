@@ -56,9 +56,9 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}"                  Header="ID"                 Width="22"  MinWidth="22"   MaxWidth="50"/>
                 <DataGridTextColumn Binding="{Binding Name}"                Header="Спортсмен"          Width="*"   MinWidth="150"/>
-                <DataGridTextColumn Binding="{Binding Result}"              Header="Результат"          Width="*"   MinWidth="50" MaxWidth="80"/>
+                <DataGridTextColumn Binding="{Binding Result}"              Header="Результат"          Width="*"   MinWidth="50" MaxWidth="90"/>
                 <DataGridTextColumn Binding="{Binding SportKind}"           Header="Вид спорта"         Width="*"   MinWidth="60"/>
-                <DataGridTextColumn Binding="{Binding DateOfExecution}"     Header="Дата проведения"    Width="*"   MaxWidth="80"/>
+                <DataGridTextColumn Binding="{Binding DateOfExecution}"     Header="Дата проведения"    Width="*"   MaxWidth="86"/>
                 <DataGridTextColumn Binding="{Binding Competition}"         Header="Соревнование"       Width="*"   MinWidth="100"/>
                 <DataGridTextColumn Binding="{Binding DateOfIssue}"         Header="Дата выдачи"        Width="*"   MaxWidth="80"/>
                 <DataGridTextColumn Binding="{Binding Gender}"              Header="Пол"                Width="78"  MinWidth="78"   MaxWidth="78"/>
