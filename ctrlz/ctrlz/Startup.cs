@@ -1,19 +1,17 @@
-﻿using Microsoft.AspNetCore.Builder;
+using ctrlz.Model;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using ctrlz.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ctrlz
 {
@@ -29,18 +27,15 @@ namespace ctrlz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = "server=localhost;user=root;database=ctrlz;password=20052001;port=3306";
+            var serverVersion = new MySqlServerVersion(new Version(4, 0, 4));
             services.AddRazorPages();
-
-            services.AddDbContext<MyDbContext>(options => options.UseMySQL(Configuration.GetConnectionString("Default")));
-            services.AddIdentityCore<IdentityUser>(Options => Options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<MyDbContext>();
-
-            services.AddAuthorization(options =>
+            services.AddDbContext<AuthDbContext>(dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
+            //services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AuthConnectionString") ));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
+            services.ConfigureApplicationCookie(config =>
             {
-                options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
+                config.LoginPath = "/Login";
             });
         }
 
@@ -64,6 +59,7 @@ namespace ctrlz
             app.UseRouting();
 
             app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -6,15 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ctrlz.Classes;
-using ctrlz.Data;
+using ctrlz.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ctrlz.Pages.Authors
 {
+    [Authorize]
     public class DetailsModel : PageModel
     {
-        private readonly ctrlz.Data.MyDbContext _context;
+        private readonly ctrlz.Model.AuthDbContext _context;
 
-        public DetailsModel(ctrlz.Data.MyDbContext context)
+        public DetailsModel(ctrlz.Model.AuthDbContext context)
         {
             _context = context;
         }

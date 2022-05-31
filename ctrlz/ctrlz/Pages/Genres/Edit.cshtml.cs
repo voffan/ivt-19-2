@@ -7,15 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ctrlz.Classes;
-using ctrlz.Data;
+using ctrlz.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ctrlz.Pages.Genres
 {
+    [Authorize]
     public class EditModel : PageModel
     {
-        private readonly ctrlz.Data.MyDbContext _context;
+        private readonly ctrlz.Model.AuthDbContext _context;
 
-        public EditModel(ctrlz.Data.MyDbContext context)
+        public EditModel(ctrlz.Model.AuthDbContext context)
         {
             _context = context;
         }

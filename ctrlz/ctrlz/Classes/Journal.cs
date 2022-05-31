@@ -15,8 +15,6 @@ namespace ctrlz.Classes
         public int PaintingId { get; set; }
         public virtual Painting Painting { get; set; }
         public DateTime Date { get; set; }
-        public int EmployeeId { get; set; }
-        public virtual Employee Employee { get; set; }
         public int FromId { get; set; }
         [ForeignKey("FromId")]
         public virtual Location From { get; set; }

@@ -6,15 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ctrlz.Classes;
-using ctrlz.Data;
+using ctrlz.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ctrlz.Pages.Genres
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
-        private readonly ctrlz.Data.MyDbContext _context;
+        private readonly ctrlz.Model.AuthDbContext _context;
 
-        public CreateModel(ctrlz.Data.MyDbContext context)
+        public CreateModel(ctrlz.Model.AuthDbContext context)
         {
             _context = context;
         }

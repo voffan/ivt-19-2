@@ -6,15 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ctrlz.Classes;
-using ctrlz.Data;
+using ctrlz.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ctrlz.Pages.Paintings
 {
+    [Authorize]
     public class DeleteModel : PageModel
     {
-        private readonly ctrlz.Data.MyDbContext _context;
+        private readonly ctrlz.Model.AuthDbContext _context;
 
-        public DeleteModel(ctrlz.Data.MyDbContext context)
+        public DeleteModel(ctrlz.Model.AuthDbContext context)
         {
             _context = context;
         }

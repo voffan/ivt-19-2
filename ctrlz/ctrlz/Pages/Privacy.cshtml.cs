@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ctrlz.Pages
 {
-    [AllowAnonymous]
+    [Authorize]
     public class PrivacyModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;
