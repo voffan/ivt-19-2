@@ -27,7 +27,7 @@ namespace ctrlz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = "server=localhost;user=root;database=ctrlz;password=20052001;port=3306";
+            var connectionString = "server=10.14.129.85;user=root;database=ctrlz;password=1234;port=3306";
             var serverVersion = new MySqlServerVersion(new Version(4, 0, 4));
             services.AddRazorPages();
             services.AddDbContext<AuthDbContext>(dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
