@@ -29,6 +29,7 @@ namespace AchieveNow.Pages.Achievement
     /// </summary>
     public partial class AchievementMainPage : Page, IMainPage
     {
+        public const string PAGE_NAME = "Achievement";
         public AchievementMainPage()
         {
             InitializeComponent();
@@ -400,6 +401,11 @@ namespace AchieveNow.Pages.Achievement
         public void Add_Button_Click()
         {
             AddAchievement_Button_Click(null, null);
+        }
+
+        public string GetPageName()
+        {
+            return PAGE_NAME;
         }
     }
 }

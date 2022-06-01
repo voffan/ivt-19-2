@@ -30,6 +30,7 @@ namespace AchieveNow.Pages.Location
     /// </summary>
     public partial class LocationMainPage : Page, IMainPage
     {
+        public const string PAGE_NAME = "Location";
         public LocationMainPage()
         {
             InitializeComponent();
@@ -272,6 +273,11 @@ namespace AchieveNow.Pages.Location
         public void Add_Button_Click()
         {
             AddLocation_Button_Click(null, null);
+        }
+
+        public string GetPageName()
+        {
+            return PAGE_NAME;
         }
     }
 }

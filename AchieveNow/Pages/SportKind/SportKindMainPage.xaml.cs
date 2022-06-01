@@ -30,6 +30,7 @@ namespace AchieveNow.Pages.SportKind
     /// </summary>
     public partial class SportKindMainPage : Page, IMainPage
     {
+        public const string PAGE_NAME = "SportKind";
         public SportKindMainPage()
         {
             InitializeComponent();
@@ -239,6 +240,11 @@ namespace AchieveNow.Pages.SportKind
         public void Add_Button_Click()
         {
             AddSportKind_Button_Click(null, null);
+        }
+
+        public string GetPageName()
+        {
+            return PAGE_NAME;
         }
     }
 }

@@ -260,16 +260,18 @@ namespace AchieveNow
         }
         public static void PageOnKeyUpHandler(object sender, KeyEventArgs e, IMainPage mainPage)
         {
-            Console.WriteLine();
             if (Keyboard.IsKeyDown(Key.Space))
             {
                 switch (e.Key)
                 {
                     case Key.A:
-                        mainPage.Add_Button_Click();
+                        if (State == 1 && mainPage.GetPageName() != "Achievement" || State == 2 && mainPage.GetPageName() == "Achievement")
+                        {
+                            mainPage.Add_Button_Click();
+                        }
                         break;
                     case Key.R:
-                        mainPage.ShowReportWindow();
+                        mainPage.ShowWinnerPage();
                         break;
                     default:
                         break;
@@ -281,7 +283,10 @@ namespace AchieveNow
                     mainPage.Search_Button_Click(null, null);
                     break;
                 case Key.F3:
-                    mainPage.Add_Button_Click();
+                    if (State == 1 && mainPage.GetPageName() != "Achievement" || State == 2 && mainPage.GetPageName() == "Achievement")
+                    {
+                        mainPage.Add_Button_Click();
+                    }
                     break;
                 case Key.F5:
                     mainPage.Refresh_Button_Click(null, null);
@@ -356,7 +361,7 @@ namespace AchieveNow
                 _keyO = false;
                 _keyY = false;
                 _keyA = false;
-                mainPage.ShowReportWindow();
+                mainPage.ShowWinnerPage();
             }
             else
             {
@@ -413,6 +418,17 @@ namespace AchieveNow
         }
         public static void VReportPageOnKeyUpHandler(object sender, KeyEventArgs e, IReport report)
         {
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                switch (e.Key)
+                {
+                    case Key.R:
+                        report.NavigateToMainPage();
+                        break;
+                    default:
+                        break;
+                }
+            }
             switch (e.Key)
             {
                 case Key.F3:

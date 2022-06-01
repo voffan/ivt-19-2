@@ -30,6 +30,7 @@ namespace AchieveNow.Pages.Country
     /// </summary>
     public partial class CountryMainPage : Page, IMainPage
     {
+        public const string PAGE_NAME = "Country";
         public CountryMainPage()
         {
             InitializeComponent();
@@ -245,6 +246,11 @@ namespace AchieveNow.Pages.Country
         public void Add_Button_Click()
         {
             AddCountry_Button_Click(null, null);
+        }
+
+        public string GetPageName()
+        {
+            return PAGE_NAME;
         }
     }
 }

@@ -30,6 +30,7 @@ namespace AchieveNow.Pages.User
     /// </summary>
     public partial class UserMainPage : Page, IMainPage
     {
+        public const string PAGE_NAME = "User";
         public UserMainPage()
         {
             InitializeComponent();
@@ -265,6 +266,11 @@ namespace AchieveNow.Pages.User
         public void Add_Button_Click()
         {
             AddUser_Button_Click(null, null);
+        }
+
+        public string GetPageName()
+        {
+            return PAGE_NAME;
         }
     }
 }

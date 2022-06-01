@@ -30,6 +30,7 @@ namespace AchieveNow.Pages.Sportsman
     /// </summary>
     public partial class SportsmanMainPage : Page, IMainPage
     {
+        public const string PAGE_NAME = "Sportsman";
         TextBlock? ToDate = null;
         DatePicker? DateOfBirth2 = new DatePicker { SelectedDate = null };
         private const int MAX_HEIGHT_LENGTH = 3;
@@ -369,6 +370,11 @@ namespace AchieveNow.Pages.Sportsman
         public void Add_Button_Click()
         {
             AddSportsman_Button_Click(null, null);
+        }
+
+        public string GetPageName()
+        {
+            return PAGE_NAME;
         }
     }
 }
