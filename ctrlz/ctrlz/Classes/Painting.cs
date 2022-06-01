@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace ctrlz.Classes
 {
@@ -14,6 +10,7 @@ namespace ctrlz.Classes
         [MaxLength(50)]
         public string Name { get; set; }
         public double Value { get; set; }
+        [DisplayName("Date of Creation")]
         public DateTime DateOfCreation { get; set; }
         public int AuthorId { get; set; }
         public virtual Author Author { get; set; }
@@ -25,8 +22,11 @@ namespace ctrlz.Classes
     }
     public enum Status
     {
+        [Display(Name = "In Expo")]
         InExpo,
+        [Display(Name = "In Storage")]
         InStorage,
+        [Display(Name = "In Recovery")]
         InRecovery
     }
 }

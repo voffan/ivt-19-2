@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ctrlz.Classes;
-using ctrlz.Model;
 using Microsoft.AspNetCore.Authorization;
 
 namespace ctrlz.Pages.Paintings
@@ -15,9 +12,9 @@ namespace ctrlz.Pages.Paintings
     [Authorize]
     public class EditModel : PageModel
     {
-        private readonly ctrlz.Model.AuthDbContext _context;
+        private readonly Model.AuthDbContext _context;
 
-        public EditModel(ctrlz.Model.AuthDbContext context)
+        public EditModel(Model.AuthDbContext context)
         {
             _context = context;
         }

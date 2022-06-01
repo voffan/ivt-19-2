@@ -45,6 +45,9 @@
                                 </li>
                             </ul>
                             <ul class="navbar-nav d-flex justify-content-end">
+                            <li class="nav-item">
+                                <a  class="nav-link text-dark" asp-area="" asp-page="" title="Manage">@User.Identity.Name</a>
+                            </li>
                                 <li class="nav-item">
                                     <a class="btn btn-primary" asp-area="" asp-page="/Logout">Logout</a>
                                 </li>
@@ -74,7 +77,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - ctrlz - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2022 - ctrlz
         </div>
     </footer>
 
