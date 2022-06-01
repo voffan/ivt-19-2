@@ -20,6 +20,7 @@ using MySql.Data.MySqlClient;
 using Microsoft.Data.Sqlite;
 using System.IO;
 using System.Text.Json;
+using Path = System.IO.Path;
 
 namespace AchieveNow.Pages.Report
 {
@@ -28,6 +29,9 @@ namespace AchieveNow.Pages.Report
     /// </summary>
     public partial class ReportWinnerPage : Page, IReport
     {
+        List<WinnerGrid>? win = new List<WinnerGrid>();
+        const string ReportPath = "Winner Report.xlsx";
+
         public ReportWinnerPage()
         {
             InitializeComponent();
@@ -42,7 +46,6 @@ namespace AchieveNow.Pages.Report
                 if (!context.IsAvailable)
                     return;
 
-                List<WinnerGrid> win = new List<WinnerGrid>();
                 string sql = "SELECT *, row_number() over(order by mytable.Scores desc) as Place FROM (SELECT Sportsmen.Id, Sportsmen.Name, SportKinds.Name, Sportsmen.Gender, Countries.Name, (SUM(Achievements.Result)+SUM(Competitions.Level)) as \"Scores\" FROM SportKinds JOIN Sportsmen ON SportKinds.Id = Sportsmen.SportKindId JOIN Achievements ON Achievements.SportsmanId = Sportsmen.Id JOIN Competitions ON Competitions.Id = Achievements.CompetitionId JOIN Countries ON Countries.Id = Sportsmen.CountryId GROUP BY Sportsmen.Name) mytable GROUP BY mytable.Name ORDER BY mytable.Scores DESC";
 
                 FileInfo configurationFile = new FileInfo("ConfigurationDB.json");
@@ -114,36 +117,48 @@ namespace AchieveNow.Pages.Report
 
         public void Print_Button_Click(object sender, RoutedEventArgs e)
         {
-            /*            MessageBox.Show("Out of бумага");
-                        Microsoft.Office.Interop.Excel.Application excel = null;
-                        Microsoft.Office.Interop.Excel.Workbook wb = null;
-                        object missing = Type.Missing;
-                        Microsoft.Office.Interop.Excel.Worksheet ws = null;
-                        Microsoft.Office.Interop.Excel.Range rng = null;
+            using (ExcelContext excelContext = new ExcelContext())
+            {
+                try
+                {
+                    if (excelContext.Open(filePath: Path.Combine(Environment.CurrentDirectory, ReportPath)))
+                    {
+                        excelContext.Set(column: "A", row: 1, data: "Отчёт спортсменов с наибольшим количеством призовых мест по своему виду спорта", size: 16, isBold: true);
 
-                        // collection of DataGrid Items
-                        var dtExcelDataTable = ReportWinnerGrid(txtFrmDte.Text, txtToDte.Text, strCondition);
+                        excelContext.Set(column: "A", row: 3, data: "ID", isRight: true, isBold: true, columnWidth: 5);
+                        excelContext.Set(column: "B", row: 3, data: "Спортсмен", isBold: true, columnWidth: 40);
+                        excelContext.Set(column: "C", row: 3, data: "Вид спорта", isBold: true, columnWidth: 20);
+                        excelContext.Set(column: "D", row: 3, data: "Пол", isBold: true, columnWidth: 14);
+                        excelContext.Set(column: "E", row: 3, data: "Страна", isBold: true, columnWidth: 35);
+                        excelContext.Set(column: "F", row: 3, data: "Баллы", isBold: true, columnWidth: 8);
+                        excelContext.Set(column: "G", row: 3, data: "Место", isBold: true, columnWidth: 7);
 
-                        excel = new Microsoft.Office.Interop.Excel.Application();
-                        wb = excel.Workbooks.Add();
-                        ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet;
-                        ws.Columns.AutoFit();
-                        ws.Columns.EntireColumn.ColumnWidth = 25;
-
-                        // Header row
-                        for (int Idx = 0; Idx < dtExcelDataTable.Columns.Count; Idx++)
+                        int row = 4;
+                        if (win != null)
                         {
-                            ws.Range["A1"].Offset[0, Idx].Value = dtExcelDataTable.Columns[Idx].ColumnName;
+                            foreach (WinnerGrid winner in win)
+                            {
+                                excelContext.Set(column: "A", row: row, data: winner.Id, isRight: true);
+                                excelContext.Set(column: "B", row: row, data: winner.Name);
+                                excelContext.Set(column: "C", row: row, data: winner.SportKind);
+                                excelContext.Set(column: "D", row: row, data: winner.Gender);
+                                excelContext.Set(column: "E", row: row, data: winner.Country);
+                                excelContext.Set(column: "F", row: row, data: winner.Point);
+                                excelContext.Set(column: "G", row: row, data: winner.Place);
+
+                                ++row;
+                            }
                         }
 
-                        // Data Rows
-                        for (int Idx = 0; Idx < dtExcelDataTable.Rows.Count; Idx++)
-                        {
-                            ws.Range["A2"].Offset[Idx].Resize[1, dtExcelDataTable.Columns.Count].Value = dtExcelDataTable.Rows[Idx].ItemArray;
-                        }
-
-                        excel.Visible = true;
-                        wb.Activate();*/
+                        excelContext.Save();
+                        MessageBox.Show("Отчёт был сохранён в excel файле " + ReportPath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка: " + ex.Message);
+                }
+            }
         }
 
         private void ReportWinner_Button_Click(object sender, RoutedEventArgs e)
