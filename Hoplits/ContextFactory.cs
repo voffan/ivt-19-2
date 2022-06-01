@@ -15,7 +15,7 @@ namespace Hoplits
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             optionsBuilder.UseMySql(
-                "server=localhost;user=root;password=123;database=hoplits;",
+                "server=localhost;user=root;password=1234;database=hoplits;",
                 new MySqlServerVersion(new Version(8, 0, 28))
             );
 

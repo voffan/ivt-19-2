@@ -30,11 +30,7 @@
                 <MenuItem Header="About" Click="getAbout"/>
             </MenuItem>
         </Menu>
-<<<<<<< HEAD
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="10,58,10,0" Loaded="Window_Loaded" Name="datagrid1" IsReadOnly="True" Height="309" VerticalAlignment="Top" MouseDoubleClick="MDouble_Click">
-=======
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="10,71,10,0" Loaded="Window_Loaded" Name="datagrid1" IsReadOnly="True" Height="296" VerticalAlignment="Top">
->>>>>>> e0433bcc63d54aedd130d8281496fd5784048111
             <DataGrid.ContextMenu>
                 <ContextMenu Name="contextmenu">
                     <MenuItem Header="Edit" Click="Edit"/>
@@ -44,10 +40,6 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-<<<<<<< HEAD
-        <Label x:Name="listName" Content="La" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="192"/>
-=======
         <Label Content="List of bugs" x:Name="listName" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="313" FontWeight="Bold" FontFamily="Segoe UI" Height="39" FontSize="22"/>
->>>>>>> e0433bcc63d54aedd130d8281496fd5784048111
     </Grid>
 </Window>
