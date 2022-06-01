@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ctrlz.Classes;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 
 namespace ctrlz.Pages.Paintings
 {
@@ -13,10 +14,12 @@ namespace ctrlz.Pages.Paintings
     public class IndexModel : PageModel
     {
         private readonly Model.AuthDbContext _context;
+        private readonly IConfiguration Configuration;
 
-        public IndexModel(Model.AuthDbContext context)
+        public IndexModel(Model.AuthDbContext context, IConfiguration configuration)
         {
             _context = context;
+            Configuration = configuration;
         }
 
         public string NameSort { get; set; }
@@ -30,12 +33,11 @@ namespace ctrlz.Pages.Paintings
         public string CurrentSort { get; set; }
         public string SearchBy { get; set; }
 
-        public IList<Painting> Painting { get;set; }
+        public PaginatedList<Painting> Painting { get;set; }
 
-             
-
-        public async Task OnGetAsync(string sortOrder, string searchString, string searchBy)
+        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, string searchBy, int? pageIndex)
         {
+            CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             ValueSort = sortOrder == "Value" ? "value_desc" : "Value";
@@ -51,6 +53,7 @@ namespace ctrlz.Pages.Paintings
 
             if (!String.IsNullOrEmpty(searchString))
             {
+
                 if (searchBy == "Name") {
                     paintingsIQ = paintingsIQ.Where(s => s.Name.Contains(searchString));
                 }
@@ -126,7 +129,8 @@ namespace ctrlz.Pages.Paintings
             paintingsIQ = paintingsIQ.Include(s => s.Genre);
             paintingsIQ = paintingsIQ.Include(s => s.Location);
 
-            Painting = await paintingsIQ.AsNoTracking().ToListAsync();
+            var pageSize = Configuration.GetValue("PageSize", 4);
+            Painting = await PaginatedList<Painting>.CreateAsync(paintingsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
     }
 }

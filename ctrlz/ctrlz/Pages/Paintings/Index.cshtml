@@ -38,37 +38,44 @@
     <thead>
         <tr>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Painting[0].Name)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.ValueSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ValueSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Painting[0].Value)
                 </a>
             </th>
             <th>
-               <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+               <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Painting[0].DateOfCreation)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Painting[0].Author)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.GenreSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.GenreSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Painting[0].Genre)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.LocationSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LocationSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Painting[0].Location)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Painting[0].Status)
                 </a><tbody>
 @foreach (var item in Model.Painting) 
@@ -104,3 +111,24 @@
 }
     </tbody>
 </table>
+
+
+@{
+    var prevDisabled = !Model.Painting.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Painting.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Painting.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Painting.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>
