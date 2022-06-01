@@ -12,15 +12,16 @@ namespace AchieveNow.ProgramClasses
         private Excel.Workbook _workbook;
         private Excel.Worksheet _worksheet;
         private string _filePath;
+        private string _sheetName;
 
         public ExcelContext()
         {
             _excel = new Excel.Application();
         }
 
-        internal bool Open(string filePath)
+        internal bool Open(string filePath, string sheetName)
         {
-            string date = DateTime.UtcNow.ToString("dd-MM-yyyy");
+            _sheetName = sheetName;
 
             try
             {
@@ -28,9 +29,9 @@ namespace AchieveNow.ProgramClasses
                 {
                     _workbook = _excel.Workbooks.Open(filePath);
 
-                    if (_workbook.Worksheets.OfType<Excel.Worksheet>().FirstOrDefault(ws => ws.Name == date) != null)
+                    if (_workbook.Worksheets.OfType<Excel.Worksheet>().FirstOrDefault(ws => ws.Name == _sheetName) != null)
                     {
-                        Excel.Worksheet _oldWorksheet = _workbook.Sheets[date];
+                        Excel.Worksheet _oldWorksheet = _workbook.Sheets[_sheetName];
                         _worksheet = (Excel.Worksheet)_excel.Worksheets.Add(Type.Missing, _excel.Worksheets[_excel.Worksheets.Count], 1, Excel.XlSheetType.xlWorksheet);
                         _oldWorksheet.Delete();
                         //MessageBox.Show("Старый лист удалён, создан новый: " + date);
@@ -48,7 +49,7 @@ namespace AchieveNow.ProgramClasses
                     _filePath = filePath;
                 }
 
-                _worksheet.Name = date;
+                _worksheet.Name = _sheetName;
 
                 return true;
             }
