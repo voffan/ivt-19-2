@@ -2,6 +2,7 @@
 using System.Windows;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Linq;
 
 namespace AchieveNow.ProgramClasses
 {
@@ -19,23 +20,43 @@ namespace AchieveNow.ProgramClasses
 
         internal bool Open(string filePath)
         {
+            string date = DateTime.UtcNow.ToString("dd-MM-yyyy");
+
             try
             {
                 if (File.Exists(filePath))
                 {
                     _workbook = _excel.Workbooks.Open(filePath);
+
+                    if (_workbook.Worksheets.OfType<Excel.Worksheet>().FirstOrDefault(ws => ws.Name == date) != null)
+                    {
+                        Excel.Worksheet _oldWorksheet = _workbook.Sheets[date];
+                        _worksheet = (Excel.Worksheet)_excel.Worksheets.Add(Type.Missing, _excel.Worksheets[_excel.Worksheets.Count], 1, Excel.XlSheetType.xlWorksheet);
+                        _oldWorksheet.Delete();
+                        //MessageBox.Show("Старый лист удалён, создан новый: " + date);
+                    }
+                    else
+                    {
+                        _worksheet = (Excel.Worksheet)_excel.Worksheets.Add(Type.Missing, _excel.Worksheets[_excel.Worksheets.Count], 1, Excel.XlSheetType.xlWorksheet);
+                        //MessageBox.Show("Создан новый лист: " + date);
+                    }
                 }
                 else
                 {
                     _workbook = _excel.Workbooks.Add();
+                    _worksheet = (Excel.Worksheet)_workbook.Worksheets.get_Item(1);
                     _filePath = filePath;
                 }
 
-                _worksheet = (Excel.Worksheet)_workbook.Worksheets.get_Item(1);
+                _worksheet.Name = date;
 
                 return true;
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             return false;
         }
 
@@ -80,6 +101,11 @@ namespace AchieveNow.ProgramClasses
             }
 
             return false;
+        }
+
+        internal void Merge(int fromRowNum, int fromColumnNum, int ToRowNum, int ToColumnNum)
+        {
+            _worksheet.Range[_worksheet.Cells[fromRowNum, fromColumnNum], _worksheet.Cells[ToRowNum, ToColumnNum]].Merge();
         }
 
         public void Dispose()

@@ -123,7 +123,8 @@ namespace AchieveNow.Pages.Report
                 {
                     if (excelContext.Open(filePath: Path.Combine(Environment.CurrentDirectory, ReportPath)))
                     {
-                        excelContext.Set(column: "A", row: 1, data: "Отчёт спортсменов с наибольшим количеством призовых мест по своему виду спорта", size: 16, isBold: true);
+                        excelContext.Merge(1, 1, 1, 7);
+                        excelContext.Set(column: "A", row: 1, data: "Отчёт спортсменов с наибольшим количеством призовых мест по своему виду спорта", size: 16, isBold: true, isCenter: true);
 
                         excelContext.Set(column: "A", row: 3, data: "ID", isRight: true, isBold: true, columnWidth: 5);
                         excelContext.Set(column: "B", row: 3, data: "Спортсмен", isBold: true, columnWidth: 40);
