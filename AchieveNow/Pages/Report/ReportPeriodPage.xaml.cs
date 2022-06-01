@@ -20,6 +20,7 @@ using MySql.Data.MySqlClient;
 using Microsoft.Data.Sqlite;
 using System.IO;
 using System.Text.Json;
+using Path = System.IO.Path;
 
 namespace AchieveNow.Pages.Report
 {
@@ -28,7 +29,8 @@ namespace AchieveNow.Pages.Report
     /// </summary>
     public partial class ReportPeriodPage : Page, IReport
     {
-        List<ReportPeriodGrid>? win = new List<ReportPeriodGrid>();
+        List<ReportPeriodGrid> win = new List<ReportPeriodGrid>();
+        const string ReportPath = "Winner Period Report.xlsx";
 
         public ReportPeriodPage()
         {
@@ -77,11 +79,15 @@ namespace AchieveNow.Pages.Report
             SportKind_ComboBox.SelectedItem = null;
             FromDateOfExecution_DatePicker.SelectedDate = null;
             ToDateOfExecution_DatePicker.SelectedDate = null;
-            win = null;
+            ReportPeriodGrid.ItemsSource = null;
+            win.Clear();
         }
 
         private void Search_Button_Click(object sender, RoutedEventArgs e)
         {
+            ReportPeriodGrid.ItemsSource = null;
+            win.Clear();
+
             int sportKindId;
             if (SportKind_ComboBox.SelectedValue == null)
             {
@@ -102,10 +108,8 @@ namespace AchieveNow.Pages.Report
 
             DateOnly fromDateOfExecution;
             DateOnly toDateOfExecution;
-
             if (FromDateOfExecution_DatePicker.SelectedDate != null && ToDateOfExecution_DatePicker.SelectedDate != null)
             {
-
                 fromDateOfExecution = DateOnly.FromDateTime((DateTime)FromDateOfExecution_DatePicker.SelectedDate);
                 toDateOfExecution = DateOnly.FromDateTime((DateTime)ToDateOfExecution_DatePicker.SelectedDate);
 
@@ -210,20 +214,87 @@ namespace AchieveNow.Pages.Report
                         }
                     }
                 }
-                ReportPeriodGrid.ItemsSource = win;
+                if (win.Count > 0)
+                    ReportPeriodGrid.ItemsSource = win;
+                else
+                    ReportPeriodGrid.ItemsSource = null;
             }
         }
 
         public void Print_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Out of бумага");
+            if (ReportPeriodGrid.ItemsSource == null)
+            {
+                MessageBox.Show("В отчёте пусто");
+                return;
+            }
+
+            using (ExcelContext excelContext = new ExcelContext())
+            {
+                string sportKind = SportKind_ComboBox.SelectedItem.ToString();
+                string fromDate = ((DateTime)FromDateOfExecution_DatePicker.SelectedDate).ToString("dd-MM-yyyy");
+                string toDate = ((DateTime)ToDateOfExecution_DatePicker.SelectedDate).ToString("dd-MM-yyyy");
+                string date = DateTime.UtcNow.ToString("dd-MM-yyyy");
+
+                try
+                {
+                    string sheetName = $"{date} {sportKind}";
+                    if (excelContext.Open(filePath: Path.Combine(Environment.CurrentDirectory, ReportPath), sheetName))
+                    {
+                        excelContext.Merge(1, 1, 1, 9);
+                        excelContext.Set(column: "A", row: 1, data: "Отчёт победителей соревнования по заданному виду спорта за выбранный период", size: 16, isBold: true, isCenter: true);
+
+                        excelContext.Merge(3, 1, 3, 5);
+                        excelContext.Set(column: "A", row: 3, data: "Вид спорта: " + sportKind, size: 14, isBold: true, isCenter: true);
+
+                        excelContext.Merge(3, 6, 3, 9);
+                        excelContext.Set(column: "F", row: 3, data: $"Период от {fromDate} до {toDate}", size: 14, isBold: true, isCenter: true);
+
+                        int row = 5;
+                        excelContext.Set(column: "A", row: row, data: "ID", isRight: true, isBold: true, columnWidth: 5);
+                        excelContext.Set(column: "B", row: row, data: "Спортсмен", isBold: true, columnWidth: 40);
+                        excelContext.Set(column: "C", row: row, data: "Результат", isBold: true, columnWidth: 15);
+                        excelContext.Set(column: "D", row: row, data: "Вид спорта", isBold: true, columnWidth: 20);
+                        excelContext.Set(column: "E", row: row, data: "Дата проведения", isBold: true, columnWidth: 16);
+                        excelContext.Set(column: "F", row: row, data: "Соревнование", isBold: true, columnWidth: 30);
+                        excelContext.Set(column: "G", row: row, data: "Дата выдачи", isBold: true, columnWidth: 14);
+                        excelContext.Set(column: "H", row: row, data: "Пол", isBold: true, columnWidth: 14);
+                        excelContext.Set(column: "I", row: row, data: "Страна", isBold: true, columnWidth: 35);
+
+                        ++row;
+                        if (win.Count > 0)
+                        {
+                            foreach (ReportPeriodGrid winner in win)
+                            {
+                                excelContext.Set(column: "A", row: row, data: winner.Id, isRight: true);
+                                excelContext.Set(column: "B", row: row, data: winner.Name);
+                                excelContext.Set(column: "C", row: row, data: winner.Result);
+                                excelContext.Set(column: "D", row: row, data: winner.SportKind);
+                                excelContext.Set(column: "E", row: row, data: winner.DateOfExecution.ToString());
+                                excelContext.Set(column: "F", row: row, data: winner.Competition);
+                                excelContext.Set(column: "G", row: row, data: winner.DateOfIssue.ToString());
+                                excelContext.Set(column: "H", row: row, data: winner.Gender);
+                                excelContext.Set(column: "I", row: row, data: winner.Country);
+
+                                ++row;
+                            }
+                        }
+
+                        excelContext.Save();
+                        MessageBox.Show("Отчёт был сохранён в excel файле " + ReportPath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка: " + ex.Message);
+                }
+            }
         }
 
         public void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
             ClearForms();
             Update();
-            ReportPeriodGrid.ItemsSource = win;
         }
 
         private void ReportWinner_Button_Click(object sender, RoutedEventArgs e)
