@@ -29,7 +29,7 @@ namespace AchieveNow.Pages.Report
     /// </summary>
     public partial class ReportWinnerPage : Page, IReport
     {
-        List<WinnerGrid>? win = new List<WinnerGrid>();
+        List<WinnerGrid> win = new List<WinnerGrid>();
         const string ReportPath = "Winner Report.xlsx";
 
         public ReportWinnerPage()
@@ -41,6 +41,8 @@ namespace AchieveNow.Pages.Report
 
         public void ShowGrid()
         {
+            win.Clear();
+
             using (ApplicationContext context = new ApplicationContext())
             {
                 if (!context.IsAvailable)
@@ -121,7 +123,8 @@ namespace AchieveNow.Pages.Report
             {
                 try
                 {
-                    if (excelContext.Open(filePath: Path.Combine(Environment.CurrentDirectory, ReportPath)))
+                    string sheetName = DateTime.UtcNow.ToString("dd-MM-yyyy");
+                    if (excelContext.Open(filePath: Path.Combine(Environment.CurrentDirectory, ReportPath), sheetName))
                     {
                         excelContext.Merge(1, 1, 1, 7);
                         excelContext.Set(column: "A", row: 1, data: "Отчёт спортсменов с наибольшим количеством призовых мест по своему виду спорта", size: 16, isBold: true, isCenter: true);
@@ -135,7 +138,7 @@ namespace AchieveNow.Pages.Report
                         excelContext.Set(column: "G", row: 3, data: "Место", isBold: true, columnWidth: 7);
 
                         int row = 4;
-                        if (win != null)
+                        if (win.Count > 0)
                         {
                             foreach (WinnerGrid winner in win)
                             {
