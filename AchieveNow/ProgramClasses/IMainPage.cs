@@ -33,5 +33,6 @@ namespace AchieveNow
         void Add_Button_Click();
         void ShowReportWindow();
         void ShowWinnerPage();
+        string GetPageName();
     }
 }

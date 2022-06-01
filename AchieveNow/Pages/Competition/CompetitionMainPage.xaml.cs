@@ -29,6 +29,7 @@ namespace AchieveNow.Pages.Competition
     /// </summary>
     public partial class CompetitionMainPage : Page, IMainPage
     {
+        public const string PAGE_NAME = "Competition";
         public CompetitionMainPage()
         {
             InitializeComponent();
@@ -353,6 +354,11 @@ namespace AchieveNow.Pages.Competition
         public void Add_Button_Click()
         {
             AddCompetition_Button_Click(null, null);
+        }
+
+        public string GetPageName()
+        {
+            return PAGE_NAME;
         }
     }
 }
