@@ -20,7 +20,8 @@
             <select type="text" id="searchby" name="searchby" value="@Model.SearchBy">
                 <option value="Name">Name</option>
                 <option value="Value">Value</option>
-                <option value="DateOfCreation">DateOfCreation</option>
+                <option value="DateOfCreation"></option>
+                <option value="AcquirementDate"></option>
                 <option value="Author">Author</option>
                 <option value="Genre">Genre</option>
                 <option value="Location">Location</option>
@@ -53,6 +54,12 @@
                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
                     asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Painting[0].DateOfCreation)
+                </a>
+            </th>
+            <th>
+               <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Painting[0].AcquirementDate)
                 </a>
             </th>
             <th>
@@ -89,6 +96,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfCreation)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.AcquirementDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Author.Name)

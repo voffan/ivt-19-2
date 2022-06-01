@@ -19,6 +19,8 @@ namespace ctrlz.Classes
         public int LocationId { get; set; }
         public virtual Location Location { get; set; }
         public Status Status { get; set; }
+        [DisplayName("Acquirement Date")]
+        public DateTime AcquirementDate { get; set; }
     }
     public enum Status
     {

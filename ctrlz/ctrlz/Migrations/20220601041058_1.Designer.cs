@@ -9,7 +9,7 @@ using ctrlz.Model;
 namespace ctrlz.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20220531202524_1")]
+    [Migration("20220601041058_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -306,6 +306,9 @@ namespace ctrlz.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("AcquirementDate")
+                        .HasColumnType("datetime");
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");

@@ -305,6 +305,9 @@ namespace ctrlz.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("AcquirementDate")
+                        .HasColumnType("datetime");
+
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 

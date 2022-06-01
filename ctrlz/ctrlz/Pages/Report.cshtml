@@ -1,4 +1,31 @@
 ﻿@page
 @model ctrlz.Pages.ReportModel
+
 @{
+    ViewData["Title"] = "Student Body Statistics";
 }
+
+<h2>Student Body Statistics</h2>
+
+<table>
+    <tr>
+        <th>
+            Acquirement Date
+        </th>
+        <th>
+            Paintings
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Paintings)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcquirementDate)
+            </td>
+            <td>
+                @item.PaintingCount
+            </td>
+        </tr>
+    }
+</table>

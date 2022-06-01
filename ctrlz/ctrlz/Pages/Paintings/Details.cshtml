@@ -24,10 +24,16 @@
             @Html.DisplayFor(model => model.Painting.Value)
         </dd>
         <dt class="col-sm-2">
-            @Html.LabelFor(model => model.Painting.DateOfCreation, "Date of Creation")
+            @Html.DisplayNameFor(model => model.Painting.DateOfCreation)
         </dt>
         <dd class="col-sm-10" >
             @Html.DisplayFor(model => model.Painting.DateOfCreation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Painting.AcquirementDate)
+        </dt>
+        <dd class="col-sm-10" >
+            @Html.DisplayFor(model => model.Painting.AcquirementDate)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Painting.Author)
