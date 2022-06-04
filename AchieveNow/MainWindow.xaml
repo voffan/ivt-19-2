@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveNow"
         mc:Ignorable="d"
-        Title="AchieveNow" MinHeight="500" MinWidth="700" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+        Title="AchieveNow" MinHeight="500" MinWidth="700" Height="630" Width="1050" WindowStartupLocation="CenterScreen">
     <Frame x:Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"/>
 </Window>

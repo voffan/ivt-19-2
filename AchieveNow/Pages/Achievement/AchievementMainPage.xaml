@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AchieveNow.Pages.Achievement"
       mc:Ignorable="d"
-      d:DesignHeight="600" d:DesignWidth="800"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="550" d:DesignWidth="1100"
       Title="Список достижений"
       Loaded="Page_Loaded"
       Background="LightGray"
@@ -48,12 +49,14 @@
                 <DatePicker x:Name="DateOfIssue" HorizontalContentAlignment="Center" Margin="0, 0, 0, 10" FontSize="16"></DatePicker>
             </StackPanel>
             <Button Content="Искать" Margin="0, 0, 0, 10" FontSize="18" Click="Search_Button_Click"></Button>
+            <Button x:Name="Refresh_Button"  Content="Обновить" Margin="0, 20, 0, 0" FontSize="18" Click="Refresh_Button_Click"></Button>
+            
 
         </WrapPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="AchievementsGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
+        <DataGrid AutoGenerateColumns="False" x:Name="AchievementsGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True" SelectionChanged="AchievementsGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="60"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Result}" Header="Результат" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Competition}" Header="Соревнование" Width="auto"/>
@@ -70,13 +73,12 @@
             </DataGrid.ContextMenu>
 
         </DataGrid>
-        
-        
 
 
-        <Button x:Name="AddAchievement_Button" Grid.Row="0" Grid.Column="0" Click="AddAchievement_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
+
+
+        <Button x:Name="AddAchievement_Button" Click="AddAchievement_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="45" Width="135" Background="Gray" Cursor="Hand">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>достижение</TextBlock>
         </Button>
-        <Button x:Name="Refresh" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
 </Page>

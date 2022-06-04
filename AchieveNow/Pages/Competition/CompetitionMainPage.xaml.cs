@@ -360,5 +360,10 @@ namespace AchieveNow.Pages.Competition
         {
             return PAGE_NAME;
         }
+
+        private void CompetitionsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

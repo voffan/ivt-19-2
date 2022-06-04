@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AchieveNow.Pages.Location"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="900"
+      d:DesignHeight="550" d:DesignWidth="1050"
       Title="Список локаций"
       Background="LightGray"
       KeyUp="PageKeyUp"
@@ -42,11 +42,12 @@
             <ComboBox x:Name="Country_ComboBox" IsEditable="False" Margin="0, 0, 0, 10"></ComboBox>
 
             <Button x:Name="Search_Button" Content="Искать" Margin="0, 20, 0, 0" FontSize="18" Click="Search_Button_Click"></Button>
+            <Button x:Name="Refresh_Button"  Content="Обновить" Margin="0, 20, 0, 0" FontSize="18" Click="Refresh_Button_Click"></Button>
         </WrapPanel>
 
         <DataGrid AutoGenerateColumns="False" x:Name="LocationsGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="60"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Country.Name}" Header="Страна" Width="*"/>
             </DataGrid.Columns>
@@ -59,10 +60,9 @@
             </DataGrid.ContextMenu>
         </DataGrid>
 
-        <Button x:Name="AddLocation_Button" Grid.Row="0" Grid.Column="0" Click="AddLocation_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
+        <Button x:Name="AddLocation_Button" Grid.Row="0" Grid.Column="0" Click="AddLocation_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="45" Width="100" Background="Gray" Cursor="Hand">
             <TextBlock TextAlignment="Center">Добавить<LineBreak/>Локацию</TextBlock>
         </Button>
 
-        <Button x:Name="Refresh_Button" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
 </Page>

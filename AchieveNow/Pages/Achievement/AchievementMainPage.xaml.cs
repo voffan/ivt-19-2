@@ -407,5 +407,10 @@ namespace AchieveNow.Pages.Achievement
         {
             return PAGE_NAME;
         }
+
+        private void AchievementsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

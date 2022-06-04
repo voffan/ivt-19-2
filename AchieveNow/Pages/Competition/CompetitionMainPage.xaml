@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AchieveNow.Pages.Competition"
       mc:Ignorable="d"
-      d:DesignHeight="600" d:DesignWidth="900"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="550" d:DesignWidth="1100"
       Title="Список мероприятий"
       Loaded="Page_Loaded"
       Background="LightGray"
@@ -32,7 +33,7 @@
             <Button x:Name="Location_Button" Content="Локации" Margin="0, 0, 10, 0" Click="Button_Locations"></Button>
             <Button x:Name="SportKind_Button" Content="Виды спорта" Margin="0, 0, 10, 0" Click="Button_SportKinds"></Button>
             <Button x:Name="Country_Button" Content="Страны" Margin="0, 0, 10, 0" Click="Button_Countries"></Button>
-            <Button x:Name="User_Button" Content="Пользователи" Margin="0, 0, 10, 0" Click="Button_Users"></Button>
+            <Button x:Name="User_Button" Content="Пользователи" Margin="0, 0, 10, 0" Click="Button_Users" Cursor="Hand"></Button>
         </StackPanel>
 
         <WrapPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 0, 0, 0">
@@ -56,13 +57,22 @@
                 <DatePicker x:Name="DateOfExecution" Margin="0, 0, 0, 10"></DatePicker>
             </StackPanel>
 
-            <Button x:Name="Search_Button" Content="Искать" Margin="0, 20, 0, 0" FontSize="18" Click="Search_Button_Click"></Button>
+            <Button x:Name="Search_Button" Content="Искать" Margin="0, 10, 0, 0" FontSize="18" Click="Search_Button_Click"></Button>
+            <Button x:Name="Refresh_Button"  Content="Обновить" Margin="0, 20, 0, 0" FontSize="18" Click="Refresh_Button_Click"></Button>
         </WrapPanel>
 
-        <DataGrid AutoGenerateColumns="False" x:Name="CompetitionsGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
+        <DataGrid AutoGenerateColumns="False" x:Name="CompetitionsGrid" Grid.Row="1" Grid.Column="1" IsReadOnly="True" SelectionChanged="CompetitionsGrid_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.073"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.599"/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Название" MinWidth="220" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID"  Width="60"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Название" MinWidth="250" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Level}" Header="Уровень" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Location}" Header="Локация" Width="*"/>
                 <DataGridTextColumn Binding="{Binding SportKind}" Header="Вид спорта" Width="*"/>
@@ -77,11 +87,10 @@
             </DataGrid.ContextMenu>
         </DataGrid>
 
-        <Button x:Name="AddCompetition_Button" Grid.Row="0" Grid.Column="0" Click="AddCompetition_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="85" Background="White">
-            <TextBlock TextAlignment="Center">Добавить<LineBreak/>Соревнование</TextBlock>
+        <Button x:Name="AddCompetition_Button" Grid.Column="0" Click="AddCompetition_Button_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="45" Width="135" Background="Gray">
+            <TextBlock TextAlignment="Center" Height="38" Width="97">Добавить<LineBreak/>Соревнование</TextBlock>
         </Button>
 
-        <Button x:Name="Refresh_Button" Grid.Row="0" Grid.Column="1" Content="Обновить" Click="Refresh_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0"></Button>
     </Grid>
-    
+
 </Page>

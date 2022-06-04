@@ -376,5 +376,10 @@ namespace AchieveNow.Pages.Sportsman
         {
             return PAGE_NAME;
         }
+
+        private void SportsmenGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
